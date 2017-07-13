@@ -5,15 +5,19 @@
  */
 package Entidades;
 
-import java.time.LocalDate;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author Supervisor
  */
 public class Final extends entidad{
-    public int nota;
-    public LocalDate fecha;
-    public Alumno alumno;
-    public Materia materia;
+    public int idFinal;
+    public Date fecha;
+    public Time horaInicio;
+    public Time horaFin;
+    public String aula;
+    public ArrayList<Inscripcion> inscripciones;
 }

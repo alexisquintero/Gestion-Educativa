@@ -5,12 +5,16 @@
  */
 package Entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Supervisor
  */
 public class Alumno extends Persona{
     public int idAlumno;
-    public String legajo;
     public Moderador moderador;
+    public Carrera carrera;
+    public ArrayList<Comision> comisiones;
+    public ArrayList<Inscripcion> inscripciones;
 }

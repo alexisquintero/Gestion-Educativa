@@ -14,7 +14,8 @@ public class Persona extends entidad{
     public String apellido;
     public String telefono;
     public String email;
+    public String direccion;
+    public String legajo;
     public String usuario;
     public String clave;
-    public boolean habilitado;
 }

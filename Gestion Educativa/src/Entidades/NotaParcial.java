@@ -9,6 +9,8 @@ package Entidades;
  *
  * @author Supervisor
  */
-public class Administrador extends Persona{
-    public int idAdministrador;   
+public class NotaParcial extends entidad{
+    public String nota;
+    public boolean presencia;
+    public Alumno alumno;
 }

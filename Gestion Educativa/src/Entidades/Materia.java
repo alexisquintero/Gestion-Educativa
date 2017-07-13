@@ -6,6 +6,7 @@
 package Entidades;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -15,6 +16,10 @@ public class Materia extends entidad{
     public int idMateria;
     public String nombre;
     public String descripcion;
+    public Date año;
+    public boolean electiva;
+    public int horasSemana;
     public Administrador administrador;
     public ArrayList<Materia> correlativas;
+    public ArrayList<Final> finales;
 }

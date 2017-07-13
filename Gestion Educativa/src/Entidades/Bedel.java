@@ -9,10 +9,6 @@ package Entidades;
  *
  * @author Supervisor
  */
-public class ComisionMateriaAlumno extends entidad{
-    public int notaPrimerParcial;
-    public int notaSegundoParcial;
-    public int notaPrimerRecuperatorio;
-    public int notaSegundoRecuperatorio;
-    public Alumno alumno;
+public class Bedel extends Persona{
+    public int idBedel;
 }

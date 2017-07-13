@@ -5,10 +5,17 @@
  */
 package Entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author Supervisor
  */
-public class Administrador extends Persona{
-    public int idAdministrador;   
+public class Inscripcion extends entidad{
+    public Date fecha;
+    public int notaPractica;
+    public int notaTeoria;
+    public int notaFinal;
+    public boolean presencia;
+    public Alumno alumno;
 }

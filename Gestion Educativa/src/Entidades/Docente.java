@@ -11,5 +11,6 @@ package Entidades;
  */
 public class Docente extends Persona{
     public int idDocente;
+    public String cargo;
     public Moderador moderador;
 }

@@ -13,8 +13,10 @@ import java.util.ArrayList;
  */
 public class Comision extends entidad{
     public int idComision;
-    public String nombre;
+    public String aula;
     public int cupo;
     public Moderador moderador;
-    public ArrayList<ComisionMateria> materias;
+    public Materia materia;
+    public ArrayList<Horario> horarios;
+    public ArrayList<Parcial> parciales;   
 }

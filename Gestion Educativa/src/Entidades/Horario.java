@@ -5,10 +5,16 @@
  */
 package Entidades;
 
+import java.sql.Time;
+import java.util.ArrayList;
+
 /**
  *
  * @author Supervisor
  */
-public class Administrador extends Persona{
-    public int idAdministrador;   
+public class Horario extends entidad{
+    public String dia;
+    public Time horaInicio;
+    public Time horaFin;
+    public ArrayList<Alumno> alumnos;
 }
