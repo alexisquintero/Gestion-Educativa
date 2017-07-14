@@ -5,7 +5,6 @@
  */
 package Datos;
 
-import Entidades.Administrador;
 import Entidades.Carrera;
 import Entidades.entidad;
 import Excepciones.ApplicationException;

@@ -7,6 +7,7 @@ package Otros;
 
 import Datos.DatoAdministrador;
 import Datos.DatoCarrera;
+import Datos.DatoMateria;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Entidades.Administrador;
 import Entidades.Carrera;
+import Entidades.Materia;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -27,6 +31,7 @@ public class NewMain {
     public static void main(String[] args) {
         DatoAdministrador da = new DatoAdministrador();
         DatoCarrera dc = new DatoCarrera();
+        DatoMateria dm = new DatoMateria();
         try {
             /*
             Administrador administrador = new Administrador(4,"AdministradorModificado", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
@@ -36,7 +41,7 @@ public class NewMain {
             
             ArrayList<entidad> administradores = da.getAll();
             System.out.println("Conectado");            
-*/
+
             Carrera carrera = new Carrera(0, "Carrera", "Primera", 1);
             dc.newObject(carrera);
             
@@ -46,6 +51,16 @@ public class NewMain {
             
             carrera.nombre = "CarreraModificada";
             dc.modify(carrera);
+ */           
+            Materia materia = new Materia(0, "Materia", "Tercera", Date.valueOf(LocalDate.now()), true, 4, 1);
+            dm.newObject(materia);
+            
+            ArrayList<entidad> materias = dm.getAll();
+            
+            materia = (Materia)dm.getOne(1);
+            
+            materia.nombre = "MateriaModificada";
+            dm.modify(materia);
             
             System.out.println("Conectado");  
         } catch (ApplicationException ex) {

@@ -21,21 +21,18 @@ public class Materia extends entidad{
      * @param descripcion
      * @param año
      * @param electiva
-     * @param horasSemana
-     * @param administrador
-     * @param correlativas
-     * @param finales 
+     * @param horasSemana 
+     * @param idAdministrador 
      */
-    public Materia(int idMateria, String nombre, String descripcion, Date año, boolean electiva, int horasSemana, Administrador administrador, ArrayList<Materia> correlativas, ArrayList<Final> finales) {
+    public Materia(int idMateria, String nombre, String descripcion, Date año, boolean electiva, int horasSemana, int idAdministrador) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.año = año;
         this.electiva = electiva;
         this.horasSemana = horasSemana;
-        this.administrador = administrador;
-        this.correlativas = correlativas;
-        this.finales = finales;
+        this.administrador = new Administrador();
+        this.administrador.idAdministrador = idAdministrador;
     }
     public int idMateria;
     public String nombre;
