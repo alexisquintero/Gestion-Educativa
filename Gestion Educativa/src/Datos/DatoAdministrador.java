@@ -23,8 +23,29 @@ public class DatoAdministrador extends dato{
     @Override
     public void modify(entidad administrador) throws ApplicationException{
         try {
-            
-        } catch (Exception e) {
+            myConn = Sql.Connect();
+            String query = "UPDATE Administrador SET nombre = ?, apellido = ?, "
+                    + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
+                    + "usuario = ?, clave  = ? "
+                    + "WHERE ( id_administrador = " + String.valueOf(((Administrador)administrador).idAdministrador) + ")" ;
+			
+            pstm = myConn.prepareStatement(query);
+				
+            pstm.setString(1, ((Administrador)administrador).nombre);
+            pstm.setString(2, ((Administrador)administrador).apellido);
+            pstm.setString(3, ((Administrador)administrador).telefono);
+            pstm.setString(4, ((Administrador)administrador).email);
+            pstm.setString(5, ((Administrador)administrador).direccion);
+            pstm.setString(6, ((Administrador)administrador).legajo);
+            pstm.setString(7, ((Administrador)administrador).usuario);
+            pstm.setString(8, ((Administrador)administrador).clave);
+			 
+            int affectedRows = pstm.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException();
+            }
+        } catch (ApplicationException | SQLException e) {
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new ApplicationException("Error al modificar Administrador", e);
         }
@@ -64,8 +85,7 @@ public class DatoAdministrador extends dato{
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
-        }
-        
+        }        
         return administradores;
     }
 

@@ -25,9 +25,10 @@ public class NewMain {
     public static void main(String[] args) {
         DatoAdministrador da = new DatoAdministrador();
         try {
-            //Administrador administrador = new Administrador(0,"Administrador", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
+            Administrador administrador = new Administrador(4,"AdministradorModificado", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
+            da.modify(administrador);
             //da.newObject(administrador);
-            Administrador administrador = (Administrador)da.getOne(4);
+            Administrador administrador2 = (Administrador)da.getOne(4);
             
             ArrayList<entidad> administradores = da.getAll();
             System.out.println("Conectado");            
