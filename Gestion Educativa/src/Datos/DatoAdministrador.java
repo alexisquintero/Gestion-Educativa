@@ -29,7 +29,7 @@ public class DatoAdministrador extends dato{
             throw new ApplicationException("Error al modificar Administrador", e);
         }
         finally {
-            
+            Sql.Close(rsl, stm, myConn);    
         }
     }       
 
@@ -63,7 +63,7 @@ public class DatoAdministrador extends dato{
             throw new ApplicationException("Error al buscar Administradores", e);
         }
         finally{
-            
+            Sql.Close(rsl, stm, myConn);    
         }
         
         return administradores;
@@ -103,7 +103,7 @@ public class DatoAdministrador extends dato{
             throw new ApplicationException("Error al crear Administrador", e);
         }
         finally{
-            
+            Sql.Close(rsl, stm, myConn);
         }
         return id;
     }
@@ -112,14 +112,26 @@ public class DatoAdministrador extends dato{
     public entidad getOne(int id) throws ApplicationException{
         Administrador administrador = null;
         try{
+            myConn = Sql.Connect(); 
+            String query = "SELECT * FROM Administrador WHERE ( id_administrador = " + id + " )";
             
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+			 
+            rsl = stm.executeQuery(query);
+            while(rsl.next()){
+		administrador = new Administrador(rsl.getInt("id_administrador"),rsl.getString("nombre"), 
+                    rsl.getString("apellido"), rsl.getString("telefono"), rsl.getString("email"), rsl.getString("direccion"),
+                    rsl.getString("legajo"), rsl.getString("usuario"), rsl.getString("clave"));
+			
+            }
         }
-        catch(Exception e){
+        catch(ApplicationException | SQLException e){
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new ApplicationException("Error al buscar Administrador", e);
         }
         finally{
-                     
+            Sql.Close(rsl, stm, myConn);      
         }
         return administrador;
     }
