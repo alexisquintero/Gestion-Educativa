@@ -18,15 +18,14 @@ public class Carrera extends entidad{
      * @param idCarrera
      * @param nombre
      * @param descripcion
-     * @param administrador
-     * @param materias 
+     * @param idAdministrador
      */
-    public Carrera(int idCarrera, String nombre, String descripcion, Administrador administrador, ArrayList<Materia> materias) {
+    public Carrera(int idCarrera, String nombre, String descripcion, int idAdministrador) {
         this.idCarrera = idCarrera;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.administrador = administrador;
-        this.materias = materias;
+        this.administrador = new Administrador();
+        this.administrador.idAdministrador = idAdministrador;
     }
     public int idCarrera;
     public String nombre;

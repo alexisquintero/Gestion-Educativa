@@ -29,4 +29,9 @@ public class Administrador extends Persona{
     }
     public int idAdministrador;   
 
+    Administrador() {
+        super();
+        this.idAdministrador = 0;
+    }
+
 }

@@ -6,12 +6,14 @@
 package Otros;
 
 import Datos.DatoAdministrador;
+import Datos.DatoCarrera;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Entidades.Administrador;
+import Entidades.Carrera;
 
 /**
  *
@@ -24,7 +26,9 @@ public class NewMain {
      */
     public static void main(String[] args) {
         DatoAdministrador da = new DatoAdministrador();
+        DatoCarrera dc = new DatoCarrera();
         try {
+            /*
             Administrador administrador = new Administrador(4,"AdministradorModificado", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
             da.modify(administrador);
             //da.newObject(administrador);
@@ -32,6 +36,18 @@ public class NewMain {
             
             ArrayList<entidad> administradores = da.getAll();
             System.out.println("Conectado");            
+*/
+            Carrera carrera = new Carrera(0, "Carrera", "Primera", 1);
+            dc.newObject(carrera);
+            
+            ArrayList<entidad> carreras = dc.getAll();
+            
+            carrera = (Carrera)dc.getOne(1);
+            
+            carrera.nombre = "CarreraModificada";
+            dc.modify(carrera);
+            
+            System.out.println("Conectado");  
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
         }

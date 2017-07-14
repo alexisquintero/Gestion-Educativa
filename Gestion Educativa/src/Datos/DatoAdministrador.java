@@ -76,8 +76,7 @@ public class DatoAdministrador extends dato{
                             rsl.getString("apellido"), rsl.getString("telefono"), rsl.getString("email"), rsl.getString("direccion"),
                             rsl.getString("legajo"), rsl.getString("usuario"), rsl.getString("clave"));
                     administradores.add(administrador);
-		}
-			
+		}			
         }
         catch(ApplicationException | SQLException e){
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
@@ -94,7 +93,8 @@ public class DatoAdministrador extends dato{
         int id = 0;
         try{
             myConn = Sql.Connect(); 
-            String query = "INSERT INTO Administrador(nombre, apellido, telefono, email, direccion, legajo, usuario, clave) VALUES (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Administrador(nombre, apellido, telefono, "
+                    + "email, direccion, legajo, usuario, clave) VALUES (?,?,?,?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
             pstm.setString(1, ((Administrador)administrador).nombre);

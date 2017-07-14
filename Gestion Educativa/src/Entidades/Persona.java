@@ -11,6 +11,17 @@ package Entidades;
  */
 public abstract class Persona extends entidad{
 
+    public Persona() {
+        this.nombre = "nombre";
+        this.apellido = "apellido";
+        this.telefono = "telefono";
+        this.email = "email";
+        this.direccion = "direccion";
+        this.legajo = "legajo";
+        this.usuario = "usuario";
+        this.clave = "clave";
+    }
+
     /**
      * 
      * @param nombre
