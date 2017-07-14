@@ -29,31 +29,31 @@ public class MySQL {
         return instance;		
     }
 	 
-    public Connection Connect() throws ApplicationException
+    public static Connection Connect() throws ApplicationException
     {   
 
     Connection conn = null;
-			 
-    String url = "jdbc:mysql://localhost:3306/Ajedrez";
+			
+    String url = "jdbc:sqlserver://localhost:1433;databaseName=GestionEducativa";
     String user = "Java";
     String password = "Java";
 //TODO: Usar la url, user y password desde un .ini
 		 
     try 
     {	
-        conn = DriverManager.getConnection(url, user, password);		
+        conn = DriverManager.getConnection(url, user, password);
     }
     catch (SQLException e) 
     {
         e.printStackTrace();
-	throw new ApplicationException("Error al actualizar datos de persona", e);
+	throw new ApplicationException("Error al conectarse a la base de datos", e);
     }
 
         return conn;
     }
 
 	 
-    protected void Close(ResultSet resultSet, Statement statement, Connection connect)
+    public static void Close(ResultSet resultSet, Statement statement, Connection connect) throws ApplicationException
     {
         try 
         {
@@ -73,6 +73,7 @@ public class MySQL {
         catch (Exception e) 
         {
             e.printStackTrace();
+            throw new ApplicationException("Error al cerrar la conexión a la base de datos", e);
         }
     }
 }

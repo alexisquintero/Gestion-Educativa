@@ -10,6 +10,28 @@ package Entidades;
  * @author Supervisor
  */
 public class Persona extends entidad{
+
+    /**
+     * 
+     * @param nombre
+     * @param apellido
+     * @param telefono
+     * @param email
+     * @param direccion
+     * @param legajo
+     * @param usuario
+     * @param clave 
+     */
+    public Persona(String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.email = email;
+        this.direccion = direccion;
+        this.legajo = legajo;
+        this.usuario = usuario;
+        this.clave = clave;
+    }
     public String nombre;
     public String apellido;
     public String telefono;

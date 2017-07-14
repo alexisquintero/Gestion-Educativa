@@ -10,5 +10,10 @@ package Entidades;
  * @author Supervisor
  */
 public class Bedel extends Persona{
+
+    public Bedel(int idBedel, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
+        super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
+        this.idBedel = idBedel;
+    }
     public int idBedel;
 }
