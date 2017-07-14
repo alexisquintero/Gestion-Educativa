@@ -12,6 +12,22 @@ import java.util.ArrayList;
  * @author Supervisor
  */
 public class Carrera extends entidad{
+
+    /**
+     * 
+     * @param idCarrera
+     * @param nombre
+     * @param descripcion
+     * @param administrador
+     * @param materias 
+     */
+    public Carrera(int idCarrera, String nombre, String descripcion, Administrador administrador, ArrayList<Materia> materias) {
+        this.idCarrera = idCarrera;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.administrador = administrador;
+        this.materias = materias;
+    }
     public int idCarrera;
     public String nombre;
     public String descripcion;

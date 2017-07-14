@@ -14,6 +14,24 @@ import java.util.Date;
  * @author Supervisor
  */
 public class Parcial extends entidad{
+
+    /**
+     * 
+     * @param idParcial
+     * @param descripcion
+     * @param fecha
+     * @param horaInicio
+     * @param horaFin
+     * @param notas 
+     */
+    public Parcial(int idParcial, String descripcion, Date fecha, Time horaInicio, Time horaFin, ArrayList<NotaParcial> notas) {
+        this.idParcial = idParcial;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.notas = notas;
+    }
     public int idParcial;
     public String descripcion;
     public Date fecha;

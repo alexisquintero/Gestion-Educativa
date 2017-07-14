@@ -11,6 +11,19 @@ package Entidades;
  */
 public class Docente extends Persona{
 
+    /**
+     * 
+     * @param cargo
+     * @param moderador
+     * @param nombre
+     * @param apellido
+     * @param telefono
+     * @param email
+     * @param direccion
+     * @param legajo
+     * @param usuario
+     * @param clave 
+     */
     public Docente(String cargo, Moderador moderador, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.cargo = cargo;

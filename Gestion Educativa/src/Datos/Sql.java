@@ -17,14 +17,14 @@ import Excepciones.ApplicationException;
  *
  * @author Supervisor
  */
-public class MySQL {
-    private static MySQL instance = null;
+public class Sql {
+    private static Sql instance = null;
 
-    public static MySQL getInstance() 
+    public static Sql getInstance() 
     {
 	if(instance == null) 
         {
-            instance = new MySQL();
+            instance = new Sql();
         }		
         return instance;		
     }
@@ -37,7 +37,7 @@ public class MySQL {
     String url = "jdbc:sqlserver://localhost:1433;databaseName=GestionEducativa";
     String user = "Java";
     String password = "Java";
-//TODO: Usar la url, user y password desde un .ini
+//TODO: Usar la url, user y password desde un .ini/.properties
 		 
     try 
     {	
@@ -45,7 +45,6 @@ public class MySQL {
     }
     catch (SQLException e) 
     {
-        e.printStackTrace();
 	throw new ApplicationException("Error al conectarse a la base de datos", e);
     }
 
@@ -70,9 +69,8 @@ public class MySQL {
                 connect.close();
             }
         } 
-        catch (Exception e) 
+        catch (SQLException e) 
         {
-            e.printStackTrace();
             throw new ApplicationException("Error al cerrar la conexión a la base de datos", e);
         }
     }

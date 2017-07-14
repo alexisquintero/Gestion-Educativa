@@ -11,6 +11,7 @@ import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Entidades.Administrador;
 
 /**
  *
@@ -24,6 +25,9 @@ public class NewMain {
     public static void main(String[] args) {
         DatoAdministrador da = new DatoAdministrador();
         try {
+            Administrador administrador = new Administrador(0,"Administrador", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
+            da.newObject(administrador);
+            
             ArrayList<entidad> administradores = da.getAll();
             System.out.println("Conectado");            
         } catch (ApplicationException ex) {

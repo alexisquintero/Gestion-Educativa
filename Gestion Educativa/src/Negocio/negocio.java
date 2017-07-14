@@ -9,6 +9,6 @@ package Negocio;
  *
  * @author Supervisor
  */
-public class negocio {
+public abstract class negocio {
     
 }

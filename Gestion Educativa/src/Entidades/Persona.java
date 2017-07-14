@@ -9,7 +9,7 @@ package Entidades;
  *
  * @author Supervisor
  */
-public class Persona extends entidad{
+public abstract class Persona extends entidad{
 
     /**
      * 

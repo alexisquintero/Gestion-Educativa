@@ -17,23 +17,15 @@ import Excepciones.ApplicationException;
  *
  * @author Supervisor
  */
-public class dato {
+public abstract class dato {
     
     protected Connection myConn = null;
     protected Statement stm = null;
     protected PreparedStatement pstm = null;
     protected ResultSet rsl = null;
     
-    public entidad getOne(int id) throws ApplicationException{
-        return null;
-    }
-    public int newObject(entidad e) throws ApplicationException{    //Devuelve el id del elemento creado
-        return 0;
-    }
-    public ArrayList<entidad> getAll() throws ApplicationException{
-        return null;
-    }
-    public void modify(entidad e) throws ApplicationException{
-        
-    }
+    public abstract entidad getOne(int id) throws ApplicationException;
+    public abstract int newObject(entidad e) throws ApplicationException;
+    public abstract ArrayList<entidad> getAll() throws ApplicationException;
+    public abstract void modify(entidad e) throws ApplicationException;
 }

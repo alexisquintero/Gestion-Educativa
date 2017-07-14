@@ -8,7 +8,11 @@ package Datos;
 import Entidades.Administrador;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,13 +22,13 @@ public class DatoAdministrador extends dato{
 
     @Override
     public void modify(entidad administrador) throws ApplicationException{
-        try{
+        try {
             
+        } catch (Exception e) {
+            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
+            throw new ApplicationException("Error al modificar Administrador", e);
         }
-        catch(Exception e){
-            
-        }
-        finally{
+        finally {
             
         }
     }       
@@ -40,7 +44,7 @@ public class DatoAdministrador extends dato{
         ArrayList<entidad> administradores = new ArrayList<>();
         
         try{
-            myConn = MySQL.Connect();
+            myConn = Sql.Connect();
             String query = "SELECT * FROM Administrador";
             pstm = myConn.prepareStatement(query);
             stm = myConn.createStatement();
@@ -54,8 +58,8 @@ public class DatoAdministrador extends dato{
 		}
 			
         }
-        catch(Exception e){
-            e.printStackTrace();
+        catch(ApplicationException | SQLException e){
+            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new ApplicationException("Error al buscar Administradores", e);
         }
         finally{
@@ -69,10 +73,34 @@ public class DatoAdministrador extends dato{
     public int newObject(entidad administrador) throws ApplicationException{
         int id = 0;
         try{
+            myConn = Sql.Connect(); 
+            String query = "INSERT INTO Administrador(nombre, apellido, telefono, email, direccion, legajo, usuario, clave) VALUES (?,?,?,?,?,?,?,?)";
+            pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+	 
+            pstm.setString(1, ((Administrador)administrador).nombre);
+            pstm.setString(2, ((Administrador)administrador).apellido);
+            pstm.setString(3, ((Administrador)administrador).telefono);
+            pstm.setString(4, ((Administrador)administrador).email);
+            pstm.setString(5, ((Administrador)administrador).direccion);
+            pstm.setString(6, ((Administrador)administrador).legajo);
+            pstm.setString(7, ((Administrador)administrador).usuario);
+            pstm.setString(8, ((Administrador)administrador).clave);
             
+            int affectedRows = pstm.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException();
+            }
+                       
+            rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
+            if (rsl.next()) {
+                id = rsl.getInt(1);  
+            }              
+                     	             
         }
-        catch(Exception e){
-            
+        catch(ApplicationException | SQLException e){
+            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
+            throw new ApplicationException("Error al crear Administrador", e);
         }
         finally{
             
@@ -87,10 +115,11 @@ public class DatoAdministrador extends dato{
             
         }
         catch(Exception e){
-            
+            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
+            throw new ApplicationException("Error al buscar Administrador", e);
         }
         finally{
-            
+                     
         }
         return administrador;
     }

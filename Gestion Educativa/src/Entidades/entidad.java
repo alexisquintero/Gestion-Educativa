@@ -9,6 +9,6 @@ package Entidades;
  *
  * @author Supervisor
  */
-public class entidad {
+public abstract class entidad {
     
 }

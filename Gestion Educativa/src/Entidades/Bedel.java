@@ -11,6 +11,18 @@ package Entidades;
  */
 public class Bedel extends Persona{
 
+    /**
+     * 
+     * @param idBedel
+     * @param nombre
+     * @param apellido
+     * @param telefono
+     * @param email
+     * @param direccion
+     * @param legajo
+     * @param usuario
+     * @param clave 
+     */
     public Bedel(int idBedel, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.idBedel = idBedel;

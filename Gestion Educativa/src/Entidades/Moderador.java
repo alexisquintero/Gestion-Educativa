@@ -11,6 +11,19 @@ package Entidades;
  */
 public class Moderador extends Persona{
 
+    /**
+     * 
+     * @param idModerador
+     * @param administrador
+     * @param nombre
+     * @param apellido
+     * @param telefono
+     * @param email
+     * @param direccion
+     * @param legajo
+     * @param usuario
+     * @param clave 
+     */
     public Moderador(int idModerador, Administrador administrador, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.idModerador = idModerador;

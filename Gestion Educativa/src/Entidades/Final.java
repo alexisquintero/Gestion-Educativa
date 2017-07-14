@@ -14,6 +14,24 @@ import java.util.Date;
  * @author Supervisor
  */
 public class Final extends entidad{
+
+    /**
+     * 
+     * @param idFinal
+     * @param fecha
+     * @param horaInicio
+     * @param horaFin
+     * @param aula
+     * @param inscripciones 
+     */
+    public Final(int idFinal, Date fecha, Time horaInicio, Time horaFin, String aula, ArrayList<Inscripcion> inscripciones) {
+        this.idFinal = idFinal;
+        this.fecha = fecha;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.aula = aula;
+        this.inscripciones = inscripciones;
+    }
     public int idFinal;
     public Date fecha;
     public Time horaInicio;
