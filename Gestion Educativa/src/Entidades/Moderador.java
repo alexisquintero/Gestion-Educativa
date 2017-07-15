@@ -14,7 +14,7 @@ public class Moderador extends Persona{
     /**
      * 
      * @param idModerador
-     * @param administrador
+     * @param idAdministrador
      * @param nombre
      * @param apellido
      * @param telefono
@@ -24,10 +24,11 @@ public class Moderador extends Persona{
      * @param usuario
      * @param clave 
      */
-    public Moderador(int idModerador, Administrador administrador, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
+    public Moderador(int idModerador, int idAdministrador, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.idModerador = idModerador;
-        this.administrador = administrador;
+        this.administrador = new Administrador();
+        this.administrador.idAdministrador = idAdministrador;
     }
     public int idModerador;
     public Administrador administrador;

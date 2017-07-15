@@ -8,6 +8,7 @@ package Otros;
 import Datos.DatoAdministrador;
 import Datos.DatoCarrera;
 import Datos.DatoMateria;
+import Datos.DatoModerador;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import Entidades.Administrador;
 import Entidades.Carrera;
 import Entidades.Materia;
+import Entidades.Moderador;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -32,6 +34,7 @@ public class NewMain {
         DatoAdministrador da = new DatoAdministrador();
         DatoCarrera dc = new DatoCarrera();
         DatoMateria dm = new DatoMateria();
+        DatoModerador dmo = new DatoModerador();
         try {
             /*
             Administrador administrador = new Administrador(4,"AdministradorModificado", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
@@ -51,7 +54,7 @@ public class NewMain {
             
             carrera.nombre = "CarreraModificada";
             dc.modify(carrera);
- */           
+           
             Materia materia = new Materia(0, "Materia", "Tercera", Date.valueOf(LocalDate.now()), true, 4, 1);
             dm.newObject(materia);
             
@@ -61,6 +64,18 @@ public class NewMain {
             
             materia.nombre = "MateriaModificada";
             dm.modify(materia);
+            
+            System.out.println("Conectado"); 
+ */           
+            Moderador moderador = new Moderador(0, 1, "Moderador", "Netbeans", "telefono", "email", "direccion", "legajo", "usuario", "clave");
+            dmo.newObject(moderador);
+            
+            ArrayList<entidad> moderadores = dmo.getAll();
+            
+            moderador = (Moderador)dmo.getOne(1);
+            
+            moderador.nombre = "ModeradorModificada";
+            dmo.modify(moderador);
             
             System.out.println("Conectado");  
         } catch (ApplicationException ex) {
