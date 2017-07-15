@@ -10,6 +10,7 @@ import Datos.DatoBedel;
 import Datos.DatoCarrera;
 import Datos.DatoMateria;
 import Datos.DatoModerador;
+import Datos.DatoComision;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import Entidades.Administrador;
 import Entidades.Bedel;
 import Entidades.Carrera;
+import Entidades.Comision;
 import Entidades.Materia;
 import Entidades.Moderador;
 import java.sql.Date;
@@ -33,11 +35,14 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
         DatoAdministrador da = new DatoAdministrador();
         DatoCarrera dc = new DatoCarrera();
         DatoMateria dm = new DatoMateria();
         DatoModerador dmo = new DatoModerador();
         DatoBedel db = new DatoBedel();
+        */
+        DatoComision dco = new DatoComision();
         try {
             /*
             Administrador administrador = new Administrador(4,"AdministradorModificado", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
@@ -79,7 +84,7 @@ public class NewMain {
             
             moderador.nombre = "ModeradorModificada";
             dmo.modify(moderador);
- */           
+            
             Bedel bedel = new Bedel(0, 1, "Bedel", "Netbeans", "telefono", "email", "direccion", "legajo", "usuario", "clave");
             db.newObject(bedel);
             
@@ -91,6 +96,18 @@ public class NewMain {
             db.modify(bedel);
              
             db.delete(1);
+ */           
+            Comision comision = new Comision(0, "Aula", 10, 1);
+            dco.newObject(comision);
+            
+            ArrayList<entidad> comisiones = dco.getAll();
+            
+            comision = (Comision)dco.getOne(1);
+            
+            comision.aula = "AulaMod";
+            dco.modify(comision);
+             
+            dco.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);

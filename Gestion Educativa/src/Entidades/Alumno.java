@@ -16,7 +16,7 @@ public class Alumno extends Persona{
     public Moderador moderador;
     public Carrera carrera;
     public ArrayList<Comision> comisiones;
-    public ArrayList<Inscripcion> inscripciones;
+    public ArrayList<InscripcionFinal> inscripciones;
 
     /**
      * 
@@ -34,7 +34,7 @@ public class Alumno extends Persona{
      * @param usuario
      * @param clave 
      */
-    public Alumno(int idAlumno, Moderador moderador, Carrera carrera, ArrayList<Comision> comisiones, ArrayList<Inscripcion> inscripciones, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
+    public Alumno(int idAlumno, Moderador moderador, Carrera carrera, ArrayList<Comision> comisiones, ArrayList<InscripcionFinal> inscripciones, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.idAlumno = idAlumno;
         this.moderador = moderador;

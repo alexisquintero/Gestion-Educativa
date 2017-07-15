@@ -32,4 +32,10 @@ public class Moderador extends Persona{
     }
     public int idModerador;
     public Administrador administrador;
+
+    Moderador() {
+        super();
+        this.idModerador = 0;
+        this.administrador = new Administrador();
+    }
 }

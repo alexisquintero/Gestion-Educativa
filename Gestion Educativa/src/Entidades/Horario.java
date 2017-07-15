@@ -16,19 +16,23 @@ public class Horario extends entidad{
 
     /**
      * 
+     * @param idHorario
      * @param dia
      * @param horaInicio
-     * @param horaFin
-     * @param alumnos 
+     * @param horaFin 
      */
-    public Horario(String dia, Time horaInicio, Time horaFin, ArrayList<Alumno> alumnos) {
+    public Horario(int idHorario, String dia, Time horaInicio, Time horaFin) {
+        this.idHorario = idHorario;
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.alumnos = alumnos;
     }
+    public int idHorario;
     public String dia;
     public Time horaInicio;
     public Time horaFin;
-    public ArrayList<Alumno> alumnos;
+    public ArrayList<InscripcionHorario> inscripciones;
+    public ArrayList<Docente> docentes;
+    public ArrayList<Parcial> parciales;
+    public ArrayList<Asistencia> asistencias;
 }

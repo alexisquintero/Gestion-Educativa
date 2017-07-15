@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -43,4 +44,14 @@ public class Materia extends entidad{
     public Administrador administrador;
     public ArrayList<Materia> correlativas;
     public ArrayList<Final> finales;
+
+    Materia() {
+       this.idMateria = 0;
+        this.nombre = "nombre";
+        this.descripcion = "descripcion";
+        this.año = Date.from(Instant.EPOCH);
+        this.electiva = false;
+        this.horasSemana = 0;
+        this.administrador = new Administrador(); 
+    }
 }

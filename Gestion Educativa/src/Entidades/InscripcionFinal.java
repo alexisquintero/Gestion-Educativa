@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Supervisor
  */
-public class Inscripcion extends entidad{
+public class InscripcionFinal extends entidad{
 
     /**
      * 
@@ -22,7 +22,7 @@ public class Inscripcion extends entidad{
      * @param presencia
      * @param alumno 
      */
-    public Inscripcion(Date fecha, int notaPractica, int notaTeoria, int notaFinal, boolean presencia, Alumno alumno) {
+    public InscripcionFinal(Date fecha, int notaPractica, int notaTeoria, int notaFinal, boolean presencia, Alumno alumno) {
         this.fecha = fecha;
         this.notaPractica = notaPractica;
         this.notaTeoria = notaTeoria;

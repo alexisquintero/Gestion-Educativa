@@ -24,7 +24,7 @@ public class Final extends entidad{
      * @param aula
      * @param inscripciones 
      */
-    public Final(int idFinal, Date fecha, Time horaInicio, Time horaFin, String aula, ArrayList<Inscripcion> inscripciones) {
+    public Final(int idFinal, Date fecha, Time horaInicio, Time horaFin, String aula, ArrayList<InscripcionFinal> inscripciones) {
         this.idFinal = idFinal;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
@@ -37,5 +37,5 @@ public class Final extends entidad{
     public Time horaInicio;
     public Time horaFin;
     public String aula;
-    public ArrayList<Inscripcion> inscripciones;
+    public ArrayList<InscripcionFinal> inscripciones;
 }

@@ -18,25 +18,18 @@ public class Comision extends entidad{
      * @param idComision
      * @param aula
      * @param cupo
-     * @param moderador
-     * @param materia
-     * @param horarios
-     * @param parciales 
+     * @param idModerador
      */
-    public Comision(int idComision, String aula, int cupo, Moderador moderador, Materia materia, ArrayList<Horario> horarios, ArrayList<Parcial> parciales) {
+    public Comision(int idComision, String aula, int cupo, int idModerador) {
         this.idComision = idComision;
         this.aula = aula;
         this.cupo = cupo;
-        this.moderador = moderador;
-        this.materia = materia;
-        this.horarios = horarios;
-        this.parciales = parciales;
+        this.moderador = new Moderador();
+        this.moderador.idModerador = idModerador;
     }
     public int idComision;
     public String aula;
     public int cupo;
     public Moderador moderador;
-    public Materia materia;
-    public ArrayList<Horario> horarios;
-    public ArrayList<Parcial> parciales;   
+    public ArrayList<Horario> horarios; 
 }
