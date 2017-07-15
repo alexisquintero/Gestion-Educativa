@@ -28,4 +28,5 @@ public abstract class dato {
     public abstract int newObject(entidad e) throws ApplicationException;
     public abstract ArrayList<entidad> getAll() throws ApplicationException;
     public abstract void modify(entidad e) throws ApplicationException;
+    public abstract void delete(int id) throws ApplicationException;
 }

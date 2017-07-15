@@ -6,6 +6,7 @@
 package Otros;
 
 import Datos.DatoAdministrador;
+import Datos.DatoBedel;
 import Datos.DatoCarrera;
 import Datos.DatoMateria;
 import Datos.DatoModerador;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Entidades.Administrador;
+import Entidades.Bedel;
 import Entidades.Carrera;
 import Entidades.Materia;
 import Entidades.Moderador;
@@ -35,6 +37,7 @@ public class NewMain {
         DatoCarrera dc = new DatoCarrera();
         DatoMateria dm = new DatoMateria();
         DatoModerador dmo = new DatoModerador();
+        DatoBedel db = new DatoBedel();
         try {
             /*
             Administrador administrador = new Administrador(4,"AdministradorModificado", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
@@ -66,7 +69,7 @@ public class NewMain {
             dm.modify(materia);
             
             System.out.println("Conectado"); 
- */           
+           
             Moderador moderador = new Moderador(0, 1, "Moderador", "Netbeans", "telefono", "email", "direccion", "legajo", "usuario", "clave");
             dmo.newObject(moderador);
             
@@ -76,8 +79,19 @@ public class NewMain {
             
             moderador.nombre = "ModeradorModificada";
             dmo.modify(moderador);
+ */           
+            Bedel bedel = new Bedel(0, 1, "Bedel", "Netbeans", "telefono", "email", "direccion", "legajo", "usuario", "clave");
+            db.newObject(bedel);
             
-            System.out.println("Conectado");  
+            ArrayList<entidad> bedeles = db.getAll();
+            
+            bedel = (Bedel)db.getOne(1);
+            
+            bedel.nombre = "BedelModificado";
+            db.modify(bedel);
+             
+            db.delete(1);
+            
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
         }

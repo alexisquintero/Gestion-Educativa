@@ -14,6 +14,7 @@ public class Bedel extends Persona{
     /**
      * 
      * @param idBedel
+     * @param idAdministrador
      * @param nombre
      * @param apellido
      * @param telefono
@@ -23,9 +24,12 @@ public class Bedel extends Persona{
      * @param usuario
      * @param clave 
      */
-    public Bedel(int idBedel, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
+    public Bedel(int idBedel, int idAdministrador, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.idBedel = idBedel;
+        this.administrador = new Administrador();
+        this.administrador.idAdministrador = idAdministrador;
     }
     public int idBedel;
+    public Administrador administrador;
 }

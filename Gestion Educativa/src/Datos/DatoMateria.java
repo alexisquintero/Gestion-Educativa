@@ -145,5 +145,28 @@ public class DatoMateria extends dato{
             Sql.Close(rsl, stm, myConn);    
         }
     }
+
+    @Override
+    public void delete(int id) throws ApplicationException {
+        try {
+            myConn = Sql.Connect();
+            String query = "DELETE FROM Materia WHERE (id_materia = ? )";
+            
+            pstm = myConn.prepareStatement(query); 
+            pstm.setInt(1, id);
+            
+            int affectedRows = pstm.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException();
+            }
+        } catch (ApplicationException | SQLException e) {
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new ApplicationException("Error al eliminar Materia", e);
+        }
+        finally {
+            Sql.Close(rsl, stm, myConn);    
+        }
+    }
     
 }

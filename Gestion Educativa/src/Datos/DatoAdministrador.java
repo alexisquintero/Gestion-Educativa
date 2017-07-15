@@ -155,4 +155,27 @@ public class DatoAdministrador extends dato{
             Sql.Close(rsl, stm, myConn);    
         }
     }          
+
+    @Override
+    public void delete(int id) throws ApplicationException {
+        try {
+            myConn = Sql.Connect();
+            String query = "DELETE FROM Administrador WHERE (id_administrador = ? )";
+            
+            pstm = myConn.prepareStatement(query); 
+            pstm.setInt(1, id);
+            
+            int affectedRows = pstm.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException();
+            }
+        } catch (ApplicationException | SQLException e) {
+            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
+            throw new ApplicationException("Error al eliminar Administrador", e);
+        }
+        finally {
+            Sql.Close(rsl, stm, myConn);    
+        }
+    }
 }
