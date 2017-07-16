@@ -32,4 +32,11 @@ public class Carrera extends entidad{
     public String descripcion;
     public Administrador administrador;
     public ArrayList<Materia> materias;
+
+    Carrera() {
+        this.idCarrera = 0;
+        this.nombre = "nombre";
+        this.descripcion = "descripcion";
+        this.administrador = new Administrador();
+    }
 }

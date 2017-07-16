@@ -121,7 +121,7 @@ public class DatoMateria extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Materia SET nombre = ?, descripcion = ?, "
                     + "anio = ?, electiva = ?, horas_semana = ?, id_administrador = ? "
-                    + "WHERE ( id_materia = " + String.valueOf(((Materia)materia).idMateria) + ")" ;
+                    + "WHERE ( id_materia = " + ((Materia)materia).idMateria + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				

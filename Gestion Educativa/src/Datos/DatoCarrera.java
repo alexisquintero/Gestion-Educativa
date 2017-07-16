@@ -114,7 +114,7 @@ public class DatoCarrera extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Carrera SET nombre = ?, descripcion = ?, "
                     + "id_administrador = ? "
-                    + "WHERE ( id_carrera = " + String.valueOf(((Carrera)carrera).idCarrera) + ")" ;
+                    + "WHERE ( id_carrera = " + ((Carrera)carrera).idCarrera + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				

@@ -125,7 +125,7 @@ public class DatoBedel extends dato{
             String query = "UPDATE Bedel SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? , id_administrador = ? "
-                    + "WHERE ( id_bedel = " + String.valueOf(((Bedel)bedel).idBedel) + ")" ;
+                    + "WHERE ( id_bedel = " + ((Bedel)bedel).idBedel + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				

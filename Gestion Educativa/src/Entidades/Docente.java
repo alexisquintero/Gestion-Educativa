@@ -13,6 +13,7 @@ public class Docente extends Persona{
 
     /**
      * 
+     * @param idDocente
      * @param cargo
      * @param idModerador
      * @param nombre
@@ -24,8 +25,9 @@ public class Docente extends Persona{
      * @param usuario
      * @param clave 
      */
-    public Docente(String cargo, int idModerador, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
+    public Docente(int idDocente, String cargo, int idModerador, String nombre, String apellido, String telefono, String email, String direccion, String legajo, String usuario, String clave) {
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
+        this.idDocente = idDocente;
         this.cargo = cargo;
         this.moderador = new Moderador();
         this.moderador.idModerador = idModerador;

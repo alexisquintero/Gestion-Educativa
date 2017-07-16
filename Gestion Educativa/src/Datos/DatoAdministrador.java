@@ -129,7 +129,7 @@ public class DatoAdministrador extends dato{
             String query = "UPDATE Administrador SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? "
-                    + "WHERE ( id_administrador = " + String.valueOf(((Administrador)administrador).idAdministrador) + ")" ;
+                    + "WHERE ( id_administrador = " + ((Administrador)administrador).idAdministrador + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				

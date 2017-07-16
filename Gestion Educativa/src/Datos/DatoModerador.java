@@ -126,7 +126,7 @@ public class DatoModerador extends dato{
             String query = "UPDATE Moderador SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? , id_administrador = ? "
-                    + "WHERE ( id_moderador = " + String.valueOf(((Moderador)moderador).idModerador) + ")" ;
+                    + "WHERE ( id_moderador = " + ((Moderador)moderador).idModerador + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				

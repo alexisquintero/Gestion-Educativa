@@ -121,7 +121,7 @@ public class DatoComision extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Comision SET aula = ?, cupo = ?, "
                     + "id_moderador = ? "
-                    + "WHERE ( id_comision = " + String.valueOf(((Comision)comision).idComision) + ")" ;
+                    + "WHERE ( id_comision = " + ((Comision)comision).idComision + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				

@@ -132,7 +132,7 @@ public class DatoDocente extends dato{
             String query = "UPDATE Docente SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? , id_moderador = ? "
-                    + "WHERE ( id_docente = " + ((Docente)docente).idDocente + ")" ; //String.valueOf(((Docente)docente).idDocente)
+                    + "WHERE ( id_docente = " + ((Docente)docente).idDocente + ")" ; 
 			
             pstm = myConn.prepareStatement(query);
 				
