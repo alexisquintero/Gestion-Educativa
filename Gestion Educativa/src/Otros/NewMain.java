@@ -11,6 +11,7 @@ import Datos.DatoCarrera;
 import Datos.DatoMateria;
 import Datos.DatoModerador;
 import Datos.DatoComision;
+import Datos.DatoDocente;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import Entidades.Administrador;
 import Entidades.Bedel;
 import Entidades.Carrera;
 import Entidades.Comision;
+import Entidades.Docente;
 import Entidades.Materia;
 import Entidades.Moderador;
 import java.sql.Date;
@@ -41,8 +43,9 @@ public class NewMain {
         DatoMateria dm = new DatoMateria();
         DatoModerador dmo = new DatoModerador();
         DatoBedel db = new DatoBedel();
-        */
         DatoComision dco = new DatoComision();
+        */
+        DatoDocente dd = new DatoDocente();
         try {
             /*
             Administrador administrador = new Administrador(4,"AdministradorModificado", "Netbeans3", "telefono", "email", "direccion", "legajo", "usuario", "clave");
@@ -96,7 +99,7 @@ public class NewMain {
             db.modify(bedel);
              
             db.delete(1);
- */           
+            
             Comision comision = new Comision(0, "Aula", 10, 1);
             dco.newObject(comision);
             
@@ -108,6 +111,18 @@ public class NewMain {
             dco.modify(comision);
              
             dco.delete(1);
+*/            
+            Docente docente = new Docente(0, 1, "Docente", "Netbeans", "telefono", "email", "direccion", "legajo", "usuario", "clave");
+            dd.newObject(docente);
+            
+            ArrayList<entidad> docentes = dd.getAll();
+            
+            docente = (Docente)dd.getOne(1);
+            
+            docente.nombre = "DocenteModificado";
+            dd.modify(docente);
+             
+            dd.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
