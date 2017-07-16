@@ -19,21 +19,25 @@ public class Final extends entidad{
      * 
      * @param idFinal
      * @param fecha
-     * @param horaInicio
-     * @param horaFin
+     * @param horarioInicio
+     * @param horarioFin
      * @param aula 
+     * @param idMateria 
      */
-    public Final(int idFinal, Date fecha, Time horaInicio, Time horaFin, String aula) {
+    public Final(int idFinal, Date fecha, Time horarioInicio, Time horarioFin, String aula, int idMateria) {
         this.idFinal = idFinal;
         this.fecha = fecha;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+        this.horarioInicio = horarioInicio;
+        this.horarioFin = horarioFin;
         this.aula = aula;
+        this.materia = new Materia();
+        this.materia.idMateria = idMateria;
     }
     public int idFinal;
     public Date fecha;
-    public Time horaInicio;
-    public Time horaFin;
+    public Time horarioInicio;
+    public Time horarioFin;
     public String aula;
     public ArrayList<InscripcionFinal> inscripciones;
+    public Materia materia;
 }

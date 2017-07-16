@@ -33,7 +33,8 @@ public class DatoFinal extends dato{
             rsl = stm.executeQuery(query);
             while(rsl.next()){
 		objFinal = new Final(rsl.getInt("id_final"),rsl.getDate("fecha"), 
-                    rsl.getTime("hora_inicio"), rsl.getTime("hora_fin"), rsl.getString("aula"));
+                    rsl.getTime("horario_inicio"), rsl.getTime("horario_fin"), 
+                    rsl.getString("aula"), rsl.getInt("id_materia"));
 			
             }
         }
@@ -52,18 +53,15 @@ public class DatoFinal extends dato{
         int id = 0;
         try{
             myConn = Sql.Connect(); 
-            String query = "INSERT INTO Final(nombre, apellido, telefono, "
-                    + "email, direccion, legajo, usuario, clave) VALUES (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO Final(fecha, horario_inicio, horario_fin, "
+                    + "aula, id_materia) VALUES (?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Final)objFinal).nombre);
-            pstm.setString(2, ((Final)objFinal).apellido);
-            pstm.setString(3, ((Final)objFinal).telefono);
-            pstm.setString(4, ((Final)objFinal).email);
-            pstm.setString(5, ((Final)objFinal).direccion);
-            pstm.setString(6, ((Final)objFinal).legajo);
-            pstm.setString(7, ((Final)objFinal).usuario);
-            pstm.setString(8, ((Final)objFinal).clave);
+            pstm.setDate(1, ((Final)objFinal).fecha);
+            pstm.setTime(2, ((Final)objFinal).horarioInicio);
+            pstm.setTime(3, ((Final)objFinal).horarioFin);
+            pstm.setString(4, ((Final)objFinal).aula);
+            pstm.setInt(5, ((Final)objFinal).materia.idMateria);
             
             int affectedRows = pstm.executeUpdate();
 
@@ -105,9 +103,9 @@ public class DatoFinal extends dato{
             
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
-                    Final objFinal = new Final(rsl.getInt("id_final"), rsl.getString("nombre"),
-                            rsl.getString("apellido"), rsl.getString("telefono"), rsl.getString("email"), rsl.getString("direccion"),
-                            rsl.getString("legajo"), rsl.getString("usuario"), rsl.getString("clave"));
+                    Final objFinal = new Final(rsl.getInt("id_final"),rsl.getDate("fecha"), 
+                    rsl.getTime("horario_inicio"), rsl.getTime("horario_fin"), 
+                    rsl.getString("aula"), rsl.getInt("id_materia"));
                     finales.add(objFinal);
 		}			
         }
@@ -125,21 +123,17 @@ public class DatoFinal extends dato{
     public void modify(entidad objFinal) throws ApplicationException{
         try {
             myConn = Sql.Connect();
-            String query = "UPDATE Final SET nombre = ?, apellido = ?, "
-                    + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
-                    + "usuario = ?, clave  = ? "
+            String query = "UPDATE Final SET fecha = ?, horario_inicio = ?, "
+                    + "horario_fin = ?, aula = ?, id_materia = ? "
                     + "WHERE ( id_final = " + ((Final)objFinal).idFinal + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Final)objFinal).nombre);
-            pstm.setString(2, ((Final)objFinal).apellido);
-            pstm.setString(3, ((Final)objFinal).telefono);
-            pstm.setString(4, ((Final)objFinal).email);
-            pstm.setString(5, ((Final)objFinal).direccion);
-            pstm.setString(6, ((Final)objFinal).legajo);
-            pstm.setString(7, ((Final)objFinal).usuario);
-            pstm.setString(8, ((Final)objFinal).clave);
+            pstm.setDate(1, ((Final)objFinal).fecha);
+            pstm.setTime(2, ((Final)objFinal).horarioInicio);
+            pstm.setTime(3, ((Final)objFinal).horarioFin);
+            pstm.setString(4, ((Final)objFinal).aula);
+            pstm.setInt(5, ((Final)objFinal).materia.idMateria);
 			 
             int affectedRows = pstm.executeUpdate();
 

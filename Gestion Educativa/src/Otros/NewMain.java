@@ -6,15 +6,17 @@
 package Otros;
 
 
-import Datos.DatoAsistencia;
+import Datos.DatoFinal;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Entidades.Asistencia;
+import Entidades.Final;
 import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  *
@@ -26,19 +28,19 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DatoAsistencia da = new DatoAsistencia();
+        DatoFinal df = new DatoFinal();
         try {
-            Asistencia asistencia = new Asistencia(Date.valueOf(LocalDate.now()),false, 1, 1, 1);
-            da.newObject(asistencia);
+            Final objFinal = new Final(0, Date.valueOf(LocalDate.now()), Time.valueOf(LocalTime.now()), Time.valueOf(LocalTime.now()), "aula", 1);
+            df.newObject(objFinal);
             
-            ArrayList<entidad> asistencias = da.getAll();
+            ArrayList<entidad> objFinals = df.getAll();
             
-            //asistencia = (Asistencia)da.getOne(1);
+            objFinal = (Final)df.getOne(1);
             
-            asistencia.presencia = true;
-            da.modify(asistencia);
+            objFinal.aula = "aulaMod";
+            df.modify(objFinal);
              
-           //da.delete(1);
+            df.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
