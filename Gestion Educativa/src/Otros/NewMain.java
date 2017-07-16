@@ -6,13 +6,13 @@
 package Otros;
 
 
-import Datos.DatoAlumno;
+import Datos.DatoAsistencia;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Entidades.Alumno;
+import Entidades.Asistencia;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -26,19 +26,19 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DatoAlumno da = new DatoAlumno();
+        DatoAsistencia da = new DatoAsistencia();
         try {
-            Alumno alumno = new Alumno(0, 1, 1, "Alumno", "Netbeans", "telefono", "email", "direccion", "legajo", "usuario", "clave");
-            da.newObject(alumno);
+            Asistencia asistencia = new Asistencia(Date.valueOf(LocalDate.now()),false, 1, 3);
+            da.newObject(asistencia);
             
-            ArrayList<entidad> alumnos = da.getAll();
+            ArrayList<entidad> asistencias = da.getAll();
             
-            alumno = (Alumno)da.getOne(1);
+            asistencia = (Asistencia)da.getOne(1);
             
-            alumno.nombre = "AlumnoModificado";
-            da.modify(alumno);
+            asistencia.presencia = true;
+            da.modify(asistencia);
              
-            da.delete(1);
+           da.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);

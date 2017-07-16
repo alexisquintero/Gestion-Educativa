@@ -32,4 +32,10 @@ public class Bedel extends Persona{
     }
     public int idBedel;
     public Administrador administrador;
+
+    Bedel() {
+        super();
+        this.idBedel = 0;
+        this.administrador = new Administrador();
+    }
 }

@@ -5,9 +5,9 @@
  */
 package Entidades;
 
-import java.time.Instant;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -49,7 +49,7 @@ public class Materia extends entidad{
        this.idMateria = 0;
         this.nombre = "nombre";
         this.descripcion = "descripcion";
-        this.año = Date.from(Instant.EPOCH);
+        this.año = Date.valueOf(LocalDate.MIN);
         this.electiva = false;
         this.horasSemana = 0;
         this.administrador = new Administrador(); 

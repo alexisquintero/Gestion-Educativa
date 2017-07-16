@@ -60,7 +60,7 @@ public class DatoMateria extends dato{
 	 
             pstm.setString(1, ((Materia)materia).nombre);
             pstm.setString(2, ((Materia)materia).descripcion);
-            pstm.setDate(3, (Date) ((Materia)materia).año);
+            pstm.setDate(3, ((Materia)materia).año);
             pstm.setBoolean(4, ((Materia)materia).electiva);
             pstm.setInt(5, ((Materia)materia).horasSemana);
             pstm.setInt(6, ((Materia)materia).administrador.idAdministrador);
@@ -127,7 +127,7 @@ public class DatoMateria extends dato{
 				
             pstm.setString(1, ((Materia)materia).nombre);
             pstm.setString(2, ((Materia)materia).descripcion);
-            pstm.setDate(3, (Date) ((Materia)materia).año);
+            pstm.setDate(3, ((Materia)materia).año);
             pstm.setBoolean(4, ((Materia)materia).electiva);
             pstm.setInt(5, ((Materia)materia).horasSemana);
             pstm.setInt(6, ((Materia)materia).administrador.idAdministrador);

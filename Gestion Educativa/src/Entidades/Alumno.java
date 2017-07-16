@@ -41,4 +41,11 @@ public class Alumno extends Persona{
         this.carrera.idCarrera = idCarrera;
     }
 
+    Alumno() {
+        super();
+        this.idAlumno = 0;
+        this.moderador = new Moderador();
+        this.carrera = new Carrera();
+    }
+
 }
