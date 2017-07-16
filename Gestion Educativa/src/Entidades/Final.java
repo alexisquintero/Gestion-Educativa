@@ -7,6 +7,8 @@ package Entidades;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -40,4 +42,13 @@ public class Final extends entidad{
     public String aula;
     public ArrayList<InscripcionFinal> inscripciones;
     public Materia materia;
+
+    Final() {
+        this.idFinal = 0;
+        this.fecha = Date.valueOf(LocalDate.MIN);
+        this.horarioInicio = Time.valueOf(LocalTime.MIN);
+        this.horarioFin = Time.valueOf(LocalTime.MIN);
+        this.aula = "aula";
+        this.materia = new Materia();
+    }
 }

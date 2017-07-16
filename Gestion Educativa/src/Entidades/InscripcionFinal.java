@@ -5,7 +5,8 @@
  */
 package Entidades;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 /**
  *
@@ -20,15 +21,19 @@ public class InscripcionFinal extends entidad{
      * @param notaTeoria
      * @param notaFinal
      * @param presencia
-     * @param alumno 
+     * @param idAlumno 
+     * @param idFinal 
      */
-    public InscripcionFinal(Date fecha, int notaPractica, int notaTeoria, int notaFinal, boolean presencia, Alumno alumno) {
+    public InscripcionFinal(Date fecha, int notaPractica, int notaTeoria, int notaFinal, boolean presencia, int idAlumno, int idFinal) {
         this.fecha = fecha;
         this.notaPractica = notaPractica;
         this.notaTeoria = notaTeoria;
         this.notaFinal = notaFinal;
         this.presencia = presencia;
-        this.alumno = alumno;
+        this.alumno = new Alumno();
+        this.alumno.idAlumno = idAlumno;
+        this.objFinal = new Final();
+        this.objFinal.idFinal = idFinal;
     }
     public Date fecha;
     public int notaPractica;
@@ -36,4 +41,5 @@ public class InscripcionFinal extends entidad{
     public int notaFinal;
     public boolean presencia;
     public Alumno alumno;
+    public Final objFinal;
 }
