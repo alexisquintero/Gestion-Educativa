@@ -20,6 +20,25 @@ public class Asistencia extends entidad{
      * @param fecha
      * @param presencia
      * @param idBedel
+     * @param idAlumno
+     * @param idHorario 
+     */
+    public Asistencia(Date fecha, boolean presencia, int idBedel, int idAlumno, int idHorario) {
+        this.fecha = fecha;
+        this.presencia = presencia;
+        this.bedel = new Bedel();
+        this.bedel.idBedel = idBedel; 
+        this.alumno = new Alumno();
+        this.alumno.idAlumno = idAlumno;
+        this.horario = new Horario();
+        this.horario.idHorario = idHorario;
+    }
+
+    /**
+     * 
+     * @param fecha
+     * @param presencia
+     * @param idBedel
      * @param idAlumno 
      */
     public Asistencia(Date fecha, boolean presencia, int idBedel, int idAlumno) {
@@ -34,4 +53,5 @@ public class Asistencia extends entidad{
     public boolean presencia;
     public Bedel bedel;
     public Alumno alumno;
+    public Horario horario;
 }

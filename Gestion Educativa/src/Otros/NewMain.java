@@ -28,17 +28,17 @@ public class NewMain {
     public static void main(String[] args) {
         DatoAsistencia da = new DatoAsistencia();
         try {
-            Asistencia asistencia = new Asistencia(Date.valueOf(LocalDate.now()),false, 1, 3);
+            Asistencia asistencia = new Asistencia(Date.valueOf(LocalDate.now()),false, 1, 1, 1);
             da.newObject(asistencia);
             
             ArrayList<entidad> asistencias = da.getAll();
             
-            asistencia = (Asistencia)da.getOne(1);
+            //asistencia = (Asistencia)da.getOne(1);
             
             asistencia.presencia = true;
             da.modify(asistencia);
              
-           da.delete(1);
+           //da.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);

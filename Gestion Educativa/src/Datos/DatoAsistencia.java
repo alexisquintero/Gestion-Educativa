@@ -54,13 +54,14 @@ public class DatoAsistencia extends dato{
         try{
             myConn = Sql.Connect(); 
             String query = "INSERT INTO Asistencia(fecha, presencia, id_bedel, "
-                    + "id_alumno) VALUES (?,?,?,?)";
+                    + "id_alumno, id_horario) VALUES (?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
             pstm.setDate(1, ((Asistencia)asistencia).fecha);
             pstm.setBoolean(2, ((Asistencia)asistencia).presencia);
             pstm.setInt(3, ((Asistencia)asistencia).bedel.idBedel);
             pstm.setInt(4, ((Asistencia)asistencia).alumno.idAlumno);
+            pstm.setInt(5, ((Asistencia)asistencia).horario.idHorario);
             
             int affectedRows = pstm.executeUpdate();
 
@@ -103,7 +104,7 @@ public class DatoAsistencia extends dato{
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
                     Asistencia asistencia = new Asistencia(rsl.getDate("fecha"),rsl.getBoolean("presencia"), 
-                    rsl.getInt("id_bedel"), rsl.getInt("id_alumno"));
+                    rsl.getInt("id_bedel"), rsl.getInt("id_alumno"), rsl.getInt("id_horario"));
                     asistencias.add(asistencia);
 		}			
         }
@@ -122,7 +123,7 @@ public class DatoAsistencia extends dato{
         try {
             myConn = Sql.Connect();
             String query = "UPDATE Asistencia SET fecha = ?, presencia = ?, "
-                    + "id_bedel = ?, id_alumno = ? "
+                    + "id_bedel = ?, id_alumno = ? , id_horario = ? "
                     + "WHERE ( fecha = ? AND id_alumno = ?)" ;
 			
             pstm = myConn.prepareStatement(query);
@@ -131,8 +132,9 @@ public class DatoAsistencia extends dato{
             pstm.setBoolean(2, ((Asistencia)asistencia).presencia);
             pstm.setInt(3, ((Asistencia)asistencia).bedel.idBedel);
             pstm.setInt(4, ((Asistencia)asistencia).alumno.idAlumno);
-            pstm.setDate(5, (Date) ((Asistencia)asistencia).fecha);
-            pstm.setInt(6, ((Asistencia)asistencia).alumno.idAlumno);
+            pstm.setInt(5, ((Asistencia)asistencia).horario.idHorario);
+            pstm.setDate(6, (Date) ((Asistencia)asistencia).fecha);
+            pstm.setInt(7, ((Asistencia)asistencia).alumno.idAlumno);
 			 
             int affectedRows = pstm.executeUpdate();
 

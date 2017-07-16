@@ -5,9 +5,9 @@
  */
 package Entidades;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -21,16 +21,14 @@ public class Final extends entidad{
      * @param fecha
      * @param horaInicio
      * @param horaFin
-     * @param aula
-     * @param inscripciones 
+     * @param aula 
      */
-    public Final(int idFinal, Date fecha, Time horaInicio, Time horaFin, String aula, ArrayList<InscripcionFinal> inscripciones) {
+    public Final(int idFinal, Date fecha, Time horaInicio, Time horaFin, String aula) {
         this.idFinal = idFinal;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.aula = aula;
-        this.inscripciones = inscripciones;
     }
     public int idFinal;
     public Date fecha;

@@ -5,8 +5,12 @@
  */
 package Entidades;
 
+import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -35,4 +39,11 @@ public class Horario extends entidad{
     public ArrayList<Docente> docentes;
     public ArrayList<Parcial> parciales;
     public ArrayList<Asistencia> asistencias;
+
+    Horario() {
+        this.idHorario = 0;
+        this.dia = "Dia";
+        this.horaInicio = Time.valueOf(LocalTime.MIN);
+        this.horaFin = Time.valueOf(LocalTime.MIN);
+    }
 }
