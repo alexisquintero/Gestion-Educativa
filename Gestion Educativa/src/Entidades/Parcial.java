@@ -5,9 +5,11 @@
  */
 package Entidades;
 
+import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -15,27 +17,38 @@ import java.util.Date;
  */
 public class Parcial extends entidad{
 
+    public Parcial() {
+        this.idParcial = 0;
+        this.descripcion = "descripcion";
+        this.fecha = Date.valueOf(LocalDate.MIN);
+        this.horarioInicio = Time.valueOf(LocalTime.MIN);
+        this.horarioFin = Time.valueOf(LocalTime.MIN);
+        this.horario = new Horario();
+    }
+
     /**
      * 
      * @param idParcial
      * @param descripcion
      * @param fecha
-     * @param horaInicio
-     * @param horaFin
-     * @param notas 
+     * @param horarioInicio
+     * @param horarioFin
+     * @param idHorario 
      */
-    public Parcial(int idParcial, String descripcion, Date fecha, Time horaInicio, Time horaFin, ArrayList<NotaParcial> notas) {
+    public Parcial(int idParcial, String descripcion, Date fecha, Time horarioInicio, Time horarioFin, int idHorario) {
         this.idParcial = idParcial;
         this.descripcion = descripcion;
         this.fecha = fecha;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-        this.notas = notas;
+        this.horarioInicio = horarioInicio;
+        this.horarioFin = horarioFin;
+        this.horario = new Horario();
+        this.horario.idHorario = idHorario;
     }
     public int idParcial;
     public String descripcion;
     public Date fecha;
-    public Time horaInicio;
-    public Time horaFin;
+    public Time horarioInicio;
+    public Time horarioFin;
     public ArrayList<NotaParcial> notas;
+    public Horario horario;
 }

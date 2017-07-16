@@ -6,13 +6,13 @@
 package Otros;
 
 
-import Datos.DatoInscripcionHorario;
+import Datos.DatoParcial;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Entidades.InscripcionHorario;
+import Entidades.Parcial;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -28,19 +28,19 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DatoInscripcionHorario datoInscripcionHorario = new DatoInscripcionHorario();
+        DatoParcial datoParcial = new DatoParcial();
         try {
-            InscripcionHorario InscripcionHorario = new InscripcionHorario(Date.valueOf(LocalDate.now()), 1, 1);
-            datoInscripcionHorario.newObject(InscripcionHorario);
+            Parcial parcial = new Parcial(0, "Descripcion", Date.valueOf(LocalDate.now()), Time.valueOf(LocalTime.MIN), Time.valueOf(LocalTime.MIN), 1);
+            datoParcial.newObject(parcial);
             
-            ArrayList<entidad> InscripcionHorarioes = datoInscripcionHorario.getAll();
+            ArrayList<entidad> parciales = datoParcial.getAll();
             
-            //InscripcionHorario = (InscripcionHorario)datoInscripcionHorario.getOne(1);
+            parcial = (Parcial)datoParcial.getOne(1);
             
-            //InscripcionHorario.presencia= false;
-            //datoInscripcionHorario.modify(InscripcionHorario);
+            parcial.descripcion = "DescripcionModificada";
+            datoParcial.modify(parcial);
              
-            datoInscripcionHorario.delete(1);
+            datoParcial.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
