@@ -18,7 +18,7 @@ public class NotaParcial extends entidad{
      * @param idAlumno
      * @param idParcial 
      */
-    public NotaParcial(String nota, boolean presencia, int idAlumno, int idParcial) {
+    public NotaParcial(int nota, boolean presencia, int idAlumno, int idParcial) {
         this.nota = nota;
         this.presencia = presencia;
         this.alumno = new Alumno();
@@ -26,8 +26,9 @@ public class NotaParcial extends entidad{
         this.parcial = new Parcial();
         this.parcial.idParcial = idParcial;
     }
-    public String nota;
+    public int nota;
     public boolean presencia;
     public Alumno alumno;
     public Parcial parcial;
+    
 }

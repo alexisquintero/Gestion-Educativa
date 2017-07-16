@@ -6,13 +6,13 @@
 package Otros;
 
 
-import Datos.DatoParcial;
+import Datos.DatoNotaParcial;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Entidades.Parcial;
+import Entidades.NotaParcial;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -28,19 +28,19 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DatoParcial datoParcial = new DatoParcial();
+        DatoNotaParcial datoNotaParcial = new DatoNotaParcial();
         try {
-            Parcial parcial = new Parcial(0, "Descripcion", Date.valueOf(LocalDate.now()), Time.valueOf(LocalTime.MIN), Time.valueOf(LocalTime.MIN), 1);
-            datoParcial.newObject(parcial);
+            NotaParcial notaParcial = new NotaParcial(6, true, 1, 1);
+            datoNotaParcial.newObject(notaParcial);
             
-            ArrayList<entidad> parciales = datoParcial.getAll();
+            ArrayList<entidad> notaParciales = datoNotaParcial.getAll();
             
-            parcial = (Parcial)datoParcial.getOne(1);
+            //notaParcial = (NotaParcial)datoNotaParcial.getOne(1);
             
-            parcial.descripcion = "DescripcionModificada";
-            datoParcial.modify(parcial);
+            notaParcial.nota = 5;
+            datoNotaParcial.modify(notaParcial);
              
-            datoParcial.delete(1);
+            //datoNotaParcial.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
