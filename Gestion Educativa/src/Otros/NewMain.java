@@ -6,13 +6,13 @@
 package Otros;
 
 
-import Datos.DatoFinal;
+import Datos.DatoHorario;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Entidades.Final;
+import Entidades.Horario;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -28,19 +28,19 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DatoFinal df = new DatoFinal();
+        DatoHorario datoHorario = new DatoHorario();
         try {
-            Final objFinal = new Final(0, Date.valueOf(LocalDate.now()), Time.valueOf(LocalTime.now()), Time.valueOf(LocalTime.now()), "aula", 1);
-            df.newObject(objFinal);
+            Horario horario = new Horario(0, "Dia", Time.valueOf(LocalTime.now()), Time.valueOf(LocalTime.now()), 1, 1);
+            datoHorario.newObject(horario);
             
-            ArrayList<entidad> objFinals = df.getAll();
+            ArrayList<entidad> horarios = datoHorario.getAll();
             
-            objFinal = (Final)df.getOne(1);
+            horario = (Horario)datoHorario.getOne(1);
             
-            objFinal.aula = "aulaMod";
-            df.modify(objFinal);
+            horario.dia = "diaMod";
+            datoHorario.modify(horario);
              
-            df.delete(1);
+            datoHorario.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);

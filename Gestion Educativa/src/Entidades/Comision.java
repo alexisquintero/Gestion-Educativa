@@ -32,4 +32,11 @@ public class Comision extends entidad{
     public int cupo;
     public Moderador moderador;
     public ArrayList<Horario> horarios; 
+
+    Comision() {
+        this.idComision = 0;
+        this.aula = "aula";
+        this.cupo = 0;
+        this.moderador = new Moderador();
+    }
 }
