@@ -6,13 +6,13 @@
 package Otros;
 
 
-import Datos.DatoInscripcionFinal;
+import Datos.DatoInscripcionHorario;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Entidades.InscripcionFinal;
+import Entidades.InscripcionHorario;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -28,19 +28,19 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DatoInscripcionFinal datoInscripcionFinal = new DatoInscripcionFinal();
+        DatoInscripcionHorario datoInscripcionHorario = new DatoInscripcionHorario();
         try {
-            InscripcionFinal InscripcionFinal = new InscripcionFinal(Date.valueOf(LocalDate.now()), 6, 6, 6, true, 1, 1);
-            datoInscripcionFinal.newObject(InscripcionFinal);
+            InscripcionHorario InscripcionHorario = new InscripcionHorario(Date.valueOf(LocalDate.now()), 1, 1);
+            datoInscripcionHorario.newObject(InscripcionHorario);
             
-            ArrayList<entidad> InscripcionFinales = datoInscripcionFinal.getAll();
+            ArrayList<entidad> InscripcionHorarioes = datoInscripcionHorario.getAll();
             
-            //InscripcionFinal = (InscripcionFinal)datoInscripcionFinal.getOne(1);
+            //InscripcionHorario = (InscripcionHorario)datoInscripcionHorario.getOne(1);
             
-            InscripcionFinal.presencia= false;
-            datoInscripcionFinal.modify(InscripcionFinal);
+            //InscripcionHorario.presencia= false;
+            //datoInscripcionHorario.modify(InscripcionHorario);
              
-            //datoInscripcionFinal.delete(1);
+            datoInscripcionHorario.delete(1);
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
