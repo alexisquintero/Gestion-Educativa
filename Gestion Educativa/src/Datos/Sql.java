@@ -45,7 +45,7 @@ public class Sql {
     }
     catch (SQLException e) 
     {
-	throw new ApplicationException("Error al conectarse a la base de datos", e);
+	throw new ConnectSqlException(e);
     }
 
         return conn;
@@ -71,7 +71,7 @@ public class Sql {
         } 
         catch (SQLException e) 
         {
-            throw new ApplicationException("Error al cerrar la conexión a la base de datos", e);
+            throw new CerrarConexionException(e);
         }
     }
 }

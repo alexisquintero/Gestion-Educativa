@@ -5,25 +5,26 @@
  */
 package Negocio;
 
-import Datos.DatoAdministrador;
-import Entidades.Administrador;
+import Datos.DatoFinal;
+import Entidades.Final;
 import Entidades.entidad;
-import Excepciones.*;
+import Excepciones.ApplicationException;
+import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
 
 /**
  *
  * @author Supervisor
  */
-public class NegocioAdministrador extends negocio{
+public class NegocioFinal extends negocio{
 
-    public NegocioAdministrador(){
-        datos = new DatoAdministrador();
+    public NegocioFinal(){
+        datos = new DatoFinal();
     }
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Administrador)e).idAdministrador); 
+        return datos.getOne(((Final)e).idFinal); 
     }
 
     @Override
@@ -34,7 +35,7 @@ public class NegocioAdministrador extends negocio{
     @Override
     public int nuevo(entidad e) throws ApplicationException{
         if (this.buscar(e) == null) {
-            throw new EntidadExistenteException("El Administrador ya existe");
+            throw new EntidadExistenteException("El Final ya existe");
         }       
         return datos.newObject(e);
     }
@@ -46,6 +47,6 @@ public class NegocioAdministrador extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Administrador)e).idAdministrador);
+        datos.delete(((Final)e).idFinal);
     }
 }

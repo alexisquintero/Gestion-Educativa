@@ -9,7 +9,7 @@ package Excepciones;
  *
  * @author Supervisor
  */
-public class ApplicationException extends Exception {       
+public abstract class ApplicationException extends Exception {       
 	
     protected static final long serialVersionUID = 1L;
     protected String message;
@@ -39,5 +39,10 @@ public class ApplicationException extends Exception {
     }
     
     public ApplicationException() {
+    }
+    
+    public ApplicationException(String message)
+    {
+        this.message=message;
     }
 }
