@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.Carrera;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -36,9 +36,9 @@ public class DatoCarrera extends dato{
                     rsl.getString("descripcion"), rsl.getInt("id_administrador"));			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Carrera", e);
+            throw new BuscarEntidadException("Error al buscar Carrera", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -62,7 +62,7 @@ public class DatoCarrera extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -71,9 +71,9 @@ public class DatoCarrera extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear Carrera", e);
+            throw new CrearEntidadException("Error al crear Carrera", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -98,9 +98,9 @@ public class DatoCarrera extends dato{
                     carreras.add(carrera);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Carreras", e);
+            throw new BuscarEntidadesException("Error al buscar Carreras", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -125,11 +125,11 @@ public class DatoCarrera extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar Carrera", e);
+            throw new ModificarEntidadException("Error al modificar Carrera", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -148,11 +148,11 @@ public class DatoCarrera extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar Carrera", e);
+            throw new EliminarEntidadException("Error al eliminar Carrera", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

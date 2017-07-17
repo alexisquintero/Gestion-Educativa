@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.Comision;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -37,9 +37,9 @@ public class DatoComision extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Comision", e);
+            throw new BuscarEntidadException("Error al buscar Comision", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -63,7 +63,7 @@ public class DatoComision extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -72,9 +72,9 @@ public class DatoComision extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear Comision", e);
+            throw new CrearEntidadException("Error al crear Comision", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -105,9 +105,9 @@ public class DatoComision extends dato{
                     comisiones.add(comision);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Comisiones", e);
+            throw new BuscarEntidadesException("Error al buscar Comisiones", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -132,11 +132,11 @@ public class DatoComision extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar Comision", e);
+            throw new ModificarEntidadException("Error al modificar Comision", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -155,11 +155,11 @@ public class DatoComision extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar Comision", e);
+            throw new EliminarEntidadException("Error al eliminar Comision", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

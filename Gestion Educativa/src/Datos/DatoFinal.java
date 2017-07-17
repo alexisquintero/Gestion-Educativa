@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.Final;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -38,9 +38,9 @@ public class DatoFinal extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Final", e);
+            throw new BuscarEntidadException("Error al buscar Final", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -66,7 +66,7 @@ public class DatoFinal extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -75,9 +75,9 @@ public class DatoFinal extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear Final", e);
+            throw new CrearEntidadException("Error al crear Final", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -109,9 +109,9 @@ public class DatoFinal extends dato{
                     finales.add(objFinal);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Finales", e);
+            throw new BuscarEntidadesException("Error al buscar Finales", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -138,11 +138,11 @@ public class DatoFinal extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar Final", e);
+            throw new ModificarEntidadException("Error al modificar Final", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -161,11 +161,11 @@ public class DatoFinal extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar Final", e);
+            throw new EliminarEntidadException("Error al eliminar Final", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

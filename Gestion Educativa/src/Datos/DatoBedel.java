@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.Bedel;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -38,9 +38,9 @@ public class DatoBedel extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Bedel", e);
+            throw new BuscarEntidadException("Error al buscar Bedel", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -70,7 +70,7 @@ public class DatoBedel extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -79,9 +79,9 @@ public class DatoBedel extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear Bedel", e);
+            throw new CrearEntidadException("Error al crear Bedel", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -108,9 +108,9 @@ public class DatoBedel extends dato{
                     bedeles.add(bedel);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Bedeles", e);
+            throw new BuscarEntidadesException("Error al buscar Bedeles", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -142,11 +142,11 @@ public class DatoBedel extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar Bedel", e);
+            throw new ModificarEntidadException("Error al modificar Bedel", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -165,11 +165,11 @@ public class DatoBedel extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar Bedel", e);
+            throw new EliminarEntidadException("Error al eliminar Bedel", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

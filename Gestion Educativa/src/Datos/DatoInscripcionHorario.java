@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.InscripcionHorario;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -37,9 +37,9 @@ public class DatoInscripcionHorario extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoInscripcionHorario.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar InscripcionHorario", e);
+            throw new BuscarEntidadException("Error al buscar InscripcionHorario", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -63,7 +63,7 @@ public class DatoInscripcionHorario extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -72,9 +72,9 @@ public class DatoInscripcionHorario extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoInscripcionHorario.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear InscripcionHorario", e);
+            throw new CrearEntidadException("Error al crear InscripcionHorario", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -105,9 +105,9 @@ public class DatoInscripcionHorario extends dato{
                     inscripcionHorarios.add(inscripcionHorario);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoInscripcionHorario.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar InscripcionHorarioes", e);
+            throw new BuscarEntidadesException("Error al buscar InscripcionHorarios", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -132,11 +132,11 @@ public class DatoInscripcionHorario extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoInscripcionHorario.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar InscripcionHorario", e);
+            throw new ModificarEntidadException("Error al modificar InscripcionHorario", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -155,11 +155,11 @@ public class DatoInscripcionHorario extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoInscripcionHorario.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar InscripcionHorario", e);
+            throw new EliminarEntidadException("Error al eliminar InscripcionHorario", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

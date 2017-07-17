@@ -10,5 +10,11 @@ package Negocio;
  * @author Supervisor
  */
 public class ControladorGestion {
-    
 }
+
+/**
+ * Para crear una entidad ->                nuevoEntidad(Entidad e);
+ * Para modificar una entidad ->            modificarEntidad(Entidad e);
+ * Para buscar una o varias entidades ->    buscarEntidad([Entidad e]);
+ * Para eliminar una entidad ->             eliminarEntidad(Entidad e);
+ */

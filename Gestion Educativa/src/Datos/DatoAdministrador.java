@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.Administrador;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -38,9 +38,9 @@ public class DatoAdministrador extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch(SQLException e){
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Administrador", e);
+            throw new BuscarEntidadException("Error al buscar Administrador", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -69,7 +69,7 @@ public class DatoAdministrador extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException();
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -78,9 +78,9 @@ public class DatoAdministrador extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch(SQLException e){
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear Administrador", e);
+            throw new CrearEntidadException("Error al crear Administrador", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -112,9 +112,9 @@ public class DatoAdministrador extends dato{
                     administradores.add(administrador);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch(SQLException e){
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Administradores", e);
+            throw new BuscarEntidadesException("Error al buscar Administradores", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -145,11 +145,11 @@ public class DatoAdministrador extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException();
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch (SQLException e) {
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar Administrador", e);
+            throw new ModificarEntidadException("Error al modificar Administrador", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -168,11 +168,11 @@ public class DatoAdministrador extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException();
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch (SQLException e) {
             Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar Administrador", e);
+            throw new EliminarEntidadException("Error al eliminar Administrador", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

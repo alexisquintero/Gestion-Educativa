@@ -8,7 +8,7 @@ package Otros;
 
 import Datos.DatoNotaParcial;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

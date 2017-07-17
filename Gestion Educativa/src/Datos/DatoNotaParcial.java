@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.NotaParcial;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -37,9 +37,9 @@ public class DatoNotaParcial extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoNotaParcial.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar NotaParcial", e);
+            throw new BuscarEntidadException("Error al buscar NotaParcial", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -64,7 +64,7 @@ public class DatoNotaParcial extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -73,9 +73,9 @@ public class DatoNotaParcial extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoNotaParcial.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear NotaParcial", e);
+            throw new CrearEntidadException("Error al crear NotaParcial", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -106,9 +106,9 @@ public class DatoNotaParcial extends dato{
                     notaParciales.add(notaParcial);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoNotaParcial.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar NotaParciales", e);
+            throw new BuscarEntidadesException("Error al buscar NotaParciales", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -133,11 +133,11 @@ public class DatoNotaParcial extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoNotaParcial.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar NotaParcial", e);
+            throw new ModificarEntidadException("Error al modificar NotaParcial", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -156,11 +156,11 @@ public class DatoNotaParcial extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoNotaParcial.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar NotaParcial", e);
+            throw new EliminarEntidadException("Error al eliminar NotaParcial", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.Alumno;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -40,9 +40,9 @@ public class DatoAlumno extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Alumno", e);
+            throw new BuscarEntidadException("Error al buscar Alumno", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -74,7 +74,7 @@ public class DatoAlumno extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -83,9 +83,9 @@ public class DatoAlumno extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear Alumno", e);
+            throw new CrearEntidadException("Error al crear Alumno", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -119,9 +119,9 @@ public class DatoAlumno extends dato{
                     alumnos.add(alumno);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Alumnoes", e);
+            throw new BuscarEntidadesException("Error al buscar Alumnoes", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -154,11 +154,11 @@ public class DatoAlumno extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar Alumno", e);
+            throw new ModificarEntidadException("Error al modificar Alumno", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -177,11 +177,11 @@ public class DatoAlumno extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar Alumno", e);
+            throw new EliminarEntidadException("Error al eliminar Alumno", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

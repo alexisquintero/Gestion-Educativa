@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.InscripcionFinal;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -39,9 +39,9 @@ public class DatoInscripcionFinal extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoInscripcionFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar InscripcionFinal", e);
+            throw new BuscarEntidadException("Error al buscar InscripcionFinal", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -69,7 +69,7 @@ public class DatoInscripcionFinal extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -78,9 +78,9 @@ public class DatoInscripcionFinal extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoInscripcionFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear InscripcionFinal", e);
+            throw new CrearEntidadException("Error al crear InscripcionFinal", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -113,9 +113,9 @@ public class DatoInscripcionFinal extends dato{
                     inscripcionFinales.add(inscripcionFinal);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoInscripcionFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar InscripcionFinales", e);
+            throw new BuscarEntidadesException("Error al buscar InscripcionFinales", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -148,11 +148,11 @@ public class DatoInscripcionFinal extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoInscripcionFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar InscripcionFinal", e);
+            throw new ModificarEntidadException("Error al modificar InscripcionFinal", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -171,11 +171,11 @@ public class DatoInscripcionFinal extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoInscripcionFinal.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar InscripcionFinal", e);
+            throw new EliminarEntidadException("Error al eliminar InscripcionFinal", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

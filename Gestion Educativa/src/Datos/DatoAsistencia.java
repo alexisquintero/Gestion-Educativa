@@ -7,7 +7,7 @@ package Datos;
 
 import Entidades.Asistencia;
 import Entidades.entidad;
-import Excepciones.ApplicationException;
+import Excepciones.*;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -38,9 +38,9 @@ public class DatoAsistencia extends dato{
 			
             }
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Asistencia", e);
+            throw new BuscarEntidadException("Error al buscar Asistencia", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
@@ -66,7 +66,7 @@ public class DatoAsistencia extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
                        
             rsl = pstm.getGeneratedKeys();  //Obtiene el id autogenerado
@@ -75,9 +75,9 @@ public class DatoAsistencia extends dato{
             }              
                      	             
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al crear Asistencia", e);
+            throw new CrearEntidadException("Error al crear Asistencia", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);
@@ -108,9 +108,9 @@ public class DatoAsistencia extends dato{
                     asistencias.add(asistencia);
 		}			
         }
-        catch(ApplicationException | SQLException e){
+        catch( SQLException e){
             Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al buscar Asistenciaes", e);
+            throw new BuscarEntidadesException("Error al buscar Asistencias", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -139,11 +139,11 @@ public class DatoAsistencia extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al modificar Asistencia", e);
+            throw new ModificarEntidadException("Error al modificar Asistencia", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
@@ -162,11 +162,11 @@ public class DatoAsistencia extends dato{
             int affectedRows = pstm.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException();
+                throw new RowsAffectedException(); 
             }
-        } catch (ApplicationException | SQLException e) {
+        } catch ( SQLException e) {
             Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
-            throw new ApplicationException("Error al eliminar Asistencia", e);
+            throw new EliminarEntidadException("Error al eliminar Asistencia", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    

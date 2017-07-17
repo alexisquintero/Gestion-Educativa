@@ -9,11 +9,11 @@ package Excepciones;
  *
  * @author Supervisor
  */
-public class ApplicationException extends Exception {
+public class ApplicationException extends Exception {       
 	
-    private static final long serialVersionUID = 1L;
-    private String message;
-    private Throwable cause;
+    protected static final long serialVersionUID = 1L;
+    protected String message;
+    protected Throwable cause;
 		
     @Override
     public String getMessage()
@@ -32,5 +32,12 @@ public class ApplicationException extends Exception {
         this.message=message;
 	this.cause=cause;
     }
-
+    
+    public ApplicationException(Throwable cause) {
+        this.cause = cause;
+        this.message = cause.getMessage();
+    }
+    
+    public ApplicationException() {
+    }
 }
