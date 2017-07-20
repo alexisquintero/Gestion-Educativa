@@ -187,4 +187,33 @@ public class DatoAlumno extends dato{
             Sql.Close(rsl, stm, myConn);    
         }
     }
+    
+    public entidad login(String usuario, String contrasenia) throws ApplicationException{
+        Alumno alumno = null;
+        try{
+            myConn = Sql.Connect(); 
+            String query = "SELECT * FROM Alumno WHERE ( usuario = '" + usuario + "' AND clave = '" + contrasenia + "')";
+            
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+			 
+            rsl = stm.executeQuery(query);
+            while(rsl.next()){
+		alumno = new Alumno(rsl.getInt("id_alumno"), rsl.getInt("id_moderador"), 
+                    rsl.getInt("id_carrera"), rsl.getString("nombre"), 
+                    rsl.getString("apellido"), rsl.getString("telefono"), 
+                    rsl.getString("email"), rsl.getString("direccion"),
+                    rsl.getString("legajo"), rsl.getString("usuario"), rsl.getString("clave"));
+			
+            }
+        }
+        catch(SQLException e){
+            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
+            throw new LoginException("Error al realizar el login de Alumno", e);
+        }
+        finally{
+            Sql.Close(rsl, stm, myConn);      
+        }
+        return alumno;
+    }
 }

@@ -6,7 +6,8 @@
 package Otros;
 
 
-import Datos.DatoNotaParcial;
+import Datos.DatoAlumno;
+import Entidades.Alumno;
 import Entidades.entidad;
 import Excepciones.*;
 import java.util.ArrayList;
@@ -28,19 +29,12 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DatoNotaParcial datoNotaParcial = new DatoNotaParcial();
+        DatoAlumno datoAlumno = new DatoAlumno();
+        
         try {
-            NotaParcial notaParcial = new NotaParcial(6, true, 1, 1);
-            datoNotaParcial.newObject(notaParcial);
             
-            ArrayList<entidad> notaParciales = datoNotaParcial.getAll();
-            
-            //notaParcial = (NotaParcial)datoNotaParcial.getOne(1);
-            
-            notaParcial.nota = 5;
-            datoNotaParcial.modify(notaParcial);
-             
-            //datoNotaParcial.delete(1);
+            Alumno alumno = (Alumno)datoAlumno.login("alumno", "Alumno");
+            System.out.println("");
             
         } catch (ApplicationException ex) {
             Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);

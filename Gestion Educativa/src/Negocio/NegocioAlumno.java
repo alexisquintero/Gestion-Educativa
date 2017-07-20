@@ -49,4 +49,8 @@ public class NegocioAlumno extends negocio{
     public void eliminar(entidad e) throws ApplicationException{
         datos.delete(((Alumno)e).idAlumno);
     }
+    
+    public entidad login(String usuario, String contrasenia) throws ApplicationException{
+        return ((DatoAlumno)datos).login(usuario, contrasenia);
+    }
 }

@@ -5,11 +5,32 @@
  */
 package Negocio;
 
+import Entidades.*;
+import Excepciones.ApplicationException;
+
 /**
  *
  * @author Supervisor
  */
 public class ControladorGestion {
+    //Logins
+    public Administrador loginAdministrador(String usuario, String contrasenia) throws ApplicationException {
+        Administrador administrador;
+
+        NegocioAdministrador negocio = new NegocioAdministrador();
+        administrador = (Administrador)negocio.login(usuario, contrasenia);
+
+        return administrador;
+    }
+    
+    public Alumno loginAlumno(String usuario, String contrasenia) throws ApplicationException{
+        Alumno alumno;
+
+        NegocioAlumno negocio = new NegocioAlumno();
+        alumno = (Alumno)negocio.login(usuario, contrasenia);
+
+        return alumno;
+    }
 }
 
 /**

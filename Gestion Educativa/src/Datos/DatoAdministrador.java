@@ -178,4 +178,32 @@ public class DatoAdministrador extends dato{
             Sql.Close(rsl, stm, myConn);    
         }
     }
+    
+    public entidad login(String usuario, String contrasenia) throws ApplicationException{
+        Administrador administrador = null;
+        try{
+            myConn = Sql.Connect(); 
+            String query = "SELECT * FROM Administrador WHERE "
+                    + "( usuario = " + usuario + " AND clave = " + contrasenia + ")";
+            
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+			 
+            rsl = stm.executeQuery(query);
+            while(rsl.next()){
+		administrador = new Administrador(rsl.getInt("id_administrador"),rsl.getString("nombre"), 
+                    rsl.getString("apellido"), rsl.getString("telefono"), rsl.getString("email"), rsl.getString("direccion"),
+                    rsl.getString("legajo"), rsl.getString("usuario"), rsl.getString("clave"));
+			
+            }
+        }
+        catch(SQLException e){
+            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
+            throw new LoginException("Error al realizar el login de Administrador", e);
+        }
+        finally{
+            Sql.Close(rsl, stm, myConn);      
+        }
+        return administrador;
+    }
 }
