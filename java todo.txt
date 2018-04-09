@@ -1,0 +1,2 @@
+Login administrador no anda.
+Limpiar capa dato de prepared statement/execute query
