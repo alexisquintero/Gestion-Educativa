@@ -184,7 +184,7 @@ public class DatoAdministrador extends dato{
         try{
             myConn = Sql.Connect(); 
             String query = "SELECT * FROM Administrador WHERE "
-                    + "( usuario = " + usuario + " AND clave = " + contrasenia + ")";
+                    + "( usuario = '" + usuario + "' AND clave = '" + contrasenia + "')";
             
             pstm = myConn.prepareStatement(query);
             stm = myConn.createStatement();

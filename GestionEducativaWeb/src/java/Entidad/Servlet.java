@@ -6,6 +6,7 @@ package Entidad;
  * and open the template in the editor.
  */
 
+import Entidades.entidad;
 import Negocio.ControladorGestion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -79,8 +80,8 @@ public class Servlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException {       
+               
     }
 
     /**
