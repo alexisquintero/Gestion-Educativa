@@ -19,6 +19,7 @@ import Entidades.Administrador;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Excepciones.LoginException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -29,7 +30,8 @@ import javax.servlet.http.HttpSession;
 public class LoginAdministrador extends Servlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, 
+            HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();       
         ControladorGestion controlador = new ControladorGestion();
@@ -47,20 +49,25 @@ public class LoginAdministrador extends Servlet {
         }catch (ClassNotFoundException e1){
             out.println(e1.getMessage());
         }
-        String redirect = "GestionEducativaWeb/MenuAdministrador.jsp";
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/MenuAdministrador.jsp");
         try{
-            persona = controlador.loginAdministrador(request.getParameter("usuario"), request.getParameter("password"));
+            persona = controlador.
+                    loginAdministrador(
+                            request.getParameter("usuario"), 
+                            request.getParameter("password"));
         }catch (LoginException le){
             session.setAttribute("error", le.getMessage());
-            redirect = "Error.jsp";
-        }catch(ApplicationException e){
+            dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/Error.jsp");       	
+        }catch(ApplicationException e){              
             out.println(e.getMessage());
-        }
+        }       
         
         session.setAttribute("ControladorGestion", controlador);
         session.setAttribute("usuario", persona);     
         
-        response.sendRedirect(redirect);			
+        dispatcher.forward(request, response);			
                
     }
 

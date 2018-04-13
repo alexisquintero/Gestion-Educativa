@@ -44,7 +44,7 @@ public class DatoAdministrador extends dato{
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
-        }
+        }        
         return administrador;
     }
     
@@ -204,6 +204,7 @@ public class DatoAdministrador extends dato{
         finally{
             Sql.Close(rsl, stm, myConn);      
         }
+        if(administrador == null) throw new LoginException();
         return administrador;
     }
 }
