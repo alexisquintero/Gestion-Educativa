@@ -57,15 +57,15 @@ public class DatoBedel extends dato{
                     + "email, direccion, legajo, usuario, clave, id_administrador) VALUES (?,?,?,?,?,?,?,?, ?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Bedel)bedel).nombre);
-            pstm.setString(2, ((Bedel)bedel).apellido);
-            pstm.setString(3, ((Bedel)bedel).telefono);
-            pstm.setString(4, ((Bedel)bedel).email);
-            pstm.setString(5, ((Bedel)bedel).direccion);
-            pstm.setString(6, ((Bedel)bedel).legajo);
-            pstm.setString(7, ((Bedel)bedel).usuario);
-            pstm.setString(8, ((Bedel)bedel).clave);
-            pstm.setInt(9, ((Bedel)bedel).administrador.idAdministrador);
+            pstm.setString(1, ((Bedel)bedel).getNombre());
+            pstm.setString(2, ((Bedel)bedel).getApellido());
+            pstm.setString(3, ((Bedel)bedel).getTelefono());
+            pstm.setString(4, ((Bedel)bedel).getEmail());
+            pstm.setString(5, ((Bedel)bedel).getDireccion());
+            pstm.setString(6, ((Bedel)bedel).getLegajo());
+            pstm.setString(7, ((Bedel)bedel).getUsuario());
+            pstm.setString(8, ((Bedel)bedel).getClave());
+            pstm.setInt(9, ((Bedel)bedel).getAdministrador().getIdAdministrador());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -125,19 +125,19 @@ public class DatoBedel extends dato{
             String query = "UPDATE Bedel SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? , id_administrador = ? "
-                    + "WHERE ( id_bedel = " + ((Bedel)bedel).idBedel + ")" ;
+                    + "WHERE ( id_bedel = " + ((Bedel)bedel).getIdBedel() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Bedel)bedel).nombre);
-            pstm.setString(2, ((Bedel)bedel).apellido);
-            pstm.setString(3, ((Bedel)bedel).telefono);
-            pstm.setString(4, ((Bedel)bedel).email);
-            pstm.setString(5, ((Bedel)bedel).direccion);
-            pstm.setString(6, ((Bedel)bedel).legajo);
-            pstm.setString(7, ((Bedel)bedel).usuario);
-            pstm.setString(8, ((Bedel)bedel).clave);
-            pstm.setInt(9, ((Bedel)bedel).administrador.idAdministrador);
+            pstm.setString(1, ((Bedel)bedel).getNombre());
+            pstm.setString(2, ((Bedel)bedel).getApellido());
+            pstm.setString(3, ((Bedel)bedel).getTelefono());
+            pstm.setString(4, ((Bedel)bedel).getEmail());
+            pstm.setString(5, ((Bedel)bedel).getDireccion());
+            pstm.setString(6, ((Bedel)bedel).getLegajo());
+            pstm.setString(7, ((Bedel)bedel).getUsuario());
+            pstm.setString(8, ((Bedel)bedel).getClave());
+            pstm.setInt(9, ((Bedel)bedel).getAdministrador().getIdAdministrador());
 			 
             int affectedRows = pstm.executeUpdate();
 

@@ -23,7 +23,7 @@ public class NegocioAdministrador extends negocio{
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Administrador)e).idAdministrador); 
+        return datos.getOne(((Administrador)e).getIdAdministrador()); 
     }
 
     @Override
@@ -46,7 +46,7 @@ public class NegocioAdministrador extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Administrador)e).idAdministrador);
+        datos.delete(((Administrador)e).getIdAdministrador());
     }
     
     public entidad login(String usuario, String contrasenia) throws ApplicationException{

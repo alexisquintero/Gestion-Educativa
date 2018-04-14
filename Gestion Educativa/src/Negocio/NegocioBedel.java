@@ -24,7 +24,7 @@ public class NegocioBedel extends negocio{
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Bedel)e).idBedel); 
+        return datos.getOne(((Bedel)e).getIdBedel()); 
     }
 
     @Override
@@ -47,6 +47,6 @@ public class NegocioBedel extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Bedel)e).idBedel);
+        datos.delete(((Bedel)e).getIdBedel());
     }
 }

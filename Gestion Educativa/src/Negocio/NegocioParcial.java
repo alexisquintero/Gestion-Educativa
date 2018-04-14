@@ -24,7 +24,7 @@ public class NegocioParcial extends negocio{
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Parcial)e).idParcial); 
+        return datos.getOne(((Parcial)e).getIdParcial()); 
     }
 
     @Override
@@ -47,6 +47,6 @@ public class NegocioParcial extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Parcial)e).idParcial);
+        datos.delete(((Parcial)e).getIdParcial());
     }
 }

@@ -24,7 +24,7 @@ public class NegocioComision extends negocio{
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Comision)e).idComision); 
+        return datos.getOne(((Comision)e).getIdComision()); 
     }
 
     @Override
@@ -47,6 +47,6 @@ public class NegocioComision extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Comision)e).idComision);
+        datos.delete(((Comision)e).getIdComision());
     }
 }

@@ -57,11 +57,11 @@ public class DatoAsistencia extends dato{
                     + "id_alumno, id_horario) VALUES (?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setDate(1, ((Asistencia)asistencia).fecha);
-            pstm.setBoolean(2, ((Asistencia)asistencia).presencia);
-            pstm.setInt(3, ((Asistencia)asistencia).bedel.idBedel);
-            pstm.setInt(4, ((Asistencia)asistencia).alumno.idAlumno);
-            pstm.setInt(5, ((Asistencia)asistencia).horario.idHorario);
+            pstm.setDate(1, ((Asistencia)asistencia).getFecha());
+            pstm.setBoolean(2, ((Asistencia)asistencia).isPresencia());
+            pstm.setInt(3, ((Asistencia)asistencia).getBedel().getIdBedel());
+            pstm.setInt(4, ((Asistencia)asistencia).getAlumno().getIdAlumno());
+            pstm.setInt(5, ((Asistencia)asistencia).getHorario().getIdHorario());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -128,13 +128,13 @@ public class DatoAsistencia extends dato{
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setDate(1, (Date) ((Asistencia)asistencia).fecha);
-            pstm.setBoolean(2, ((Asistencia)asistencia).presencia);
-            pstm.setInt(3, ((Asistencia)asistencia).bedel.idBedel);
-            pstm.setInt(4, ((Asistencia)asistencia).alumno.idAlumno);
-            pstm.setInt(5, ((Asistencia)asistencia).horario.idHorario);
-            pstm.setDate(6, (Date) ((Asistencia)asistencia).fecha);
-            pstm.setInt(7, ((Asistencia)asistencia).alumno.idAlumno);
+            pstm.setDate(1, (Date) ((Asistencia)asistencia).getFecha());
+            pstm.setBoolean(2, ((Asistencia)asistencia).isPresencia());
+            pstm.setInt(3, ((Asistencia)asistencia).getBedel().getIdBedel());
+            pstm.setInt(4, ((Asistencia)asistencia).getAlumno().getIdAlumno());
+            pstm.setInt(5, ((Asistencia)asistencia).getHorario().getIdHorario());
+            pstm.setDate(6, (Date) ((Asistencia)asistencia).getFecha());
+            pstm.setInt(7, ((Asistencia)asistencia).getAlumno().getIdAlumno());
 			 
             int affectedRows = pstm.executeUpdate();
 

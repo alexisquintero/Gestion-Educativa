@@ -57,11 +57,11 @@ public class DatoFinal extends dato{
                     + "aula, id_materia) VALUES (?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setDate(1, ((Final)objFinal).fecha);
-            pstm.setTime(2, ((Final)objFinal).horarioInicio);
-            pstm.setTime(3, ((Final)objFinal).horarioFin);
-            pstm.setString(4, ((Final)objFinal).aula);
-            pstm.setInt(5, ((Final)objFinal).materia.idMateria);
+            pstm.setDate(1, ((Final)objFinal).getFecha());
+            pstm.setTime(2, ((Final)objFinal).getHorarioInicio());
+            pstm.setTime(3, ((Final)objFinal).getHorarioFin());
+            pstm.setString(4, ((Final)objFinal).getAula());
+            pstm.setInt(5, ((Final)objFinal).getMateria().getIdMateria());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -125,15 +125,15 @@ public class DatoFinal extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Final SET fecha = ?, horario_inicio = ?, "
                     + "horario_fin = ?, aula = ?, id_materia = ? "
-                    + "WHERE ( id_final = " + ((Final)objFinal).idFinal + ")" ;
+                    + "WHERE ( id_final = " + ((Final)objFinal).getIdFinal() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setDate(1, ((Final)objFinal).fecha);
-            pstm.setTime(2, ((Final)objFinal).horarioInicio);
-            pstm.setTime(3, ((Final)objFinal).horarioFin);
-            pstm.setString(4, ((Final)objFinal).aula);
-            pstm.setInt(5, ((Final)objFinal).materia.idMateria);
+            pstm.setDate(1, ((Final)objFinal).getFecha());
+            pstm.setTime(2, ((Final)objFinal).getHorarioInicio());
+            pstm.setTime(3, ((Final)objFinal).getHorarioFin());
+            pstm.setString(4, ((Final)objFinal).getAula());
+            pstm.setInt(5, ((Final)objFinal).getMateria().getIdMateria());
 			 
             int affectedRows = pstm.executeUpdate();
 

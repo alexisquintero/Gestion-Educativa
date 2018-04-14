@@ -24,7 +24,7 @@ public class NegocioCarrera extends negocio{
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Carrera)e).idCarrera); 
+        return datos.getOne(((Carrera)e).getIdCarrera()); 
     }
 
     @Override
@@ -47,6 +47,6 @@ public class NegocioCarrera extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Carrera)e).idCarrera);
+        datos.delete(((Carrera)e).getIdCarrera());
     }
 }

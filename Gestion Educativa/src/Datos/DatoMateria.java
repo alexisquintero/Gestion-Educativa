@@ -58,12 +58,12 @@ public class DatoMateria extends dato{
                     + "electiva, horas_semana, id_administrador) VALUES (?,?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Materia)materia).nombre);
-            pstm.setString(2, ((Materia)materia).descripcion);
-            pstm.setDate(3, ((Materia)materia).año);
-            pstm.setBoolean(4, ((Materia)materia).electiva);
-            pstm.setInt(5, ((Materia)materia).horasSemana);
-            pstm.setInt(6, ((Materia)materia).administrador.idAdministrador);
+            pstm.setString(1, ((Materia)materia).getNombre());
+            pstm.setString(2, ((Materia)materia).getDescripcion());
+            pstm.setDate(3, ((Materia)materia).getAño());
+            pstm.setBoolean(4, ((Materia)materia).isElectiva());
+            pstm.setInt(5, ((Materia)materia).getHorasSemana());
+            pstm.setInt(6, ((Materia)materia).getAdministrador().getIdAdministrador());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -121,16 +121,16 @@ public class DatoMateria extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Materia SET nombre = ?, descripcion = ?, "
                     + "anio = ?, electiva = ?, horas_semana = ?, id_administrador = ? "
-                    + "WHERE ( id_materia = " + ((Materia)materia).idMateria + ")" ;
+                    + "WHERE ( id_materia = " + ((Materia)materia).getIdMateria() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Materia)materia).nombre);
-            pstm.setString(2, ((Materia)materia).descripcion);
-            pstm.setDate(3, ((Materia)materia).año);
-            pstm.setBoolean(4, ((Materia)materia).electiva);
-            pstm.setInt(5, ((Materia)materia).horasSemana);
-            pstm.setInt(6, ((Materia)materia).administrador.idAdministrador);
+            pstm.setString(1, ((Materia)materia).getNombre());
+            pstm.setString(2, ((Materia)materia).getDescripcion());
+            pstm.setDate(3, ((Materia)materia).getAño());
+            pstm.setBoolean(4, ((Materia)materia).isElectiva());
+            pstm.setInt(5, ((Materia)materia).getHorasSemana());
+            pstm.setInt(6, ((Materia)materia).getAdministrador().getIdAdministrador());
 			 
             int affectedRows = pstm.executeUpdate();
 

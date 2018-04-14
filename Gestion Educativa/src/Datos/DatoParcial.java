@@ -57,11 +57,11 @@ public class DatoParcial extends dato{
                     + "horario_fin, id_horario) VALUES (?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Parcial)parcial).descripcion);
-            pstm.setDate(2, ((Parcial)parcial).fecha);
-            pstm.setTime(3, ((Parcial)parcial).horarioInicio);
-            pstm.setTime(4, ((Parcial)parcial).horarioFin);
-            pstm.setInt(5, ((Parcial)parcial).horario.idHorario);
+            pstm.setString(1, ((Parcial)parcial).getDescripcion());
+            pstm.setDate(2, ((Parcial)parcial).getFecha());
+            pstm.setTime(3, ((Parcial)parcial).getHorarioInicio());
+            pstm.setTime(4, ((Parcial)parcial).getHorarioFin());
+            pstm.setInt(5, ((Parcial)parcial).getHorario().getIdHorario());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -125,15 +125,15 @@ public class DatoParcial extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Parcial SET descripcion = ?, fecha = ?, "
                     + "horario_inicio = ?, horario_fin = ?, id_horario = ? "
-                    + "WHERE ( id_parcial = " + ((Parcial)parcial).idParcial + ")" ;
+                    + "WHERE ( id_parcial = " + ((Parcial)parcial).getIdParcial() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Parcial)parcial).descripcion);
-            pstm.setDate(2, ((Parcial)parcial).fecha);
-            pstm.setTime(3, ((Parcial)parcial).horarioInicio);
-            pstm.setTime(4, ((Parcial)parcial).horarioFin);
-            pstm.setInt(5, ((Parcial)parcial).horario.idHorario);
+            pstm.setString(1, ((Parcial)parcial).getDescripcion());
+            pstm.setDate(2, ((Parcial)parcial).getFecha());
+            pstm.setTime(3, ((Parcial)parcial).getHorarioInicio());
+            pstm.setTime(4, ((Parcial)parcial).getHorarioFin());
+            pstm.setInt(5, ((Parcial)parcial).getHorario().getIdHorario());
 			 
             int affectedRows = pstm.executeUpdate();
 

@@ -58,15 +58,15 @@ public class DatoDocente extends dato{
                     + "VALUES (?,?,?,?,?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Docente)docente).nombre);
-            pstm.setString(2, ((Docente)docente).apellido);
-            pstm.setString(3, ((Docente)docente).telefono);
-            pstm.setString(4, ((Docente)docente).email);
-            pstm.setString(5, ((Docente)docente).direccion);
-            pstm.setString(6, ((Docente)docente).legajo);
-            pstm.setString(7, ((Docente)docente).usuario);
-            pstm.setString(8, ((Docente)docente).clave);
-            pstm.setInt(9, ((Docente)docente).moderador.idModerador);
+            pstm.setString(1, ((Docente)docente).getNombre());
+            pstm.setString(2, ((Docente)docente).getApellido());
+            pstm.setString(3, ((Docente)docente).getTelefono());
+            pstm.setString(4, ((Docente)docente).getEmail());
+            pstm.setString(5, ((Docente)docente).getDireccion());
+            pstm.setString(6, ((Docente)docente).getLegajo());
+            pstm.setString(7, ((Docente)docente).getUsuario());
+            pstm.setString(8, ((Docente)docente).getClave());
+            pstm.setInt(9, ((Docente)docente).getModerador().getIdModerador());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -132,19 +132,19 @@ public class DatoDocente extends dato{
             String query = "UPDATE Docente SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? , id_moderador = ? "
-                    + "WHERE ( id_docente = " + ((Docente)docente).idDocente + ")" ; 
+                    + "WHERE ( id_docente = " + ((Docente)docente).getIdDocente() + ")" ; 
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Docente)docente).nombre);
-            pstm.setString(2, ((Docente)docente).apellido);
-            pstm.setString(3, ((Docente)docente).telefono);
-            pstm.setString(4, ((Docente)docente).email);
-            pstm.setString(5, ((Docente)docente).direccion);
-            pstm.setString(6, ((Docente)docente).legajo);
-            pstm.setString(7, ((Docente)docente).usuario);
-            pstm.setString(8, ((Docente)docente).clave);
-            pstm.setInt(9, ((Docente)docente).moderador.idModerador);
+            pstm.setString(1, ((Docente)docente).getNombre());
+            pstm.setString(2, ((Docente)docente).getApellido());
+            pstm.setString(3, ((Docente)docente).getTelefono());
+            pstm.setString(4, ((Docente)docente).getEmail());
+            pstm.setString(5, ((Docente)docente).getDireccion());
+            pstm.setString(6, ((Docente)docente).getLegajo());
+            pstm.setString(7, ((Docente)docente).getUsuario());
+            pstm.setString(8, ((Docente)docente).getClave());
+            pstm.setInt(9, ((Docente)docente).getModerador().getIdModerador());
 			 
             int affectedRows = pstm.executeUpdate();
 

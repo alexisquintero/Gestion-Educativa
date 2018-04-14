@@ -5,13 +5,23 @@
  */
 package Menu;
 
+import Entidades.Persona;
+import Entidades.entidad;
+import Excepciones.ApplicationException;
+import Negocio.ControladorGestion;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Otros.Enumeraciones.MenuAdministradorOpciones;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,33 +29,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "MenuAdministrador", urlPatterns = {"/MenuAdministrador"})
 public class MenuAdministrador extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MenuAdministrador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MenuAdministrador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -58,31 +41,43 @@ public class MenuAdministrador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        Persona usuario = null;
+        HttpSession session = request.getSession();
+        usuario = (Persona)session.getAttribute("usuario");
+        ControladorGestion controlador = 
+        (ControladorGestion)session.getAttribute("ControladorGestion");
+              
+        if(usuario == null) {response.sendError(401, "Login required"); return;}
+        
+        MenuAdministradorOpciones redirect = 
+                MenuAdministradorOpciones.
+                        valueOf(request.getParameter("redirect"));
+        
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/Error.jsp");    
+        switch (redirect) {
+            case Carrera: 
+                {
+                    try {
+                        ArrayList<entidad> carreras = controlador.buscarCarreras();
+                        session.setAttribute("carreras", carreras);
+                        dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/Carrera.jsp");break;
+                    } catch (ApplicationException ex) {
+                        Logger.getLogger(MenuAdministrador.class.getName()).
+                                log(Level.SEVERE, null, ex);
+                    }
+                }              
+            case Moderador: dispatcher = getServletContext().
+                    getRequestDispatcher("/WEB-INF/Moderador.jsp");break;
+            case Docente: dispatcher = getServletContext().
+                    getRequestDispatcher("/WEB-INF/Docente.jsp");break;
+            case Materia: dispatcher = getServletContext().
+                    getRequestDispatcher("/WEB-INF/Materia.jsp");break;                            
+            default:
+                response.sendRedirect("/LoginAlumno.jsp");
+        }
+        dispatcher.forward(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

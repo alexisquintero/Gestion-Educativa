@@ -57,14 +57,14 @@ public class DatoAdministrador extends dato{
                     + "email, direccion, legajo, usuario, clave) VALUES (?,?,?,?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Administrador)administrador).nombre);
-            pstm.setString(2, ((Administrador)administrador).apellido);
-            pstm.setString(3, ((Administrador)administrador).telefono);
-            pstm.setString(4, ((Administrador)administrador).email);
-            pstm.setString(5, ((Administrador)administrador).direccion);
-            pstm.setString(6, ((Administrador)administrador).legajo);
-            pstm.setString(7, ((Administrador)administrador).usuario);
-            pstm.setString(8, ((Administrador)administrador).clave);
+            pstm.setString(1, ((Administrador)administrador).getNombre());
+            pstm.setString(2, ((Administrador)administrador).getApellido());
+            pstm.setString(3, ((Administrador)administrador).getTelefono());
+            pstm.setString(4, ((Administrador)administrador).getEmail());
+            pstm.setString(5, ((Administrador)administrador).getDireccion());
+            pstm.setString(6, ((Administrador)administrador).getLegajo());
+            pstm.setString(7, ((Administrador)administrador).getUsuario());
+            pstm.setString(8, ((Administrador)administrador).getClave());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -129,18 +129,18 @@ public class DatoAdministrador extends dato{
             String query = "UPDATE Administrador SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? "
-                    + "WHERE ( id_administrador = " + ((Administrador)administrador).idAdministrador + ")" ;
+                    + "WHERE ( id_administrador = " + ((Administrador)administrador).getIdAdministrador() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Administrador)administrador).nombre);
-            pstm.setString(2, ((Administrador)administrador).apellido);
-            pstm.setString(3, ((Administrador)administrador).telefono);
-            pstm.setString(4, ((Administrador)administrador).email);
-            pstm.setString(5, ((Administrador)administrador).direccion);
-            pstm.setString(6, ((Administrador)administrador).legajo);
-            pstm.setString(7, ((Administrador)administrador).usuario);
-            pstm.setString(8, ((Administrador)administrador).clave);
+            pstm.setString(1, ((Administrador)administrador).getNombre());
+            pstm.setString(2, ((Administrador)administrador).getApellido());
+            pstm.setString(3, ((Administrador)administrador).getTelefono());
+            pstm.setString(4, ((Administrador)administrador).getEmail());
+            pstm.setString(5, ((Administrador)administrador).getDireccion());
+            pstm.setString(6, ((Administrador)administrador).getLegajo());
+            pstm.setString(7, ((Administrador)administrador).getUsuario());
+            pstm.setString(8, ((Administrador)administrador).getClave());
 			 
             int affectedRows = pstm.executeUpdate();
 

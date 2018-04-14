@@ -56,9 +56,9 @@ public class DatoInscripcionHorario extends dato{
                     + "VALUES (?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setDate(1, ((InscripcionHorario)inscripcionHorario).fecha);
-            pstm.setInt(2, ((InscripcionHorario)inscripcionHorario).horario.idHorario);
-            pstm.setInt(3, ((InscripcionHorario)inscripcionHorario).alumno.idAlumno);
+            pstm.setDate(1, ((InscripcionHorario)inscripcionHorario).getFecha());
+            pstm.setInt(2, ((InscripcionHorario)inscripcionHorario).getHorario().getIdHorario());
+            pstm.setInt(3, ((InscripcionHorario)inscripcionHorario).getAlumno().getIdAlumno());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -125,9 +125,9 @@ public class DatoInscripcionHorario extends dato{
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setDate(1, ((InscripcionHorario)inscripcionHorario).fecha);
-            pstm.setInt(2, ((InscripcionHorario)inscripcionHorario).horario.idHorario);
-            pstm.setInt(3, ((InscripcionHorario)inscripcionHorario).alumno.idAlumno);
+            pstm.setDate(1, ((InscripcionHorario)inscripcionHorario).getFecha());
+            pstm.setInt(2, ((InscripcionHorario)inscripcionHorario).getHorario().getIdHorario());
+            pstm.setInt(3, ((InscripcionHorario)inscripcionHorario).getAlumno().getIdAlumno());
 			 
             int affectedRows = pstm.executeUpdate();
 

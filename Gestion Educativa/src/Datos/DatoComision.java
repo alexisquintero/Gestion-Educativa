@@ -56,9 +56,9 @@ public class DatoComision extends dato{
                     + "VALUES (?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Comision)comision).aula);
-            pstm.setInt(2, ((Comision)comision).cupo);
-            pstm.setInt(3, ((Comision)comision).moderador.idModerador);
+            pstm.setString(1, ((Comision)comision).getAula());
+            pstm.setInt(2, ((Comision)comision).getCupo());
+            pstm.setInt(3, ((Comision)comision).getModerador().getIdModerador());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -121,13 +121,13 @@ public class DatoComision extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Comision SET aula = ?, cupo = ?, "
                     + "id_moderador = ? "
-                    + "WHERE ( id_comision = " + ((Comision)comision).idComision + ")" ;
+                    + "WHERE ( id_comision = " + ((Comision)comision).getIdComision() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Comision)comision).aula);
-            pstm.setInt(2, ((Comision)comision).cupo);
-            pstm.setInt(3, ((Comision)comision).moderador.idModerador);
+            pstm.setString(1, ((Comision)comision).getAula());
+            pstm.setInt(2, ((Comision)comision).getCupo());
+            pstm.setInt(3, ((Comision)comision).getModerador().getIdModerador());
 			 
             int affectedRows = pstm.executeUpdate();
 

@@ -24,7 +24,7 @@ public class NegocioFinal extends negocio{
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Final)e).idFinal); 
+        return datos.getOne(((Final)e).getIdFinal()); 
     }
 
     @Override
@@ -47,6 +47,6 @@ public class NegocioFinal extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Final)e).idFinal);
+        datos.delete(((Final)e).getIdFinal());
     }
 }

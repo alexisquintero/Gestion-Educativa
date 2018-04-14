@@ -6,17 +6,15 @@
 package Login;
 
 import Entidad.Servlet;
+import Entidades.Persona;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Negocio.ControladorGestion;
-import Entidades.Administrador;
-import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Excepciones.LoginException;
 import javax.servlet.RequestDispatcher;
@@ -35,14 +33,8 @@ public class LoginAdministrador extends Servlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();       
         ControladorGestion controlador = new ControladorGestion();
-        entidad persona = null;
-        HttpSession session = request.getSession();
-        
-        try{
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        }catch (ClassNotFoundException e1){
-            out.println(e1.getMessage());
-        }   
+        Persona persona = null;
+        HttpSession session = request.getSession();       
         
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -67,8 +59,6 @@ public class LoginAdministrador extends Servlet {
         session.setAttribute("ControladorGestion", controlador);
         session.setAttribute("usuario", persona);     
         
-        dispatcher.forward(request, response);			
-               
+        dispatcher.forward(request, response);			            
     }
-
 }

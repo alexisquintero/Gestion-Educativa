@@ -57,11 +57,11 @@ public class DatoHorario extends dato{
                     + "horario_fin, id_comision, id_materia) VALUES (?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Horario)horario).dia);
-            pstm.setTime(2, ((Horario)horario).horarioInicio);
-            pstm.setTime(3, ((Horario)horario).horarioFin);
-            pstm.setInt(4, ((Horario)horario).comision.idComision);
-            pstm.setInt(5, ((Horario)horario).materia.idMateria);
+            pstm.setString(1, ((Horario)horario).getDia());
+            pstm.setTime(2, ((Horario)horario).getHorarioInicio());
+            pstm.setTime(3, ((Horario)horario).getHorarioFin());
+            pstm.setInt(4, ((Horario)horario).getComision().getIdComision());
+            pstm.setInt(5, ((Horario)horario).getMateria().getIdMateria());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -125,15 +125,15 @@ public class DatoHorario extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Horario SET dia = ?, horario_inicio= ?, "
                     + "horario_fin = ?, id_comision = ?, id_materia = ? "
-                    + "WHERE ( id_horario = " + ((Horario)horario).idHorario + ")" ;
+                    + "WHERE ( id_horario = " + ((Horario)horario).getIdHorario() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				            
-            pstm.setString(1, ((Horario)horario).dia);
-            pstm.setTime(2, ((Horario)horario).horarioInicio);
-            pstm.setTime(3, ((Horario)horario).horarioFin);
-            pstm.setInt(4, ((Horario)horario).comision.idComision);
-            pstm.setInt(5, ((Horario)horario).materia.idMateria);
+            pstm.setString(1, ((Horario)horario).getDia());
+            pstm.setTime(2, ((Horario)horario).getHorarioInicio());
+            pstm.setTime(3, ((Horario)horario).getHorarioFin());
+            pstm.setInt(4, ((Horario)horario).getComision().getIdComision());
+            pstm.setInt(5, ((Horario)horario).getMateria().getIdMateria());
 			 
             int affectedRows = pstm.executeUpdate();
 

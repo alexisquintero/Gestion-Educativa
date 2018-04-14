@@ -12,6 +12,20 @@ package Entidades;
 public class Administrador extends Persona{
 
     /**
+     * @return the idAdministrador
+     */
+    public int getIdAdministrador() {
+        return idAdministrador;
+    }
+
+    /**
+     * @param idAdministrador the idAdministrador to set
+     */
+    public void setIdAdministrador(int idAdministrador) {
+        this.idAdministrador = idAdministrador;
+    }
+
+    /**
      * 
      * @param idAdministrador
      * @param nombre
@@ -27,7 +41,7 @@ public class Administrador extends Persona{
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.idAdministrador = idAdministrador;
     }
-    public int idAdministrador;   
+    private int idAdministrador;   
 
     Administrador() {
         super();

@@ -56,10 +56,10 @@ public class DatoNotaParcial extends dato{
                     + "id_parcial) VALUES (?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setInt(1, ((NotaParcial)notaParcial).nota);
-            pstm.setBoolean(2, ((NotaParcial)notaParcial).presencia);
-            pstm.setInt(3, ((NotaParcial)notaParcial).alumno.idAlumno);
-            pstm.setInt(4, ((NotaParcial)notaParcial).parcial.idParcial);
+            pstm.setInt(1, ((NotaParcial)notaParcial).getNota());
+            pstm.setBoolean(2, ((NotaParcial)notaParcial).isPresencia());
+            pstm.setInt(3, ((NotaParcial)notaParcial).getAlumno().getIdAlumno());
+            pstm.setInt(4, ((NotaParcial)notaParcial).getParcial().getIdParcial());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -125,10 +125,10 @@ public class DatoNotaParcial extends dato{
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setInt(1, ((NotaParcial)notaParcial).nota);
-            pstm.setBoolean(2, ((NotaParcial)notaParcial).presencia);            
-            pstm.setInt(3, ((NotaParcial)notaParcial).parcial.idParcial);
-            pstm.setInt(4, ((NotaParcial)notaParcial).alumno.idAlumno);
+            pstm.setInt(1, ((NotaParcial)notaParcial).getNota());
+            pstm.setBoolean(2, ((NotaParcial)notaParcial).isPresencia());            
+            pstm.setInt(3, ((NotaParcial)notaParcial).getParcial().getIdParcial());
+            pstm.setInt(4, ((NotaParcial)notaParcial).getAlumno().getIdAlumno());
 			 
             int affectedRows = pstm.executeUpdate();
 

@@ -14,6 +14,76 @@ import java.util.ArrayList;
 public class Carrera extends entidad{
 
     /**
+     * @return the idCarrera
+     */
+    public int getIdCarrera() {
+        return idCarrera;
+    }
+
+    /**
+     * @param idCarrera the idCarrera to set
+     */
+    public void setIdCarrera(int idCarrera) {
+        this.idCarrera = idCarrera;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the administrador
+     */
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    /**
+     * @param administrador the administrador to set
+     */
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    /**
+     * @return the materias
+     */
+    public ArrayList<Materia> getMaterias() {
+        return materias;
+    }
+
+    /**
+     * @param materias the materias to set
+     */
+    public void setMaterias(ArrayList<Materia> materias) {
+        this.materias = materias;
+    }
+
+    /**
      * 
      * @param idCarrera
      * @param nombre
@@ -25,13 +95,13 @@ public class Carrera extends entidad{
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.administrador = new Administrador();
-        this.administrador.idAdministrador = idAdministrador;
+        this.administrador.setIdAdministrador(idAdministrador);
     }
-    public int idCarrera;
-    public String nombre;
-    public String descripcion;
-    public Administrador administrador;
-    public ArrayList<Materia> materias;
+    private int idCarrera;
+    private String nombre;
+    private String descripcion;
+    private Administrador administrador;
+    private ArrayList<Materia> materias;
 
     Carrera() {
         this.idCarrera = 0;

@@ -24,7 +24,7 @@ public class NegocioHorario extends negocio{
 
     @Override
     public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Horario)e).idHorario); 
+        return datos.getOne(((Horario)e).getIdHorario()); 
     }
 
     @Override
@@ -47,6 +47,6 @@ public class NegocioHorario extends negocio{
 
     @Override
     public void eliminar(entidad e) throws ApplicationException{
-        datos.delete(((Horario)e).idHorario);
+        datos.delete(((Horario)e).getIdHorario());
     }
 }

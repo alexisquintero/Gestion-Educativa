@@ -12,6 +12,34 @@ package Entidades;
 public class Bedel extends Persona{
 
     /**
+     * @return the idBedel
+     */
+    public int getIdBedel() {
+        return idBedel;
+    }
+
+    /**
+     * @param idBedel the idBedel to set
+     */
+    public void setIdBedel(int idBedel) {
+        this.idBedel = idBedel;
+    }
+
+    /**
+     * @return the administrador
+     */
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    /**
+     * @param administrador the administrador to set
+     */
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    /**
      * 
      * @param idBedel
      * @param idAdministrador
@@ -28,10 +56,10 @@ public class Bedel extends Persona{
         super(nombre, apellido, telefono, email, direccion, legajo, usuario, clave);
         this.idBedel = idBedel;
         this.administrador = new Administrador();
-        this.administrador.idAdministrador = idAdministrador;
+        this.administrador.setIdAdministrador(idAdministrador);
     }
-    public int idBedel;
-    public Administrador administrador;
+    private int idBedel;
+    private Administrador administrador;
 
     Bedel() {
         super();

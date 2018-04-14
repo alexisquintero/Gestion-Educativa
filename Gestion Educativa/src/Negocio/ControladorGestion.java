@@ -7,6 +7,7 @@ package Negocio;
 
 import Entidades.*;
 import Excepciones.ApplicationException;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,6 +31,10 @@ public class ControladorGestion {
         alumno = (Alumno)negocio.login(usuario, contrasenia);
 
         return alumno;
+    }
+    
+    public ArrayList<entidad> buscarCarreras() throws ApplicationException{ 
+        return new NegocioCarrera().buscar();      
     }
 }
 

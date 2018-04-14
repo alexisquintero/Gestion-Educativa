@@ -60,16 +60,16 @@ public class DatoAlumno extends dato{
                     + "VALUES (?,?,?,?,?,?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Alumno)alumno).nombre);
-            pstm.setString(2, ((Alumno)alumno).apellido);
-            pstm.setString(3, ((Alumno)alumno).telefono);
-            pstm.setString(4, ((Alumno)alumno).email);
-            pstm.setString(5, ((Alumno)alumno).direccion);
-            pstm.setString(6, ((Alumno)alumno).legajo);
-            pstm.setString(7, ((Alumno)alumno).usuario);
-            pstm.setString(8, ((Alumno)alumno).clave);
-            pstm.setInt(9, ((Alumno)alumno).moderador.idModerador);
-            pstm.setInt(10, ((Alumno)alumno).carrera.idCarrera);
+            pstm.setString(1, ((Alumno)alumno).getNombre());
+            pstm.setString(2, ((Alumno)alumno).getApellido());
+            pstm.setString(3, ((Alumno)alumno).getTelefono());
+            pstm.setString(4, ((Alumno)alumno).getEmail());
+            pstm.setString(5, ((Alumno)alumno).getDireccion());
+            pstm.setString(6, ((Alumno)alumno).getLegajo());
+            pstm.setString(7, ((Alumno)alumno).getUsuario());
+            pstm.setString(8, ((Alumno)alumno).getClave());
+            pstm.setInt(9, ((Alumno)alumno).getModerador().getIdModerador());
+            pstm.setInt(10, ((Alumno)alumno).getCarrera().getIdCarrera());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -136,20 +136,20 @@ public class DatoAlumno extends dato{
             String query = "UPDATE Alumno SET nombre = ?, apellido = ?, "
                     + "telefono = ?, email = ?, direccion = ?, legajo = ?, "
                     + "usuario = ?, clave  = ? , id_moderador = ?, id_carrera = ? "
-                    + "WHERE ( id_alumno = " + ((Alumno)alumno).idAlumno + ")" ;
+                    + "WHERE ( id_alumno = " + ((Alumno)alumno).getIdAlumno() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Alumno)alumno).nombre);
-            pstm.setString(2, ((Alumno)alumno).apellido);
-            pstm.setString(3, ((Alumno)alumno).telefono);
-            pstm.setString(4, ((Alumno)alumno).email);
-            pstm.setString(5, ((Alumno)alumno).direccion);
-            pstm.setString(6, ((Alumno)alumno).legajo);
-            pstm.setString(7, ((Alumno)alumno).usuario);
-            pstm.setString(8, ((Alumno)alumno).clave);
-            pstm.setInt(9, ((Alumno)alumno).moderador.idModerador);
-            pstm.setInt(10, ((Alumno)alumno).carrera.idCarrera);
+            pstm.setString(1, ((Alumno)alumno).getNombre());
+            pstm.setString(2, ((Alumno)alumno).getApellido());
+            pstm.setString(3, ((Alumno)alumno).getTelefono());
+            pstm.setString(4, ((Alumno)alumno).getEmail());
+            pstm.setString(5, ((Alumno)alumno).getDireccion());
+            pstm.setString(6, ((Alumno)alumno).getLegajo());
+            pstm.setString(7, ((Alumno)alumno).getUsuario());
+            pstm.setString(8, ((Alumno)alumno).getClave());
+            pstm.setInt(9, ((Alumno)alumno).getModerador().getIdModerador());
+            pstm.setInt(10, ((Alumno)alumno).getCarrera().getIdCarrera());
 			 
             int affectedRows = pstm.executeUpdate();
 

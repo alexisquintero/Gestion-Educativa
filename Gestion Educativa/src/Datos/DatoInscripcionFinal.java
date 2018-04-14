@@ -58,13 +58,13 @@ public class DatoInscripcionFinal extends dato{
                     + "nota_teoria, nota_final, presencia, id_alumno, id_final) VALUES (?,?,?,?,?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setDate(1, ((InscripcionFinal)inscripcionFinal).fecha);
-            pstm.setInt(2, ((InscripcionFinal)inscripcionFinal).notaPractica);
-            pstm.setInt(3, ((InscripcionFinal)inscripcionFinal).notaTeoria);
-            pstm.setInt(4, ((InscripcionFinal)inscripcionFinal).notaFinal);
-            pstm.setBoolean(5, ((InscripcionFinal)inscripcionFinal).presencia);
-            pstm.setInt(6, ((InscripcionFinal)inscripcionFinal).alumno.idAlumno);
-            pstm.setInt(7, ((InscripcionFinal)inscripcionFinal).objFinal.idFinal);
+            pstm.setDate(1, ((InscripcionFinal)inscripcionFinal).getFecha());
+            pstm.setInt(2, ((InscripcionFinal)inscripcionFinal).getNotaPractica());
+            pstm.setInt(3, ((InscripcionFinal)inscripcionFinal).getNotaTeoria());
+            pstm.setInt(4, ((InscripcionFinal)inscripcionFinal).getNotaFinal());
+            pstm.setBoolean(5, ((InscripcionFinal)inscripcionFinal).isPresencia());
+            pstm.setInt(6, ((InscripcionFinal)inscripcionFinal).getAlumno().getIdAlumno());
+            pstm.setInt(7, ((InscripcionFinal)inscripcionFinal).getObjFinal().getIdFinal());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -134,16 +134,16 @@ public class DatoInscripcionFinal extends dato{
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setDate(1, ((InscripcionFinal)inscripcionFinal).fecha);
-            pstm.setInt(2, ((InscripcionFinal)inscripcionFinal).notaPractica);
-            pstm.setInt(3, ((InscripcionFinal)inscripcionFinal).notaTeoria);
-            pstm.setInt(4, ((InscripcionFinal)inscripcionFinal).notaFinal);
-            pstm.setBoolean(5, ((InscripcionFinal)inscripcionFinal).presencia);
-            pstm.setInt(6, ((InscripcionFinal)inscripcionFinal).alumno.idAlumno);
-            pstm.setInt(7, ((InscripcionFinal)inscripcionFinal).objFinal.idFinal);
-            pstm.setDate(8, ((InscripcionFinal)inscripcionFinal).fecha);
-            pstm.setInt(9, ((InscripcionFinal)inscripcionFinal).objFinal.idFinal);
-            pstm.setInt(10, ((InscripcionFinal)inscripcionFinal).alumno.idAlumno);
+            pstm.setDate(1, ((InscripcionFinal)inscripcionFinal).getFecha());
+            pstm.setInt(2, ((InscripcionFinal)inscripcionFinal).getNotaPractica());
+            pstm.setInt(3, ((InscripcionFinal)inscripcionFinal).getNotaTeoria());
+            pstm.setInt(4, ((InscripcionFinal)inscripcionFinal).getNotaFinal());
+            pstm.setBoolean(5, ((InscripcionFinal)inscripcionFinal).isPresencia());
+            pstm.setInt(6, ((InscripcionFinal)inscripcionFinal).getAlumno().getIdAlumno());
+            pstm.setInt(7, ((InscripcionFinal)inscripcionFinal).getObjFinal().getIdFinal());
+            pstm.setDate(8, ((InscripcionFinal)inscripcionFinal).getFecha());
+            pstm.setInt(9, ((InscripcionFinal)inscripcionFinal).getObjFinal().getIdFinal());
+            pstm.setInt(10, ((InscripcionFinal)inscripcionFinal).getAlumno().getIdAlumno());
 			 
             int affectedRows = pstm.executeUpdate();
 

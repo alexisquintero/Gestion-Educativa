@@ -13,5 +13,5 @@ public class Enumeraciones {
     public enum TipoLogin {Administrador, Moderador, Bedel, Alumno, Docente};
     public enum Presencia {Ausente, Presente};
     public enum TipoMateria {Electiva, Obligatoria};
-    
+    public enum MenuAdministradorOpciones {Carrera, Moderador, Docente, Materia};
 }

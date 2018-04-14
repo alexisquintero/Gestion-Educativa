@@ -55,9 +55,9 @@ public class DatoCarrera extends dato{
                     + "VALUES (?,?,?)";
             pstm = myConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 	 
-            pstm.setString(1, ((Carrera)carrera).nombre);
-            pstm.setString(2, ((Carrera)carrera).descripcion);
-            pstm.setInt(3, ((Carrera)carrera).administrador.idAdministrador);
+            pstm.setString(1, ((Carrera)carrera).getNombre());
+            pstm.setString(2, ((Carrera)carrera).getDescripcion());
+            pstm.setInt(3, ((Carrera)carrera).getAdministrador().getIdAdministrador());
             
             int affectedRows = pstm.executeUpdate();
 
@@ -114,13 +114,13 @@ public class DatoCarrera extends dato{
             myConn = Sql.Connect();
             String query = "UPDATE Carrera SET nombre = ?, descripcion = ?, "
                     + "id_administrador = ? "
-                    + "WHERE ( id_carrera = " + ((Carrera)carrera).idCarrera + ")" ;
+                    + "WHERE ( id_carrera = " + ((Carrera)carrera).getIdCarrera() + ")" ;
 			
             pstm = myConn.prepareStatement(query);
 				
-            pstm.setString(1, ((Carrera)carrera).nombre);
-            pstm.setString(2, ((Carrera)carrera).descripcion);
-            pstm.setInt(3, ((Carrera)carrera).idCarrera);
+            pstm.setString(1, ((Carrera)carrera).getNombre());
+            pstm.setString(2, ((Carrera)carrera).getDescripcion());
+            pstm.setInt(3, ((Carrera)carrera).getIdCarrera());
 			 
             int affectedRows = pstm.executeUpdate();
 
