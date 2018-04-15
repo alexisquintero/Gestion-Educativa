@@ -7,6 +7,7 @@
 <%@page import="Entidades.Carrera"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entidades.Materia"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,10 @@
         (Carrera)session.getAttribute("carrera"); %>
         <form action="" method="post">
             <table>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Valor</th>
+                </tr>
                 <tr>
                     <td>ID</td>
                     <td><input type=text" name="id" value="${carrera.idCarrera}" readonly="readonly"</td>
@@ -33,10 +38,32 @@
                 </tr>
                 <tr>
                     <td>Materias</td>   
-                    <c:forEach var="materia" items="${carrera.materias}">                          
-                        <c:out value="${materia.nombre}" /> 
-                    </c:forEach>                    
-                    <td><input type="submit" value="agregar"> </td>
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Año</th>
+                        <th>Acción</th>
+                    </tr>
+                    <tr>
+                        <c:forEach var="materia" items="${carrera.materias}">   
+                            <tr>
+                                <td>
+                                    <c:out value="${materia.nombre}" /> 
+                                </td>
+                                <td>
+                                    <c:out value="${materia.descripcion}" /> 
+                                </td>
+                                <td>
+                                    <c:out value="${materia.año}" /> 
+                                </td>
+                                <td>
+                                    <input type="submit" value="agregar"> 
+                                </td>  
+                            </tr>
+                        </c:forEach>                                                                                   
+                    </tr>
+                </table>
                 </tr>
             </table>
         </form>

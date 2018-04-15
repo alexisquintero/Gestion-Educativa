@@ -22,6 +22,7 @@
         <table>    
             <tr>
                 <th>Nombre</th>
+                <th>Descripción</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
@@ -30,6 +31,9 @@
                     <td>
                         <c:out value="${carrera.nombre}" />
                     </td>       
+                    <td>
+                        <c:out value="${carrera.descripcion}" />
+                    </td>
                     <td>
                         <a href="Carrera?redirect=Editar&id=${carrera.idCarrera}">
                         Editar</a></td>
