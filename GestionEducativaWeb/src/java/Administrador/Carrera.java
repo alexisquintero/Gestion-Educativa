@@ -5,16 +5,15 @@
  */
 package Administrador;
 
+import Entidad.Servlet;
 import Entidades.Persona;
 import Negocio.ControladorGestion;
 import Otros.Enumeraciones.CarreraAction;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Optional;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author Supervisor
  */
 @WebServlet(name = "Carrera", urlPatterns = {"/Carrera"})
-public class Carrera extends HttpServlet {
+public class Carrera extends Servlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -39,9 +38,9 @@ public class Carrera extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Persona usuario = null;
+        Entidades.Administrador usuario = null;
         HttpSession session = request.getSession();
-        usuario = (Persona)session.getAttribute("usuario");
+        usuario = (Entidades.Administrador)session.getAttribute("usuario");
         ControladorGestion controlador = 
         (ControladorGestion)session.getAttribute("ControladorGestion");
               
@@ -52,15 +51,15 @@ public class Carrera extends HttpServlet {
                         valueOf(request.getParameter("redirect"));
         
         ArrayList<Entidades.Carrera> carreras = null;
-        Entidades.Carrera carrera = null;
+        Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", usuario.getIdAdministrador(), null);
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
             carreras = (ArrayList<Entidades.Carrera>)session.
                 getAttribute("carreras");
             carrera = carreras.stream().
-                filter(c -> c.getIdCarrera() == id).findFirst().get();
-            session.setAttribute("carrera", carrera);        
-        }      
+                filter(c -> c.getIdCarrera() == id).findFirst().get();                 
+        }
+        session.setAttribute("carrera", carrera);  
         
         RequestDispatcher dispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/Error.jsp");

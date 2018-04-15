@@ -6,7 +6,6 @@
 package Datos;
 
 import Entidades.Carrera;
-import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.*;
 import java.sql.SQLException;
@@ -125,7 +124,7 @@ public class DatoCarrera extends dato{
 				
             pstm.setString(1, ((Carrera)carrera).getNombre());
             pstm.setString(2, ((Carrera)carrera).getDescripcion());
-            pstm.setInt(3, ((Carrera)carrera).getIdCarrera());
+            pstm.setInt(3, ((Carrera)carrera).getAdministrador().getIdAdministrador());
 			 
             int affectedRows = pstm.executeUpdate();
 

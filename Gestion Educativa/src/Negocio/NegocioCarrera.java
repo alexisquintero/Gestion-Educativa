@@ -34,7 +34,8 @@ public class NegocioCarrera extends negocio{
 
     @Override
     public int nuevo(entidad e) throws ApplicationException{
-        if (this.buscar(e) == null) {
+        Carrera carrera = (Carrera)e;
+        if (0 != carrera.getIdCarrera() && this.buscar(e) == null) {
             throw new EntidadExistenteException("La Carrera ya existe");
         }       
         return datos.newObject(e);

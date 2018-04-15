@@ -36,6 +36,14 @@ public class ControladorGestion {
     public ArrayList<entidad> buscarCarreras() throws ApplicationException{ 
         return new NegocioCarrera().buscar();      
     }
+    
+    public void modificarCarrera(entidad carrera) throws ApplicationException{
+        new NegocioCarrera().modificar(carrera);
+    }
+    
+    public int crearCarrera(entidad carrera) throws ApplicationException{
+        return new NegocioCarrera().nuevo(carrera);
+    }
 }
 
 /**
