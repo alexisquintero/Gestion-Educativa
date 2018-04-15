@@ -8,7 +8,7 @@ package Datos;
 import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.*;
-import java.sql.Date;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -152,7 +152,7 @@ public class DatoMateria extends dato{
             myConn = Sql.Connect();
             String query = "DELETE FROM Materia WHERE (id_materia = ? )";
             
-            pstm = myConn.prepareStatement(query); 
+            pstm = myConn.prepareStatement(query);             
             pstm.setInt(1, id);
             
             int affectedRows = pstm.executeUpdate();
@@ -167,6 +167,32 @@ public class DatoMateria extends dato{
         finally {
             Sql.Close(rsl, stm, myConn);    
         }
+    }
+    
+    public ArrayList<entidad> materiasCarrera(int id, Connection myConn) throws ApplicationException {
+        ArrayList<entidad> materias = new ArrayList<>();
+        
+        try{
+            String query = "SELECT * FROM Materia m INNER JOIN Carrera_Materia ca "
+                    + "ON m.id_materia = ca.id_materia "
+                    + "WHERE id_carrera = " + id;
+            pstm = myConn.prepareStatement(query);
+            //pstm.setInt(1, id);
+            stm = myConn.createStatement();
+            
+            rsl = stm.executeQuery(query);
+		while(rsl.next()){
+                    Materia materia = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
+                            rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
+                            rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
+                    materias.add(materia);
+		}			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al buscar Materias de la Carrera", e);
+        }       
+        return materias;
     }
     
 }

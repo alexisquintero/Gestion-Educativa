@@ -14,4 +14,5 @@ public class Enumeraciones {
     public enum Presencia {Ausente, Presente};
     public enum TipoMateria {Electiva, Obligatoria};
     public enum MenuAdministradorOpciones {Carrera, Moderador, Docente, Materia};
+    public enum CarreraAction {Editar, Eliminar, Crear};
 }

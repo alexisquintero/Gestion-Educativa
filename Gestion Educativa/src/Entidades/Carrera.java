@@ -72,14 +72,14 @@ public class Carrera extends entidad{
     /**
      * @return the materias
      */
-    public ArrayList<Materia> getMaterias() {
+    public ArrayList<entidad> getMaterias() {
         return materias;
     }
 
     /**
      * @param materias the materias to set
      */
-    public void setMaterias(ArrayList<Materia> materias) {
+    public void setMaterias(ArrayList<entidad> materias) {
         this.materias = materias;
     }
 
@@ -89,19 +89,21 @@ public class Carrera extends entidad{
      * @param nombre
      * @param descripcion
      * @param idAdministrador
+     * @param materias
      */
-    public Carrera(int idCarrera, String nombre, String descripcion, int idAdministrador) {
+    public Carrera(int idCarrera, String nombre, String descripcion, int idAdministrador, ArrayList<entidad> materias) {
         this.idCarrera = idCarrera;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.administrador = new Administrador();
         this.administrador.setIdAdministrador(idAdministrador);
+        this.materias = materias;
     }
     private int idCarrera;
     private String nombre;
     private String descripcion;
     private Administrador administrador;
-    private ArrayList<Materia> materias;
+    private ArrayList<entidad> materias;
 
     Carrera() {
         this.idCarrera = 0;

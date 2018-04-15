@@ -19,23 +19,32 @@
     <body>     
         <%  ArrayList<Carrera> carreras = 
         (ArrayList<Carrera>)session.getAttribute("carreras"); %>
-        <ul>           
-            <c:forEach var="carrera" items="${carreras}">               
-                <c:out value="${carrera.nombre}" />
-            </c:forEach>
-        </ul>
+        <table>    
+            <tr>
+                <th>Nombre</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            <c:forEach var="carrera" items="${carreras}">  
+                <tr>
+                    <td>
+                        <c:out value="${carrera.nombre}" />
+                    </td>       
+                    <td>
+                        <a href="Carrera?redirect=Editar&id=${carrera.idCarrera}">
+                        Editar</a></td>
+                    </td>
+                                        <td>
+                        <a href="Carrera?redirect=Eliminar&id=${carrera.idCarrera}">
+                        Eliminar</a></td>
+                    </td>
+                </tr>
+            </c:forEach>          
+        </table>
         <table> 
             <tr>
-                <td><a href="?redirect=Crear">
+                <td><a href="Carrera?redirect=Crear">
                         Crear nueva carrera</a></td>
-            </tr>
-            <tr>
-                <td><a href="?redirect=Editar">
-                        Editar carrera existente</a></td>
-            </tr>
-            <tr>
-                <td><a href="?redirect=Eliminar">
-                        Eliminar carrera</a></td>
             </tr>
         </table> 
     </body>

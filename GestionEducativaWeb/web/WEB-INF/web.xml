@@ -3,6 +3,42 @@
     <welcome-file-list>
         <welcome-file>LoginAlumno.jsp</welcome-file>
     </welcome-file-list>
+    <servlet>
+        <description>LoginAdministrador</description>
+        <servlet-name>LoginAdministrador</servlet-name>
+        <servlet-class>Login.LoginAdministrador</servlet-class>
+    </servlet>
+    <servlet>
+        <description>MenuAdministrador</description>
+        <servlet-name>MenuAdministrador</servlet-name>
+        <servlet-class>Menu.MenuAdministrador</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Carrera</description>
+        <servlet-name>Carrera</servlet-name>
+        <servlet-class>Administrador.Carrera</servlet-class>
+    </servlet>
+    <servlet>
+        <description>LoginAdministradorJSP</description>
+        <servlet-name>LoginAdministradorJSP</servlet-name>
+        <jsp-file>/LoginAdministrador.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginAdministrador</servlet-name>
+        <url-pattern>/LoginAdministrador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenuAdministrador</servlet-name>
+        <url-pattern>/MenuAdministrador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Carrera</servlet-name>
+        <url-pattern>/Carrera</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginAdministradorJSP</servlet-name>
+        <url-pattern>/LoginAdministrador.jsp</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

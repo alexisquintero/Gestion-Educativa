@@ -15,7 +15,7 @@
     </head>
     <body> 
         <header>
-            <h1><%= administrador.apellido + ", " + administrador.nombre %></h1>
+            <h1><%= administrador.getApellido() + ", " + administrador.getNombre() %></h1>
         </header>
         <table> 
             <tr>

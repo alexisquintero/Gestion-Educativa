@@ -6,6 +6,7 @@
 package Datos;
 
 import Entidades.Carrera;
+import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.*;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class DatoCarrera extends dato{
     @Override
     public entidad getOne(int id) throws ApplicationException {
         Carrera carrera = null;
+        DatoMateria datoMateria = new DatoMateria();
         try{
             myConn = Sql.Connect(); 
             String query = "SELECT * FROM Carrera WHERE ( id_carrera = " + id + " )";
@@ -33,7 +35,8 @@ public class DatoCarrera extends dato{
             rsl = stm.executeQuery(query);
             while(rsl.next()){
 		carrera = new Carrera(rsl.getInt("id_carrera"),rsl.getString("nombre"), 
-                    rsl.getString("descripcion"), rsl.getInt("id_administrador"));			
+                    rsl.getString("descripcion"), rsl.getInt("id_administrador"),
+                    datoMateria.materiasCarrera(id, myConn));			
             }
         }
         catch( SQLException e){
@@ -84,6 +87,7 @@ public class DatoCarrera extends dato{
     @Override
     public ArrayList<entidad> getAll() throws ApplicationException {
         ArrayList<entidad> carreras = new ArrayList<>();
+        DatoMateria datoMateria = new DatoMateria();
         
         try{
             myConn = Sql.Connect();
@@ -94,7 +98,8 @@ public class DatoCarrera extends dato{
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
                     Carrera carrera = new Carrera(rsl.getInt("id_carrera"),rsl.getString("nombre"), 
-                        rsl.getString("descripcion"), rsl.getInt("id_administrador"));
+                        rsl.getString("descripcion"), rsl.getInt("id_administrador"),
+                        datoMateria.materiasCarrera(rsl.getInt("id_carrera"), myConn));
                     carreras.add(carrera);
 		}			
         }
