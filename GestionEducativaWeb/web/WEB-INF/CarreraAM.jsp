@@ -41,7 +41,7 @@
                 <input type="submit" value="Guardar"> 
             </tr>
         </form>
-        <form action="" method="post">
+        <form action="CarreraMateria" method="post">
             <h1>Materias</h1>   
             <table>
                 <tr>
@@ -51,6 +51,7 @@
                     <th>Acción</th>
                 </tr>
                 <c:forEach var="materia" items="${carrera.materias}">   
+                    <input type="hidden" name="id" value="${carrera.idCarrera}">
                     <tr>
                         <td>
                             <c:out value="${materia.nombre}" /> 

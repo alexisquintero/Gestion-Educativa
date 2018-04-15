@@ -44,6 +44,10 @@ public class ControladorGestion {
     public int crearCarrera(entidad carrera) throws ApplicationException{
         return new NegocioCarrera().nuevo(carrera);
     }
+    
+    public ArrayList<entidad> buscarMaterias() throws ApplicationException{
+        return new NegocioMateria().buscar();
+    }
 }
 
 /**
