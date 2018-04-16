@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="Entidades.entidad"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="Entidades.Carrera"%>
 <%@page import="Negocio.ControladorGestion"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,8 +17,8 @@
         <title>Carreras</title>
     </head>
     <body>     
-        <%  ArrayList<Carrera> carreras = 
-        (ArrayList<Carrera>)session.getAttribute("carreras"); %>
+        <%  List<Carrera> carreras = 
+        (List<Carrera>)session.getAttribute("carreras"); %>
         <table>    
             <tr>
                 <th>Nombre</th>

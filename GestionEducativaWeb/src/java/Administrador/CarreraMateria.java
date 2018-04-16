@@ -11,7 +11,7 @@ import Excepciones.ApplicationException;
 import Negocio.ControladorGestion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -49,24 +49,25 @@ public class CarreraMateria extends Servlet {
             out.println(e1.getMessage());
         }
         
-        ArrayList<Entidades.Carrera> materias = null;
+        List<Entidades.Materia> materias = null;
         Entidades.Carrera carrera = (Entidades.Carrera)session.getAttribute("carrera");
-        ArrayList<Entidades.Carrera> materiasExistentes = 
-                (ArrayList<Entidades.Carrera>)(ArrayList<?>)carrera.getMaterias();        
+        List<Entidades.Materia> materiasExistentes = 
+                (List<Entidades.Materia>)(List<?>)carrera.getMaterias();        
         
         try {
-            materias = (ArrayList<Entidades.Carrera>)
-                    (ArrayList<?>)controlador.buscarMaterias();
+            materias = (List<Entidades.Materia>)
+                    (List<?>)controlador.buscarMaterias();
         } catch (ApplicationException ex) {
             Logger.getLogger(CarreraMateria.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Stream<Entidades.Carrera> materiasDisponibles = null;
-        //ArrayList<Entidades.Carrera> materiasDisponibles = null;
+        //Stream<Entidades.Carrera> materiasDisponibles = null;
+        List<Entidades.Materia> materiasDisponibles = null;
         if(null != materias){
             materiasDisponibles = 
                     materias.stream().
                     filter(m -> materiasExistentes.stream().
-                            anyMatch(me -> me.getIdCarrera() != m.getIdCarrera()));  //TODO: Pasar a list para controlar el output          
+                            noneMatch(me -> me.getIdMateria() == m.getIdMateria())).
+                            collect(Collectors.toList());  //TODO: Pasar a list para controlar el output          
         }
         
         session.setAttribute("materiasDisponible", materiasDisponibles); 

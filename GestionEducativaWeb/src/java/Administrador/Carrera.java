@@ -10,7 +10,7 @@ import Entidades.Persona;
 import Negocio.ControladorGestion;
 import Otros.Enumeraciones.CarreraAction;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,11 +50,11 @@ public class Carrera extends Servlet {
                 CarreraAction.
                         valueOf(request.getParameter("redirect"));
         
-        ArrayList<Entidades.Carrera> carreras = null;
+        List<Entidades.Carrera> carreras = null;
         Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", usuario.getIdAdministrador(), null);
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
-            carreras = (ArrayList<Entidades.Carrera>)session.
+            carreras = (List<Entidades.Carrera>)session.
                 getAttribute("carreras");
             carrera = carreras.stream().
                 filter(c -> c.getIdCarrera() == id).findFirst().get();                 

@@ -4,7 +4,7 @@
     Author     : Supervisor
 --%>
 
-<%@page import="java.util.stream.Stream"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,8 +14,8 @@
         <title>CarreraMaterias</title>
     </head>
     <body>
-        <%  Stream<Entidades.Materia> materiasDisponible = 
-        (Stream<Entidades.Materia>)session.getAttribute("materiasDisponible"); %> 
+        <%  ArrayList<Entidades.Materia> materiasDisponible = 
+        (ArrayList<Entidades.Materia>)session.getAttribute("materiasDisponible"); %> 
         <form>
             <table>
                 <tr>
@@ -26,29 +26,29 @@
                     <th>Horas Semana</th>
                     <th>Accion</th>
                 </tr>
-                <c:forEach var="materia" items="${materiasDisponibles}">   
-                        <input type="hidden" name="id" value="${carrera.idCarrera}">
-                        <tr>
-                            <td>
-                                <c:out value="${materia.nombre}" /> 
-                            </td>
-                            <td>
-                                <c:out value="${materia.descripcion}" /> 
-                            </td>
-                            <td>
-                                <c:out value="${materia.año}" /> 
-                            </td>
-                            <td>
-                                <c:out value="${materia.electiva}" /> 
-                            </td>
-                            <td>
-                                <c:out value="${materia.horasSemana}" /> 
-                            </td>
-                            <td>
-                                <input type="submit" value="Agregar"> 
-                            </td>  
-                        </tr>
-                    </c:forEach>  
+                <c:forEach var="materia" items="${materiasDisponible}">   
+                    <input type="hidden" name="id" value="${materia.idMateria}"> 
+                    <tr>
+                        <td>
+                            <c:out value="${materia.nombre}" /> 
+                        </td>
+                        <td>
+                            <c:out value="${materia.descripcion}" /> 
+                        </td>
+                        <td>
+                            <c:out value="${materia.año}" /> 
+                        </td>
+                        <td>
+                            <c:out value="${materia.electiva}" /> 
+                        </td>
+                        <td>
+                            <c:out value="${materia.horasSemana}" /> 
+                        </td>
+                        <td>
+                            <input type="submit" value="Agregar"> 
+                        </td>  
+                    </tr>
+                </c:forEach>  
             </table>
         </form>
     </body>

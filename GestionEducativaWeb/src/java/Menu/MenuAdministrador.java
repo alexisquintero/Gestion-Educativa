@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Otros.Enumeraciones.MenuAdministradorOpciones;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -60,7 +60,7 @@ public class MenuAdministrador extends HttpServlet {
             case Carrera: 
                 {
                     try {
-                        ArrayList<entidad> carreras = controlador.buscarCarreras();
+                        List<entidad> carreras = controlador.buscarCarreras();
                         session.setAttribute("carreras", carreras);
                         dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Carrera.jsp");break;
