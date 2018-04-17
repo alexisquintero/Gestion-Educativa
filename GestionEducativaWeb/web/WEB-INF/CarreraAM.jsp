@@ -37,12 +37,7 @@
                     <td><input type="text" name="descripcion" value="${carrera.descripcion}"> </td>
                 </tr>
             </table>
-            <tr>
-                <input type="submit" value="Guardar"> 
-            </tr>
-        </form>
-        <form action="CarreraMateria" method="post">
-            <h1>Materias</h1>   
+            <h3>Materias</h3>   
             <table>
                 <tr>
                     <th>Nombre</th>
@@ -51,7 +46,6 @@
                     <th>Acción</th>
                 </tr>
                 <c:forEach var="materia" items="${carrera.materias}">   
-                    <input type="hidden" name="id" value="${carrera.idCarrera}">
                     <tr>
                         <td>
                             <c:out value="${materia.nombre}" /> 
@@ -63,7 +57,8 @@
                             <c:out value="${materia.año}" /> 
                         </td>
                         <td>
-                            <input type="submit" value="Eliminar"> 
+                            <a href="CarreraMateria?redirect=Eliminar&id=${materia.idMateria}">
+                            Eliminar</a></td>
                         </td>  
                     </tr>
                 </c:forEach>  
@@ -78,10 +73,12 @@
                         <input type=text" name="nAnio" readonly="readonly">
                     </td>
                     <td>
-                        <input type="submit" value="Agregar"> 
+                        <a href="CarreraMateria?redirect=Agregar">
+                            Agregar</a></td>
                     </td> 
                 </tr>
             </table>
-        </form>              
+            <input type="submit" value="Guardar"> 
+        </form>           
     </body>
 </html>

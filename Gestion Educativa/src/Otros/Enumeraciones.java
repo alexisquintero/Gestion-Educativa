@@ -15,5 +15,6 @@ public class Enumeraciones {
     public enum TipoMateria {Electiva, Obligatoria};
     public enum MenuAdministradorOpciones {Carrera, Moderador, Docente, Materia};
     public enum CarreraAction {Editar, Eliminar, Crear};
+    public enum CarreraMateria {Agregar, Eliminar};
     public enum Anios {Primero, Segundo, Tercero, Cuarto, Quinto};
 }
