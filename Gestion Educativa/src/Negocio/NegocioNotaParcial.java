@@ -34,7 +34,7 @@ public class NegocioNotaParcial extends negocio{
 
     @Override
     public int nuevo(entidad e) throws ApplicationException{
-        if (this.buscar(e) == null) {
+        if (this.buscar(e) != null) {
             throw new EntidadExistenteException("La NotaParcial ya existe");
         }       
         return datos.newObject(e);

@@ -34,7 +34,7 @@ public class NegocioAlumno extends negocio{
 
     @Override
     public int nuevo(entidad e) throws ApplicationException{
-        if (this.buscar(e) == null) {
+        if (buscar(e) != null) {
             throw new EntidadExistenteException("El Alumno ya existe");
         }       
         return datos.newObject(e);

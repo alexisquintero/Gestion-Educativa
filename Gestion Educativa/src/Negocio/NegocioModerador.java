@@ -34,7 +34,7 @@ public class NegocioModerador extends negocio{
 
     @Override
     public int nuevo(entidad e) throws ApplicationException{
-        if (this.buscar(e) == null) {
+        if (this.buscar(e) != null) {
             throw new EntidadExistenteException("El Moderador ya existe");
         }       
         return datos.newObject(e);

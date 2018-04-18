@@ -33,7 +33,7 @@ public class NegocioAdministrador extends negocio{
 
     @Override
     public int nuevo(entidad e) throws ApplicationException{
-        if (this.buscar(e) == null) {
+        if (this.buscar(e) != null) {
             throw new EntidadExistenteException("El Administrador ya existe");
         }       
         return datos.newObject(e);
