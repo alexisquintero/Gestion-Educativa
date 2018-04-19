@@ -16,7 +16,7 @@
     <body>
         <%  ArrayList<Entidades.Materia> materiasDisponible = 
         (ArrayList<Entidades.Materia>)session.getAttribute("materiasDisponible"); %> 
-        <form>
+        <form action="CarreraMateriaPost" method="post">
             <table>
                 <tr>
                     <th>Nombre</th>
@@ -24,10 +24,9 @@
                     <th>Año</th>
                     <th>Electiva</th>
                     <th>Horas Semana</th>
-                    <th>Accion</th>
+                    <th>Agregar</th>
                 </tr>
                 <c:forEach var="materia" items="${materiasDisponible}">   
-                    <input type="hidden" name="id" value="${materia.idMateria}"> 
                     <tr>
                         <td>
                             <c:out value="${materia.nombre}" /> 
@@ -45,11 +44,12 @@
                             <c:out value="${materia.horasSemana}" /> 
                         </td>
                         <td>
-                            <input type="submit" value="Agregar"> 
+                            <input type="checkbox" name="id" value="${materia.idMateria}"></input>                          
                         </td>  
                     </tr>
                 </c:forEach>  
             </table>
+            <input type="submit" value="Agregar"> 
         </form>
     </body>
 </html>

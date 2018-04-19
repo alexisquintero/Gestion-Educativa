@@ -23,6 +23,10 @@
         <servlet-name>LoginAdministradorJSP</servlet-name>
         <jsp-file>/LoginAdministrador.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CarreraMateriaPost</servlet-name>
+        <servlet-class>Administrador.CarreraMateriaPost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -38,6 +42,10 @@
     <servlet-mapping>
         <servlet-name>LoginAdministradorJSP</servlet-name>
         <url-pattern>/LoginAdministrador.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarreraMateriaPost</servlet-name>
+        <url-pattern>/CarreraMateriaPost</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

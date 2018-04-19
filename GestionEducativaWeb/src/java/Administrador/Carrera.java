@@ -6,7 +6,6 @@
 package Administrador;
 
 import Entidad.Servlet;
-import Entidades.Persona;
 import Negocio.ControladorGestion;
 import Otros.Enumeraciones.CarreraAction;
 import java.io.IOException;

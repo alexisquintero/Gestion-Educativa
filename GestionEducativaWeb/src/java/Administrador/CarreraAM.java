@@ -9,6 +9,7 @@ import Entidad.Servlet;
 import Excepciones.ApplicationException;
 import Menu.MenuAdministrador;
 import Negocio.ControladorGestion;
+import Otros.Enumeraciones;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -52,14 +53,14 @@ public class CarreraAM extends Servlet {
         carrera.setNombre(nNombre);     
         String nDescripcion = request.getParameter("descripcion");
         nDescripcion = null == nDescripcion ? "" : nDescripcion;
-        carrera.setDescripcion(nDescripcion);
+        carrera.setDescripcion(nDescripcion);               
         
-        RequestDispatcher dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp");
         try{
             if(carrera.getIdCarrera() == 0){
                 if("".equals(carrera.getNombre()) || "".equals(carrera.getDescripcion())){
-                    dispatcher.forward(request, response); return;
+                    RequestDispatcher dispatcher = getServletContext().
+                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); 
+                    dispatcher.forward(request, response); return;                  
                 } else{
                     carrera.setIdCarrera(controlador.crearCarrera(carrera));
                 }
@@ -71,7 +72,7 @@ public class CarreraAM extends Servlet {
                                 log(Level.SEVERE, null, ex);
         }
         
-        session.setAttribute("carrera", carrera);       
-        dispatcher.forward(request, response);
+        session.setAttribute("carrera", carrera); 
+        response.sendRedirect("MenuAdministrador?redirect=Carrera");
     }
 }
