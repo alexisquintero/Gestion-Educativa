@@ -6,7 +6,6 @@
 package Administrador;
 
 import Entidad.Servlet;
-import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Negocio.ControladorGestion;
 import Otros.Enumeraciones.CarreraAction;

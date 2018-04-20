@@ -17,4 +17,5 @@ public class Enumeraciones {
     public enum CarreraAction {Editar, Eliminar, Crear};
     public enum CarreraMateria {Agregar, Eliminar};
     public enum Anios {Primero, Segundo, Tercero, Cuarto, Quinto};
+    public enum ModeradorAction {Editar, Eliminar, Crear};
 }

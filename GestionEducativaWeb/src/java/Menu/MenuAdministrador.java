@@ -61,8 +61,18 @@ public class MenuAdministrador extends HttpServlet {
                                 log(Level.SEVERE, null, ex);
                     }
                 }              
-            case Moderador: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/Moderador.jsp");break;
+            case Moderador: 
+                {
+                    try {
+                        List<entidad> moderadores = controlador.buscarModeradores();
+                        session.setAttribute("moderadores", moderadores);
+                        dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/Moderador.jsp");break;
+                    } catch (ApplicationException ex) {
+                        Logger.getLogger(MenuAdministrador.class.getName()).
+                                log(Level.SEVERE, null, ex);
+                    }
+                } 
             case Docente: dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/Docente.jsp");break;
             case Materia: dispatcher = getServletContext().

@@ -27,6 +27,10 @@
         <servlet-name>CarreraMateriaPost</servlet-name>
         <servlet-class>Administrador.CarreraMateriaPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Moderador</servlet-name>
+        <servlet-class>Administrador.Moderador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -46,6 +50,10 @@
     <servlet-mapping>
         <servlet-name>CarreraMateriaPost</servlet-name>
         <url-pattern>/CarreraMateriaPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Moderador</servlet-name>
+        <url-pattern>/Moderador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
