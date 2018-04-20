@@ -51,6 +51,7 @@ public class DatoCarrera extends dato{
     @Override
     public int newObject(entidad carrera) throws ApplicationException {
         int id = 0;
+        DatoMateria datoMateria = new DatoMateria();
         try{
             myConn = Sql.Connect(); 
             String query = "INSERT INTO Carrera(nombre, descripcion, id_administrador) "
@@ -71,7 +72,8 @@ public class DatoCarrera extends dato{
             if (rsl.next()) {
                 id = rsl.getInt(1);  
             }              
-                     	             
+            
+            datoMateria.guardarMateriasCarrera(id, ((Carrera)carrera).getMaterias(), myConn);
         }
         catch( SQLException e){
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
@@ -100,7 +102,7 @@ public class DatoCarrera extends dato{
                         rsl.getString("descripcion"), rsl.getInt("id_administrador"),
                         datoMateria.materiasCarrera(rsl.getInt("id_carrera"), myConn));
                     carreras.add(carrera);
-		}			
+		}	   
         }
         catch( SQLException e){
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
@@ -114,6 +116,7 @@ public class DatoCarrera extends dato{
 
     @Override
     public void modify(entidad carrera) throws ApplicationException {
+        DatoMateria datoMateria = new DatoMateria();
         try {
             myConn = Sql.Connect();
             String query = "UPDATE Carrera SET nombre = ?, descripcion = ?, "
@@ -131,6 +134,9 @@ public class DatoCarrera extends dato{
             if (affectedRows == 0) {
                 throw new RowsAffectedException(); 
             }
+            
+            datoMateria.guardarMateriasCarrera(((Carrera)carrera).getIdCarrera(), 
+                    ((Carrera)carrera).getMaterias(), myConn);
         } catch ( SQLException e) {
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Carrera", e);
@@ -142,6 +148,7 @@ public class DatoCarrera extends dato{
 
     @Override
     public void delete(int id) throws ApplicationException {
+        DatoMateria datoMateria = new DatoMateria();
         try {
             myConn = Sql.Connect();
             String query = "DELETE FROM Carrera WHERE (id_carrera = ? )";
@@ -154,6 +161,8 @@ public class DatoCarrera extends dato{
             if (affectedRows == 0) {
                 throw new RowsAffectedException(); 
             }
+            
+            datoMateria.eliminarMateriasCarrera(id, myConn);
         } catch ( SQLException e) {
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Carrera", e);

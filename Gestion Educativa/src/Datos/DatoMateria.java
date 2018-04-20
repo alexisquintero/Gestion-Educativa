@@ -177,7 +177,6 @@ public class DatoMateria extends dato{
                     + "ON m.id_materia = ca.id_materia "
                     + "WHERE id_carrera = " + id;
             pstm = myConn.prepareStatement(query);
-            //pstm.setInt(1, id);
             stm = myConn.createStatement();
             
             rsl = stm.executeQuery(query);
@@ -195,4 +194,44 @@ public class DatoMateria extends dato{
         return materias;
     }
     
+    public void guardarMateriasCarrera(int idCarrera, ArrayList<entidad> materias, Connection myConn) throws ApplicationException {
+        ArrayList<Materia> nMaterias = (ArrayList<Materia>)(ArrayList<?>)materias;
+        
+        try{
+            eliminarMateriasCarrera(idCarrera, myConn);
+            
+            for (Materia nMateria : nMaterias) {
+                String query = "INSERT INTO Carrera_Materia(id_carrera, id_materia)"
+                        + " VALUES (?, ?)";
+                pstm = myConn.prepareStatement(query);
+               
+                pstm.setInt(1, idCarrera);
+                pstm.setInt(2, nMateria.getIdMateria());
+                
+                pstm.executeUpdate();
+            }			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al actualizar Materias de la Carrera", e);
+        }      
+    }
+    
+    public void eliminarMateriasCarrera(int idCarrera, Connection myConn) throws ApplicationException {
+        
+        try{
+            String query = "DELETE FROM Carrera_Materia "
+                    + "WHERE (id_carrera = ?)";
+
+            pstm = myConn.prepareStatement(query);
+
+            pstm.setInt(1, idCarrera);
+
+            pstm.executeUpdate();           			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al eliminar Materias de la Carrera", e);
+        }   
+    }
 }
