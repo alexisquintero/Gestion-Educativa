@@ -6,10 +6,14 @@
 package Administrador;
 
 import Entidad.Servlet;
+import Entidades.entidad;
+import Excepciones.ApplicationException;
 import Negocio.ControladorGestion;
 import Otros.Enumeraciones.CarreraAction;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,22 +52,32 @@ public class Carrera extends Servlet {
                 getAttribute("carreras");
             carrera = carreras.stream().
                 filter(c -> c.getIdCarrera() == id).findFirst().get();                 
-        }
-        session.setAttribute("carrera", carrera);  
+        }              
         
         RequestDispatcher dispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/Error.jsp");
         
         switch (redirect) {
-            case Editar: dispatcher = getServletContext().
+            case Editar: session.setAttribute("carrera", carrera);
+                dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); break;
-            case Eliminar: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/ConfirmarEliminar.jsp"); break;
+            case Eliminar: {
+                try {
+                    controlador.eliminarCarrera(carrera);
+                    carreras = (List<Entidades.Carrera>)(List<?>)controlador.buscarCarreras();                       
+                } catch (ApplicationException ex) {
+                    Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                session.setAttribute("carreras", carreras);
+                dispatcher = getServletContext().
+                    getRequestDispatcher("/WEB-INF/Carrera.jsp"); break;
+            }
             case Crear: dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); break;
             default:
                 response.sendRedirect("LoginAlumno.jsp");
         }
+        
         dispatcher.forward(request, response);
     }  
 }
