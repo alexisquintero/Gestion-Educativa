@@ -2,10 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/I:/Java/Gestion%20Educativa/src/Datos/DatoMateria.java</file>
             <file>file:/I:/Java/Gestion%20Educativa/src/Datos/DatoCarrera.java</file>
             <file>file:/I:/Java/Gestion%20Educativa/src/Negocio/NegocioCarrera.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> c6c1f1bc07cdc7436a10de6c2cf7387e00a41bdd
     </open-files>
 </project-private>
