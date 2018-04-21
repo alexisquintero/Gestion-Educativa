@@ -67,7 +67,7 @@ public class Moderador extends Servlet {
                 }
                 session.setAttribute("moderadores", moderadores);
                 dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/Moderadores.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/Moderador.jsp"); break;
             }
             case Crear: dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/ModeradorAM.jsp");

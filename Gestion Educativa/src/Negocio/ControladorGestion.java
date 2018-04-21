@@ -37,12 +37,12 @@ public class ControladorGestion {
         return new NegocioCarrera().buscar();      
     }
     
-    public void modificarCarrera(entidad carrera) throws ApplicationException{
-        new NegocioCarrera().modificar(carrera);
+    public void modificarCarrera(entidad e) throws ApplicationException{
+        new NegocioCarrera().modificar(e);
     }
     
-    public int crearCarrera(entidad carrera) throws ApplicationException{
-        return new NegocioCarrera().nuevo(carrera);
+    public int crearCarrera(entidad e) throws ApplicationException{
+        return new NegocioCarrera().nuevo(e);
     }
     
     public void eliminarCarrera(entidad e) throws ApplicationException{
@@ -60,6 +60,14 @@ public class ControladorGestion {
     public void eliminarModerador(entidad e) throws ApplicationException{
         new NegocioModerador().eliminar(e);
     } 
+    
+    public int crearModerador(entidad e) throws ApplicationException{
+        return new NegocioModerador().nuevo(e);
+    }
+    
+    public void modificarModerador(entidad e) throws ApplicationException{
+        new NegocioModerador().modificar(e);
+    }
 }
 
 /**

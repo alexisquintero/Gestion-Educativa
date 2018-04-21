@@ -31,23 +31,23 @@
                 </tr>
                 <tr>
                     <td>Apellido</td>    
-                    <td><input type="text" name="descripcion" value="${moderador.apellido}"> </td>
+                    <td><input type="text" name="apellido" value="${moderador.apellido}"> </td>
                 </tr>
                 <tr>
                     <td>Telefono</td>    
-                    <td><input type="text" name="descripcion" value="${moderador.telefono}"> </td>
+                    <td><input type="text" name="telefono" value="${moderador.telefono}"> </td>
                 </tr>
                 <tr>
                     <td>Email</td>    
-                    <td><input type="text" name="descripcion" value="${moderador.email}"> </td>
+                    <td><input type="text" name="email" value="${moderador.email}"> </td>
                 </tr>
                 <tr>
                     <td>Direccion</td>    
-                    <td><input type="text" name="descripcion" value="${moderador.direccion}"> </td>
+                    <td><input type="text" name="direccion" value="${moderador.direccion}"> </td>
                 </tr>
                 <tr>
                     <td>Legajo</td>    
-                    <td><input type="text" name="descripcion" value="${moderador.legajo}"> </td>
+                    <td><input type="text" name="legajo" value="${moderador.legajo}"> </td>
                 </tr>
             </table>           
             <input type="submit" value="Guardar"> 

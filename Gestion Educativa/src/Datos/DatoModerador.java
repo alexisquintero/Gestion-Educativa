@@ -64,8 +64,8 @@ public class DatoModerador extends dato{
             pstm.setString(4, ((Moderador)moderador).getEmail());
             pstm.setString(5, ((Moderador)moderador).getDireccion());
             pstm.setString(6, ((Moderador)moderador).getLegajo());
-            pstm.setString(7, ((Moderador)moderador).getUsuario());
-            pstm.setString(8, ((Moderador)moderador).getClave());
+            pstm.setString(7, ((Moderador)moderador).getLegajo());
+            pstm.setString(8, ((Moderador)moderador).getLegajo());
             pstm.setInt(9, ((Moderador)moderador).getAdministrador().getIdAdministrador());
             
             int affectedRows = pstm.executeUpdate();
