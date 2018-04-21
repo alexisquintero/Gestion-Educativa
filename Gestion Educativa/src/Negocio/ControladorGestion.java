@@ -68,6 +68,22 @@ public class ControladorGestion {
     public void modificarModerador(entidad e) throws ApplicationException{
         new NegocioModerador().modificar(e);
     }
+    
+    public ArrayList<entidad> buscarDocentes() throws ApplicationException{
+        return new NegocioDocente().buscar();
+    }
+    
+    public void eliminarDocente(entidad e) throws ApplicationException{
+        new NegocioDocente().eliminar(e);
+    } 
+    
+    public int crearDocente(entidad e) throws ApplicationException{
+        return new NegocioDocente().nuevo(e);
+    }
+    
+    public void modificarDocente(entidad e) throws ApplicationException{
+        new NegocioDocente().modificar(e);
+    }
 }
 
 /**

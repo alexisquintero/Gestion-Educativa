@@ -35,6 +35,14 @@
         <servlet-name>ModeradorAM</servlet-name>
         <servlet-class>Administrador.ModeradorAM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Docente</servlet-name>
+        <servlet-class>Administrador.Docente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DocenteAM</servlet-name>
+        <servlet-class>Administrador.DocenteAM</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -62,6 +70,14 @@
     <servlet-mapping>
         <servlet-name>ModeradorAM</servlet-name>
         <url-pattern>/ModeradorAM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Docente</servlet-name>
+        <url-pattern>/Docente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DocenteAM</servlet-name>
+        <url-pattern>/DocenteAM</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

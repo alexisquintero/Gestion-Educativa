@@ -7,14 +7,13 @@ package Administrador;
 
 import Entidad.Servlet;
 import Excepciones.ApplicationException;
-import Otros.Enumeraciones.CarreraAction;
+import Otros.Enumeraciones.DocenteAction;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,8 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Supervisor
  */
-@WebServlet(name = "Carrera", urlPatterns = {"/Carrera"})
-public class Carrera extends Servlet {
+public class Docente extends Servlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,49 +31,50 @@ public class Carrera extends Servlet {
         HttpSession session = request.getSession();
         this.initialization(request, response, session);
         
-        CarreraAction redirect = 
-                CarreraAction.
+        DocenteAction redirect = 
+                DocenteAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Carrera> carreras = null;
-        Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", 
-                ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+        List<Entidades.Docente> docentes = null;
+        Entidades.Docente docente = new Entidades.
+            Docente(0, ((Entidades.Administrador)usuario).getIdAdministrador(), 
+                    "", "", "", "", "", "", "", "");
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
-            carreras = (List<Entidades.Carrera>)session.
-                getAttribute("carreras");
-            carrera = carreras.stream().
-                filter(c -> c.getIdCarrera() == id).findFirst().get();                 
-        }              
+            docentes = (List<Entidades.Docente>)session.
+                getAttribute("docentes");
+            docente = docentes.stream().
+                filter(c -> c.getIdDocente() == id).findFirst().get();                 
+        }
         
         RequestDispatcher dispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/Error.jsp");
         
         switch (redirect) {
             case Editar: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/DocenteAM.jsp"); break;
             case Eliminar: {
                 try {
-                    controlador.eliminarCarrera(carrera);
-                    carreras = (List<Entidades.Carrera>)(List<?>)controlador.buscarCarreras();                       
+                    controlador.eliminarDocente(docente);
+                    docentes = (List<Entidades.Docente>)(List<?>)controlador.buscarDocentes();                       
                 } catch (ApplicationException ex) {
                     Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                session.setAttribute("carreras", carreras);
+                session.setAttribute("docentes", docentes);
                 dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/Carrera.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/Docente.jsp"); break;
             }
             case Crear: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); 
-                    carrera = new Entidades.
-                        Carrera(0, "", "", 
-                        ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+                    getRequestDispatcher("/WEB-INF/DocenteAM.jsp");
+                    docente = new Entidades.
+                        Docente(0, ((Entidades.Administrador)usuario).getIdAdministrador(), 
+                    "", "", "", "", "", "", "", "");
                     break;
             default:
                 response.sendRedirect("LoginAlumno.jsp");
         }
         
-        session.setAttribute("carrera", carrera);
+        session.setAttribute("docente", docente);
         dispatcher.forward(request, response);
-    }  
+    }
 }

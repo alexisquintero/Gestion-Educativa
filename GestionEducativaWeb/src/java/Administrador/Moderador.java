@@ -7,7 +7,6 @@ package Administrador;
 
 import Entidad.Servlet;
 import Excepciones.ApplicationException;
-import Negocio.ControladorGestion;
 import Otros.Enumeraciones;
 import java.io.IOException;
 import java.util.List;
@@ -29,21 +28,17 @@ public class Moderador extends Servlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Entidades.Administrador usuario = null;
         HttpSession session = request.getSession();
-        usuario = (Entidades.Administrador)session.getAttribute("usuario");
-        ControladorGestion controlador = 
-        (ControladorGestion)session.getAttribute("ControladorGestion");
-        
-        if(usuario == null) {response.sendError(401, "Login required"); return;}
-        
+        this.initialization(request, response, session);
+               
         Enumeraciones.ModeradorAction redirect = 
                 Enumeraciones.ModeradorAction.
                         valueOf(request.getParameter("redirect"));
         
         List<Entidades.Moderador> moderadores = null;
         Entidades.Moderador moderador = new Entidades.
-                Moderador(0, usuario.getIdAdministrador(), "", "", "", "", "", "", "", "");
+            Moderador(0, ((Entidades.Administrador)usuario).getIdAdministrador(),
+                    "", "", "", "", "", "", "", "");
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
             moderadores = (List<Entidades.Moderador>)session.
@@ -72,7 +67,8 @@ public class Moderador extends Servlet {
             case Crear: dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/ModeradorAM.jsp");
                     moderador = new Entidades.
-                        Moderador(0, usuario.getIdAdministrador(), "", "", "", "", "", "", "", "");
+                        Moderador(0, ((Entidades.Administrador)usuario).getIdAdministrador(),
+                                "", "", "", "", "", "", "", "");
                     break;
             default:
                 response.sendRedirect("LoginAlumno.jsp");

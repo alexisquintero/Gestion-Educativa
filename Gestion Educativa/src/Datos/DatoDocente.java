@@ -32,9 +32,12 @@ public class DatoDocente extends dato{
 			 
             rsl = stm.executeQuery(query);
             while(rsl.next()){
-		docente = new Docente(rsl.getInt("id_docente"), rsl.getInt("id_moderador"), rsl.getString("nombre"), 
-                    rsl.getString("apellido"), rsl.getString("telefono"), rsl.getString("email"), rsl.getString("direccion"),
-                    rsl.getString("legajo"), rsl.getString("usuario"), rsl.getString("clave"));
+		docente = new Docente(rsl.getInt("id_docente"),                    
+                    rsl.getInt("id_moderador"), rsl.getString("nombre"), 
+                    rsl.getString("apellido"), rsl.getString("telefono"), 
+                    rsl.getString("email"), rsl.getString("direccion"),
+                    rsl.getString("legajo"), rsl.getString("usuario"), 
+                    rsl.getString("clave"));
 			
             }
         }
@@ -64,8 +67,8 @@ public class DatoDocente extends dato{
             pstm.setString(4, ((Docente)docente).getEmail());
             pstm.setString(5, ((Docente)docente).getDireccion());
             pstm.setString(6, ((Docente)docente).getLegajo());
-            pstm.setString(7, ((Docente)docente).getUsuario());
-            pstm.setString(8, ((Docente)docente).getClave());
+            pstm.setString(7, ((Docente)docente).getLegajo());
+            pstm.setString(8, ((Docente)docente).getLegajo());
             pstm.setInt(9, ((Docente)docente).getModerador().getIdModerador());
             
             int affectedRows = pstm.executeUpdate();
