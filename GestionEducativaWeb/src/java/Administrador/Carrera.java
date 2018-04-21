@@ -31,20 +31,16 @@ public class Carrera extends Servlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        Entidades.Administrador usuario = null;
         HttpSession session = request.getSession();
-        usuario = (Entidades.Administrador)session.getAttribute("usuario");
-        ControladorGestion controlador = 
-        (ControladorGestion)session.getAttribute("ControladorGestion");
-              
-        if(usuario == null) {response.sendError(401, "Login required"); return;}
+        this.initialization(request, response, session);
         
         CarreraAction redirect = 
                 CarreraAction.
                         valueOf(request.getParameter("redirect"));
         
         List<Entidades.Carrera> carreras = null;
-        Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", usuario.getIdAdministrador(), null);
+        Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", 
+                ((Entidades.Administrador)usuario).getIdAdministrador(), null);
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
             carreras = (List<Entidades.Carrera>)session.
@@ -57,8 +53,7 @@ public class Carrera extends Servlet {
                 .getRequestDispatcher("/WEB-INF/Error.jsp");
         
         switch (redirect) {
-            case Editar: session.setAttribute("carrera", carrera);
-                dispatcher = getServletContext().
+            case Editar: dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); break;
             case Eliminar: {
                 try {
@@ -72,11 +67,16 @@ public class Carrera extends Servlet {
                     getRequestDispatcher("/WEB-INF/Carrera.jsp"); break;
             }
             case Crear: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); 
+                    carrera = new Entidades.
+                        Carrera(0, "", "", 
+                        ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+                    break;
             default:
                 response.sendRedirect("LoginAlumno.jsp");
         }
         
+        session.setAttribute("carrera", carrera);
         dispatcher.forward(request, response);
     }  
 }

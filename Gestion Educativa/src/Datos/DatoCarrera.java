@@ -72,8 +72,7 @@ public class DatoCarrera extends dato{
             if (rsl.next()) {
                 id = rsl.getInt(1);  
             }              
-            
-            datoMateria.guardarMateriasCarrera(id, ((Carrera)carrera).getMaterias(), myConn);
+          
         }
         catch( SQLException e){
             Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);

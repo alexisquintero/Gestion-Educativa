@@ -8,10 +8,8 @@ package Administrador;
 import Entidad.Servlet;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
-import Negocio.ControladorGestion;
 import Otros.Enumeraciones;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,33 +32,26 @@ public class CarreraMateria extends Servlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
-        Entidades.Administrador usuario = null;  
-        PrintWriter out = response.getWriter();  
+
         HttpSession session = request.getSession();
-        usuario = (Entidades.Administrador)session.getAttribute("usuario");
-        ControladorGestion controlador = 
-                (ControladorGestion)session.getAttribute("ControladorGestion");
-        
-        if(usuario == null) {response.sendError(401, "Login required"); return;}
+        this.initialization(request, response, session);
         
         Enumeraciones.CarreraMateria redirect = 
                 Enumeraciones.CarreraMateria.
                         valueOf(request.getParameter("redirect"));
         
-        try{
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        }catch (ClassNotFoundException e1){
-            out.println(e1.getMessage());
-        }
-        
         List<Entidades.Materia> materias = null;
         Entidades.Carrera carrera = (Entidades.Carrera)session.getAttribute("carrera");
-        List<Entidades.Materia> materiasExistentes = 
-                (List<Entidades.Materia>)(List<?>)carrera.getMaterias();  
-        
         RequestDispatcher dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Error.jsp");
+        if(0 == carrera.getIdCarrera()) {
+            dispatcher = getServletContext().
+                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+        List<Entidades.Materia> materiasExistentes = 
+                (List<Entidades.Materia>)(List<?>)carrera.getMaterias();          
         
         switch (redirect) {
             case Agregar: 

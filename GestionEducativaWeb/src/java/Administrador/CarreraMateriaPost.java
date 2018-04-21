@@ -29,15 +29,9 @@ public class CarreraMateriaPost extends Servlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Entidades.Administrador usuario = null;       
-        PrintWriter out = response.getWriter();  
+   
         HttpSession session = request.getSession();
-        usuario = (Entidades.Administrador)session.getAttribute("usuario");
-        ControladorGestion controlador = 
-                (ControladorGestion)session.getAttribute("ControladorGestion");
-        
-        if(usuario == null) {response.sendError(401, "Login required"); return;}
+        this.initialization(request, response, session);
         
         Entidades.Carrera carrera = (Entidades.Carrera)session.getAttribute("carrera"); 
         

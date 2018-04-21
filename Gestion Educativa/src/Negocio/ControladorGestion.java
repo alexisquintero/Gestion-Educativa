@@ -56,6 +56,10 @@ public class ControladorGestion {
     public ArrayList<entidad> buscarModeradores() throws ApplicationException{
         return new NegocioModerador().buscar();
     }
+    
+    public void eliminarModerador(entidad e) throws ApplicationException{
+        new NegocioModerador().eliminar(e);
+    } 
 }
 
 /**

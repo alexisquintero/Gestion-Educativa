@@ -8,10 +8,7 @@ package Administrador;
 import Entidad.Servlet;
 import Excepciones.ApplicationException;
 import Menu.MenuAdministrador;
-import Negocio.ControladorGestion;
-import Otros.Enumeraciones;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -31,21 +28,9 @@ public class CarreraAM extends Servlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Entidades.Administrador usuario = null;       
-        PrintWriter out = response.getWriter();  
+   
         HttpSession session = request.getSession();
-        usuario = (Entidades.Administrador)session.getAttribute("usuario");
-        ControladorGestion controlador = 
-                (ControladorGestion)session.getAttribute("ControladorGestion");
-        
-        if(usuario == null) {response.sendError(401, "Login required"); return;}
-        
-        try{
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        }catch (ClassNotFoundException e1){
-            out.println(e1.getMessage());
-        }
+        this.initialization(request, response, session);
         
         Entidades.Carrera carrera = (Entidades.Carrera)session.getAttribute("carrera"); 
         String nNombre = request.getParameter("nombre");

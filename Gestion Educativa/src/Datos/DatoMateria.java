@@ -194,7 +194,7 @@ public class DatoMateria extends dato{
         return materias;
     }
     
-    public void guardarMateriasCarrera(int idCarrera, ArrayList<entidad> materias, Connection myConn) throws ApplicationException {
+    public void guardarMateriasCarrera(int idCarrera, ArrayList<entidad> materias, Connection myConn) throws ApplicationException {       
         ArrayList<Materia> nMaterias = (ArrayList<Materia>)(ArrayList<?>)materias;
         
         try{
