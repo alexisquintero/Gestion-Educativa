@@ -43,6 +43,10 @@
         <servlet-name>DocenteAM</servlet-name>
         <servlet-class>Administrador.DocenteAM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Materia</servlet-name>
+        <servlet-class>Administrador.Materia</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -78,6 +82,10 @@
     <servlet-mapping>
         <servlet-name>DocenteAM</servlet-name>
         <url-pattern>/DocenteAM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Materia</servlet-name>
+        <url-pattern>/Materia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -19,4 +19,6 @@ public class Enumeraciones {
     public enum Anios {Primero, Segundo, Tercero, Cuarto, Quinto};
     public enum ModeradorAction {Editar, Eliminar, Crear};
     public enum DocenteAction {Editar, Eliminar, Crear};
+    public enum MateriaAction {Editar, Eliminar, Crear};
+    public enum TipoCorrelativa {Regular, Aprobada};
 }

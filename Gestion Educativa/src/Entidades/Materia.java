@@ -16,6 +16,20 @@ import java.util.ArrayList;
 public class Materia extends entidad{
 
     /**
+     * @return the correlativasRegulares
+     */
+    public ArrayList<entidad> getCorrelativasRegulares() {
+        return correlativasRegulares;
+    }
+
+    /**
+     * @param correlativasRegulares the correlativasRegulares to set
+     */
+    public void setCorrelativasRegulares(ArrayList<entidad> correlativasRegulares) {
+        this.correlativasRegulares = correlativasRegulares;
+    }
+
+    /**
      * @return the idMateria
      */
     public int getIdMateria() {
@@ -116,15 +130,15 @@ public class Materia extends entidad{
     /**
      * @return the correlativas
      */
-    public ArrayList<Materia> getCorrelativas() {
-        return correlativas;
+    public ArrayList<entidad> getCorrelativasAprobadas() {
+        return correlativasAprobadas;
     }
 
     /**
      * @param correlativas the correlativas to set
      */
-    public void setCorrelativas(ArrayList<Materia> correlativas) {
-        this.correlativas = correlativas;
+    public void setCorrelativasAprobadas(ArrayList<entidad> correlativas) {
+        this.correlativasAprobadas = correlativas;
     }
 
     /**
@@ -168,7 +182,8 @@ public class Materia extends entidad{
     private boolean electiva;
     private int horasSemana;
     private Administrador administrador;
-    private ArrayList<Materia> correlativas;
+    private ArrayList<entidad> correlativasAprobadas;
+    private ArrayList<entidad> correlativasRegulares;
     private ArrayList<Final> finales;
 
     Materia() {

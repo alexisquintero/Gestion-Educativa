@@ -78,8 +78,18 @@ public class MenuAdministrador extends Servlet {
                                 log(Level.SEVERE, null, ex);
                     }
                 }                
-            case Materia: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/Materia.jsp");break;                            
+            case Materia:
+                {
+                    try {
+                        List<entidad> materias = controlador.buscarMaterias();
+                        session.setAttribute("materias", materias);
+                        dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/Materia.jsp");break;
+                    } catch (ApplicationException ex) {
+                        Logger.getLogger(MenuAdministrador.class.getName()).
+                                log(Level.SEVERE, null, ex);
+                    }
+                }                            
             default:
                 response.sendRedirect("LoginAlumno.jsp");
         }

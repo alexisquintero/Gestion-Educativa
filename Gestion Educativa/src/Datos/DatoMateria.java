@@ -36,7 +36,8 @@ public class DatoMateria extends dato{
 		materia = new Materia(rsl.getInt("id_materia"),rsl.getString("nombre"), 
                     rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"),
                     rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
-			
+		materia.setCorrelativasAprobadas(this.getCorrelativasAprobadas(materia, myConn));
+                materia.setCorrelativasRegulares(this.getCorrelativasRegulares(materia, myConn));	
             }
         }
         catch( SQLException e){
@@ -75,7 +76,9 @@ public class DatoMateria extends dato{
             if (rsl.next()) {
                 id = rsl.getInt(1);  
             }              
-                     	             
+            
+            this.guardarCorrelativasAprobadas(id, ((Materia)materia).getCorrelativasAprobadas(), myConn);
+            this.guardarCorrelativasRegulares(id, ((Materia)materia).getCorrelativasRegulares(), myConn);
         }
         catch( SQLException e){
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
@@ -102,6 +105,8 @@ public class DatoMateria extends dato{
                     Materia materia = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
                             rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
+                    materia.setCorrelativasAprobadas(this.getCorrelativasAprobadas(materia, myConn));
+                    materia.setCorrelativasRegulares(this.getCorrelativasRegulares(materia, myConn));
                     materias.add(materia);
 		}			
         }
@@ -137,6 +142,11 @@ public class DatoMateria extends dato{
             if (affectedRows == 0) {
                 throw new RowsAffectedException(); 
             }
+            
+            this.guardarCorrelativasAprobadas(((Materia)materia).getIdMateria(),
+                    ((Materia)materia).getCorrelativasAprobadas(), myConn);
+            this.guardarCorrelativasRegulares(((Materia)materia).getIdMateria(),
+                    ((Materia)materia).getCorrelativasRegulares(), myConn);
         } catch ( SQLException e) {
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Materia", e);
@@ -160,6 +170,7 @@ public class DatoMateria extends dato{
             if (affectedRows == 0) {
                 throw new RowsAffectedException(); 
             }
+            this.eliminarCorrelativas(id, myConn);
         } catch ( SQLException e) {
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Materia", e);
@@ -183,7 +194,7 @@ public class DatoMateria extends dato{
 		while(rsl.next()){
                     Materia materia = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
                             rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
-                            rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
+                            rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));                   
                     materias.add(materia);
 		}			
         }
@@ -217,8 +228,7 @@ public class DatoMateria extends dato{
         }      
     }
     
-    public void eliminarMateriasCarrera(int idCarrera, Connection myConn) throws ApplicationException {
-        
+    public void eliminarMateriasCarrera(int idCarrera, Connection myConn) throws ApplicationException {       
         try{
             String query = "DELETE FROM Carrera_Materia "
                     + "WHERE (id_carrera = ?)";
@@ -233,5 +243,127 @@ public class DatoMateria extends dato{
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al eliminar Materias de la Carrera", e);
         }   
+    }
+    
+    public ArrayList<entidad> getCorrelativasAprobadas(entidad materia, Connection myConn) throws ApplicationException {
+        ArrayList<entidad> aprobadas = new ArrayList<>();
+        int id = ((Materia)materia).getIdMateria();
+        
+        try{
+            String query = "SELECT * FROM Correlativa c INNER JOIN Materia m "
+                    + "ON c.id_materia_correlativa = m.id_materia "
+                    + "WHERE (c.id_carrera = " + id + ") AND "
+                    + "(c.tipo_correlativa = " + "Aprobada" +")";
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+            
+            rsl = stm.executeQuery(query);
+		while(rsl.next()){
+                    Materia m = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
+                            rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
+                            rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
+                    aprobadas.add(m);
+		}			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al buscar Materias Correlativas Aprobadas de la Materia", e);
+        }
+        
+        return aprobadas;
+    }
+    
+    public ArrayList<entidad> getCorrelativasRegulares(entidad materia, Connection myConn) throws ApplicationException {
+        ArrayList<entidad> regulares = new ArrayList<>();
+        int id = ((Materia)materia).getIdMateria();
+        
+        try{
+            String query = "SELECT * FROM Correlativa c INNER JOIN Materia m "
+                    + "ON c.id_materia_correlativa = m.id_materia "
+                    + "WHERE (c.id_carrera = " + id + ") AND "
+                    + "(c.tipo_correlativa = " + "Regular" +")";
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+            
+            rsl = stm.executeQuery(query);
+		while(rsl.next()){
+                    Materia m = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
+                            rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
+                            rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
+                    regulares.add(m);
+		}			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al buscar Materias Correlativas Aprobadas de la Materia", e);
+        }
+        return regulares;
+    }
+    
+    public void eliminarCorrelativas(int id, Connection myConn) throws ApplicationException {
+        try{
+            String query = "DELETE FROM Correlativa "
+                    + "WHERE (id_materia = ?)";
+
+            pstm = myConn.prepareStatement(query);
+
+            pstm.setInt(1, id);
+
+            pstm.executeUpdate();           			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al eliminar Correlativas de la Materia", e);
+        }
+    }
+    
+    public void guardarCorrelativasAprobadas(int id, ArrayList<entidad> aprobadas, Connection myConn) throws ApplicationException {
+        ArrayList<Materia> ap = (ArrayList<Materia>)(ArrayList<?>)aprobadas;
+        
+        try{
+            eliminarCorrelativas(id, myConn);
+            
+            for (Materia nMateria : ap) {
+                String query = "INSERT INTO Correlativa(id_carrera, "
+                        + "id_materia_correlativa, tipo_correlativa)"
+                        + " VALUES (?, ?, ?)";
+                pstm = myConn.prepareStatement(query);
+               
+                pstm.setInt(1, id);
+                pstm.setInt(2, nMateria.getIdMateria());
+                pstm.setString(3, "Aprobada");
+                
+                pstm.executeUpdate();
+            }			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al actualizar Correlativas Aprobadas de la Materia", e);
+        }
+    }
+    
+    public void guardarCorrelativasRegulares(int id, ArrayList<entidad> regulares, Connection myConn) throws ApplicationException {
+        ArrayList<Materia> re = (ArrayList<Materia>)(ArrayList<?>)regulares;
+        
+        try{
+            eliminarCorrelativas(id, myConn);
+            
+            for (Materia nMateria : re) {
+                String query = "INSERT INTO Correlativa(id_carrera, "
+                        + "id_materia_correlativa, tipo_correlativa)"
+                        + " VALUES (?, ?, ?)";
+                pstm = myConn.prepareStatement(query);
+               
+                pstm.setInt(1, id);
+                pstm.setInt(2, nMateria.getIdMateria());
+                pstm.setString(3, "Regular");
+                
+                pstm.executeUpdate();
+            }			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al actualizar Correlativas Regulares de la Materia", e);
+        }
     }
 }

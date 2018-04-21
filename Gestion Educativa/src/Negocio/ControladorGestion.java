@@ -84,6 +84,7 @@ public class ControladorGestion {
     public void modificarDocente(entidad e) throws ApplicationException{
         new NegocioDocente().modificar(e);
     }
+      
 }
 
 /**
