@@ -53,8 +53,11 @@ public class CarreraMateriaPost extends Servlet {
         ArrayList<entidad> nMaterias = new ArrayList<>(materiasAgregar);  
         
         ArrayList<entidad> materiasExistentes = carrera.getMaterias();
-        
-        for(entidad e: nMaterias) materiasExistentes.add(e);
+        if(null == materiasExistentes){
+               materiasExistentes = nMaterias;
+        }else{
+            for(entidad e: nMaterias) materiasExistentes.add(e);   
+        }
         carrera.setMaterias(materiasExistentes);
         session.setAttribute("carrera", carrera); 
         

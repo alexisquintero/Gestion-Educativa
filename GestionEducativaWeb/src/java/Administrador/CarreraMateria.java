@@ -44,15 +44,10 @@ public class CarreraMateria extends Servlet {
         Entidades.Carrera carrera = (Entidades.Carrera)session.getAttribute("carrera");
         RequestDispatcher dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Error.jsp");
-        if(0 == carrera.getIdCarrera()) {
-            dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp");
-            dispatcher.forward(request, response);
-            return;
-        }
+
         List<Entidades.Materia> materiasExistentes = 
-                (List<Entidades.Materia>)(List<?>)carrera.getMaterias();          
-        
+                (List<Entidades.Materia>)(List<?>)carrera.getMaterias(); 
+              
         switch (redirect) {
             case Agregar: 
                 try {
@@ -62,19 +57,22 @@ public class CarreraMateria extends Servlet {
                     Logger.getLogger(CarreraMateria.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                List<Entidades.Materia> materiasDisponibles = null;
-                if(null != materias){
-                    materiasDisponibles = 
+                List<Entidades.Materia> materiasDisponible = null; 
+                if(null == materiasExistentes){
+                    materiasDisponible = materias;
+                }
+                else {
+                    if(null != materias){
+                    materiasDisponible = 
                             materias.stream().
                             filter(m -> materiasExistentes.stream().
                                     noneMatch(me -> me.getIdMateria() == m.getIdMateria())).
                                     collect(Collectors.toList());         
+                    } 
                 }
-                
-                session.setAttribute("materiasDisponible", materiasDisponibles); 
+                session.setAttribute("materiasDisponible", materiasDisponible);                
                 dispatcher = getServletContext().
-                            getRequestDispatcher("/WEB-INF/CarreraMateria.jsp");
-                
+                            getRequestDispatcher("/WEB-INF/CarreraMateria.jsp");                  
                 break;
             case Eliminar: 
                 int id = Integer.parseInt(request.getParameter("id"));
@@ -89,8 +87,7 @@ public class CarreraMateria extends Servlet {
                 break;
             default:
                 response.sendRedirect("LoginAlumno.jsp");;
-        }
-
+        }       
         dispatcher.forward(request, response);
     }
 }

@@ -39,6 +39,7 @@ public class CarreraAM extends Servlet {
         String nDescripcion = request.getParameter("descripcion");
         nDescripcion = null == nDescripcion ? "" : nDescripcion;
         carrera.setDescripcion(nDescripcion);               
+        session.setAttribute("carrera", carrera); 
         
         try{
             if(carrera.getIdCarrera() == 0){
@@ -48,6 +49,7 @@ public class CarreraAM extends Servlet {
                     dispatcher.forward(request, response); return;                  
                 } else{
                     carrera.setIdCarrera(controlador.crearCarrera(carrera));
+                    session.setAttribute("carrera", carrera); 
                 }
             }else{
                 controlador.modificarCarrera(carrera);
@@ -56,8 +58,7 @@ public class CarreraAM extends Servlet {
             Logger.getLogger(MenuAdministrador.class.getName()).
                                 log(Level.SEVERE, null, ex);
         }
-        
-        session.setAttribute("carrera", carrera); 
+       
         response.sendRedirect("MenuAdministrador?redirect=Carrera");
     }
 }
