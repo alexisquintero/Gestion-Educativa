@@ -131,7 +131,7 @@
                             <c:out value="${ap.horasSemana}" /> 
                         </td>
                         <td>
-                            <a href="MateriaRegular?redirect=Eliminar&id=${ap.idMateria}">
+                            <a href="MateriaAprobada?redirect=Eliminar&id=${ap.idMateria}">
                             Eliminar</a></td>
                         </td>  
                     </tr>
@@ -153,7 +153,7 @@
                         <input type=text" name="aHorasSemana" readonly="readonly">
                     </td>
                     <td>
-                        <a href="MateriaRegular?redirect=Agregar">
+                        <a href="MateriaAprobada?redirect=Agregar">
                             Agregar</a></td>
                     </td> 
                 </tr>

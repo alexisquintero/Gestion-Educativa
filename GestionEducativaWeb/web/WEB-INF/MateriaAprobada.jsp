@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MateriaRegular
-    Created on : Apr 22, 2018, 1:17:08 PM
+    Document   : MateriaAprobada
+    Created on : Apr 22, 2018, 7:20:49 PM
     Author     : Supervisor
 --%>
 
@@ -11,12 +11,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Materia regulares</title>
+        <title>Materias aprobadas</title>
     </head>
     <body>
         <%  List<Entidades.Materia> materiasDisponible = 
         (List<Entidades.Materia>)session.getAttribute("materiasDisponible"); %> 
-        <form action="MateriaRegular" method="post">
+        <form action="MateriaAprobada" method="post">
             <table>
                 <tr>
                     <th>Nombre</th>

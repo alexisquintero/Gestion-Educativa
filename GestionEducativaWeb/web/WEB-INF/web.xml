@@ -51,6 +51,10 @@
         <servlet-name>MateriaRegular</servlet-name>
         <servlet-class>Administrador.MateriaRegular</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MateriaAprobada</servlet-name>
+        <servlet-class>Administrador.MateriaAprobada</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -94,6 +98,10 @@
     <servlet-mapping>
         <servlet-name>MateriaRegular</servlet-name>
         <url-pattern>/MateriaRegular</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MateriaAprobada</servlet-name>
+        <url-pattern>/MateriaAprobada</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -10,6 +10,7 @@ import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,8 +27,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Supervisor
  */
-public class MateriaRegular extends Servlet {
-    
+public class MateriaAprobada extends Servlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -81,19 +82,19 @@ public class MateriaRegular extends Servlet {
                     new ArrayList(materiasDisponible), materia.getIdMateria());
                 session.setAttribute("materiasDisponible", materiasDisponible);                
                 dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/MateriaRegular.jsp");
+                    getRequestDispatcher("/WEB-INF/MateriaAprobada.jsp");
                 break;
             }
             case Eliminar: {
                 ArrayList<Entidades.Materia> materias = 
                         (ArrayList<Entidades.Materia>)
-                        (ArrayList<?>)materia.getCorrelativasRegulares();
+                        (ArrayList<?>)materia.getCorrelativasAprobadas();
                 int id = Integer.parseInt(request.getParameter("id"));
                 
                 materias = new ArrayList(materias.stream().
                         filter(m -> m.getIdMateria() != id).
                             collect(Collectors.toList()));
-                materia.setCorrelativasRegulares(
+                materia.setCorrelativasAprobadas(
                         ((ArrayList<Entidades.entidad>)(ArrayList<?>)materias));  
                 session.setAttribute("materia", materia);
                 dispatcher = getServletContext().
@@ -106,7 +107,7 @@ public class MateriaRegular extends Servlet {
         
         dispatcher.forward(request, response);
     }
-    
+  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -136,18 +137,19 @@ public class MateriaRegular extends Servlet {
                 collect(Collectors.toList());
         ArrayList<entidad> nMaterias = new ArrayList<>(materiasAgregar);
         
-        ArrayList<entidad> materiasExistentes = materia.getCorrelativasRegulares();
+        ArrayList<entidad> materiasExistentes = materia.getCorrelativasAprobadas();
         if(null == materiasExistentes){
                materiasExistentes = nMaterias;
         }else{
             for(entidad e: nMaterias) materiasExistentes.add(e);   
         }
-        materia.setCorrelativasRegulares(materiasExistentes);
+        materia.setCorrelativasAprobadas(materiasExistentes);
         session.setAttribute("materia", materia); 
+       
+        dispatcher.forward(request, response);
         
-        dispatcher.forward(request, response);   
     }
-    
+
     private List<Entidades.Materia> filtrarRegulares(
         ArrayList<Entidades.Materia> materias, 
         ArrayList<Entidades.Materia> regulares) {
