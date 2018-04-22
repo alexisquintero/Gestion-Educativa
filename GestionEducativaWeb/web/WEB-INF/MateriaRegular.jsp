@@ -16,7 +16,7 @@
     <body>
         <%  List<Entidades.Materia> materiasDisponible = 
         (List<Entidades.Materia>)session.getAttribute("materiasDisponible"); %> 
-        <form action="CarreraMateria" method="post">
+        <form action="MateriaRegular" method="post">
             <table>
                 <tr>
                     <th>Nombre</th>

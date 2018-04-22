@@ -11,6 +11,7 @@ package Otros;
  */
 public class Enumeraciones {
     public enum TipoLogin {Administrador, Moderador, Bedel, Alumno, Docente};
+    public enum TipoCorrelativa {Regular, Aprobada};
     public enum Presencia {Ausente, Presente};
     public enum TipoMateria {Electiva, Obligatoria};
     public enum MenuAdministradorOpciones {Carrera, Moderador, Docente, Materia};
@@ -20,5 +21,5 @@ public class Enumeraciones {
     public enum ModeradorAction {Editar, Eliminar, Crear};
     public enum DocenteAction {Editar, Eliminar, Crear};
     public enum MateriaAction {Editar, Eliminar, Crear};
-    public enum TipoCorrelativa {Regular, Aprobada};
+    public enum MateriaRegularAprobada {Agregar, Eliminar};
 }
