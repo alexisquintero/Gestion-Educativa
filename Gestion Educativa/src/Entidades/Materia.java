@@ -174,6 +174,8 @@ public class Materia extends entidad{
         this.horasSemana = horasSemana;
         this.administrador = new Administrador();
         this.administrador.setIdAdministrador(idAdministrador);
+        this.correlativasAprobadas = new ArrayList<>();
+        this.correlativasRegulares = new ArrayList<>();
     }
     private int idMateria;
     private String nombre;

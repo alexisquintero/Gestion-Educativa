@@ -148,6 +148,7 @@ public class DatoMateria extends dato{
                 throw new RowsAffectedException(); 
             }
             
+            eliminarCorrelativas(((Materia)materia).getIdMateria(), myConn);
             this.guardarCorrelativasAprobadas(((Materia)materia).getIdMateria(),
                     ((Materia)materia).getCorrelativasAprobadas(), myConn);
             this.guardarCorrelativasRegulares(((Materia)materia).getIdMateria(),
@@ -326,7 +327,6 @@ public class DatoMateria extends dato{
         ArrayList<Materia> ap = (ArrayList<Materia>)(ArrayList<?>)aprobadas;
         
         try{
-            eliminarCorrelativas(id, myConn);
             
             for (Materia nMateria : ap) {
                 String query = "INSERT INTO Correlativa(id_materia, "
@@ -350,8 +350,7 @@ public class DatoMateria extends dato{
     public void guardarCorrelativasRegulares(int id, ArrayList<entidad> regulares, Connection myConn) throws ApplicationException {
         ArrayList<Materia> re = (ArrayList<Materia>)(ArrayList<?>)regulares;
         
-        try{
-            eliminarCorrelativas(id, myConn);
+        try{        
             
             for (Materia nMateria : re) {
                 String query = "INSERT INTO Correlativa(id_materia, "

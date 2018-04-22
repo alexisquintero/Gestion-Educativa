@@ -85,6 +85,13 @@ public class ControladorGestion {
         new NegocioDocente().modificar(e);
     }
       
+    public int crearMateria(entidad e) throws ApplicationException{
+        return new NegocioMateria().nuevo(e);
+    }
+    
+    public void modificarMateria(entidad e) throws ApplicationException{
+        new NegocioMateria().modificar(e);
+    }
 }
 
 /**
