@@ -36,8 +36,8 @@ public class DatoMateria extends dato{
 		materia = new Materia(rsl.getInt("id_materia"),rsl.getString("nombre"), 
                     rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"),
                     rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
-		materia.setCorrelativasAprobadas(this.getCorrelativasAprobadas(materia, myConn));
-                materia.setCorrelativasRegulares(this.getCorrelativasRegulares(materia, myConn));	
+		materia.setCorrelativasAprobadas(getCorrelativasAprobadas(materia, myConn));
+                materia.setCorrelativasRegulares(getCorrelativasRegulares(materia, myConn));	
             }
         }
         catch( SQLException e){
@@ -61,7 +61,7 @@ public class DatoMateria extends dato{
 	 
             pstm.setString(1, ((Materia)materia).getNombre());
             pstm.setString(2, ((Materia)materia).getDescripcion());
-            pstm.setDate(3, ((Materia)materia).getAño());
+            pstm.setDate(3, ((Materia)materia).getAnio());
             pstm.setBoolean(4, ((Materia)materia).isElectiva());
             pstm.setInt(5, ((Materia)materia).getHorasSemana());
             pstm.setInt(6, ((Materia)materia).getAdministrador().getIdAdministrador());
@@ -105,10 +105,15 @@ public class DatoMateria extends dato{
                     Materia materia = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
                             rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
-                    materia.setCorrelativasAprobadas(this.getCorrelativasAprobadas(materia, myConn));
-                    materia.setCorrelativasRegulares(this.getCorrelativasRegulares(materia, myConn));
+                    
                     materias.add(materia);
-		}			
+		}	
+            for (entidad materia : materias) {
+                ((Materia)materia).
+                    setCorrelativasAprobadas(getCorrelativasAprobadas(materia, myConn));
+                ((Materia)materia).
+                    setCorrelativasRegulares(getCorrelativasRegulares(materia, myConn));
+            }
         }
         catch( SQLException e){
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
@@ -132,7 +137,7 @@ public class DatoMateria extends dato{
 				
             pstm.setString(1, ((Materia)materia).getNombre());
             pstm.setString(2, ((Materia)materia).getDescripcion());
-            pstm.setDate(3, ((Materia)materia).getAño());
+            pstm.setDate(3, ((Materia)materia).getAnio());
             pstm.setBoolean(4, ((Materia)materia).isElectiva());
             pstm.setInt(5, ((Materia)materia).getHorasSemana());
             pstm.setInt(6, ((Materia)materia).getAdministrador().getIdAdministrador());
@@ -251,15 +256,15 @@ public class DatoMateria extends dato{
         
         try{
             String query = "SELECT * FROM Correlativa c INNER JOIN Materia m "
-                    + "ON c.id_materia_correlativa = m.id_materia "
-                    + "WHERE (c.id_carrera = " + id + ") AND "
-                    + "(c.tipo_correlativa = " + "Aprobada" +")";
+                    + "ON c.id_materia = m.id_materia "
+                    + "WHERE (c.id_materia = " + id + ") AND "
+                    + "(c.tipo_correlativa = '" + "Aprobada" + "')";
             pstm = myConn.prepareStatement(query);
             stm = myConn.createStatement();
             
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
-                    Materia m = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
+                    Materia m = new Materia(rsl.getInt("id_materia_correlativa"), rsl.getString("nombre"),
                             rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
                     aprobadas.add(m);
@@ -269,7 +274,7 @@ public class DatoMateria extends dato{
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Materias Correlativas Aprobadas de la Materia", e);
         }
-        
+      
         return aprobadas;
     }
     
@@ -278,16 +283,17 @@ public class DatoMateria extends dato{
         int id = ((Materia)materia).getIdMateria();
         
         try{
-            String query = "SELECT * FROM Correlativa c INNER JOIN Materia m "
+            String query = "SELECT * "
+                    + "FROM Correlativa c INNER JOIN Materia m "
                     + "ON c.id_materia_correlativa = m.id_materia "
-                    + "WHERE (c.id_carrera = " + id + ") AND "
-                    + "(c.tipo_correlativa = " + "Regular" +")";
+                    + "WHERE (c.id_materia = " + id + ") AND "
+                    + "(c.tipo_correlativa = '" + "Regular" + "')";
             pstm = myConn.prepareStatement(query);
             stm = myConn.createStatement();
             
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
-                    Materia m = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
+                    Materia m = new Materia(rsl.getInt("id_materia_correlativa"), rsl.getString("nombre"),
                             rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
                     regulares.add(m);
@@ -324,7 +330,7 @@ public class DatoMateria extends dato{
             eliminarCorrelativas(id, myConn);
             
             for (Materia nMateria : ap) {
-                String query = "INSERT INTO Correlativa(id_carrera, "
+                String query = "INSERT INTO Correlativa(id_materia, "
                         + "id_materia_correlativa, tipo_correlativa)"
                         + " VALUES (?, ?, ?)";
                 pstm = myConn.prepareStatement(query);
@@ -349,7 +355,7 @@ public class DatoMateria extends dato{
             eliminarCorrelativas(id, myConn);
             
             for (Materia nMateria : re) {
-                String query = "INSERT INTO Correlativa(id_carrera, "
+                String query = "INSERT INTO Correlativa(id_materia, "
                         + "id_materia_correlativa, tipo_correlativa)"
                         + " VALUES (?, ?, ?)";
                 pstm = myConn.prepareStatement(query);

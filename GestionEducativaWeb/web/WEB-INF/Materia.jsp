@@ -38,7 +38,7 @@
                         <c:out value="${materia.descripcion}" />
                     </td>
                     <td>
-                        <c:out value="${materia.año}" /> 
+                        <c:out value="${materia.anio}" /> 
                     </td>
                     <td>
                         <c:out value="${materia.electiva}" /> 

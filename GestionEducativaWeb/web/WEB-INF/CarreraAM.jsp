@@ -54,7 +54,7 @@
                             <c:out value="${materia.descripcion}" /> 
                         </td>
                         <td>
-                            <c:out value="${materia.año}" /> 
+                            <c:out value="${materia.anio}" /> 
                         </td>
                         <td>
                             <a href="CarreraMateria?redirect=Eliminar&id=${materia.idMateria}">
