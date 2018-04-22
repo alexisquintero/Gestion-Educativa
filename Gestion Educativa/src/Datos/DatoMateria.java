@@ -256,7 +256,7 @@ public class DatoMateria extends dato{
         
         try{
             String query = "SELECT * FROM Correlativa c INNER JOIN Materia m "
-                    + "ON c.id_materia = m.id_materia "
+                    + "ON c.id_materia_correlativa = m.id_materia "
                     + "WHERE (c.id_materia = " + id + ") AND "
                     + "(c.tipo_correlativa = '" + "Aprobada" + "')";
             pstm = myConn.prepareStatement(query);
@@ -283,8 +283,7 @@ public class DatoMateria extends dato{
         int id = ((Materia)materia).getIdMateria();
         
         try{
-            String query = "SELECT * "
-                    + "FROM Correlativa c INNER JOIN Materia m "
+            String query = "SELECT * FROM Correlativa c INNER JOIN Materia m "
                     + "ON c.id_materia_correlativa = m.id_materia "
                     + "WHERE (c.id_materia = " + id + ") AND "
                     + "(c.tipo_correlativa = '" + "Regular" + "')";

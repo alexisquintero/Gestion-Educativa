@@ -1,22 +1,22 @@
 <%-- 
-    Document   : CarreraMateria
-    Created on : Apr 15, 2018, 7:39:14 PM
+    Document   : MateriaRegular
+    Created on : Apr 22, 2018, 1:17:08 PM
     Author     : Supervisor
 --%>
 
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CarreraMaterias</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <%  ArrayList<Entidades.Materia> materiasDisponible = 
-        (ArrayList<Entidades.Materia>)session.getAttribute("materiasDisponible"); %> 
-        <form action="CarreraMateriaPost" method="post">
+        <%  List<Entidades.Materia> materiasDisponible = 
+        (List<Entidades.Materia>)session.getAttribute("materiasDisponible"); %> 
+        <form action="CarreraMateria" method="post">
             <table>
                 <tr>
                     <th>Nombre</th>
