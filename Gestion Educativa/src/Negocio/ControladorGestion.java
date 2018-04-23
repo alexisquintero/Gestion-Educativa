@@ -24,6 +24,15 @@ public class ControladorGestion {
         return administrador;
     }
     
+    public Moderador loginModerador(String usuario, String contrasenia) throws ApplicationException {
+        Moderador moderador;
+
+        NegocioModerador negocio = new NegocioModerador();
+        moderador = (Moderador)negocio.login(usuario, contrasenia);
+
+        return moderador;
+    }
+    
     public Alumno loginAlumno(String usuario, String contrasenia) throws ApplicationException{
         Alumno alumno;
 
@@ -96,5 +105,17 @@ public class ControladorGestion {
     public void eliminarMateria(entidad e) throws ApplicationException{
         new NegocioMateria().eliminar(e);
     } 
+    
+    public ArrayList<entidad> buscarAlumnos() throws ApplicationException{ 
+        return new NegocioAlumno().buscar();      
+    }
+    
+    public ArrayList<entidad> buscarComision() throws ApplicationException{ 
+        return new NegocioComision().buscar();      
+    }
+    
+    public ArrayList<entidad> buscarFinal() throws ApplicationException{ 
+        return new NegocioFinal().buscar();      
+    }
 }
 

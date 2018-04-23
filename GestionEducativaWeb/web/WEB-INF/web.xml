@@ -59,6 +59,14 @@
         <servlet-name>MateriaAM</servlet-name>
         <servlet-class>Administrador.MateriaAM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginModerador</servlet-name>
+        <servlet-class>Login.LoginModerador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MenuModerador</servlet-name>
+        <servlet-class>Menu.MenuModerador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -110,6 +118,14 @@
     <servlet-mapping>
         <servlet-name>MateriaAM</servlet-name>
         <url-pattern>/MateriaAM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginModerador</servlet-name>
+        <url-pattern>/LoginModerador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenuModerador</servlet-name>
+        <url-pattern>/MenuModerador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

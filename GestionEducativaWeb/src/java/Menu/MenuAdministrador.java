@@ -91,7 +91,7 @@ public class MenuAdministrador extends Servlet {
                     }
                 }                            
             default:
-                response.sendRedirect("LoginAlumno.jsp");
+                response.sendRedirect("LoginAlumno.jsp"); return;
         }
         dispatcher.forward(request, response);
     }

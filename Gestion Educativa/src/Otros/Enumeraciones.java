@@ -22,4 +22,5 @@ public class Enumeraciones {
     public enum DocenteAction {Editar, Eliminar, Crear};
     public enum MateriaAction {Editar, Eliminar, Crear};
     public enum MateriaRegularAprobada {Agregar, Eliminar};
+    public enum MenuModeradorOpciones {Alumno, Comision, Final};
 }

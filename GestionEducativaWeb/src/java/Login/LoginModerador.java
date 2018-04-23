@@ -7,31 +7,27 @@ package Login;
 
 import Entidad.Servlet;
 import Entidades.Persona;
+import Excepciones.ApplicationException;
+import Excepciones.LoginException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import Negocio.ControladorGestion;
-import Excepciones.ApplicationException;
-import Excepciones.LoginException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Supervisor
  */
-//@WebServlet("/LoginAdministrador")
-public class LoginAdministrador extends Servlet {
+public class LoginModerador extends Servlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, 
-            HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        PrintWriter out = response.getWriter();       
+        PrintWriter out = response.getWriter();      
         HttpSession session = request.getSession();       
         
         try{
@@ -43,10 +39,10 @@ public class LoginAdministrador extends Servlet {
         Persona persona = null;
         
         RequestDispatcher dispatcher = getServletContext()
-                .getRequestDispatcher("/WEB-INF/MenuAdministrador.jsp");
+                .getRequestDispatcher("/WEB-INF/MenuModerador.jsp");
         try{
             persona = controlador.
-                    loginAdministrador(
+                    loginModerador(
                             request.getParameter("usuario"), 
                             request.getParameter("password"));
         }catch (LoginException le){
@@ -60,6 +56,7 @@ public class LoginAdministrador extends Servlet {
         session.setAttribute("ControladorGestion", controlador);
         session.setAttribute("usuario", persona);     
         
-        dispatcher.forward(request, response);			            
+        dispatcher.forward(request, response);
+        
     }
 }

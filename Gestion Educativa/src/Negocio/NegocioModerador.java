@@ -5,6 +5,7 @@
  */
 package Negocio;
 
+import Datos.DatoAdministrador;
 import Datos.DatoModerador;
 import Entidades.Moderador;
 import Entidades.entidad;
@@ -48,5 +49,9 @@ public class NegocioModerador extends negocio{
     @Override
     public void eliminar(entidad e) throws ApplicationException{
         datos.delete(((Moderador)e).getIdModerador());
+    }
+    
+    public entidad login(String usuario, String contrasenia) throws ApplicationException{
+        return ((DatoModerador)datos).login(usuario, contrasenia);
     }
 }
