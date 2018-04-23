@@ -176,7 +176,7 @@ public class DatoMateria extends dato{
             if (affectedRows == 0) {
                 throw new RowsAffectedException(); 
             }
-            this.eliminarCorrelativas(id, myConn);
+            eliminarCorrelativasCompleto(id, myConn);
         } catch ( SQLException e) {
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Materia", e);
@@ -320,6 +320,24 @@ public class DatoMateria extends dato{
         catch( SQLException e){
             Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al eliminar Correlativas de la Materia", e);
+        }
+    }
+    
+    public void eliminarCorrelativasCompleto(int id, Connection myConn) throws ApplicationException {
+        try{
+            String query = "DELETE FROM Correlativa "
+                    + "WHERE (id_materia = ?) OR (id_materia_correlativa = ?)";
+
+            pstm = myConn.prepareStatement(query);
+
+            pstm.setInt(1, id);
+            pstm.setInt(2, id);
+
+            pstm.executeUpdate();           			
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadesException("Error al eliminar todas las Correlativas de la Materia", e);
         }
     }
     

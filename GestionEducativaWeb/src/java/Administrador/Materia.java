@@ -56,7 +56,7 @@ public class Materia extends Servlet {
                     getRequestDispatcher("/WEB-INF/MateriaAM.jsp"); break;
             case Eliminar: {
                 try {
-                    controlador.eliminarCarrera(materia);
+                    controlador.eliminarMateria(materia);
                     materias = (List<Entidades.Materia>)(List<?>)controlador.buscarMaterias();                       
                 } catch (ApplicationException ex) {
                     Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);

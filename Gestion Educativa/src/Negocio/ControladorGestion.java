@@ -92,11 +92,9 @@ public class ControladorGestion {
     public void modificarMateria(entidad e) throws ApplicationException{
         new NegocioMateria().modificar(e);
     }
+    
+    public void eliminarMateria(entidad e) throws ApplicationException{
+        new NegocioMateria().eliminar(e);
+    } 
 }
 
-/**
- * Para crear una entidad ->                nuevoEntidad(Entidad e);
- * Para modificar una entidad ->            modificarEntidad(Entidad e);
- * Para buscar una o varias entidades ->    buscarEntidad([Entidad e]);
- * Para eliminar una entidad ->             eliminarEntidad(Entidad e);
- */
