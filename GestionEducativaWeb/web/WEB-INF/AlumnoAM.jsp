@@ -1,0 +1,56 @@
+<%-- 
+    Document   : AlumnoAM
+    Created on : Apr 23, 2018, 9:28:59 PM
+    Author     : Supervisor
+--%>
+
+<%@page import="Entidades.Alumno"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Crear y modificar alumno</title>
+    </head>
+    <body>
+        <%  Alumno alumno = 
+        (Alumno)session.getAttribute("alumno"); %>       
+        <form action="AlumnoAM" method="post">
+            <table>
+                <tr>
+                    <th>Propiedad</th>
+                    <th>Valor</th>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td><input type=text" name="id" value="${alumno.idAlumno}" readonly="readonly"> </td>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td><input type="text" name="nombre" value="${alumno.nombre}"> </td>
+                </tr>
+                <tr>
+                    <td>Apellido</td>    
+                    <td><input type="text" name="apellido" value="${alumno.apellido}"> </td>
+                </tr>
+                <tr>
+                    <td>Telefono</td>    
+                    <td><input type="text" name="telefono" value="${alumno.telefono}"> </td>
+                </tr>
+                <tr>
+                    <td>Email</td>    
+                    <td><input type="text" name="email" value="${alumno.email}"> </td>
+                </tr>
+                <tr>
+                    <td>Direccion</td>    
+                    <td><input type="text" name="direccion" value="${alumno.direccion}"> </td>
+                </tr>
+                <tr>
+                    <td>Legajo</td>    
+                    <td><input type="text" name="legajo" value="${alumno.legajo}"> </td>
+                </tr>
+            </table>           
+            <input type="submit" value="Guardar"> 
+        </form>           
+    </body>
+</html>

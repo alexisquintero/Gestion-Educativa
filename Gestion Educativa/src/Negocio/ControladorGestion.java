@@ -117,5 +117,9 @@ public class ControladorGestion {
     public ArrayList<entidad> buscarFinal() throws ApplicationException{ 
         return new NegocioFinal().buscar();      
     }
+    
+    public void eliminarAlumno(entidad e) throws ApplicationException{
+        new NegocioAlumno().eliminar(e);
+    } 
 }
 

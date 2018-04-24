@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Administrador;
+package Moderador;
 
-import Entidad.Servlet;
+import Administrador.Carrera;
+import Entidad.ServletM;
 import Excepciones.ApplicationException;
-import Otros.Enumeraciones.CarreraAction;
+import Otros.Enumeraciones;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,59 +23,59 @@ import javax.servlet.http.HttpSession;
  *
  * @author Supervisor
  */
-@WebServlet(name = "Carrera", urlPatterns = {"/Carrera"})
-public class Carrera extends Servlet {
-
+public class Alumno extends ServletM {
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {        
         
         HttpSession session = request.getSession();
         this.initialization(request, response, session);
         
-        CarreraAction redirect = 
-                CarreraAction.
+        Enumeraciones.AlumnoAction redirect = 
+                Enumeraciones.AlumnoAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Carrera> carreras = null;
-        Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", 
-                ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+        List<Entidades.Alumno> alumnos = null;
+        Entidades.Alumno alumno = new Entidades.Alumno(0, 
+            ((Entidades.Moderador)usuario).getIdModerador(), 0, "", 
+            "", "", "", "", "", "", "");
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
-            carreras = (List<Entidades.Carrera>)session.
-                getAttribute("carreras");
-            carrera = carreras.stream().
-                filter(c -> c.getIdCarrera() == id).findFirst().get();                 
-        }              
+            alumnos = (List<Entidades.Alumno>)session.
+                getAttribute("alumnos");
+            alumno = alumnos.stream().
+                filter(c -> c.getIdAlumno() == id).findFirst().get();                           
+        } 
         
         RequestDispatcher dispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/Error.jsp");
         
         switch (redirect) {
             case Editar: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/AlumnoAM.jsp"); break;
             case Eliminar: {
                 try {
-                    controlador.eliminarCarrera(carrera);
-                    carreras = (List<Entidades.Carrera>)(List<?>)controlador.buscarCarreras();                       
+                    controlador.eliminarAlumno(alumno);
+                    alumnos = (List<Entidades.Alumno>)(List<?>)controlador.buscarAlumnos();                       
                 } catch (ApplicationException ex) {
                     Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                session.setAttribute("carreras", carreras);
+                session.setAttribute("alumnos", alumnos);
                 dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/Carrera.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/Alumno.jsp"); break;
             }
             case Crear: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); 
-                    carrera = new Entidades.
-                        Carrera(0, "", "", 
-                        ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+                    getRequestDispatcher("/WEB-INF/AlumnoAM.jsp"); 
+                    alumno = new Entidades.Alumno(0, 
+                        ((Entidades.Moderador)usuario).getIdModerador(),
+                        0, "", "", "", "", "", "", "", "");
                     break;
             default:
                 response.sendRedirect("LoginAlumno.jsp"); return;
         }
         
-        session.setAttribute("carrera", carrera);
+        session.setAttribute("alumno", alumno);
         dispatcher.forward(request, response);
-    }  
+    }
 }

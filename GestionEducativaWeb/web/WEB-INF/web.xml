@@ -67,6 +67,14 @@
         <servlet-name>MenuModerador</servlet-name>
         <servlet-class>Menu.MenuModerador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Alumno</servlet-name>
+        <servlet-class>Moderador.Alumno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlumnoAM</servlet-name>
+        <servlet-class>Moderador.AlumnoAM</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -126,6 +134,14 @@
     <servlet-mapping>
         <servlet-name>MenuModerador</servlet-name>
         <url-pattern>/MenuModerador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Alumno</servlet-name>
+        <url-pattern>/Alumno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnoAM</servlet-name>
+        <url-pattern>/AlumnoAM</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
