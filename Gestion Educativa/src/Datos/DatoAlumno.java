@@ -66,8 +66,8 @@ public class DatoAlumno extends dato{
             pstm.setString(4, ((Alumno)alumno).getEmail());
             pstm.setString(5, ((Alumno)alumno).getDireccion());
             pstm.setString(6, ((Alumno)alumno).getLegajo());
-            pstm.setString(7, ((Alumno)alumno).getUsuario());
-            pstm.setString(8, ((Alumno)alumno).getClave());
+            pstm.setString(7, ((Alumno)alumno).getLegajo());
+            pstm.setString(8, ((Alumno)alumno).getLegajo());
             pstm.setInt(9, ((Alumno)alumno).getModerador().getIdModerador());
             pstm.setInt(10, ((Alumno)alumno).getCarrera().getIdCarrera());
             

@@ -121,5 +121,13 @@ public class ControladorGestion {
     public void eliminarAlumno(entidad e) throws ApplicationException{
         new NegocioAlumno().eliminar(e);
     } 
+    
+    public int crearAlumno(entidad e) throws ApplicationException{
+        return new NegocioAlumno().nuevo(e);
+    }
+    
+    public void modificarAlumno(entidad e) throws ApplicationException{
+        new NegocioAlumno().modificar(e);
+    }
 }
 

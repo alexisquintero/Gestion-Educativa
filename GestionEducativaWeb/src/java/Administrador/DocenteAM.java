@@ -8,7 +8,6 @@ package Administrador;
 import Entidad.Servlet;
 import Excepciones.ApplicationException;
 import Menu.MenuAdministrador;
-import Otros.Enumeraciones;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
