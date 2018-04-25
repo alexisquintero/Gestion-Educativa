@@ -23,6 +23,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Carrera</th>
                 <th>Telefono</th>
                 <th>Email</th>
                 <th>Dirección</th>
@@ -39,6 +40,9 @@
                         <c:out value="${alumno.apellido}" />
                     </td>
                     <td>
+                        <c:out value="${alumno.carrera.descripcion}" />
+                    </td>
+                    <td>
                         <c:out value="${alumno.telefono}" />
                     </td>
                     <td>
@@ -52,11 +56,11 @@
                     </td>                    
                     <td>
                         <a href="Alumno?redirect=Editar&id=${alumno.idAlumno}">
-                        Editar</a></td>
+                        Editar</a>
                     </td>
-                                        <td>
+                    <td>
                         <a href="Alumno?redirect=Eliminar&id=${alumno.idAlumno}">
-                        Eliminar</a></td>
+                        Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>          

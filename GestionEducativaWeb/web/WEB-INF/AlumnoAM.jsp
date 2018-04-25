@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="Entidades.Alumno"%>
+<%@page import="Entidades.Carrera"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
     </head>
     <body>
         <%  Alumno alumno = 
-        (Alumno)session.getAttribute("alumno"); %>       
+        (Alumno)session.getAttribute("alumno");%>       
         <form action="AlumnoAM" method="post">
             <table>
                 <tr>
@@ -32,6 +33,11 @@
                 <tr>
                     <td>Apellido</td>    
                     <td><input type="text" name="apellido" value="${alumno.apellido}"> </td>
+                </tr>
+                <tr>
+                    <td>Carrera</td>    
+                    <td><input type="text" name="carrera" value="${alumno.carrera.descripcion}" disabled> </td>
+                    <td><a href="AlumnoCarrera?id=${alumno.carrera.idCarrera}">Cambiar</a></td>
                 </tr>
                 <tr>
                     <td>Telefono</td>    

@@ -44,6 +44,11 @@ public class MenuModerador extends ServletM {
                 try {
                     List<entidad> alumnos = controlador.buscarAlumnos();
                     session.setAttribute("alumnos", alumnos);
+                    for (entidad alumno : alumnos) {
+                        ((Entidades.Alumno)alumno).
+                        setCarrera((Entidades.Carrera)controlador.
+                        buscarCarrera(((Entidades.Alumno)alumno).getCarrera()));
+                    }
                     dispatcher = getServletContext().
                         getRequestDispatcher("/WEB-INF/Alumno.jsp");break;
                 } catch (ApplicationException ex) {

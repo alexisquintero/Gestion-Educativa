@@ -75,6 +75,10 @@
         <servlet-name>AlumnoAM</servlet-name>
         <servlet-class>Moderador.AlumnoAM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlumnoCarrera</servlet-name>
+        <servlet-class>Moderador.AlumnoCarrera</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -142,6 +146,10 @@
     <servlet-mapping>
         <servlet-name>AlumnoAM</servlet-name>
         <url-pattern>/AlumnoAM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnoCarrera</servlet-name>
+        <url-pattern>/AlumnoCarrera</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

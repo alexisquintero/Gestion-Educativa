@@ -36,19 +36,20 @@
                     </td>
                     <td>
                         <a href="Carrera?redirect=Editar&id=${carrera.idCarrera}">
-                        Editar</a></td>
+                        Editar</a>
                     </td>
-                                        <td>
+                    <td>
                         <a href="Carrera?redirect=Eliminar&id=${carrera.idCarrera}">
-                        Eliminar</a></td>
+                        Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>          
         </table>
         <table> 
             <tr>
-                <td><a href="Carrera?redirect=Crear">
-                        Crear nueva carrera</a></td>
+                <td>
+                    <a href="Carrera?redirect=Crear">Crear nueva carrera</a>
+                </td>
             </tr>
         </table> 
     </body>

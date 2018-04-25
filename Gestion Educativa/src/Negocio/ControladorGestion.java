@@ -129,5 +129,9 @@ public class ControladorGestion {
     public void modificarAlumno(entidad e) throws ApplicationException{
         new NegocioAlumno().modificar(e);
     }
+    
+    public entidad buscarCarrera(entidad e) throws ApplicationException{
+        return new NegocioCarrera().buscar(e);
+    }
 }
 
