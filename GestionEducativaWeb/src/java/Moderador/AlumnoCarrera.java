@@ -28,7 +28,7 @@ public class AlumnoCarrera extends ServletM {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-         HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         this.initialization(request, response, session);
         
         int id = Integer.parseInt(request.getParameter("id"));
@@ -53,6 +53,21 @@ public class AlumnoCarrera extends ServletM {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                    
+                 
+        HttpSession session = request.getSession();
+        this.initialization(request, response, session);
+        
+        int id = Integer.parseInt(request.getParameter("idCarrera"));
+        List<Entidades.Carrera> carreras = 
+                (List<Entidades.Carrera>)session.getAttribute("carreras");
+        Entidades.Carrera carrera = carreras.stream().
+                filter(c -> c.getIdCarrera() == id).findFirst().get();
+        Entidades.Alumno alumno = (Entidades.Alumno)session.getAttribute("alumno");
+        alumno.setCarrera(carrera);
+        session.setAttribute("alumno", alumno);
+        
+        RequestDispatcher dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/AlumnoAM.jsp"); 
+        dispatcher.forward(request, response);
     }
 }

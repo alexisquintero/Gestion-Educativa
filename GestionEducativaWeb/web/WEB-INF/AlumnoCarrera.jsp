@@ -35,11 +35,12 @@
                             <c:out value="${carrera.descripcion}" />
                         </td>
                         <td>
-                            <input type="submit" value="Seleccionar">
+                            <input type="radio" name="idCarrera" value="${carrera.idCarrera}"> Seleccionar<br>
                         </td>
                     </tr>
                 </c:forEach>          
             </table>
+            <input type="submit" value="Seleccionar"> 
         </form>
     </body>
 </html>
