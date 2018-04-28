@@ -22,6 +22,10 @@
                 <td><a href="MenuModerador?redirect=Alumno">
                         Editar Alumno</a></td>
             </tr>
+                        <tr>
+                <td><a href="MenuModerador?redirect=Docente">
+                        Editar Docente</a></td>
+            </tr>
             <tr>
                 <td><a href="MenuModerador?redirect=Comision">
                         Editar Comisión</a></td>

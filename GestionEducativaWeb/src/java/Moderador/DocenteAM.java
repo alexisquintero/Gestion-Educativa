@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Administrador;
+package Moderador;
 
-import Entidad.Servlet;
+import Entidad.ServletM;
 import Excepciones.ApplicationException;
-import Menu.MenuAdministrador;
+import Menu.MenuModerador;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Supervisor
  */
-public class DocenteAM extends Servlet {
+public class DocenteAM extends ServletM {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -66,11 +66,11 @@ public class DocenteAM extends Servlet {
                 controlador.modificarDocente(docente);
             }
         } catch(ApplicationException ex) {
-            Logger.getLogger(MenuAdministrador.class.getName()).
+            Logger.getLogger(MenuModerador.class.getName()).
                                 log(Level.SEVERE, null, ex);
         }
         
         session.setAttribute("docente", docente); 
-        response.sendRedirect("MenuAdministrador?redirect=Docente");
+        response.sendRedirect("MenuModerador?redirect=Docente");
     }
 }

@@ -37,11 +37,11 @@
     </servlet>
     <servlet>
         <servlet-name>Docente</servlet-name>
-        <servlet-class>Administrador.Docente</servlet-class>
+        <servlet-class>Moderador.Docente</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DocenteAM</servlet-name>
-        <servlet-class>Administrador.DocenteAM</servlet-class>
+        <servlet-class>Moderador.DocenteAM</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Materia</servlet-name>
@@ -78,6 +78,10 @@
     <servlet>
         <servlet-name>AlumnoCarrera</servlet-name>
         <servlet-class>Moderador.AlumnoCarrera</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Comision</servlet-name>
+        <servlet-class>Moderador.Comision</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
@@ -150,6 +154,10 @@
     <servlet-mapping>
         <servlet-name>AlumnoCarrera</servlet-name>
         <url-pattern>/AlumnoCarrera</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Comision</servlet-name>
+        <url-pattern>/Comision</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -27,10 +27,6 @@
                         Editar Moderador</a></td>
             </tr>
             <tr>
-                <td><a href="MenuAdministrador?redirect=Docente">
-                        Editar Docente</a></td>
-            </tr>
-            <tr>
                 <td><a href="MenuAdministrador?redirect=Materia">
                         Editar Materia</a></td>
             </tr>

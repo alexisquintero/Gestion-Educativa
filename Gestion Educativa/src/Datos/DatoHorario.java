@@ -171,4 +171,31 @@ public class DatoHorario extends dato{
             Sql.Close(rsl, stm, myConn);    
         }
     }
+    
+    public ArrayList<entidad> getOneHorario(int id) throws ApplicationException{
+        ArrayList<entidad> horarios = new ArrayList();
+        try{
+            myConn = Sql.Connect(); 
+            String query = "SELECT * FROM Horario WHERE ( id_comision = " + id + " )";
+            
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+			 
+            rsl = stm.executeQuery(query);
+            while(rsl.next()){
+		Horario horario = new Horario(rsl.getInt("id_horario"),rsl.getString("dia"), 
+                    rsl.getTime("horario_inicio"), rsl.getTime("horario_fin"),
+                    rsl.getInt("id_comision"), rsl.getInt("id_materia"));
+		horarios.add(horario);
+            }
+        }
+        catch( SQLException e){
+            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
+            throw new BuscarEntidadException("Error al buscar Horario", e);
+        }
+        finally{
+            Sql.Close(rsl, stm, myConn);      
+        }
+        return horarios;
+    }
 }

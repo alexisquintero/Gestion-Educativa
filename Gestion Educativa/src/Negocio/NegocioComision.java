@@ -23,8 +23,8 @@ public class NegocioComision extends negocio{
     }
 
     @Override
-    public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Comision)e).getIdComision()); 
+    public entidad buscar(entidad e) throws ApplicationException{
+        return datos.getOne(((Comision)e).getIdComision());
     }
 
     @Override

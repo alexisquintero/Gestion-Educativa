@@ -44,6 +44,10 @@ public class DatoComision extends dato{
         finally{
             Sql.Close(rsl, stm, myConn);      
         }
+        
+        DatoHorario datoHorario = new DatoHorario();
+        comision.setHorarios(datoHorario.getOneHorario(comision.getIdComision()));
+        
         return comision;
     }
     
@@ -92,6 +96,7 @@ public class DatoComision extends dato{
         
         ArrayList<entidad> comisiones = new ArrayList<>();
         
+        
         try{
             myConn = Sql.Connect();
             String query = "SELECT * FROM Comision";
@@ -111,7 +116,13 @@ public class DatoComision extends dato{
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
-        }        
+        }      
+        DatoHorario datoHorario = new DatoHorario();
+        for (entidad comision : comisiones) {
+            ((Comision)comision)
+                .setHorarios(datoHorario.getOneHorario(
+                    ((Comision)comision).getIdComision()));    
+        }
         return comisiones;
     }
 

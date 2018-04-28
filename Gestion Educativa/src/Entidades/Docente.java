@@ -42,7 +42,6 @@ public class Docente extends Persona{
     /**
      * 
      * @param idDocente
-     * @param cargo
      * @param idModerador
      * @param nombre
      * @param apellido

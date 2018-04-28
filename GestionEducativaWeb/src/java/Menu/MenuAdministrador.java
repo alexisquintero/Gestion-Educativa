@@ -65,19 +65,7 @@ public class MenuAdministrador extends Servlet {
                         Logger.getLogger(MenuAdministrador.class.getName()).
                                 log(Level.SEVERE, null, ex);
                     }
-                } 
-            case Docente:
-                {
-                    try {
-                        List<entidad> docentes = controlador.buscarDocentes();
-                        session.setAttribute("docentes", docentes);
-                        dispatcher = getServletContext().
-                            getRequestDispatcher("/WEB-INF/Docente.jsp");break;
-                    } catch (ApplicationException ex) {
-                        Logger.getLogger(MenuAdministrador.class.getName()).
-                                log(Level.SEVERE, null, ex);
-                    }
-                }                
+                }                        
             case Materia:
                 {
                     try {

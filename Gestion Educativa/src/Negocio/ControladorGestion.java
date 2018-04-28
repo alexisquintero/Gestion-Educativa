@@ -133,5 +133,9 @@ public class ControladorGestion {
     public entidad buscarCarrera(entidad e) throws ApplicationException{
         return new NegocioCarrera().buscar(e);
     }
+    
+    public void eliminarComision(entidad e) throws ApplicationException{
+        new NegocioComision().eliminar(e);
+    } 
 }
 

@@ -72,14 +72,14 @@ public class Comision extends entidad{
     /**
      * @return the horarios
      */
-    public ArrayList<Horario> getHorarios() {
+    public ArrayList<entidad> getHorarios() {
         return horarios;
     }
 
     /**
      * @param horarios the horarios to set
      */
-    public void setHorarios(ArrayList<Horario> horarios) {
+    public void setHorarios(ArrayList<entidad> horarios) {
         this.horarios = horarios;
     }
 
@@ -96,17 +96,36 @@ public class Comision extends entidad{
         this.cupo = cupo;
         this.moderador = new Moderador();
         this.moderador.setIdModerador(idModerador);
+        this.horarios = new ArrayList();
+        this.parciales = new ArrayList();
     }
     private int idComision;
     private String aula;
     private int cupo;
     private Moderador moderador;
-    private ArrayList<Horario> horarios; 
+    private ArrayList<entidad> horarios; 
+    private ArrayList<entidad> parciales;
 
     Comision() {
         this.idComision = 0;
         this.aula = "aula";
         this.cupo = 0;
         this.moderador = new Moderador();
+        this.horarios = new ArrayList();
+        this.parciales = new ArrayList();
+    }
+
+    /**
+     * @return the parciales
+     */
+    public ArrayList<entidad> getParciales() {
+        return parciales;
+    }
+
+    /**
+     * @param parciales the parciales to set
+     */
+    public void setParciales(ArrayList<entidad> parciales) {
+        this.parciales = parciales;
     }
 }

@@ -56,10 +56,22 @@ public class MenuModerador extends ServletM {
                             log(Level.SEVERE, null, ex);
                 }
             }
+            case Docente:
+                {
+                    try {
+                        List<entidad> docentes = controlador.buscarDocentes();
+                        session.setAttribute("docentes", docentes);
+                        dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/Docente.jsp");break;
+                    } catch (ApplicationException ex) {
+                        Logger.getLogger(MenuAdministrador.class.getName()).
+                                log(Level.SEVERE, null, ex);
+                    }
+                } 
             case Comision: {
                 try {
-                    List<entidad> comision = controlador.buscarComision();
-                    session.setAttribute("comision", comision);
+                    List<entidad> comisiones = controlador.buscarComision();
+                    session.setAttribute("comisiones", comisiones);
                     dispatcher = getServletContext().
                         getRequestDispatcher("/WEB-INF/Comision.jsp");break;
                 } catch (ApplicationException ex) {

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Administrador;
+package Moderador;
 
-import Entidad.Servlet;
+import Administrador.Carrera;
+import Entidad.ServletM;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones.DocenteAction;
 import java.io.IOException;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Supervisor
  */
-public class Docente extends Servlet {
+public class Docente extends ServletM {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +38,7 @@ public class Docente extends Servlet {
         
         List<Entidades.Docente> docentes = null;
         Entidades.Docente docente = new Entidades.
-            Docente(0, ((Entidades.Administrador)usuario).getIdAdministrador(), 
+            Docente(0, ((Entidades.Moderador)usuario).getIdModerador(), 
                     "", "", "", "", "", "", "", "");
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
@@ -67,7 +68,7 @@ public class Docente extends Servlet {
             case Crear: dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/DocenteAM.jsp");
                     docente = new Entidades.
-                        Docente(0, ((Entidades.Administrador)usuario).getIdAdministrador(), 
+                        Docente(0, ((Entidades.Moderador)usuario).getIdModerador(), 
                     "", "", "", "", "", "", "", "");
                     break;
             default:
