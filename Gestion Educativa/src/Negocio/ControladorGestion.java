@@ -137,5 +137,13 @@ public class ControladorGestion {
     public void eliminarComision(entidad e) throws ApplicationException{
         new NegocioComision().eliminar(e);
     } 
+    
+    public int crearComision(entidad e) throws ApplicationException{
+        return new NegocioComision().nuevo(e);
+    }
+    
+    public void modificarComision(entidad e) throws ApplicationException{
+        new NegocioComision().modificar(e);
+    }
 }
 

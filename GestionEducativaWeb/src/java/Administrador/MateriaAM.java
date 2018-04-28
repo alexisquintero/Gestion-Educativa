@@ -51,7 +51,7 @@ public class MateriaAM extends Servlet {
         try{
             if(materia.getIdMateria() == 0){
                 if("".equals(materia.getNombre()) || "".equals(materia.getDescripcion())
-                    || null == materia.getAnio() || "".equals(materia.getAnio())){
+                    || null == materia.getAnio() || 0 == materia.getHorasSemana()){
                     RequestDispatcher dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/MateriaAM.jsp"); 
                     dispatcher.forward(request, response); return;                  

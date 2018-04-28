@@ -83,6 +83,10 @@
         <servlet-name>Comision</servlet-name>
         <servlet-class>Moderador.Comision</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ComisionAM</servlet-name>
+        <servlet-class>Moderador.ComisionAM</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -158,6 +162,10 @@
     <servlet-mapping>
         <servlet-name>Comision</servlet-name>
         <url-pattern>/Comision</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComisionAM</servlet-name>
+        <url-pattern>/ComisionAM</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

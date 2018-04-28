@@ -6,6 +6,7 @@
 package Datos;
 
 import Entidades.Horario;
+import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.*;
 import java.sql.SQLException;
@@ -195,6 +196,12 @@ public class DatoHorario extends dato{
         }
         finally{
             Sql.Close(rsl, stm, myConn);      
+        }
+        
+        DatoMateria datoMateria = new DatoMateria();
+        for (entidad horario : horarios) {
+            int idMateria = ((Horario)horario).getMateria().getIdMateria();
+            ((Horario)horario).setMateria((Materia)datoMateria.getOne(idMateria));
         }
         return horarios;
     }
