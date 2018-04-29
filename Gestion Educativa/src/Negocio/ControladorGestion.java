@@ -145,5 +145,17 @@ public class ControladorGestion {
     public ArrayList<entidad> buscarBedel() throws ApplicationException{
         return new NegocioBedel().buscar();
     }
+    
+    public void eliminarBedel(entidad e) throws ApplicationException{
+        new NegocioBedel().eliminar(e);
+    }
+    
+    public int crearBedel(entidad e) throws ApplicationException{
+        return new NegocioBedel().nuevo(e);
+    }
+    
+    public void modificarBedel(entidad e) throws ApplicationException{
+        new NegocioBedel().modificar(e);
+    }
 }
 

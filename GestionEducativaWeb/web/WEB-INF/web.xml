@@ -91,6 +91,14 @@
         <servlet-name>Horario</servlet-name>
         <servlet-class>Moderador.Horario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Bedel</servlet-name>
+        <servlet-class>Administrador.Bedel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BedelAM</servlet-name>
+        <servlet-class>Administrador.BedelAM</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -174,6 +182,14 @@
     <servlet-mapping>
         <servlet-name>Horario</servlet-name>
         <url-pattern>/Horario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Bedel</servlet-name>
+        <url-pattern>/Bedel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BedelAM</servlet-name>
+        <url-pattern>/BedelAM</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

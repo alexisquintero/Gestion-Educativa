@@ -5,10 +5,10 @@
  */
 package Administrador;
 
+
 import Entidad.Servlet;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
-import Otros.Enumeraciones.MateriaAction;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Supervisor
  */
-public class Materia extends Servlet {
+public class Bedel extends Servlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,20 +32,20 @@ public class Materia extends Servlet {
         HttpSession session = request.getSession();
         this.initialization(request, response, session);
         
-        MateriaAction redirect = 
-                MateriaAction.
+        Enumeraciones.BedelAction redirect = 
+                Enumeraciones.BedelAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Materia> materias = null;
-        Entidades.Materia materia = new Entidades.Materia(0, "", "", 
-                Enumeraciones.Anios.Primero.toString(), false, 0,
-                ((Entidades.Administrador)usuario).getIdAdministrador());
+        List<Entidades.Bedel> bedeles = null;
+        Entidades.Bedel bedel = new Entidades.Bedel(0, 
+            ((Entidades.Administrador)usuario).getIdAdministrador(), "", 
+            "", "", "", "", "", "", "");
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
-            materias = (List<Entidades.Materia>)session.
-                getAttribute("materias");
-            materia = materias.stream().
-                filter(c -> c.getIdMateria() == id).findFirst().get();                 
+            bedeles = (List<Entidades.Bedel>)session.
+                getAttribute("bedeles");
+            bedel = bedeles.stream().
+                filter(c -> c.getIdBedel() == id).findFirst().get();                           
         }
         
         RequestDispatcher dispatcher = getServletContext()
@@ -53,29 +53,30 @@ public class Materia extends Servlet {
         
         switch (redirect) {
             case Editar: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/MateriaAM.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/BedelAM.jsp"); break;
             case Eliminar: {
                 try {
-                    controlador.eliminarMateria(materia);
-                    materias = (List<Entidades.Materia>)(List<?>)controlador.buscarMaterias();                       
+                    controlador.eliminarBedel(bedel);
+                    bedeles = (List<Entidades.Bedel>)(List<?>)controlador.buscarBedel();                       
                 } catch (ApplicationException ex) {
                     Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                session.setAttribute("materias", materias);
+                session.setAttribute("bedeles", bedeles);
                 dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/Materia.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/Bedel.jsp"); break;
             }
             case Crear: dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/MateriaAM.jsp"); 
-                    materia = new Entidades.Materia(0, "", "", 
-                        Enumeraciones.Anios.Primero.toString(), false, 0,
-                        ((Entidades.Administrador)usuario).getIdAdministrador());
+                    getRequestDispatcher("/WEB-INF/BedelAM.jsp"); 
+                    bedel = new Entidades.Bedel(0, 
+                        ((Entidades.Administrador)usuario).getIdAdministrador(),
+                        "", "", "", "", "", "", "", "");
                     break;
+                    
             default:
-                response.sendRedirect("LoginAlumno.jsp");
+                response.sendRedirect("LoginAlumno.jsp"); return;
         }
         
-        session.setAttribute("materia", materia);
+        session.setAttribute("bedel", bedel);
         dispatcher.forward(request, response);
     }
 }

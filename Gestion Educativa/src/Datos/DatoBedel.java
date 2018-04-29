@@ -63,8 +63,8 @@ public class DatoBedel extends dato{
             pstm.setString(4, ((Bedel)bedel).getEmail());
             pstm.setString(5, ((Bedel)bedel).getDireccion());
             pstm.setString(6, ((Bedel)bedel).getLegajo());
-            pstm.setString(7, ((Bedel)bedel).getUsuario());
-            pstm.setString(8, ((Bedel)bedel).getClave());
+            pstm.setString(7, ((Bedel)bedel).getLegajo());
+            pstm.setString(8, ((Bedel)bedel).getLegajo());
             pstm.setInt(9, ((Bedel)bedel).getAdministrador().getIdAdministrador());
             
             int affectedRows = pstm.executeUpdate();

@@ -30,6 +30,10 @@
                 <td><a href="MenuAdministrador?redirect=Materia">
                         Editar Materia</a></td>
             </tr>
+            <tr>
+                <td><a href="MenuAdministrador?redirect=Bedel">
+                        Editar Bedel</a></td>
+            </tr>
         </table>      
     </body>
 </html>

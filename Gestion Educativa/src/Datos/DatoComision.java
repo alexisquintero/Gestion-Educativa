@@ -45,8 +45,10 @@ public class DatoComision extends dato{
             Sql.Close(rsl, stm, myConn);      
         }
         
-        DatoHorario datoHorario = new DatoHorario();
-        comision.setHorarios(datoHorario.getOneHorario(comision.getIdComision()));
+        if(null != comision){
+            DatoHorario datoHorario = new DatoHorario();
+            comision.setHorarios(datoHorario.getOneHorario(comision.getIdComision()));
+        }
         
         return comision;
     }

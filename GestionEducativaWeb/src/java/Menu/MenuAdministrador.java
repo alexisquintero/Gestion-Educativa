@@ -77,7 +77,18 @@ public class MenuAdministrador extends Servlet {
                         Logger.getLogger(MenuAdministrador.class.getName()).
                                 log(Level.SEVERE, null, ex);
                     }
-                }                            
+                }      
+            case Bedel: {
+                try {
+                    List<entidad> bedeles = controlador.buscarBedel();
+                    session.setAttribute("bedeles", bedeles);
+                    dispatcher = getServletContext().
+                        getRequestDispatcher("/WEB-INF/Bedel.jsp");break;
+                } catch (ApplicationException ex) {
+                    Logger.getLogger(MenuAdministrador.class.getName()).
+                            log(Level.SEVERE, null, ex);
+                }
+            }
             default:
                 response.sendRedirect("LoginAlumno.jsp"); return;
         }
