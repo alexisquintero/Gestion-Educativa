@@ -87,6 +87,10 @@
         <servlet-name>ComisionAM</servlet-name>
         <servlet-class>Moderador.ComisionAM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Horario</servlet-name>
+        <servlet-class>Moderador.Horario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -166,6 +170,10 @@
     <servlet-mapping>
         <servlet-name>ComisionAM</servlet-name>
         <url-pattern>/ComisionAM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Horario</servlet-name>
+        <url-pattern>/Horario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

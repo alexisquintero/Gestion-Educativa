@@ -9,6 +9,7 @@ import Entidades.Horario;
 import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.*;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -204,5 +205,23 @@ public class DatoHorario extends dato{
             ((Horario)horario).setMateria((Materia)datoMateria.getOne(idMateria));
         }
         return horarios;
+    }
+    
+    public void deleteComision(int id, Connection myConn) throws ApplicationException {
+        try {
+            String query = "DELETE FROM Horario WHERE (id_comision = ? )";
+            
+            pstm = myConn.prepareStatement(query); 
+            pstm.setInt(1, id);
+            
+            int affectedRows = pstm.executeUpdate();
+
+            if (affectedRows == 0) {
+               //throw new RowsAffectedException(); 
+            }
+        } catch ( SQLException e) {
+            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
+            throw new EliminarEntidadException("Error al eliminar Horarios de la Comision", e);
+        }
     }
 }

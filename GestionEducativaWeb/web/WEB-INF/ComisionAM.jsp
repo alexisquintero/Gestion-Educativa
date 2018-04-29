@@ -58,26 +58,11 @@
                             <c:out value="${horario.materia.nombre}" /> 
                         </td>
                         <td>
-                            <a href="Horario?redirect=Eliminar&id=${materia.idMateria}">
+                            <a href="Horario?redirect=Eliminar&id=${horario.idHorario}">
                             Eliminar</a></td>
                         </td>  
                     </tr>
                 </c:forEach>  
-                <tr>
-                    <td>
-                        <input type=text" name="nNombre" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="nDescripcion" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="nAnio" readonly="readonly">
-                    </td>
-                    <td>
-                        <a href="Horario?redirect=Agregar">
-                            Agregar</a></td>
-                    </td> 
-                </tr>
             </table>
             <input type="submit" value="Guardar"> 
         </form>           

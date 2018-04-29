@@ -145,12 +145,19 @@ public class DatoComision extends dato{
             if (affectedRows == 0) {
                 throw new RowsAffectedException(); 
             }
+            
+            DatoHorario datoHorario = new DatoHorario();
+            datoHorario.deleteComision(((Comision)comision).getIdComision(), myConn);
         } catch ( SQLException e) {
             Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Comision", e);
         }
         finally {
             Sql.Close(rsl, stm, myConn);    
+        }
+        DatoHorario datoHorario = new DatoHorario();
+        for (entidad horario : ((Comision)comision).getHorarios()) {
+            datoHorario.newObject(horario);
         }
     }          
 
@@ -168,6 +175,9 @@ public class DatoComision extends dato{
             if (affectedRows == 0) {
                 throw new RowsAffectedException(); 
             }
+            
+            DatoHorario datoHorario = new DatoHorario();
+            datoHorario.deleteComision(id, myConn);
         } catch ( SQLException e) {
             Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Comision", e);
