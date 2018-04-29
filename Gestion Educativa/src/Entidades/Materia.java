@@ -5,6 +5,7 @@
  */
 package Entidades;
 
+import Otros.Enumeraciones;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -74,15 +75,15 @@ public class Materia extends entidad{
     /**
      * @return the anio
      */
-    public Date getAnio() {
-        return anio;
+    public String getAnio() {
+        return anio.toString();
     }
 
     /**
      * @param anio the anio to set
      */
-    public void setAnio(Date anio) {
-        this.anio = anio;
+    public void setAnio(String anio) {
+        this.anio = Enumeraciones.Anios.valueOf(anio);
     }
 
     /**
@@ -165,11 +166,11 @@ public class Materia extends entidad{
      * @param horasSemana 
      * @param idAdministrador 
      */
-    public Materia(int idMateria, String nombre, String descripcion, Date anio, boolean electiva, int horasSemana, int idAdministrador) {
+    public Materia(int idMateria, String nombre, String descripcion, String anio, boolean electiva, int horasSemana, int idAdministrador) {
         this.idMateria = idMateria;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.anio = anio;
+        this.anio = Enumeraciones.Anios.valueOf(anio);
         this.electiva = electiva;
         this.horasSemana = horasSemana;
         this.administrador = new Administrador();
@@ -180,7 +181,7 @@ public class Materia extends entidad{
     private int idMateria;
     private String nombre;
     private String descripcion;
-    private Date anio;
+    private Enumeraciones.Anios anio;
     private boolean electiva;
     private int horasSemana;
     private Administrador administrador;
@@ -192,7 +193,7 @@ public class Materia extends entidad{
        this.idMateria = 0;
         this.nombre = "nombre";
         this.descripcion = "descripcion";
-        this.anio = Date.valueOf(LocalDate.MIN);
+        this.anio = Enumeraciones.Anios.Primero;
         this.electiva = false;
         this.horasSemana = 0;
         this.administrador = new Administrador(); 

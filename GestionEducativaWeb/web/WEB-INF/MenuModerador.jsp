@@ -31,8 +31,8 @@
                         Editar Comisión</a></td>
             </tr>
             <tr>
-                <td><a href="MenuModerador?redirect=Final">
-                        Editar Final</a></td>
+                <td><a href="MenuModerador?redirect=Bedel">
+                        Editar Bedel</a></td>
             </tr>
         </table>      
     </body>

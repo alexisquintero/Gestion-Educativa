@@ -37,7 +37,25 @@
                 </tr>
                 <tr>
                     <td>Año</td>    
-                    <td><input type="text" name="anio" value="${materia.anio}"> </td>
+                    <td>
+                        <select name="anio">
+                            <option
+                                <c:if test='${materia.anio == "Primero"}'>selected="selected"</c:if>
+                                value="Primero">Primero</option>
+                            <option
+                                <c:if test='${materia.anio == "Segundo"}'>selected="selected"</c:if>
+                                value="Segundo">Segundo</option>
+                            <option
+                                <c:if test='${materia.anio == "Tercero"}'>selected="selected"</c:if>
+                                value="Tercero">Tercero</option>
+                            <option
+                                <c:if test='${materia.anio == "Cuarto"}'>selected="selected"</c:if>
+                                value="Cuarto">Cuarto</option>
+                            <option
+                                <c:if test='${materia.anio == "Quinto"}'>selected="selected"</c:if>
+                                value="Quinto">Quinto</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>Electiva</td>    

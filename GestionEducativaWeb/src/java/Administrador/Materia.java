@@ -7,6 +7,7 @@ package Administrador;
 
 import Entidad.Servlet;
 import Excepciones.ApplicationException;
+import Otros.Enumeraciones;
 import Otros.Enumeraciones.MateriaAction;
 import java.io.IOException;
 import java.sql.Date;
@@ -38,7 +39,7 @@ public class Materia extends Servlet {
         
         List<Entidades.Materia> materias = null;
         Entidades.Materia materia = new Entidades.Materia(0, "", "", 
-                Date.valueOf("2000-01-01"), false, 0,
+                Enumeraciones.Anios.Primero.toString(), false, 0,
                 ((Entidades.Administrador)usuario).getIdAdministrador());
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
@@ -68,7 +69,7 @@ public class Materia extends Servlet {
             case Crear: dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/MateriaAM.jsp"); 
                     materia = new Entidades.Materia(0, "", "", 
-                        Date.valueOf("2000-01-01"), false, 0,
+                        Enumeraciones.Anios.Primero.toString(), false, 0,
                         ((Entidades.Administrador)usuario).getIdAdministrador());
                     break;
             default:

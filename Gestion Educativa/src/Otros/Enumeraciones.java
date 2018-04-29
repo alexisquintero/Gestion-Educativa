@@ -22,7 +22,7 @@ public class Enumeraciones {
     public enum DocenteAction {Editar, Eliminar, Crear};
     public enum MateriaAction {Editar, Eliminar, Crear};
     public enum MateriaRegularAprobada {Agregar, Eliminar};
-    public enum MenuModeradorOpciones {Alumno, Docente, Comision, Final};
+    public enum MenuModeradorOpciones {Alumno, Docente, Comision, Bedel};
     public enum AlumnoAction {Editar, Eliminar, Crear};
     public enum ComisionAction {Editar, Eliminar, Crear};
 }

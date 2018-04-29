@@ -79,12 +79,12 @@ public class MenuModerador extends ServletM {
                             log(Level.SEVERE, null, ex);
                 }
             }
-            case Final: {
+            case Bedel: {
                 try {
-                    List<entidad> finales = controlador.buscarFinal();
-                    session.setAttribute("finales", finales);
+                    List<entidad> bedeles = controlador.buscarBedel();
+                    session.setAttribute("bedeles", bedeles);
                     dispatcher = getServletContext().
-                        getRequestDispatcher("/WEB-INF/Finales.jsp");break;
+                        getRequestDispatcher("/WEB-INF/Bedel.jsp");break;
                 } catch (ApplicationException ex) {
                     Logger.getLogger(MenuModerador.class.getName()).
                             log(Level.SEVERE, null, ex);

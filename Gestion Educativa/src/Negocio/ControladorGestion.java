@@ -114,10 +114,6 @@ public class ControladorGestion {
         return new NegocioComision().buscar();      
     }
     
-    public ArrayList<entidad> buscarFinal() throws ApplicationException{ 
-        return new NegocioFinal().buscar();      
-    }
-    
     public void eliminarAlumno(entidad e) throws ApplicationException{
         new NegocioAlumno().eliminar(e);
     } 
@@ -144,6 +140,10 @@ public class ControladorGestion {
     
     public void modificarComision(entidad e) throws ApplicationException{
         new NegocioComision().modificar(e);
+    }
+    
+    public ArrayList<entidad> buscarBedel() throws ApplicationException{
+        return new NegocioBedel().buscar();
     }
 }
 

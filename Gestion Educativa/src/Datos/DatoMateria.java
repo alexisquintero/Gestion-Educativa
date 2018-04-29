@@ -34,7 +34,7 @@ public class DatoMateria extends dato{
             rsl = stm.executeQuery(query);
             while(rsl.next()){
 		materia = new Materia(rsl.getInt("id_materia"),rsl.getString("nombre"), 
-                    rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"),
+                    rsl.getString("descripcion"), rsl.getString("anio"), rsl.getBoolean("electiva"),
                     rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
 		materia.setCorrelativasAprobadas(getCorrelativasAprobadas(materia, myConn));
                 materia.setCorrelativasRegulares(getCorrelativasRegulares(materia, myConn));	
@@ -61,7 +61,7 @@ public class DatoMateria extends dato{
 	 
             pstm.setString(1, ((Materia)materia).getNombre());
             pstm.setString(2, ((Materia)materia).getDescripcion());
-            pstm.setDate(3, ((Materia)materia).getAnio());
+            pstm.setString(3, ((Materia)materia).getAnio());
             pstm.setBoolean(4, ((Materia)materia).isElectiva());
             pstm.setInt(5, ((Materia)materia).getHorasSemana());
             pstm.setInt(6, ((Materia)materia).getAdministrador().getIdAdministrador());
@@ -103,7 +103,7 @@ public class DatoMateria extends dato{
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
                     Materia materia = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
-                            rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
+                            rsl.getString("descripcion"), rsl.getString("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
                     
                     materias.add(materia);
@@ -137,7 +137,7 @@ public class DatoMateria extends dato{
 				
             pstm.setString(1, ((Materia)materia).getNombre());
             pstm.setString(2, ((Materia)materia).getDescripcion());
-            pstm.setDate(3, ((Materia)materia).getAnio());
+            pstm.setString(3, ((Materia)materia).getAnio());
             pstm.setBoolean(4, ((Materia)materia).isElectiva());
             pstm.setInt(5, ((Materia)materia).getHorasSemana());
             pstm.setInt(6, ((Materia)materia).getAdministrador().getIdAdministrador());
@@ -199,7 +199,7 @@ public class DatoMateria extends dato{
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
                     Materia materia = new Materia(rsl.getInt("id_materia"), rsl.getString("nombre"),
-                            rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
+                            rsl.getString("descripcion"), rsl.getString("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));                   
                     materias.add(materia);
 		}			
@@ -266,7 +266,7 @@ public class DatoMateria extends dato{
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
                     Materia m = new Materia(rsl.getInt("id_materia_correlativa"), rsl.getString("nombre"),
-                            rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
+                            rsl.getString("descripcion"), rsl.getString("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
                     aprobadas.add(m);
 		}			
@@ -294,7 +294,7 @@ public class DatoMateria extends dato{
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
                     Materia m = new Materia(rsl.getInt("id_materia_correlativa"), rsl.getString("nombre"),
-                            rsl.getString("descripcion"), rsl.getDate("anio"), rsl.getBoolean("electiva"), 
+                            rsl.getString("descripcion"), rsl.getString("anio"), rsl.getBoolean("electiva"), 
                             rsl.getInt("horas_semana"), rsl.getInt("id_administrador"));
                     regulares.add(m);
 		}			

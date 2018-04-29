@@ -38,8 +38,8 @@ public class MateriaAM extends Servlet {
         String nDescripcion = request.getParameter("descripcion");
         nDescripcion = null == nDescripcion ? "" : nDescripcion;
         materia.setDescripcion(nDescripcion);   
-        String sAnio = request.getParameter("anio");
-        Date nAnio = tryParseDate(sAnio) ? Date.valueOf(sAnio) : null;
+        String nAnio = request.getParameter("anio");
+        nAnio = null == nAnio ? "" : nAnio;
         materia.setAnio(nAnio); 
         boolean nElectiva = Boolean.parseBoolean(request.getParameter("electiva"));        
         materia.setElectiva(nElectiva); 
@@ -51,7 +51,7 @@ public class MateriaAM extends Servlet {
         try{
             if(materia.getIdMateria() == 0){
                 if("".equals(materia.getNombre()) || "".equals(materia.getDescripcion())
-                    || null == materia.getAnio() || 0 == materia.getHorasSemana()){
+                    || 0 == materia.getHorasSemana()){
                     RequestDispatcher dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/MateriaAM.jsp"); 
                     dispatcher.forward(request, response); return;                  
@@ -76,15 +76,6 @@ public class MateriaAM extends Servlet {
             Integer.parseInt(value);  
             return true;  
         } catch (NumberFormatException e) {  
-            return false;  
-        }  
-    }
-    
-    private boolean tryParseDate(String value) {  
-        try {  
-            Date.valueOf(value);  
-            return true;  
-        } catch (IllegalArgumentException e) {  
             return false;  
         }  
     }
