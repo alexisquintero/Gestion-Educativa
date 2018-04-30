@@ -52,11 +52,11 @@
                     </td>
                     <td>
                         <a href="Moderador?redirect=Editar&id=${moderador.idModerador}">
-                        Editar</a></td>
+                        Editar</a>
                     </td>
-                                        <td>
+                    <td>
                         <a href="Moderador?redirect=Eliminar&id=${moderador.idModerador}">
-                        Eliminar</a></td>
+                        Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>          
@@ -67,5 +67,8 @@
                         Crear nuevo moderador</a></td>
             </tr>
         </table> 
+        <footer>
+            <a href="LoginAdministrador">Menu</a>
+        </footer>
     </body>
 </html>

@@ -74,11 +74,14 @@
                     </td>
                     <td>
                         <a href="CarreraMateria?redirect=Agregar">
-                            Agregar</a></td>
+                            Agregar</a>
                     </td> 
                 </tr>
             </table>
             <input type="submit" value="Guardar"> 
+            <footer>
+                <a href="LoginAdministrador">Menu</a>
+            </footer>
         </form>           
     </body>
 </html>

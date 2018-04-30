@@ -51,7 +51,15 @@ public class LoginModerador extends Servlet {
         session.setAttribute("ControladorGestion", controlador);
         session.setAttribute("usuario", persona);     
         
-        dispatcher.forward(request, response);
+        dispatcher.forward(request, response);        
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/MenuModerador.jsp");
+        dispatcher.forward(request, response);
     }
 }

@@ -63,5 +63,8 @@
                         Crear nueva materia</a></td>
             </tr>
         </table>
+        <footer>
+            <a href="LoginAdministrador">Menu</a>
+        </footer>
     </body>
 </html>

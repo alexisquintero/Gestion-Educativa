@@ -51,5 +51,8 @@
             </table>
             <input type="submit" value="Agregar"> 
         </form>
+        <footer>
+            <a href="LoginAdministrador">Menu</a>
+        </footer>
     </body>
 </html>

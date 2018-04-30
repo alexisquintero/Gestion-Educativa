@@ -150,7 +150,7 @@
                         </td>
                         <td>
                             <a href="MateriaAprobada?redirect=Eliminar&id=${ap.idMateria}">
-                            Eliminar</a></td>
+                            Eliminar</a>
                         </td>  
                     </tr>
                 </c:forEach>  
@@ -172,11 +172,14 @@
                     </td>
                     <td>
                         <a href="MateriaAprobada?redirect=Agregar">
-                            Agregar</a></td>
+                            Agregar</a>
                     </td> 
                 </tr>
             </table>
             <input type="submit" value="Guardar"> 
         </form>
+        <footer>
+            <a href="LoginAdministrador">Menu</a>
+        </footer>
     </body>
 </html>

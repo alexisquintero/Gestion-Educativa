@@ -42,5 +42,8 @@
             </table>
             <input type="submit" value="Seleccionar"> 
         </form>
+        <footer>
+            <a href="LoginModerador">Menu</a>
+        </footer>
     </body>
 </html>

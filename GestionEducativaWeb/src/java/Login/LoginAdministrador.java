@@ -55,4 +55,13 @@ public class LoginAdministrador extends Servlet {
         
         dispatcher.forward(request, response);			            
     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/MenuAdministrador.jsp");
+        dispatcher.forward(request, response);  
+    }
 }

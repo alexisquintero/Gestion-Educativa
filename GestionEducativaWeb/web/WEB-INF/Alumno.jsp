@@ -71,5 +71,8 @@
                         Crear nuevo alumno</a></td>
             </tr>
         </table>
+        <footer>
+            <a href="LoginModerador">Menu</a>
+        </footer>
     </body>
 </html>

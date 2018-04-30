@@ -57,6 +57,9 @@
                 </tr>
             </table>           
             <input type="submit" value="Guardar"> 
-        </form>           
+        </form>        
+        <footer>
+            <a href="LoginModerador">Menu</a>
+        </footer>
     </body>
 </html>

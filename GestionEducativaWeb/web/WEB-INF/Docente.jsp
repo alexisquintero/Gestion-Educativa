@@ -67,5 +67,8 @@
                         Crear nuevo docente</a></td>
             </tr>
         </table>
+        <footer>
+            <a href="LoginModerador">Menu</a>
+        </footer>
     </body>
 </html>

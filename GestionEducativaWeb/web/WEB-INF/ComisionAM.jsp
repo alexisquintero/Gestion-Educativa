@@ -59,12 +59,15 @@
                         </td>
                         <td>
                             <a href="Horario?redirect=Eliminar&id=${horario.idHorario}">
-                            Eliminar</a></td>
+                            Eliminar</a>
                         </td>  
                     </tr>
                 </c:forEach>  
             </table>
             <input type="submit" value="Guardar"> 
-        </form>           
+        </form>      
+        <footer>
+            <a href="LoginModerador">Menu</a>
+        </footer>
     </body>
 </html>
