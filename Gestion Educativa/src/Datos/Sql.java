@@ -24,15 +24,26 @@ public class Sql {
     {   
 
     Connection conn = null;
-			
+	
+    //Local
     String url = "jdbc:sqlserver://localhost:1433;databaseName=GestionEducativa";
     String user = "Java";
     String password = "Java";
     //TODO: Usar la url, user y password desde un .ini/.properties
+    
+    String connString = "jdbc:sqlserver://gestioneducativa.database.windows.net:1433;"
+        + "database=GestionEducativa;"
+        + "user=Java@gestioneducativa;"
+        + "password=GEAzure1;"
+        + "encrypt=true;"
+        + "trustServerCertificate=false;"
+        + "hostNameInCertificate=*.database.windows.net;"
+        + "loginTimeout=30;";
 		 
     try 
     {	
-        conn = DriverManager.getConnection(url, user, password);
+        conn = DriverManager.getConnection(connString); //Azure
+        //conn = DriverManager.getConnection(url, user, password);  //Local
     }
     catch (SQLException e) 
     {

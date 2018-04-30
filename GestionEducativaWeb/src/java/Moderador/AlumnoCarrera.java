@@ -21,7 +21,7 @@ public class AlumnoCarrera extends ServletM {
         this.initialization(request, response, session);
         
         int id = Integer.parseInt(request.getParameter("id"));
-        
+
         RequestDispatcher dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Error.jsp");        
         try {
@@ -49,7 +49,13 @@ public class AlumnoCarrera extends ServletM {
         HttpSession session = request.getSession();
         this.initialization(request, response, session);
         
-        int id = Integer.parseInt(request.getParameter("idCarrera"));
+        String sId = request.getParameter("idCarrera");
+        if(null == sId){
+            RequestDispatcher dispatcher = getServletContext().
+                    getRequestDispatcher("/WEB-INF/AlumnoCarrera.jsp"); 
+                    dispatcher.forward(request, response); return;
+        }
+        int id = Integer.parseInt(sId);
         List<Entidades.Carrera> carreras = 
                 (List<Entidades.Carrera>)session.getAttribute("carreras");
         Entidades.Carrera carrera = carreras.stream().
