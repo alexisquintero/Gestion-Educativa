@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Comision;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoComision extends dato{
     
     @Override
@@ -38,7 +27,6 @@ public class DatoComision extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Comision", e);
         }
         finally{
@@ -79,7 +67,6 @@ public class DatoComision extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Comision", e);
         }
         finally{
@@ -88,11 +75,6 @@ public class DatoComision extends dato{
         return id;
     }
     
-        /**
-     *
-     * @return
-     * @throws ApplicationException
-     */
     @Override
     public ArrayList<entidad> getAll() throws ApplicationException{
         
@@ -113,7 +95,6 @@ public class DatoComision extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Comisiones", e);
         }
         finally{
@@ -151,7 +132,6 @@ public class DatoComision extends dato{
             DatoHorario datoHorario = new DatoHorario();
             datoHorario.deleteComision(((Comision)comision).getIdComision(), myConn);
         } catch ( SQLException e) {
-            Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Comision", e);
         }
         finally {
@@ -181,7 +161,6 @@ public class DatoComision extends dato{
             DatoHorario datoHorario = new DatoHorario();
             datoHorario.deleteComision(id, myConn);
         } catch ( SQLException e) {
-            Logger.getLogger(DatoComision.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Comision", e);
         }
         finally {

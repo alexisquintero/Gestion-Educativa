@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Materia;
@@ -12,13 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoMateria extends dato{
 
     @Override
@@ -41,7 +30,6 @@ public class DatoMateria extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Materia", e);
         }
         finally{
@@ -81,7 +69,6 @@ public class DatoMateria extends dato{
             this.guardarCorrelativasRegulares(id, ((Materia)materia).getCorrelativasRegulares(), myConn);
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Materia", e);
         }
         finally{
@@ -116,7 +103,6 @@ public class DatoMateria extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Materias", e);
         }
         finally{
@@ -154,7 +140,6 @@ public class DatoMateria extends dato{
             this.guardarCorrelativasRegulares(((Materia)materia).getIdMateria(),
                     ((Materia)materia).getCorrelativasRegulares(), myConn);
         } catch ( SQLException e) {
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Materia", e);
         }
         finally {
@@ -178,7 +163,6 @@ public class DatoMateria extends dato{
             }
             eliminarCorrelativasCompleto(id, myConn);
         } catch ( SQLException e) {
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Materia", e);
         }
         finally {
@@ -205,7 +189,6 @@ public class DatoMateria extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Materias de la Carrera", e);
         }       
         return materias;
@@ -229,7 +212,6 @@ public class DatoMateria extends dato{
             }			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al actualizar Materias de la Carrera", e);
         }      
     }
@@ -246,7 +228,6 @@ public class DatoMateria extends dato{
             pstm.executeUpdate();           			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al eliminar Materias de la Carrera", e);
         }   
     }
@@ -272,7 +253,6 @@ public class DatoMateria extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Materias Correlativas Aprobadas de la Materia", e);
         }
       
@@ -300,7 +280,6 @@ public class DatoMateria extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Materias Correlativas Aprobadas de la Materia", e);
         }
         return regulares;
@@ -318,7 +297,6 @@ public class DatoMateria extends dato{
             pstm.executeUpdate();           			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al eliminar Correlativas de la Materia", e);
         }
     }
@@ -336,7 +314,6 @@ public class DatoMateria extends dato{
             pstm.executeUpdate();           			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al eliminar todas las Correlativas de la Materia", e);
         }
     }
@@ -360,7 +337,6 @@ public class DatoMateria extends dato{
             }			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al actualizar Correlativas Aprobadas de la Materia", e);
         }
     }
@@ -384,7 +360,6 @@ public class DatoMateria extends dato{
             }			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoMateria.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al actualizar Correlativas Regulares de la Materia", e);
         }
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Administrador;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoAdministrador extends dato{
     
     @Override
@@ -39,7 +28,6 @@ public class DatoAdministrador extends dato{
             }
         }
         catch(SQLException e){
-            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Administrador", e);
         }
         finally{
@@ -79,7 +67,6 @@ public class DatoAdministrador extends dato{
                      	             
         }
         catch(SQLException e){
-            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Administrador", e);
         }
         finally{
@@ -88,11 +75,6 @@ public class DatoAdministrador extends dato{
         return id;
     }
     
-        /**
-     *
-     * @return
-     * @throws ApplicationException
-     */
     @Override
     public ArrayList<entidad> getAll() throws ApplicationException{
         
@@ -113,7 +95,6 @@ public class DatoAdministrador extends dato{
 		}			
         }
         catch(SQLException e){
-            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Administradores", e);
         }
         finally{
@@ -148,7 +129,6 @@ public class DatoAdministrador extends dato{
                 throw new RowsAffectedException();
             }
         } catch (SQLException e) {
-            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Administrador", e);
         }
         finally {
@@ -171,7 +151,6 @@ public class DatoAdministrador extends dato{
                 throw new RowsAffectedException();
             }
         } catch (SQLException e) {
-            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Administrador", e);
         }
         finally {
@@ -198,7 +177,6 @@ public class DatoAdministrador extends dato{
             }
         }
         catch(SQLException e){
-            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new LoginException("Error al realizar el login de Administrador", e);
         }
         finally{

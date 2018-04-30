@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Moderador;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoModerador extends dato{
 
     @Override
@@ -39,7 +28,6 @@ public class DatoModerador extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoModerador.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Moderador", e);
         }
         finally{
@@ -81,7 +69,6 @@ public class DatoModerador extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoModerador.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Moderador", e);
         }
         finally{
@@ -110,7 +97,6 @@ public class DatoModerador extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoModerador.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Moderadores", e);
         }
         finally{
@@ -146,7 +132,6 @@ public class DatoModerador extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoModerador.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Moderador", e);
         }
         finally {
@@ -169,7 +154,6 @@ public class DatoModerador extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoModerador.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Moderador", e);
         }
         finally {
@@ -197,7 +181,6 @@ public class DatoModerador extends dato{
             }
         }
         catch(SQLException e){
-            Logger.getLogger(DatoModerador.class.getName()).log(Level.SEVERE, null, e);
             throw new LoginException("Error al realizar el login de Moderador", e);
         }
         finally{

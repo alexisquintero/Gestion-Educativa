@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Docente;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoDocente extends dato{
     
     @Override
@@ -42,7 +31,6 @@ public class DatoDocente extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoDocente.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Docente", e);
         }
         finally{
@@ -84,7 +72,6 @@ public class DatoDocente extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoDocente.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Docente", e);
         }
         finally{
@@ -119,7 +106,6 @@ public class DatoDocente extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoDocente.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Docentes", e);
         }
         finally{
@@ -155,7 +141,6 @@ public class DatoDocente extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoDocente.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Docente", e);
         }
         finally {
@@ -178,7 +163,6 @@ public class DatoDocente extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoDocente.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Docente", e);
         }
         finally {

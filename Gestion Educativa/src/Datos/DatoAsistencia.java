@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Asistencia;
@@ -12,13 +7,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoAsistencia extends dato{
     
     @Override
@@ -39,7 +28,6 @@ public class DatoAsistencia extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Asistencia", e);
         }
         finally{
@@ -76,7 +64,6 @@ public class DatoAsistencia extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Asistencia", e);
         }
         finally{
@@ -85,11 +72,6 @@ public class DatoAsistencia extends dato{
         return id;
     }
     
-        /**
-     *
-     * @return
-     * @throws ApplicationException
-     */
     @Override
     public ArrayList<entidad> getAll() throws ApplicationException{
         
@@ -109,7 +91,6 @@ public class DatoAsistencia extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Asistencias", e);
         }
         finally{
@@ -142,7 +123,6 @@ public class DatoAsistencia extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Asistencia", e);
         }
         finally {
@@ -165,7 +145,6 @@ public class DatoAsistencia extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoAsistencia.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Asistencia", e);
         }
         finally {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Bedel;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoBedel extends dato{
 
     @Override
@@ -39,7 +28,6 @@ public class DatoBedel extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Bedel", e);
         }
         finally{
@@ -80,7 +68,6 @@ public class DatoBedel extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Bedel", e);
         }
         finally{
@@ -109,7 +96,6 @@ public class DatoBedel extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Bedeles", e);
         }
         finally{
@@ -145,7 +131,6 @@ public class DatoBedel extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Bedel", e);
         }
         finally {
@@ -168,7 +153,6 @@ public class DatoBedel extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoBedel.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Bedel", e);
         }
         finally {

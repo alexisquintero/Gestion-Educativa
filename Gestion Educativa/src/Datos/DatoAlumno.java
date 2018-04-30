@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Alumno;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoAlumno extends dato{
     
     @Override
@@ -41,7 +30,6 @@ public class DatoAlumno extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Alumno", e);
         }
         finally{
@@ -84,7 +72,6 @@ public class DatoAlumno extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Alumno", e);
         }
         finally{
@@ -93,11 +80,6 @@ public class DatoAlumno extends dato{
         return id;
     }
     
-        /**
-     *
-     * @return
-     * @throws ApplicationException
-     */
     @Override
     public ArrayList<entidad> getAll() throws ApplicationException{
         
@@ -120,7 +102,6 @@ public class DatoAlumno extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Alumnoes", e);
         }
         finally{
@@ -157,7 +138,6 @@ public class DatoAlumno extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Alumno", e);
         }
         finally {
@@ -180,7 +160,6 @@ public class DatoAlumno extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoAlumno.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Alumno", e);
         }
         finally {
@@ -208,7 +187,6 @@ public class DatoAlumno extends dato{
             }
         }
         catch(SQLException e){
-            Logger.getLogger(DatoAdministrador.class.getName()).log(Level.SEVERE, null, e);
             throw new LoginException("Error al realizar el login de Alumno", e);
         }
         finally{

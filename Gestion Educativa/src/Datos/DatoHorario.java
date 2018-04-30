@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Horario;
@@ -13,13 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoHorario extends dato{
     
     @Override
@@ -41,7 +30,6 @@ public class DatoHorario extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Horario", e);
         }
         finally{
@@ -78,7 +66,6 @@ public class DatoHorario extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Horario", e);
         }
         finally{
@@ -87,11 +74,6 @@ public class DatoHorario extends dato{
         return id;
     }
     
-        /**
-     *
-     * @return
-     * @throws ApplicationException
-     */
     @Override
     public ArrayList<entidad> getAll() throws ApplicationException{
         
@@ -112,7 +94,6 @@ public class DatoHorario extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Horarios", e);
         }
         finally{
@@ -143,7 +124,6 @@ public class DatoHorario extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Horario", e);
         }
         finally {
@@ -166,7 +146,6 @@ public class DatoHorario extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Horario", e);
         }
         finally {
@@ -192,7 +171,6 @@ public class DatoHorario extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Horario", e);
         }
         finally{
@@ -216,11 +194,7 @@ public class DatoHorario extends dato{
             
             int affectedRows = pstm.executeUpdate();
 
-            if (affectedRows == 0) {
-               //throw new RowsAffectedException(); 
-            }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoHorario.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Horarios de la Comision", e);
         }
     }

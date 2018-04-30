@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Parcial;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoParcial extends dato{
     
     @Override
@@ -39,7 +28,6 @@ public class DatoParcial extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoParcial.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Parcial", e);
         }
         finally{
@@ -76,7 +64,6 @@ public class DatoParcial extends dato{
                      	             
         }
         catch( SQLException e){
-            Logger.getLogger(DatoParcial.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Parcial", e);
         }
         finally{
@@ -85,11 +72,6 @@ public class DatoParcial extends dato{
         return id;
     }
     
-        /**
-     *
-     * @return
-     * @throws ApplicationException
-     */
     @Override
     public ArrayList<entidad> getAll() throws ApplicationException{
         
@@ -110,7 +92,6 @@ public class DatoParcial extends dato{
 		}			
         }
         catch( SQLException e){
-            Logger.getLogger(DatoParcial.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Parciales", e);
         }
         finally{
@@ -141,7 +122,6 @@ public class DatoParcial extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoParcial.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Parcial", e);
         }
         finally {
@@ -164,7 +144,6 @@ public class DatoParcial extends dato{
                 throw new RowsAffectedException(); 
             }
         } catch ( SQLException e) {
-            Logger.getLogger(DatoParcial.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Parcial", e);
         }
         finally {

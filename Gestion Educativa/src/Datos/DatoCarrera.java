@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Datos;
 
 import Entidades.Carrera;
@@ -11,13 +6,7 @@ import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author Supervisor
- */
 public class DatoCarrera extends dato{
 
     @Override
@@ -39,7 +28,6 @@ public class DatoCarrera extends dato{
             }
         }
         catch( SQLException e){
-            Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadException("Error al buscar Carrera", e);
         }
         finally{
@@ -75,7 +63,6 @@ public class DatoCarrera extends dato{
           
         }
         catch( SQLException e){
-            Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
             throw new CrearEntidadException("Error al crear Carrera", e);
         }
         finally{
@@ -104,7 +91,6 @@ public class DatoCarrera extends dato{
 		}	   
         }
         catch( SQLException e){
-            Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
             throw new BuscarEntidadesException("Error al buscar Carreras", e);
         }
         finally{
@@ -137,7 +123,6 @@ public class DatoCarrera extends dato{
             datoMateria.guardarMateriasCarrera(((Carrera)carrera).getIdCarrera(), 
                     ((Carrera)carrera).getMaterias(), myConn);
         } catch ( SQLException e) {
-            Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
             throw new ModificarEntidadException("Error al modificar Carrera", e);
         }
         finally {
@@ -163,7 +148,6 @@ public class DatoCarrera extends dato{
             
             datoMateria.eliminarMateriasCarrera(id, myConn);
         } catch ( SQLException e) {
-            Logger.getLogger(DatoCarrera.class.getName()).log(Level.SEVERE, null, e);
             throw new EliminarEntidadException("Error al eliminar Carrera", e);
         }
         finally {
