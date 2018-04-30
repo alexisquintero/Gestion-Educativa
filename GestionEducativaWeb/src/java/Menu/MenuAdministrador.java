@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Menu;
 
 import Entidad.Servlet;
@@ -16,15 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import Otros.Enumeraciones.MenuAdministradorOpciones;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Supervisor
- */
 @WebServlet(name = "MenuAdministrador", urlPatterns = {"/MenuAdministrador"})
 public class MenuAdministrador extends Servlet {
 
@@ -50,8 +39,10 @@ public class MenuAdministrador extends Servlet {
                         dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Carrera.jsp");break;
                     } catch (ApplicationException ex) {
-                        Logger.getLogger(MenuAdministrador.class.getName()).
-                                log(Level.SEVERE, null, ex);
+                        session.setAttribute("error", ex.getMessage());
+                        dispatcher = getServletContext()
+                            .getRequestDispatcher("/WEB-INF/Error.jsp");
+                        dispatcher.forward(request, response); return;
                     }
                 }              
             case Moderador: 
@@ -62,8 +53,10 @@ public class MenuAdministrador extends Servlet {
                         dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Moderador.jsp");break;
                     } catch (ApplicationException ex) {
-                        Logger.getLogger(MenuAdministrador.class.getName()).
-                                log(Level.SEVERE, null, ex);
+                        session.setAttribute("error", ex.getMessage());
+                        dispatcher = getServletContext()
+                            .getRequestDispatcher("/WEB-INF/Error.jsp");
+                        dispatcher.forward(request, response); return;
                     }
                 }                        
             case Materia:
@@ -74,8 +67,10 @@ public class MenuAdministrador extends Servlet {
                         dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Materia.jsp");break;
                     } catch (ApplicationException ex) {
-                        Logger.getLogger(MenuAdministrador.class.getName()).
-                                log(Level.SEVERE, null, ex);
+                        session.setAttribute("error", ex.getMessage());
+                        dispatcher = getServletContext()
+                            .getRequestDispatcher("/WEB-INF/Error.jsp");
+                        dispatcher.forward(request, response); return;
                     }
                 }      
             case Bedel: {
@@ -85,8 +80,9 @@ public class MenuAdministrador extends Servlet {
                     dispatcher = getServletContext().
                         getRequestDispatcher("/WEB-INF/Bedel.jsp");break;
                 } catch (ApplicationException ex) {
-                    Logger.getLogger(MenuAdministrador.class.getName()).
-                            log(Level.SEVERE, null, ex);
+                    dispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/Error.jsp");
+                    dispatcher.forward(request, response); return;
                 }
             }
             default:

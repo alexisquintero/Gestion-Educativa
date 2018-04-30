@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Menu;
 
 import Entidad.ServletM;
@@ -19,10 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Supervisor
- */
 public class MenuModerador extends ServletM {
 
     @Override
@@ -52,8 +43,10 @@ public class MenuModerador extends ServletM {
                     dispatcher = getServletContext().
                         getRequestDispatcher("/WEB-INF/Alumno.jsp");break;
                 } catch (ApplicationException ex) {
-                    Logger.getLogger(MenuModerador.class.getName()).
-                            log(Level.SEVERE, null, ex);
+                    session.setAttribute("error", ex.getMessage());
+                    dispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/Error.jsp");
+                    dispatcher.forward(request, response); return;
                 }
             }
             case Docente:
@@ -64,8 +57,10 @@ public class MenuModerador extends ServletM {
                         dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Docente.jsp");break;
                     } catch (ApplicationException ex) {
-                        Logger.getLogger(MenuAdministrador.class.getName()).
-                                log(Level.SEVERE, null, ex);
+                        session.setAttribute("error", ex.getMessage());
+                        dispatcher = getServletContext()
+                            .getRequestDispatcher("/WEB-INF/Error.jsp");
+                        dispatcher.forward(request, response); return;
                     }
                 } 
             case Comision: {
@@ -75,8 +70,10 @@ public class MenuModerador extends ServletM {
                     dispatcher = getServletContext().
                         getRequestDispatcher("/WEB-INF/Comision.jsp");break;
                 } catch (ApplicationException ex) {
-                    Logger.getLogger(MenuModerador.class.getName()).
-                            log(Level.SEVERE, null, ex);
+                    session.setAttribute("error", ex.getMessage());
+                    dispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/Error.jsp");
+                    dispatcher.forward(request, response); return;
                 }
             }           
             default:

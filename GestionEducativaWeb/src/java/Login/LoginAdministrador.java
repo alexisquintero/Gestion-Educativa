@@ -1,43 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Login;
 
 import Entidad.Servlet;
 import Entidades.Persona;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Negocio.ControladorGestion;
 import Excepciones.ApplicationException;
 import Excepciones.LoginException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Supervisor
- */
-//@WebServlet("/LoginAdministrador")
 public class LoginAdministrador extends Servlet {
 
     @Override
     protected void doPost(HttpServletRequest request, 
             HttpServletResponse response)
             throws ServletException, IOException {
-        
-        PrintWriter out = response.getWriter();       
+             
         HttpSession session = request.getSession();       
         
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         }catch (ClassNotFoundException e1){
-            out.println(e1.getMessage());
+            session.setAttribute("error", e1.getMessage());
+            RequestDispatcher dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/Error.jsp");
+            dispatcher.forward(request, response); return;
         }      
         
         Persona persona = null;
@@ -54,7 +44,10 @@ public class LoginAdministrador extends Servlet {
             dispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/Error.jsp");       	
         }catch(ApplicationException e){              
-            out.println(e.getMessage());
+            session.setAttribute("error", e.getMessage());
+            dispatcher = getServletContext()
+                .getRequestDispatcher("/WEB-INF/Error.jsp");
+            dispatcher.forward(request, response); return;
         }       
         
         session.setAttribute("ControladorGestion", controlador);

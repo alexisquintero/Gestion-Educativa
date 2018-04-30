@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Administrador;
 
 import Entidad.Servlet;
@@ -10,8 +5,6 @@ import Excepciones.ApplicationException;
 import Otros.Enumeraciones.CarreraAction;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Supervisor
- */
 @WebServlet(name = "Carrera", urlPatterns = {"/Carrera"})
 public class Carrera extends Servlet {
 
@@ -39,7 +28,7 @@ public class Carrera extends Servlet {
         
         List<Entidades.Carrera> carreras = null;
         Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", 
-                ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+            ((Entidades.Administrador)usuario).getIdAdministrador(), null);
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
             carreras = (List<Entidades.Carrera>)session.
@@ -59,7 +48,10 @@ public class Carrera extends Servlet {
                     controlador.eliminarCarrera(carrera);
                     carreras = (List<Entidades.Carrera>)(List<?>)controlador.buscarCarreras();                       
                 } catch (ApplicationException ex) {
-                    Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+                    session.setAttribute("error", ex.getMessage());
+                    dispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/Error.jsp");
+                    dispatcher.forward(request, response); return;
                 }
                 session.setAttribute("carreras", carreras);
                 dispatcher = getServletContext().

@@ -15,8 +15,6 @@
         <header>
             <h3>Universidad Tecnológica Nacional</h3>
             <h3>Facultad Regional Rosario</h3>
-            <h1></h1>
-            <h1>Sistema Académico SYSACAD</h1>
             <h1>Módulo de autogestión moderador</h1>
         </header>
         <form action="LoginModerador" method="post">
@@ -35,8 +33,5 @@
                 </tr>
             </table>
         </form>
-        <footer>
-           <h2>IMPORTANTE: AL GENERAR EL CERTIFICADO DE CURSADO NO SE PODRÁN ELIMINAR LAS INSCRIPCIONES</h2>
-        </footer>
     </body>
 </html>
