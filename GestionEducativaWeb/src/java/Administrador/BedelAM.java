@@ -38,6 +38,7 @@ public class BedelAM extends Servlet {
         String nLegajo = request.getParameter("legajo");
         nLegajo = null == nLegajo ? "" : nLegajo;
         bedel.setLegajo(nLegajo);
+        session.setAttribute("bedel", bedel); 
         
         try{
             if(bedel.getIdBedel() == 0){
@@ -45,7 +46,7 @@ public class BedelAM extends Servlet {
                 || "".equals(bedel.getTelefono()) || "".equals(bedel.getEmail())
                 || "".equals(bedel.getDireccion()) || "".equals(bedel.getLegajo())){
                     RequestDispatcher dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/AlumnoAM.jsp"); 
+                    getRequestDispatcher("/WEB-INF/BedelAM.jsp"); 
                     dispatcher.forward(request, response); return;                  
                 } else{
                     bedel.setIdBedel(controlador.crearBedel(bedel));
@@ -60,7 +61,6 @@ public class BedelAM extends Servlet {
             dispatcher.forward(request, response); return;	
         }
         
-        session.setAttribute("bedel", bedel); 
         response.sendRedirect("MenuAdministrador?redirect=Bedel");
     }
 }

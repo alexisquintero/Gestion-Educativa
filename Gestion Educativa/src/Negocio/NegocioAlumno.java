@@ -4,6 +4,7 @@ import Datos.DatoAlumno;
 import Entidades.Alumno;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
 
@@ -28,6 +29,12 @@ public class NegocioAlumno extends negocio{
         if (buscar(e) != null) {
             throw new EntidadExistenteException("El Alumno ya existe");
         }       
+        Entidades.Alumno alumno = (Entidades.Alumno)e;
+        if("".equals(alumno.getNombre()) || "".equals(alumno.getApellido()) 
+            || "".equals(alumno.getTelefono()) || "".equals(alumno.getEmail())
+            || "".equals(alumno.getDireccion()) || "".equals(alumno.getLegajo())){
+            throw new CamposVaciosException();
+        }
         return datos.newObject(e);
     }
 

@@ -1,6 +1,5 @@
 package Moderador;
 
-import Administrador.Carrera;
 import Entidad.ServletM;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;

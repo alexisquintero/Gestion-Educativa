@@ -4,6 +4,7 @@ import Datos.DatoModerador;
 import Entidades.Moderador;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
 
@@ -28,11 +29,23 @@ public class NegocioModerador extends negocio{
         if (this.buscar(e) != null) {
             throw new EntidadExistenteException("El Moderador ya existe");
         }       
+        Entidades.Moderador moderador = (Entidades.Moderador)e;
+        if("".equals(moderador.getNombre()) || "".equals(moderador.getApellido()) 
+            || "".equals(moderador.getTelefono()) || "".equals(moderador.getEmail())
+            || "".equals(moderador.getDireccion()) || "".equals(moderador.getLegajo())){
+            throw new CamposVaciosException();
+        }
         return datos.newObject(e);
     }
 
     @Override
     public void modificar(entidad e) throws ApplicationException{
+        Entidades.Moderador moderador = (Entidades.Moderador)e;
+        if("".equals(moderador.getNombre()) || "".equals(moderador.getApellido()) 
+                || "".equals(moderador.getTelefono()) || "".equals(moderador.getEmail())
+                || "".equals(moderador.getDireccion()) || "".equals(moderador.getLegajo())){
+            throw new CamposVaciosException();
+        }
         datos.modify(e);
     }
 

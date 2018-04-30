@@ -4,6 +4,7 @@ import Datos.DatoComision;
 import Entidades.Comision;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
 
@@ -28,11 +29,19 @@ public class NegocioComision extends negocio{
         if (this.buscar(e) != null) {
             throw new EntidadExistenteException("La Comision ya existe");
         }       
+        Entidades.Comision comision = (Entidades.Comision)e;
+        if("".equals(comision.getAula()) || 0 == comision.getCupo()){
+            throw new CamposVaciosException();
+        }
         return datos.newObject(e);
     }
 
     @Override
     public void modificar(entidad e) throws ApplicationException{
+        Entidades.Comision comision = (Entidades.Comision)e;
+        if("".equals(comision.getAula()) || 0 == comision.getCupo()){
+            throw new CamposVaciosException();
+        }
         datos.modify(e);
     }
 

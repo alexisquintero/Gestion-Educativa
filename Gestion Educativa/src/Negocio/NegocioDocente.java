@@ -4,6 +4,7 @@ import Datos.DatoDocente;
 import Entidades.Docente;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
 
@@ -28,11 +29,23 @@ public class NegocioDocente extends negocio{
         if (this.buscar(e) != null) {
             throw new EntidadExistenteException("El Docente ya existe");
         }       
+        Entidades.Docente docente = (Entidades.Docente)e;
+        if("".equals(docente.getNombre()) || "".equals(docente.getApellido()) 
+                || "".equals(docente.getTelefono()) || "".equals(docente.getEmail())
+                || "".equals(docente.getDireccion()) || "".equals(docente.getLegajo())){
+            throw new CamposVaciosException();
+        }
         return datos.newObject(e);
     }
 
     @Override
     public void modificar(entidad e) throws ApplicationException{
+        Entidades.Docente docente = (Entidades.Docente)e;
+        if("".equals(docente.getNombre()) || "".equals(docente.getApellido()) 
+                || "".equals(docente.getTelefono()) || "".equals(docente.getEmail())
+                || "".equals(docente.getDireccion()) || "".equals(docente.getLegajo())){
+            throw new CamposVaciosException();
+        }
         datos.modify(e);
     }
 

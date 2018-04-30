@@ -4,6 +4,7 @@ import Datos.DatoBedel;
 import Entidades.Bedel;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
 
@@ -28,11 +29,23 @@ public class NegocioBedel extends negocio{
         if (this.buscar(e) != null) {
             throw new EntidadExistenteException("El Bedel ya existe");
         }       
+        Entidades.Bedel bedel = (Entidades.Bedel)e;
+        if("".equals(bedel.getNombre()) || "".equals(bedel.getApellido()) 
+            || "".equals(bedel.getTelefono()) || "".equals(bedel.getEmail())
+            || "".equals(bedel.getDireccion()) || "".equals(bedel.getLegajo())){
+            throw new CamposVaciosException();
+        }
         return datos.newObject(e);
     }
 
     @Override
     public void modificar(entidad e) throws ApplicationException{
+        Entidades.Bedel bedel = (Entidades.Bedel)e;
+        if("".equals(bedel.getNombre()) || "".equals(bedel.getApellido()) 
+            || "".equals(bedel.getTelefono()) || "".equals(bedel.getEmail())
+            || "".equals(bedel.getDireccion()) || "".equals(bedel.getLegajo())){
+            throw new CamposVaciosException();
+        }
         datos.modify(e);
     }
 
