@@ -89,7 +89,6 @@ public class Carrera extends entidad{
         this.administrador = new Administrador();
         this.administrador.setIdAdministrador(idAdministrador);
         this.materias = materias;
-        this.materias = new ArrayList();
     }
     private int idCarrera;
     private String nombre;

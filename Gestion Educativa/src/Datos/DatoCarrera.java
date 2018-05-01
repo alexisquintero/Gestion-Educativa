@@ -85,9 +85,10 @@ public class DatoCarrera extends dato{
             
             rsl = stm.executeQuery(query);
 		while(rsl.next()){
-                    Carrera carrera = new Carrera(rsl.getInt("id_carrera"),rsl.getString("nombre"), 
+                    int id = rsl.getInt("id_carrera");
+                    Carrera carrera = new Carrera(id,rsl.getString("nombre"), 
                         rsl.getString("descripcion"), rsl.getInt("id_administrador"),
-                        datoMateria.materiasCarrera(rsl.getInt("id_carrera"), myConn));
+                        datoMateria.materiasCarrera(id, myConn));
                     carreras.add(carrera);
 		}	   
         }
