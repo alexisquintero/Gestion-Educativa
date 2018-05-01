@@ -65,7 +65,7 @@ public class Carrera extends Servlet {
                         ((Entidades.Administrador)usuario).getIdAdministrador(), null);
                     break;
             default:
-                response.sendRedirect("LoginAlumno.jsp"); return;
+                response.sendRedirect("LoginAdministrador.jsp"); return;
         }
         
         session.setAttribute("carrera", carrera);

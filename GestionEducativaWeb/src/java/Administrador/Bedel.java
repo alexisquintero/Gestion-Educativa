@@ -66,7 +66,7 @@ public class Bedel extends Servlet {
                     break;
                     
             default:
-                response.sendRedirect("LoginAlumno.jsp"); return;
+                response.sendRedirect("LoginAdministrador.jsp"); return;
         }
         
         session.setAttribute("bedel", bedel);

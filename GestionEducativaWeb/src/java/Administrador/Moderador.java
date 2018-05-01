@@ -64,7 +64,7 @@ public class Moderador extends Servlet {
                                 "", "", "", "", "", "", "", "");
                     break;
             default:
-                response.sendRedirect("LoginAlumno.jsp");
+                response.sendRedirect("LoginAdministrador.jsp"); return;
         }
         
         session.setAttribute("moderador", moderador);

@@ -60,7 +60,8 @@ public class DatoCarrera extends dato{
             if (rsl.next()) {
                 id = rsl.getInt(1);  
             }              
-          
+            datoMateria.guardarMateriasCarrera(((Carrera)carrera).getIdCarrera(), 
+                ((Carrera)carrera).getMaterias(), myConn);
         }
         catch( SQLException e){
             throw new CrearEntidadException("Error al crear Carrera", e);

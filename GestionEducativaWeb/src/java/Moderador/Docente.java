@@ -64,7 +64,7 @@ public class Docente extends ServletM {
                     "", "", "", "", "", "", "", "");
                     break;
             default:
-                response.sendRedirect("LoginAlumno.jsp");
+                response.sendRedirect("LoginModerador.jsp"); return;
         }
         
         session.setAttribute("docente", docente);

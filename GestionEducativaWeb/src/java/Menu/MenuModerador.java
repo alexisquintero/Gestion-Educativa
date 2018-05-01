@@ -77,7 +77,7 @@ public class MenuModerador extends ServletM {
                 }
             }           
             default:
-                response.sendRedirect("LoginAlumno.jsp"); return;
+                response.sendRedirect("LoginModerador.jsp"); return;
         }
         dispatcher.forward(request, response);
     }

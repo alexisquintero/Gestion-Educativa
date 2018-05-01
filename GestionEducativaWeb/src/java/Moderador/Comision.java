@@ -62,7 +62,7 @@ public class Comision extends ServletM {
                         ((Entidades.Moderador)usuario).getIdModerador());
                     break;
             default:
-                response.sendRedirect("LoginAlumno.jsp"); return;
+                response.sendRedirect("LoginModerador.jsp"); return;
         }
         
         session.setAttribute("comision", comision);

@@ -1,6 +1,7 @@
 package Negocio;
 
 import Datos.DatoCarrera;
+import Datos.DatoMateria;
 import Entidades.Carrera;
 import Entidades.Materia;
 import Entidades.entidad;
@@ -18,8 +19,8 @@ public class NegocioCarrera extends negocio{
     }
 
     @Override
-    public entidad buscar(entidad e) throws ApplicationException{ 
-        return datos.getOne(((Carrera)e).getIdCarrera()); 
+    public entidad buscar(entidad e) throws ApplicationException{
+        return (Carrera)datos.getOne(((Carrera)e).getIdCarrera()); 
     }
 
     @Override

@@ -64,7 +64,7 @@ public class Alumno extends ServletM {
                         0, "", "", "", "", "", "", "", "");
                     break;
             default:
-                response.sendRedirect("LoginAlumno.jsp"); return;
+                response.sendRedirect("LoginModerador.jsp"); return;
         }
         
         session.setAttribute("alumno", alumno);

@@ -77,7 +77,7 @@ public class CarreraMateria extends Servlet {
                             getRequestDispatcher("/WEB-INF/CarreraAM.jsp");
                 break;
             default:
-                response.sendRedirect("LoginAlumno.jsp");;
+                response.sendRedirect("LoginAdministrador.jsp"); return;
         }       
         dispatcher.forward(request, response);
     }

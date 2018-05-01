@@ -65,7 +65,7 @@ public class Materia extends Servlet {
                         ((Entidades.Administrador)usuario).getIdAdministrador());
                     break;
             default:
-                response.sendRedirect("LoginAlumno.jsp");
+                response.sendRedirect("LoginAdministrador.jsp"); return;
         }
         
         session.setAttribute("materia", materia);
