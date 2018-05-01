@@ -129,7 +129,7 @@ public class MateriaAprobada extends Servlet {
         ArrayList<entidad> nMaterias = new ArrayList<>(materiasAgregar);
         
         ArrayList<entidad> materiasExistentes = materia.getCorrelativasAprobadas();
-        if(null == materiasExistentes){
+        if(materiasExistentes.isEmpty()){
                materiasExistentes = nMaterias;
         }else{
             for(entidad e: nMaterias) materiasExistentes.add(e);   

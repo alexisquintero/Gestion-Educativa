@@ -186,7 +186,8 @@ public class Materia extends entidad{
         this.electiva = false;
         this.horasSemana = 0;
         this.administrador = new Administrador(); 
-        this.correlativasAprobadas = new ArrayList<>();
-        this.correlativasRegulares = new ArrayList<>();
+        this.correlativasAprobadas = new ArrayList();
+        this.correlativasRegulares = new ArrayList();
+        this.finales = new ArrayList();
     }
 }

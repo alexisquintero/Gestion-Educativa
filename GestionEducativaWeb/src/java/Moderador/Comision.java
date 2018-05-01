@@ -4,6 +4,7 @@ import Entidad.ServletM;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class Comision extends ServletM {
                 Enumeraciones.ComisionAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Comision> comisiones = null;
+        List<Entidades.Comision> comisiones = new ArrayList();
         Entidades.Comision comision = new Entidades.Comision(0, "", 0, 
             ((Entidades.Moderador)usuario).getIdModerador());
         if(request.getParameterMap().containsKey("id")){

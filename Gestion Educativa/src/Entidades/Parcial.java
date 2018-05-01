@@ -132,6 +132,7 @@ public class Parcial extends entidad{
         this.horarioFin = horarioFin;
         this.horario = new Horario();
         this.horario.setIdHorario(idHorario);
+        this.notas = new ArrayList();
     }
     private int idParcial;
     private String descripcion;

@@ -5,6 +5,7 @@ import Entidad.Servlet;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class Bedel extends Servlet {
                 Enumeraciones.BedelAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Bedel> bedeles = null;
+        List<Entidades.Bedel> bedeles = new ArrayList();
         Entidades.Bedel bedel = new Entidades.Bedel(0, 
             ((Entidades.Administrador)usuario).getIdAdministrador(), "", 
             "", "", "", "", "", "", "");

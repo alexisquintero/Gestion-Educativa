@@ -4,6 +4,7 @@ import Entidad.ServletM;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class Alumno extends ServletM {
                 Enumeraciones.AlumnoAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Alumno> alumnos = null;
+        List<Entidades.Alumno> alumnos = new ArrayList();
         Entidades.Alumno alumno = new Entidades.Alumno(0, 
             ((Entidades.Moderador)usuario).getIdModerador(), 0, "", 
             "", "", "", "", "", "", "");

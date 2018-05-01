@@ -4,6 +4,7 @@ import Entidad.Servlet;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class Moderador extends Servlet {
                 Enumeraciones.ModeradorAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Moderador> moderadores = null;
+        List<Entidades.Moderador> moderadores = new ArrayList();
         Entidades.Moderador moderador = new Entidades.
             Moderador(0, ((Entidades.Administrador)usuario).getIdAdministrador(),
                     "", "", "", "", "", "", "", "");

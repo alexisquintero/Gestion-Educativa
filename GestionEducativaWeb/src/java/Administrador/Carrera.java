@@ -4,6 +4,7 @@ import Entidad.Servlet;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones.CarreraAction;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ public class Carrera extends Servlet {
                 CarreraAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Carrera> carreras = null;
+        List<Entidades.Carrera> carreras = new ArrayList();
         Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", 
             ((Entidades.Administrador)usuario).getIdAdministrador(), null);
         if(request.getParameterMap().containsKey("id")){

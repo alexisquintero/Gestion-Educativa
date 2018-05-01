@@ -29,7 +29,7 @@ public class CarreraMateria extends Servlet {
                 Enumeraciones.CarreraMateria.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Materia> materias = null;
+        List<Entidades.Materia> materias = new ArrayList();
         Entidades.Carrera carrera = (Entidades.Carrera)session.getAttribute("carrera");
         RequestDispatcher dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/Error.jsp");
@@ -48,12 +48,12 @@ public class CarreraMateria extends Servlet {
                         .getRequestDispatcher("/WEB-INF/Error.jsp");
                 }
                 
-                List<Entidades.Materia> materiasDisponible = null; 
-                if(null == materiasExistentes){
+                List<Entidades.Materia> materiasDisponible = new ArrayList(); 
+                if(materiasExistentes.isEmpty()){
                     materiasDisponible = materias;
                 }
                 else {
-                    if(null != materias){
+                    if(!materias.isEmpty()){
                     materiasDisponible = 
                             materias.stream().
                             filter(m -> materiasExistentes.stream().

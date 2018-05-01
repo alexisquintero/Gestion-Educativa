@@ -164,6 +164,10 @@ public class Horario extends entidad{
         this.comision.setIdComision(idComision);
         this.materia = new Materia();
         this.materia.setIdMateria(idMateria);
+        this.asistencias = new ArrayList();
+        this.docentes = new ArrayList();
+        this.inscripciones = new ArrayList();
+        this.parciales = new ArrayList();
     }
     private int idHorario;
     private String dia;
@@ -183,5 +187,9 @@ public class Horario extends entidad{
         this.horarioFin = Time.valueOf(LocalTime.MIN);
         this.comision = new Comision();
         this.materia = new Materia();
+        this.asistencias = new ArrayList();
+        this.docentes = new ArrayList();
+        this.inscripciones = new ArrayList();
+        this.parciales = new ArrayList();
     }
 }

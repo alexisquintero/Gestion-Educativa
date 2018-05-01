@@ -123,6 +123,7 @@ public class Final extends entidad{
         this.aula = aula;
         this.materia = new Materia();
         this.materia.setIdMateria(idMateria);
+        this.inscripciones = new ArrayList();
     }
     private int idFinal;
     private Date fecha;
@@ -139,5 +140,6 @@ public class Final extends entidad{
         this.horarioFin = Time.valueOf(LocalTime.MIN);
         this.aula = "aula";
         this.materia = new Materia();
+        this.inscripciones = new ArrayList();
     }
 }

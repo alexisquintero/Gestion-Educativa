@@ -5,6 +5,7 @@ import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import Otros.Enumeraciones.MateriaAction;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +26,7 @@ public class Materia extends Servlet {
                 MateriaAction.
                         valueOf(request.getParameter("redirect"));
         
-        List<Entidades.Materia> materias = null;
+        List<Entidades.Materia> materias = new ArrayList();
         Entidades.Materia materia = new Entidades.Materia(0, "", "", 
                 Enumeraciones.Anios.Primero.toString(), false, 0,
                 ((Entidades.Administrador)usuario).getIdAdministrador());
