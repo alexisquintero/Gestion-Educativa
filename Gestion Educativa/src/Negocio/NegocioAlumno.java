@@ -32,7 +32,8 @@ public class NegocioAlumno extends negocio{
         Entidades.Alumno alumno = (Entidades.Alumno)e;
         if("".equals(alumno.getNombre()) || "".equals(alumno.getApellido()) 
             || "".equals(alumno.getTelefono()) || "".equals(alumno.getEmail())
-            || "".equals(alumno.getDireccion()) || "".equals(alumno.getLegajo())){
+            || "".equals(alumno.getDireccion()) || "".equals(alumno.getLegajo())
+            || "descripcion".equals(alumno.getCarrera().getDescripcion())){
             throw new CamposVaciosException();
         }
         return datos.newObject(e);
@@ -40,6 +41,13 @@ public class NegocioAlumno extends negocio{
 
     @Override
     public void modificar(entidad e) throws ApplicationException{
+        Entidades.Alumno alumno = (Entidades.Alumno)e;
+        if("".equals(alumno.getNombre()) || "".equals(alumno.getApellido()) 
+            || "".equals(alumno.getTelefono()) || "".equals(alumno.getEmail())
+            || "".equals(alumno.getDireccion()) || "".equals(alumno.getLegajo())
+            || "descripcion".equals(alumno.getCarrera().getDescripcion())){
+            throw new CamposVaciosException();
+        }
         datos.modify(e);
     }
 

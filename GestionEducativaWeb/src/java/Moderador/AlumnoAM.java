@@ -43,7 +43,8 @@ public class AlumnoAM extends ServletM {
             if(alumno.getIdAlumno() == 0){
                 if("".equals(alumno.getNombre()) || "".equals(alumno.getApellido()) 
                 || "".equals(alumno.getTelefono()) || "".equals(alumno.getEmail())
-                || "".equals(alumno.getDireccion()) || "".equals(alumno.getLegajo())){
+                || "".equals(alumno.getDireccion()) || "".equals(alumno.getLegajo())
+                || "descripcion".equals(alumno.getCarrera().getDescripcion())){
                     RequestDispatcher dispatcher = getServletContext().
                     getRequestDispatcher("/WEB-INF/AlumnoAM.jsp"); 
                     dispatcher.forward(request, response); return;                  
