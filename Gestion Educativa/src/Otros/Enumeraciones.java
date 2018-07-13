@@ -17,4 +17,5 @@ public class Enumeraciones {
     public enum AlumnoAction {Editar, Eliminar, Crear};
     public enum ComisionAction {Editar, Eliminar, Crear};
     public enum BedelAction {Editar, Eliminar, Crear};
+    public enum MenuAlumnoOpciones {InscripcionMateria, InscripcionFinal};
 }

@@ -99,6 +99,14 @@
         <servlet-name>BedelAM</servlet-name>
         <servlet-class>Administrador.BedelAM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MenuAlumno</servlet-name>
+        <servlet-class>Menu.MenuAlumno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginAlumno</servlet-name>
+        <servlet-class>Login.LoginAlumno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -190,6 +198,14 @@
     <servlet-mapping>
         <servlet-name>BedelAM</servlet-name>
         <url-pattern>/BedelAM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MenuAlumno</servlet-name>
+        <url-pattern>/MenuAlumno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginAlumno</servlet-name>
+        <url-pattern>/LoginAlumno</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

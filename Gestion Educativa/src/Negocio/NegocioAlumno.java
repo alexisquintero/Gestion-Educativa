@@ -59,4 +59,24 @@ public class NegocioAlumno extends negocio{
     public entidad login(String usuario, String contrasenia) throws ApplicationException{
         return ((DatoAlumno)datos).login(usuario, contrasenia);
     }
+    
+    public ArrayList<entidad> materiasInscripcion() throws ApplicationException{
+        ArrayList<entidad> materias = new ArrayList<entidad>();
+        return materias;
+    }
+    
+    public String inscripcionMateria(entidad e) throws ApplicationException{
+        String code = "";
+        return code;
+    }
+    
+    public ArrayList<entidad> materiasFinalesInscripcion() throws ApplicationException{
+        ArrayList<entidad> materias = new ArrayList<entidad>();
+        return materias;
+    }
+    
+    public String inscripcionFinal(entidad e) throws ApplicationException{
+        String code = "";
+        return code;
+    }
 }

@@ -148,5 +148,21 @@ public class ControladorGestion {
     public void modificarBedel(entidad e) throws ApplicationException{
         new NegocioBedel().modificar(e);
     }
+    
+    public ArrayList<entidad> buscarMateriasInscripcion() throws ApplicationException{
+        return new NegocioAlumno().materiasInscripcion();
+    }
+    
+    public String inscribirMateria(entidad e) throws ApplicationException{
+        return new NegocioAlumno().inscripcionMateria(e);
+    }
+    
+    public ArrayList<entidad> buscarMateriasInscripcionFinal() throws ApplicationException{
+        return new NegocioAlumno().materiasFinalesInscripcion();
+    }
+    
+    public String inscribirFinal(entidad e) throws ApplicationException{
+        return new NegocioAlumno().inscripcionFinal(e);
+    }
 }
 

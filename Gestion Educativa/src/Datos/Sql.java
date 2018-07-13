@@ -42,8 +42,8 @@ public class Sql {
 		 
     try 
     {	
-        conn = DriverManager.getConnection(connString); //Azure
-        //conn = DriverManager.getConnection(url, user, password);  //Local
+        //conn = DriverManager.getConnection(connString); //Azure
+        conn = DriverManager.getConnection(url, user, password);  //Local
     }
     catch (SQLException e) 
     {
