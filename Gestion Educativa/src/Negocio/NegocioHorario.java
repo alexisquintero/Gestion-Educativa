@@ -1,6 +1,8 @@
 package Negocio;
 
 import Datos.DatoHorario;
+import Datos.DatoInscripcionHorario;
+import Entidades.Comision;
 import Entidades.Horario;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
@@ -39,5 +41,11 @@ public class NegocioHorario extends negocio{
     @Override
     public void eliminar(entidad e) throws ApplicationException{
         datos.delete(((Horario)e).getIdHorario());
+    }
+    
+        
+    public int cantidadInscriptos(Horario horario) throws ApplicationException{
+        return new DatoInscripcionHorario().
+            cantidadInscriptosComision(horario.getIdHorario());
     }
 }

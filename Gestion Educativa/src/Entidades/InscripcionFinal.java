@@ -4,106 +4,63 @@ import java.sql.Date;
 
 public class InscripcionFinal extends entidad{
 
-    /**
-     * @return the fecha
-     */
     public Date getFecha() {
         return fecha;
     }
 
-    /**
-     * @param fecha the fecha to set
-     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    /**
-     * @return the notaPractica
-     */
     public int getNotaPractica() {
         return notaPractica;
     }
 
-    /**
-     * @param notaPractica the notaPractica to set
-     */
     public void setNotaPractica(int notaPractica) {
         this.notaPractica = notaPractica;
     }
 
-    /**
-     * @return the notaTeoria
-     */
     public int getNotaTeoria() {
         return notaTeoria;
     }
 
-    /**
-     * @param notaTeoria the notaTeoria to set
-     */
     public void setNotaTeoria(int notaTeoria) {
         this.notaTeoria = notaTeoria;
     }
 
-    /**
-     * @return the notaFinal
-     */
     public int getNotaFinal() {
         return notaFinal;
     }
 
-    /**
-     * @param notaFinal the notaFinal to set
-     */
     public void setNotaFinal(int notaFinal) {
         this.notaFinal = notaFinal;
     }
 
-    /**
-     * @return the presencia
-     */
     public boolean isPresencia() {
         return presencia;
     }
 
-    /**
-     * @param presencia the presencia to set
-     */
     public void setPresencia(boolean presencia) {
         this.presencia = presencia;
     }
 
-    /**
-     * @return the alumno
-     */
     public Alumno getAlumno() {
         return alumno;
     }
 
-    /**
-     * @param alumno the alumno to set
-     */
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
 
-    /**
-     * @return the objFinal
-     */
     public Final getObjFinal() {
         return objFinal;
     }
 
-    /**
-     * @param objFinal the objFinal to set
-     */
     public void setObjFinal(Final objFinal) {
         this.objFinal = objFinal;
     }
 
     /**
-     * 
      * @param fecha
      * @param notaPractica
      * @param notaTeoria

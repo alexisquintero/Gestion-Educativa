@@ -1,10 +1,13 @@
 package Negocio;
 
 import Datos.DatoInscripcionHorario;
+import Entidades.Alumno;
+import Entidades.InscripcionHorario;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NegocioInscripcionHorario extends negocio{
 
@@ -40,4 +43,8 @@ public class NegocioInscripcionHorario extends negocio{
     public void eliminar(entidad e) throws ApplicationException{
         //datos.delete(((InscripcionHorario)e).idInscripcionHorario);
     }
-}
+    
+    public List<InscripcionHorario> inscripcionesAlumno(Alumno alumno) throws ApplicationException{
+        return ((DatoInscripcionHorario)datos).getHorariosAlumno(alumno);
+    }
+} 

@@ -1,6 +1,9 @@
 package Negocio;
 
 import Datos.DatoMateria;
+import Entidades.Comision;
+import Entidades.Horario;
+import Entidades.InscripcionHorario;
 import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
@@ -10,6 +13,8 @@ import Excepciones.CorrelativaRegularAprobadaException;
 import Excepciones.CorrelativaRegularException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NegocioMateria extends negocio{
 
@@ -107,5 +112,33 @@ public class NegocioMateria extends negocio{
     @Override
     public void eliminar(entidad e) throws ApplicationException{
         datos.delete(((Materia)e).getIdMateria());
+    }
+    
+    public List<Horario> materiaHorarios(Materia materia) throws ApplicationException{
+        //Obtener todos los horarios
+        List<Horario> horarios = (ArrayList<Horario>)(ArrayList<?>)
+            new NegocioHorario().buscar();
+        //Filtrar solo los horarios de la materia
+        List<Horario> horariosMateria = horarios.stream().
+            filter(h -> h.getMateria().getIdMateria() == materia.getIdMateria()).
+            collect(Collectors.toList());
+        //Controlar que tengan cupo disponible
+            //Obtengo las comisiones
+        List<Comision> comisiones = (ArrayList<Comision>)(ArrayList<?>)
+            new NegocioComision().buscar();
+        List<Horario> horariosConCupo = new ArrayList();
+        for (Horario horario : horariosMateria) {
+            //Obtengo el cupo
+            int cupo = comisiones.stream().
+                filter(c -> c.getIdComision() == horario.getComision().getIdComision()).
+                collect(Collectors.toList()).get(0).getCupo();
+            //Obtengo la cantidad de inscriptos a ese horario
+            int cantidadInscriptos = 
+                new NegocioHorario().cantidadInscriptos(horario);
+            if(cantidadInscriptos < cupo) {
+                horariosConCupo.add(horario);
+            }
+        }
+        return horariosConCupo;
     }
 }

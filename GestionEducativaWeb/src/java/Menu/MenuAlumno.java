@@ -1,6 +1,8 @@
 package Menu;
 
 import Entidad.Servlet;
+import Entidades.Alumno;
+import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
@@ -30,8 +32,11 @@ public class MenuAlumno extends Servlet {
             case InscripcionMateria: 
                 {
                     try {
-                        List<entidad> materiasInsc = controlador.buscarMateriasInscripcion();
+                        List<Materia> materiasInsc = controlador.
+                            buscarMateriasInscripcion(((Alumno)usuario));
                         session.setAttribute("materiasInsc", materiasInsc);
+                        dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/InscripcionMateria.jsp");break;
                     } catch (ApplicationException ex) {
                         session.setAttribute("error", ex.getMessage());
                         dispatcher = getServletContext()
@@ -42,7 +47,8 @@ public class MenuAlumno extends Servlet {
             case InscripcionFinal: 
                 {
                     try {
-                        List<entidad> materiasFin = controlador.buscarMateriasInscripcionFinal();
+                        List<Materia> materiasFin = controlador.
+                            buscarMateriasInscripcionFinal(((Alumno)usuario));
                         session.setAttribute("materiasFin", materiasFin);
                     } catch (ApplicationException ex) {
                         session.setAttribute("error", ex.getMessage());
@@ -52,7 +58,8 @@ public class MenuAlumno extends Servlet {
                     }
                 }
             default:
-                response.sendRedirect("LoginAdministrador.jsp");
+                response.sendRedirect("LoginAlumno.jsp");
         }
+        dispatcher.forward(request, response);
     }
 }

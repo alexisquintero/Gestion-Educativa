@@ -1,7 +1,6 @@
 package Negocio;
 
 import Datos.DatoCarrera;
-import Datos.DatoMateria;
 import Entidades.Carrera;
 import Entidades.Materia;
 import Entidades.entidad;

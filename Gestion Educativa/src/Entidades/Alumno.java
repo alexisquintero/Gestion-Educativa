@@ -4,72 +4,42 @@ import java.util.ArrayList;
 
 public class Alumno extends Persona{
 
-    /**
-     * @return the idAlumno
-     */
     public int getIdAlumno() {
         return idAlumno;
     }
 
-    /**
-     * @param idAlumno the idAlumno to set
-     */
     public void setIdAlumno(int idAlumno) {
         this.idAlumno = idAlumno;
     }
 
-    /**
-     * @return the moderador
-     */
     public Moderador getModerador() {
         return moderador;
     }
 
-    /**
-     * @param moderador the moderador to set
-     */
     public void setModerador(Moderador moderador) {
         this.moderador = moderador;
     }
 
-    /**
-     * @return the carrera
-     */
     public Carrera getCarrera() {
         return carrera;
     }
 
-    /**
-     * @param carrera the carrera to set
-     */
     public void setCarrera(Carrera carrera) {
         this.carrera = carrera;
     }
 
-    /**
-     * @return the comisiones
-     */
     public ArrayList<Comision> getComisiones() {
         return comisiones;
     }
 
-    /**
-     * @param comisiones the comisiones to set
-     */
     public void setComisiones(ArrayList<Comision> comisiones) {
         this.comisiones = comisiones;
     }
 
-    /**
-     * @return the inscripciones
-     */
     public ArrayList<InscripcionFinal> getInscripciones() {
         return inscripciones;
     }
 
-    /**
-     * @param inscripciones the inscripciones to set
-     */
     public void setInscripciones(ArrayList<InscripcionFinal> inscripciones) {
         this.inscripciones = inscripciones;
     }

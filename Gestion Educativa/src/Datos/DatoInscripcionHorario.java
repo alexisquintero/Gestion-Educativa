@@ -1,11 +1,13 @@
 package Datos;
 
+import Entidades.Alumno;
 import Entidades.InscripcionHorario;
 import Entidades.entidad;
 import Excepciones.*;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatoInscripcionHorario extends dato{
     
@@ -88,7 +90,7 @@ public class DatoInscripcionHorario extends dato{
 		}			
         }
         catch( SQLException e){
-            throw new BuscarEntidadesException("Error al buscar InscripcionHorarios", e);
+            throw new BuscarEntidadException("Error al buscar InscripcionHorarios", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    
@@ -143,5 +145,53 @@ public class DatoInscripcionHorario extends dato{
         finally {
             Sql.Close(rsl, stm, myConn);    
         }
+    }
+    
+    public int cantidadInscriptosComision(int idHorario) throws ApplicationException{
+        int cant = 0;
+        try{
+            myConn = Sql.Connect(); 
+            String query = "SELECT COUNT(id_horario) FROM Inscripcion_Horario WHERE ( id_horario = " + idHorario + " )";
+            
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+			 
+            rsl = stm.executeQuery(query);
+            
+            cant = rsl.getInt(1);
+        }
+        catch( SQLException e){
+            throw new CantidadInscriptosComisionException("Error al contar la cantidad de inscriptos al horario", e);
+        }
+        finally{
+            Sql.Close(rsl, stm, myConn);      
+        }
+        return cant;
+    }
+    
+    public List<InscripcionHorario> getHorariosAlumno(Alumno alumno) throws ApplicationException{
+        List<InscripcionHorario> inscripcionHorarios = new ArrayList<>();
+        
+        try{
+            myConn = Sql.Connect();
+            String query = "SELECT * FROM Inscripcion_Horario WHERE ( id_alumno = "
+                + alumno.getIdAlumno() + " )";
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+            
+            rsl = stm.executeQuery(query);
+		while(rsl.next()){
+                    InscripcionHorario inscripcionHorario = new InscripcionHorario(rsl.getDate("fecha"),rsl.getInt("id_horario"), 
+                    rsl.getInt("id_alumno"));
+                    inscripcionHorarios.add(inscripcionHorario);
+		}			
+        }
+        catch( SQLException e){
+            throw new HorariosAlumnoException("Error al buscar InscripcionHorarios de alumno", e);
+        }
+        finally{
+            Sql.Close(rsl, stm, myConn);    
+        }        
+        return inscripcionHorarios;
     }
 }

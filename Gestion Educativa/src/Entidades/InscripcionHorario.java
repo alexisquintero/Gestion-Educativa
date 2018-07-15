@@ -5,44 +5,26 @@ import java.time.LocalDate;
 
 public class InscripcionHorario extends entidad{
 
-    /**
-     * @return the fecha
-     */
     public Date getFecha() {
         return fecha;
     }
 
-    /**
-     * @param fecha the fecha to set
-     */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    /**
-     * @return the horario
-     */
     public Horario getHorario() {
         return horario;
     }
 
-    /**
-     * @param horario the horario to set
-     */
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
 
-    /**
-     * @return the alumno
-     */
     public Alumno getAlumno() {
         return alumno;
     }
 
-    /**
-     * @param alumno the alumno to set
-     */
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
@@ -54,7 +36,6 @@ public class InscripcionHorario extends entidad{
     }
 
     /**
-     * 
      * @param fecha
      * @param idHorario
      * @param idAlumno 

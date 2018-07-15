@@ -1,10 +1,13 @@
 package Negocio;
 
 import Datos.DatoInscripcionFinal;
+import Entidades.Alumno;
+import Entidades.InscripcionFinal;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NegocioInscripcionFinal extends negocio{
 
@@ -39,5 +42,9 @@ public class NegocioInscripcionFinal extends negocio{
     @Override
     public void eliminar(entidad e) throws ApplicationException{
         //datos.delete(((InscripcionFinal)e).idInscripcionFinal);
+    }
+    
+    public List<InscripcionFinal> inscripcionesAlumno(Alumno alumno) throws ApplicationException{
+        return ((DatoInscripcionFinal)datos).getFinalesAlumno(alumno);
     }
 }

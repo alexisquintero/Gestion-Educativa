@@ -2,7 +2,10 @@ package Negocio;
 
 import Entidades.*;
 import Excepciones.ApplicationException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorGestion {
     //Logins
@@ -149,20 +152,30 @@ public class ControladorGestion {
         new NegocioBedel().modificar(e);
     }
     
-    public ArrayList<entidad> buscarMateriasInscripcion() throws ApplicationException{
-        return new NegocioAlumno().materiasInscripcion();
+    public List<Materia> buscarMateriasInscripcion(Alumno alumno) throws ApplicationException{
+        return new NegocioAlumno().materiasInscripcion(alumno);
     }
     
-    public String inscribirMateria(entidad e) throws ApplicationException{
-        return new NegocioAlumno().inscripcionMateria(e);
+    public List<Horario> buscarHorariosMaterias(Materia materia) throws ApplicationException{
+        return new NegocioMateria().materiaHorarios(materia);
     }
     
-    public ArrayList<entidad> buscarMateriasInscripcionFinal() throws ApplicationException{
-        return new NegocioAlumno().materiasFinalesInscripcion();
+    public void inscribirHorario(Horario horario, Alumno alumno) throws ApplicationException{
+        InscripcionHorario inscripcionHorario = 
+            new InscripcionHorario(Date.valueOf(LocalDate.now()), 
+                horario.getIdHorario(), alumno.getIdAlumno());
+        new NegocioInscripcionHorario().nuevo(inscripcionHorario);
     }
     
-    public String inscribirFinal(entidad e) throws ApplicationException{
-        return new NegocioAlumno().inscripcionFinal(e);
+    public List<Materia> buscarMateriasInscripcionFinal(Alumno alumno) throws ApplicationException{
+        return new NegocioAlumno().materiasFinalesInscripcion(alumno);
+    }
+    
+    public void inscribirFinal(Final final1, Alumno alumno) throws ApplicationException{
+        InscripcionFinal inscripcionFinal = 
+            new InscripcionFinal(Date.valueOf(LocalDate.now()), 0, 0, 0, false, 
+                alumno.getIdAlumno(), final1.getIdFinal());
+        new NegocioInscripcionFinal().nuevo(inscripcionFinal);
     }
 }
 

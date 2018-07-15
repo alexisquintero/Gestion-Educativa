@@ -24,7 +24,7 @@ public abstract class Servlet extends HttpServlet {
             HttpServletResponse response, 
             HttpSession session) 
             throws ServletException, IOException{       
-        usuario = (Entidades.Administrador)session.getAttribute("usuario");
+        usuario = (Entidades.Persona)session.getAttribute("usuario");
         
         if(usuario == null) {response.sendError(401, "Login required"); return;}
         
