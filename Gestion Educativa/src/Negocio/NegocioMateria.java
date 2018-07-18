@@ -13,7 +13,9 @@ import Excepciones.CorrelativaRegularAprobadaException;
 import Excepciones.CorrelativaRegularException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class NegocioMateria extends negocio{
@@ -140,5 +142,42 @@ public class NegocioMateria extends negocio{
             }
         }
         return horariosConCupo;
+    }
+    
+    public Map<Materia, Integer> cantidadAlumnosMateria() throws ApplicationException{
+        //Obtener todas las materias
+        List<Materia> materias = 
+            (ArrayList<Materia>)(ArrayList<?>)this.buscar();
+        //Obtener todos los horarios
+        List<Horario> horarios = 
+            (ArrayList<Horario>)(ArrayList<?>) new NegocioHorario().buscar();
+        //Obtener todas las inscripciones a horarios
+        List<InscripcionHorario> inscripcionesHorarios = 
+            (ArrayList<InscripcionHorario>)(ArrayList<?>) 
+                new NegocioInscripcionHorario().buscar();
+        //Contar las inscripciones por horario
+        Map<Horario, Integer> inscripcionesHorario = new HashMap<>();
+        for (Horario horario : horarios) {
+            int cont = (int)inscripcionesHorarios.stream().
+                filter(ih -> ih.getHorario().getIdHorario() == horario.getIdHorario()).
+                    count();
+            inscripcionesHorario.put(horario, cont);
+        }
+        //Contar las inscripciones a horarios por materia
+        Map<Materia, Integer> inscripcionesMateria = new HashMap<>();
+        for (Materia materia : materias) {
+            //Obtengo los horarios que se corresponden con la materia
+            Map<Horario, Integer> inscripcionesHorarioFiltrado = 
+                inscripcionesHorario.entrySet().stream().
+                    filter(ihf -> ihf.getKey().getMateria().getIdMateria() == 
+                            materia.getIdMateria()).
+                        collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            //Sumo la cantidad de inscriptos
+            int sum = inscripcionesHorarioFiltrado
+                .values().stream().mapToInt(Number::intValue).sum();
+            //Agega un nuevo para materia -> cantidad
+            inscripcionesMateria.put(materia, sum);
+        }
+        return inscripcionesMateria;
     }
 }

@@ -1,6 +1,7 @@
 package Datos;
 
 import Entidades.Alumno;
+import Entidades.Final;
 import Entidades.InscripcionFinal;
 import Entidades.entidad;
 import Excepciones.*;
@@ -184,6 +185,34 @@ public class DatoInscripcionFinal extends dato{
         }
         catch( SQLException e){
             throw new FinalesAlumnoException("Error al buscar InscripcionFinales de alumno", e);
+        }
+        finally{
+            Sql.Close(rsl, stm, myConn);    
+        }        
+        return inscripcionFinales;
+    }
+    
+    public List<InscripcionFinal> getFinalesFinal(Final final1) throws ApplicationException{
+        List<InscripcionFinal> inscripcionFinales = new ArrayList<>();
+        
+        try{
+            myConn = Sql.Connect();
+            String query = "SELECT * FROM Inscripcion_Final WHERE ( id_final = "
+                + final1.getIdFinal() + " )";
+            pstm = myConn.prepareStatement(query);
+            stm = myConn.createStatement();
+            
+            rsl = stm.executeQuery(query);
+		while(rsl.next()){
+                    InscripcionFinal inscripcionFinal = new InscripcionFinal(rsl.getDate("fecha_inscripcion"), 
+                        rsl.getInt("nota_practica"), rsl.getInt("nota_teoria"), 
+                        rsl.getInt("nota_final"), rsl.getBoolean("presencia"), 
+                        rsl.getInt("id_alumno"), rsl.getInt("id_final"));
+                    inscripcionFinales.add(inscripcionFinal);
+		}			
+        }
+        catch( SQLException e){
+            throw new FinalesFinalException("Error al buscar InscripcionFinales de final", e);
         }
         finally{
             Sql.Close(rsl, stm, myConn);    

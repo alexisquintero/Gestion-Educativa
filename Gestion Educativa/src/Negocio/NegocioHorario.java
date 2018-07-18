@@ -2,7 +2,6 @@ package Negocio;
 
 import Datos.DatoHorario;
 import Datos.DatoInscripcionHorario;
-import Entidades.Comision;
 import Entidades.Horario;
 import Entidades.entidad;
 import Excepciones.ApplicationException;

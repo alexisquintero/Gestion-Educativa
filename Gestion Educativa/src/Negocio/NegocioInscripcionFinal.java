@@ -2,6 +2,7 @@ package Negocio;
 
 import Datos.DatoInscripcionFinal;
 import Entidades.Alumno;
+import Entidades.Final;
 import Entidades.InscripcionFinal;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
@@ -46,5 +47,31 @@ public class NegocioInscripcionFinal extends negocio{
     
     public List<InscripcionFinal> inscripcionesAlumno(Alumno alumno) throws ApplicationException{
         return ((DatoInscripcionFinal)datos).getFinalesAlumno(alumno);
+    }
+    
+    public float notaPromedioFinal(Final final1) throws ApplicationException{
+         List<InscripcionFinal> inscripcionesFinal = 
+            ((DatoInscripcionFinal)datos).getFinalesFinal(final1);
+         int suma, cont, promedio;
+         suma = cont = promedio = 0;
+         for (InscripcionFinal inscripcionFinal : inscripcionesFinal) {
+            promedio += inscripcionFinal.getNotaFinal();
+            cont++;
+        }
+        promedio = 0 == cont ? 0 : suma/cont;
+        return promedio;
+    }
+    
+    public float notaPromedioAlumno(Alumno alumno) throws ApplicationException{
+         List<InscripcionFinal> inscripcionesFinal = 
+            this.inscripcionesAlumno(alumno);
+         int suma, cont, promedio;
+         suma = cont = promedio = 0;
+         for (InscripcionFinal inscripcionFinal : inscripcionesFinal) {
+            promedio += inscripcionFinal.getNotaFinal();
+            cont++;
+        }
+        promedio = 0 == cont ? 0 : suma/cont;
+        return promedio;
     }
 }

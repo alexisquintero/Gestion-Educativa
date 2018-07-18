@@ -2,10 +2,12 @@ package Negocio;
 
 import Entidades.*;
 import Excepciones.ApplicationException;
+import Otros.Enumeraciones;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ControladorGestion {
     //Logins
@@ -176,6 +178,26 @@ public class ControladorGestion {
             new InscripcionFinal(Date.valueOf(LocalDate.now()), 0, 0, 0, false, 
                 alumno.getIdAlumno(), final1.getIdFinal());
         new NegocioInscripcionFinal().nuevo(inscripcionFinal);
+    }
+    
+    public float notaPromedioFinal(Final final1) throws ApplicationException{
+        return new NegocioInscripcionFinal().notaPromedioFinal(final1);
+    }
+    
+    public float notaPromedioAlumno(Alumno alumno) throws ApplicationException{
+        return new NegocioInscripcionFinal().notaPromedioAlumno(alumno);
+    }
+    
+    public Map<Materia, Integer> cantidadAlumnosMateria() throws ApplicationException{
+        return new NegocioMateria().cantidadAlumnosMateria();
+    }
+    
+    public Map<Carrera, Integer> cantidadAlumnosCarrera() throws ApplicationException{
+        
+    }
+    
+    public Map<Enumeraciones.Anios, Integer> cantidadAlumnosAnio() throws ApplicationException{
+        
     }
 }
 
