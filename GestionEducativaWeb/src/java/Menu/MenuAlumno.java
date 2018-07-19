@@ -3,7 +3,6 @@ package Menu;
 import Entidad.Servlet;
 import Entidades.Alumno;
 import Entidades.Materia;
-import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
@@ -50,6 +49,23 @@ public class MenuAlumno extends Servlet {
                         List<Materia> materiasFin = controlador.
                             buscarMateriasInscripcionFinal(((Alumno)usuario));
                         session.setAttribute("materiasFin", materiasFin);
+                        dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/InscripcionFinal.jsp");break;
+                    } catch (ApplicationException ex) {
+                        session.setAttribute("error", ex.getMessage());
+                        dispatcher = getServletContext()
+                            .getRequestDispatcher("/WEB-INF/Error.jsp");
+                        dispatcher.forward(request, response); return;
+                    }
+                }
+                case NotaPromedio: 
+                {
+                    try {
+                        float nota = controlador.
+                            notaPromedioAlumno(((Alumno)usuario));
+                        session.setAttribute("nota", nota);
+                        dispatcher = getServletContext().
+                            getRequestDispatcher("/WEB-INF/NotaPromedio.jsp");break;
                     } catch (ApplicationException ex) {
                         session.setAttribute("error", ex.getMessage());
                         dispatcher = getServletContext()

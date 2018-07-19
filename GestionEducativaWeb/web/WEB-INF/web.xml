@@ -107,6 +107,14 @@
         <servlet-name>LoginAlumno</servlet-name>
         <servlet-class>Login.LoginAlumno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MateriaInsc</servlet-name>
+        <servlet-class>Alumno.MateriaInsc</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HorarioInsc</servlet-name>
+        <servlet-class>Alumno.HorarioInsc</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -206,6 +214,14 @@
     <servlet-mapping>
         <servlet-name>LoginAlumno</servlet-name>
         <url-pattern>/LoginAlumno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MateriaInsc</servlet-name>
+        <url-pattern>/MateriaInsc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HorarioInsc</servlet-name>
+        <url-pattern>/HorarioInsc</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

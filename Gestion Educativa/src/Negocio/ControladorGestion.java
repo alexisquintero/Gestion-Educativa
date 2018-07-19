@@ -2,7 +2,6 @@ package Negocio;
 
 import Entidades.*;
 import Excepciones.ApplicationException;
-import Otros.Enumeraciones;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
