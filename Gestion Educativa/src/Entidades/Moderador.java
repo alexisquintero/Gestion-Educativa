@@ -2,36 +2,23 @@ package Entidades;
 
 public class Moderador extends Persona{
 
-    /**
-     * @return the idModerador
-     */
     public int getIdModerador() {
         return idModerador;
     }
 
-    /**
-     * @param idModerador the idModerador to set
-     */
     public void setIdModerador(int idModerador) {
         this.idModerador = idModerador;
     }
 
-    /**
-     * @return the administrador
-     */
     public Administrador getAdministrador() {
         return administrador;
     }
 
-    /**
-     * @param administrador the administrador to set
-     */
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
 
     /**
-     * 
      * @param idModerador
      * @param idAdministrador
      * @param nombre

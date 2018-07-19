@@ -2,36 +2,23 @@ package Entidades;
 
 public class Bedel extends Persona{
 
-    /**
-     * @return the idBedel
-     */
     public int getIdBedel() {
         return idBedel;
     }
 
-    /**
-     * @param idBedel the idBedel to set
-     */
     public void setIdBedel(int idBedel) {
         this.idBedel = idBedel;
     }
 
-    /**
-     * @return the administrador
-     */
     public Administrador getAdministrador() {
         return administrador;
     }
 
-    /**
-     * @param administrador the administrador to set
-     */
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
     }
 
     /**
-     * 
      * @param idBedel
      * @param idAdministrador
      * @param nombre

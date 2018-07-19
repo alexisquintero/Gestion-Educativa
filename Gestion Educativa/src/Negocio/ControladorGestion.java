@@ -191,13 +191,5 @@ public class ControladorGestion {
     public Map<Materia, Integer> cantidadAlumnosMateria() throws ApplicationException{
         return new NegocioMateria().cantidadAlumnosMateria();
     }
-    
-    public Map<Carrera, Integer> cantidadAlumnosCarrera() throws ApplicationException{
-        
-    }
-    
-    public Map<Enumeraciones.Anios, Integer> cantidadAlumnosAnio() throws ApplicationException{
-        
-    }
 }
 
