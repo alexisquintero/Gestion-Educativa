@@ -115,6 +115,14 @@
         <servlet-name>HorarioInsc</servlet-name>
         <servlet-class>Alumno.HorarioInsc</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MateriaFinalInsc</servlet-name>
+        <servlet-class>Alumno.MateriaFinalInsc</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FinalInsc</servlet-name>
+        <servlet-class>Alumno.FinalInsc</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -222,6 +230,14 @@
     <servlet-mapping>
         <servlet-name>HorarioInsc</servlet-name>
         <url-pattern>/HorarioInsc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MateriaFinalInsc</servlet-name>
+        <url-pattern>/MateriaFinalInsc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FinalInsc</servlet-name>
+        <url-pattern>/FinalInsc</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

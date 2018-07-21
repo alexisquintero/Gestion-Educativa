@@ -2,10 +2,13 @@ package Negocio;
 
 import Datos.DatoFinal;
 import Entidades.Final;
+import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NegocioFinal extends negocio{
 
@@ -39,5 +42,15 @@ public class NegocioFinal extends negocio{
     @Override
     public void eliminar(entidad e) throws ApplicationException{
         datos.delete(((Final)e).getIdFinal());
+    }
+    
+    public List<Final> finalesMateria(Materia materia)throws ApplicationException{
+        //Obtengo los finales
+        List<Final> finales = (List<Final>) (List<?>) this.buscar();
+        //Filtro para obtener sólo los de la materia
+        List<Final> finalesMateria = finales.stream().
+            filter(f -> f.getMateria().getIdMateria() == materia.getIdMateria()).
+            collect(Collectors.toList());
+        return finalesMateria;
     }
 }

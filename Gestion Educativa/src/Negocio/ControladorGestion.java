@@ -172,6 +172,10 @@ public class ControladorGestion {
         return new NegocioAlumno().materiasFinalesInscripcion(alumno);
     }
     
+    public List<Final> buscarFinalesInscripcion(Materia materia)throws ApplicationException{
+        return new NegocioFinal().finalesMateria(materia);
+    }
+    
     public void inscribirFinal(Final final1, Alumno alumno) throws ApplicationException{
         InscripcionFinal inscripcionFinal = 
             new InscripcionFinal(Date.valueOf(LocalDate.now()), 0, 0, 0, false, 

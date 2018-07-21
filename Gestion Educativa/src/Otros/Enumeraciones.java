@@ -20,4 +20,6 @@ public class Enumeraciones {
     public enum MenuAlumnoOpciones {InscripcionMateria, InscripcionFinal, NotaPromedio};
     public enum MateriaInscAction {Inscribir};
     public enum HorarioInscAction {Inscribir};
+    public enum MateriaFinalInsc{Inscribir};
+    public enum FinalInsc{Inscribir};
 }

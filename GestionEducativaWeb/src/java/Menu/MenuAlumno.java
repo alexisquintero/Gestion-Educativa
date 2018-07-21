@@ -50,7 +50,7 @@ public class MenuAlumno extends Servlet {
                             buscarMateriasInscripcionFinal(((Alumno)usuario));
                         session.setAttribute("materiasFin", materiasFin);
                         dispatcher = getServletContext().
-                            getRequestDispatcher("/WEB-INF/InscripcionFinal.jsp");break;
+                            getRequestDispatcher("/WEB-INF/InscripcionMateriaFinal.jsp");break;
                     } catch (ApplicationException ex) {
                         session.setAttribute("error", ex.getMessage());
                         dispatcher = getServletContext()
