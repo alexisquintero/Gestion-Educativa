@@ -123,6 +123,10 @@
         <servlet-name>FinalInsc</servlet-name>
         <servlet-class>Alumno.FinalInsc</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Finales</servlet-name>
+        <servlet-class>Moderador.Finales</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -238,6 +242,10 @@
     <servlet-mapping>
         <servlet-name>FinalInsc</servlet-name>
         <url-pattern>/FinalInsc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Finales</servlet-name>
+        <url-pattern>/Finales</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

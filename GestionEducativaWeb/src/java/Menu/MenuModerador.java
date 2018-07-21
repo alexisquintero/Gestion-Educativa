@@ -6,8 +6,6 @@ import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -75,7 +73,20 @@ public class MenuModerador extends ServletM {
                         .getRequestDispatcher("/WEB-INF/Error.jsp");
                     dispatcher.forward(request, response); return;
                 }
-            }           
+            }    
+            case Finales: {
+                try {
+                    List<entidad> finales = controlador.buscarFinales();
+                    session.setAttribute("finales", finales);
+                    dispatcher = getServletContext().
+                        getRequestDispatcher("/WEB-INF/Finales.jsp");break;
+                } catch (ApplicationException ex) {
+                    session.setAttribute("error", ex.getMessage());
+                    dispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/Error.jsp");
+                    dispatcher.forward(request, response); return;
+                }
+            }
             default:
                 response.sendRedirect("LoginModerador.jsp"); return;
         }

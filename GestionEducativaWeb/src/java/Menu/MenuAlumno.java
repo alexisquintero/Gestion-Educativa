@@ -18,6 +18,7 @@ public class MenuAlumno extends Servlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         HttpSession session = request.getSession();
         this.initialization(request, response, session);
 

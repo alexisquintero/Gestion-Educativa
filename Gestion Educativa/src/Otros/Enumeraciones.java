@@ -13,7 +13,7 @@ public class Enumeraciones {
     public enum DocenteAction {Editar, Eliminar, Crear};
     public enum MateriaAction {Editar, Eliminar, Crear};
     public enum MateriaRegularAprobada {Agregar, Eliminar};
-    public enum MenuModeradorOpciones {Alumno, Docente, Comision};
+    public enum MenuModeradorOpciones {Alumno, Docente, Comision, Finales};
     public enum AlumnoAction {Editar, Eliminar, Crear};
     public enum ComisionAction {Editar, Eliminar, Crear};
     public enum BedelAction {Editar, Eliminar, Crear};
@@ -22,4 +22,5 @@ public class Enumeraciones {
     public enum HorarioInscAction {Inscribir};
     public enum MateriaFinalInsc{Inscribir};
     public enum FinalInsc{Inscribir};
+    public enum Finales{NotaPromedio};
 }

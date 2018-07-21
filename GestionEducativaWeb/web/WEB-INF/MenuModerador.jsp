@@ -30,6 +30,10 @@
                 <td><a href="MenuModerador?redirect=Comision">
                         Editar Comisión</a></td>
             </tr>
+            <tr>
+                <td><a href="MenuModerador?redirect=Finales">
+                        Ver finales</a></td>
+            </tr>
         </table>      
     </body>
 </html>

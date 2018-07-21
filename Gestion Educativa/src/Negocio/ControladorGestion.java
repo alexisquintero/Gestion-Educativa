@@ -194,5 +194,9 @@ public class ControladorGestion {
     public Map<Materia, Integer> cantidadAlumnosMateria() throws ApplicationException{
         return new NegocioMateria().cantidadAlumnosMateria();
     }
+    
+    public ArrayList<entidad> buscarFinales() throws ApplicationException{
+        return new NegocioFinal().buscar();
+    }
 }
 
