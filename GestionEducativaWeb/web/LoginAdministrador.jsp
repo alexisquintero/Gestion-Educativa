@@ -9,16 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Administrador</title>           
+        <link href="css/login.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Adamina|Raleway:500" rel="stylesheet">
+        <title class="title">Login Administrador</title>           
     </head>   
     <body>
-        <header>
-            <h3>Universidad Tecnológica Nacional</h3>
-            <h3>Facultad Regional Rosario</h3>
-            <h1>Módulo de autogestión administrador</h1>
+        <img src="images/utn.gif" alt="">
+        <header class="header">
+            <h3 class="universidad">Universidad Tecnológica Nacional</h3>
+            <h3 class="universidad">Facultad Regional Rosario</h3>
+            <h1 class="modulo">Módulo de autogestión administrador</h1>
         </header>
         <form action="LoginAdministrador" method="post">
-            <table>
+            <table class="table">
                 <tr>
                     <td>Usuario</td>
                     <td><input type="text" name="usuario"> </td>
@@ -29,7 +32,7 @@
                 </tr>
                 <tr>
                     <td></td>    
-                    <td><input type="submit" value="login"> </td>
+                    <td><input type="submit" value="login" class="button"> </td>
                 </tr>
             </table>
         </form>
