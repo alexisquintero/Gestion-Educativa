@@ -8,7 +8,10 @@ import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class NegocioInscripcionFinal extends negocio{
 
@@ -49,29 +52,63 @@ public class NegocioInscripcionFinal extends negocio{
         return ((DatoInscripcionFinal)datos).getFinalesAlumno(alumno);
     }
     
-    public float notaPromedioFinal(Final final1) throws ApplicationException{
-         List<InscripcionFinal> inscripcionesFinal = 
-            ((DatoInscripcionFinal)datos).getFinalesFinal(final1);
-         int suma, cont, promedio;
-         suma = cont = promedio = 0;
-         for (InscripcionFinal inscripcionFinal : inscripcionesFinal) {
-            promedio += inscripcionFinal.getNotaFinal();
-            cont++;
+    public Map<Final, Float> notaPromedioFinal() throws ApplicationException{
+        //Obtengo todos los finales
+        List<Final> finales = 
+            (List<Final>) (List<?>) new NegocioFinal().buscar();
+        //Obtengo todos las inscripciones a finales
+        List<InscripcionFinal> inscripcionesFinales = 
+            (List<InscripcionFinal>) (List<?>) this.buscar();
+        Map<Final, Float> promedioFinal = new HashMap<>();
+        //Obtengo el promedio por cada final
+        for (Final final1 : finales) {
+            //Obtengo las inscripciones para cada final
+            List<InscripcionFinal> inscripcionesFinal = 
+                inscripcionesFinales.stream().
+                    filter(i -> i.getObjFinal().getIdFinal() == final1.getIdFinal()).
+                    collect(Collectors.toList());
+            //Calculo el promedio
+            int suma, cont;
+            float promedio = 0;
+            suma = cont = 0;
+            for (InscripcionFinal inscripcionFinal : inscripcionesFinal) {
+                suma += inscripcionFinal.getNotaFinal();
+                cont++;
+            }
+            promedio = 0 == cont ? 0 : suma/cont;
+            //Agego el nuevo <key, value> al map
+            promedioFinal.put(final1, promedio);
         }
-        promedio = 0 == cont ? 0 : suma/cont;
-        return promedio;
+        return promedioFinal;
     }
     
-    public float notaPromedioAlumno(Alumno alumno) throws ApplicationException{
-         List<InscripcionFinal> inscripcionesFinal = 
-            this.inscripcionesAlumno(alumno);
-         int suma, cont, promedio;
-         suma = cont = promedio = 0;
-         for (InscripcionFinal inscripcionFinal : inscripcionesFinal) {
-            promedio += inscripcionFinal.getNotaFinal();
-            cont++;
+    public Map<Alumno, Float> notaPromedioAlumno() throws ApplicationException{
+        //Obtengo todos los alumno
+        List<Alumno> alumnos = 
+            (List<Alumno>) (List<?>) new NegocioAlumno().buscar();
+        //Obtengo todos las inscripciones a finales
+        List<InscripcionFinal> inscripcionesFinales = 
+            (List<InscripcionFinal>) (List<?>) this.buscar();
+        Map<Alumno, Float> promedioAlumno = new HashMap<>();
+        //Obtengo el promedio por cada alumno
+        for (Alumno alumno : alumnos) {
+            //Obtengo las inscripciones para cada alumno
+            List<InscripcionFinal> inscripcionesFinal = 
+                inscripcionesFinales.stream().
+                    filter(i -> i.getAlumno().getIdAlumno() == alumno.getIdAlumno()).
+                    collect(Collectors.toList());
+            //Calculo el promedio
+            int suma, cont;
+            float promedio = 0;
+            suma = cont = 0;
+            for (InscripcionFinal inscripcionFinal : inscripcionesFinal) {
+                suma += inscripcionFinal.getNotaFinal();
+                cont++;
+            }
+            promedio = 0 == cont ? 0 : suma/cont;
+            //Agego el nuevo <key, value> al map
+            promedioAlumno.put(alumno, promedio);
         }
-        promedio = 0 == cont ? 0 : suma/cont;
-        return promedio;
+        return promedioAlumno;
     }
 }
