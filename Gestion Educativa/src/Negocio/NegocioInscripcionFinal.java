@@ -59,12 +59,16 @@ public class NegocioInscripcionFinal extends negocio{
         //Obtengo todos las inscripciones a finales
         List<InscripcionFinal> inscripcionesFinales = 
             (List<InscripcionFinal>) (List<?>) this.buscar();
+        //Filtro las incripciones a las que no se presentaron
+        List<InscripcionFinal> inscripcionesFinalesPresente = 
+            inscripcionesFinales.stream().filter(i -> i.isPresencia())
+                .collect(Collectors.toList());
         Map<Final, Float> promedioFinal = new HashMap<>();
         //Obtengo el promedio por cada final
         for (Final final1 : finales) {
             //Obtengo las inscripciones para cada final
             List<InscripcionFinal> inscripcionesFinal = 
-                inscripcionesFinales.stream().
+                inscripcionesFinalesPresente.stream().
                     filter(i -> i.getObjFinal().getIdFinal() == final1.getIdFinal()).
                     collect(Collectors.toList());
             //Calculo el promedio
@@ -89,12 +93,16 @@ public class NegocioInscripcionFinal extends negocio{
         //Obtengo todos las inscripciones a finales
         List<InscripcionFinal> inscripcionesFinales = 
             (List<InscripcionFinal>) (List<?>) this.buscar();
+        //Filtro las incripciones a las que no se presentaron
+        List<InscripcionFinal> inscripcionesFinalesPresente = 
+            inscripcionesFinales.stream().filter(i -> i.isPresencia())
+                .collect(Collectors.toList());
         Map<Alumno, Float> promedioAlumno = new HashMap<>();
         //Obtengo el promedio por cada alumno
         for (Alumno alumno : alumnos) {
             //Obtengo las inscripciones para cada alumno
             List<InscripcionFinal> inscripcionesFinal = 
-                inscripcionesFinales.stream().
+                inscripcionesFinalesPresente.stream().
                     filter(i -> i.getAlumno().getIdAlumno() == alumno.getIdAlumno()).
                     collect(Collectors.toList());
             //Calculo el promedio

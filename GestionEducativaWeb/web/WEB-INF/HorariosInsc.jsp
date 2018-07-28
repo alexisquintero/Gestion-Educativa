@@ -22,7 +22,6 @@
                 <th>Día</th>
                 <th>Horario inicio</th>
                 <th>Horario fin</th>
-                <th>Comision</th>
                 <th>Inscribir</th>
             </tr>
             <c:forEach var="horario" items="${horarios}">  
@@ -35,9 +34,6 @@
                     </td>
                     <td>
                         <c:out value="${horario.horarioFin}" /> 
-                    </td>
-                    <td>
-                        <c:out value="${horario.comision}" /> 
                     </td>
                     <td>
                         <a href="HorarioInsc?redirect=Inscribir&id=${horario.idHorario}">

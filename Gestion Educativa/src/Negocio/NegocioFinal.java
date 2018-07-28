@@ -6,7 +6,9 @@ import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Excepciones.EntidadExistenteException;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,6 +53,10 @@ public class NegocioFinal extends negocio{
         List<Final> finalesMateria = finales.stream().
             filter(f -> f.getMateria().getIdMateria() == materia.getIdMateria()).
             collect(Collectors.toList());
-        return finalesMateria;
+        //Filtro los finales cuya fecha es menor que la ctual
+        List<Final> finalesActuales = finalesMateria.stream()
+            .filter(fm -> fm.getFecha().compareTo(Date.from(Instant.now())) > 0)
+            .collect(Collectors.toList());
+        return finalesActuales;
     }
 }

@@ -27,10 +27,6 @@
                 <td><a href="MenuAlumno?redirect=InscripcionFinal">
                         Inscribir a examen final</a></td>
             </tr>
-            <tr>
-                <td><a href="MenuAlumno?redirect=NotaPromedio">
-                        Nota promedio de exámenes finales</a></td>
-            </tr>
         </table>  
     </body>
 </html>

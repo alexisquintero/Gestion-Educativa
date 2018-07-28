@@ -24,19 +24,19 @@
                 <th>Aula</th>
                 <th>Inscribir</th>
             </tr>
-            <c:forEach var="final" items="${finales}">  
+            <c:forEach var="final1" items="${finales}">  
                 <tr>
                     <td>
-                        <c:out value="${final.fecha}" />
+                        <c:out value="${final1.fecha}" />
                     </td>       
                     <td>
-                        <c:out value="${final.horarioInicio}" />
+                        <c:out value="${final1.horarioInicio}" />
                     </td>
                     <td>
-                        <c:out value="${final.horarioFin}" /> 
+                        <c:out value="${final1.horarioFin}" /> 
                     </td>
                     <td>
-                        <c:out value="${final.aula}" /> 
+                        <c:out value="${final1.aula}" /> 
                     </td>
                     <td>
                         <a href="Finales?redirect=NotaPromedio&id=${final.idFinal}">

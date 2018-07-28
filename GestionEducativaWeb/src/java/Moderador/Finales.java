@@ -43,7 +43,7 @@ public class Finales extends Servlet {
                 .getRequestDispatcher("/WEB-INF/Error.jsp"); 
         
         switch (redirect) {
-            case NotaPromedio: 
+            case NotaPromedio: /*
                 {
                     try {
                         float nota = controlador.notaPromedioFinal(final1);
@@ -57,7 +57,7 @@ public class Finales extends Servlet {
                             .getRequestDispatcher("/WEB-INF/Error.jsp");
                         dispatcher.forward(request, response); return;
                     }
-                }
+                }*/
             default:
                 response.sendRedirect("LoginModerador.jsp");
         }

@@ -183,15 +183,15 @@ public class ControladorGestion {
         new NegocioInscripcionFinal().nuevo(inscripcionFinal);
     }
     
-    public Map<Final, Float> notaPromedioFinal() throws ApplicationException{
+    public Map<Final, Float> notaPromedioFinales() throws ApplicationException{
         return new NegocioInscripcionFinal().notaPromedioFinal();
     }
     
-    public Map<Alumno, Float> notaPromedioAlumno() throws ApplicationException{
+    public Map<Alumno, Float> notaPromedioAlumnos() throws ApplicationException{
         return new NegocioInscripcionFinal().notaPromedioAlumno();
     }
     
-    public Map<Materia, Integer> cantidadAlumnosMateria() throws ApplicationException{
+    public Map<Materia, Integer> cantidadAlumnosMaterias() throws ApplicationException{
         return new NegocioMateria().cantidadAlumnosMateria();
     }
     

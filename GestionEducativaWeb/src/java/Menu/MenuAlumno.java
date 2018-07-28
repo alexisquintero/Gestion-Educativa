@@ -1,6 +1,6 @@
 package Menu;
 
-import Entidad.Servlet;
+import Entidad.ServletAl;
 import Entidades.Alumno;
 import Entidades.Materia;
 import Excepciones.ApplicationException;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class MenuAlumno extends Servlet {
+public class MenuAlumno extends ServletAl {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,21 +52,6 @@ public class MenuAlumno extends Servlet {
                         session.setAttribute("materiasFin", materiasFin);
                         dispatcher = getServletContext().
                             getRequestDispatcher("/WEB-INF/InscripcionMateriaFinal.jsp");break;
-                    } catch (ApplicationException ex) {
-                        session.setAttribute("error", ex.getMessage());
-                        dispatcher = getServletContext()
-                            .getRequestDispatcher("/WEB-INF/Error.jsp");
-                        dispatcher.forward(request, response); return;
-                    }
-                }
-                case NotaPromedio: 
-                {
-                    try {
-                        float nota = controlador.
-                            notaPromedioAlumno(((Alumno)usuario));
-                        session.setAttribute("nota", nota);
-                        dispatcher = getServletContext().
-                            getRequestDispatcher("/WEB-INF/NotaPromedio.jsp");break;
                     } catch (ApplicationException ex) {
                         session.setAttribute("error", ex.getMessage());
                         dispatcher = getServletContext()

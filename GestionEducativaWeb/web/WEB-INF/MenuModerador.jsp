@@ -31,8 +31,16 @@
                         Editar Comisión</a></td>
             </tr>
             <tr>
-                <td><a href="MenuModerador?redirect=Finales">
-                        Ver finales</a></td>
+                <td><a href="MenuModerador?redirect=NotaPromedioFinal">
+                        Ver nota promedio de finales</a></td>
+            </tr>
+            <tr>
+                <td><a href="MenuModerador?redirect=NotaPromedioAlumno">
+                        Ver nota promedio de alumnos</a></td>
+            </tr>
+            <tr>
+                <td><a href="MenuModerador?redirect=CantidadAlumnosMateria">
+                        Ver cantidad de alumnos por materia</a></td>
             </tr>
         </table>      
     </body>

@@ -127,6 +127,10 @@
         <servlet-name>Finales</servlet-name>
         <servlet-class>Moderador.Finales</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAl</servlet-name>
+        <servlet-class>Entidad.ServletAl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginAdministrador</servlet-name>
         <url-pattern>/LoginAdministrador</url-pattern>
@@ -246,6 +250,10 @@
     <servlet-mapping>
         <servlet-name>Finales</servlet-name>
         <url-pattern>/Finales</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAl</servlet-name>
+        <url-pattern>/ServletAl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

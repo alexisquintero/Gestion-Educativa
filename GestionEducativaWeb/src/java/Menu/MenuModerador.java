@@ -1,11 +1,15 @@
 package Menu;
 
 import Entidad.ServletM;
+import Entidades.Alumno;
+import Entidades.Final;
+import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
 import Otros.Enumeraciones;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -74,12 +78,41 @@ public class MenuModerador extends ServletM {
                     dispatcher.forward(request, response); return;
                 }
             }    
-            case Finales: {
+            case NotaPromedioFinal: {
                 try {
-                    List<entidad> finales = controlador.buscarFinales();
-                    session.setAttribute("finales", finales);
+                    Map<Final, Float> promedioFinales = 
+                        controlador.notaPromedioFinales();
+                    session.setAttribute("promedioFinales", promedioFinales);
                     dispatcher = getServletContext().
-                        getRequestDispatcher("/WEB-INF/Finales.jsp");break;
+                        getRequestDispatcher("/WEB-INF/NotaPromedioFinal.jsp");break;
+                } catch (ApplicationException ex) {
+                    session.setAttribute("error", ex.getMessage());
+                    dispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/Error.jsp");
+                    dispatcher.forward(request, response); return;
+                }
+            }
+            case NotaPromedioAlumno: {
+                try {
+                    Map<Alumno, Float> promedioAlumnos = 
+                        controlador.notaPromedioAlumnos();
+                    session.setAttribute("promedioAlumnos", promedioAlumnos);
+                    dispatcher = getServletContext().
+                        getRequestDispatcher("/WEB-INF/NotaPromedioAlumno.jsp");break;
+                } catch (ApplicationException ex) {
+                    session.setAttribute("error", ex.getMessage());
+                    dispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/Error.jsp");
+                    dispatcher.forward(request, response); return;
+                }
+            }
+            case CantidadAlumnosMateria: {
+                try {
+                    Map<Materia, Integer> materiasAlumnos = 
+                        controlador.cantidadAlumnosMaterias();
+                    session.setAttribute("materiasAlumnos", materiasAlumnos);
+                    dispatcher = getServletContext().
+                        getRequestDispatcher("/WEB-INF/CantidadAlumnosMateria.jsp");break;
                 } catch (ApplicationException ex) {
                     session.setAttribute("error", ex.getMessage());
                     dispatcher = getServletContext()

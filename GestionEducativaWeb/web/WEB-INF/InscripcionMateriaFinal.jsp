@@ -15,7 +15,7 @@
         <title>Inscripcion materia final</title>
     </head>
     <body>
-        <%  List<Materia> materias = 
+        <%  List<Materia> materiasFin = 
         (List<Materia>)session.getAttribute("materiasFin"); %>
         <table>    
             <tr>
@@ -26,7 +26,7 @@
                 <th>Hs Semana</th>
                 <th>Inscribir</th>
             </tr>
-            <c:forEach var="materia" items="${materias}">  
+            <c:forEach var="materia" items="${materiasFin}">  
                 <tr>
                     <td>
                         <c:out value="${materia.nombre}" />

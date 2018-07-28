@@ -49,7 +49,7 @@ public class FinalInsc extends Servlet {
                     dispatcher.forward(request, response); return;
                 }
                 dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/InscripcionMaeriaFinal.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/MenuAlumno.jsp"); break;
             default:
                 response.sendRedirect("LoginAlumno.jsp"); return;
         }

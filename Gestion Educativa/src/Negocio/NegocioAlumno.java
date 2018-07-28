@@ -13,6 +13,10 @@ import Excepciones.ApplicationException;
 import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import Otros.Reglamento;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -77,8 +81,7 @@ public class NegocioAlumno extends negocio{
         List<Materia> materias = 
             (List<Materia>)(List<?>) carrera.getMaterias();
         //Obtengo las materias aprobadas del alumno
-        List<Materia> materiasAprobadas = ((DatoAlumno)datos).
-            getMateriasAprobadas(alumno.getIdAlumno());
+        List<Materia> materiasAprobadas = this.getMateriasAprobadas(alumno);
         //Resto las materias aprobadas a las de la carrera
         List<Materia> materiasDisponibles = materias.stream().
             filter(m -> !materiasAprobadas.contains(m)).
@@ -146,8 +149,36 @@ public class NegocioAlumno extends negocio{
         //Resto las materias con finales aprobados de las materias inscriptas
         List<Materia> materiasDisponibles = materiasInscriptas.stream().
             filter(mi -> materiasAprobadas.stream().
-                anyMatch(ma -> ma.getIdMateria() != mi.getIdMateria())).
+                noneMatch(ma -> ma.getIdMateria() == mi.getIdMateria())).
                 collect(Collectors.toList());
         return materiasDisponibles;
+    }
+    
+    public List<Materia> getMateriasAprobadas(Alumno alumno) throws ApplicationException{
+        ArrayList<entidad> materiasAprobadas = new ArrayList<>();
+        List<InscripcionFinal> inscripcionesFinales = 
+            (List<InscripcionFinal>)(List<?>) new NegocioInscripcionFinal().
+                buscar();
+        List<InscripcionFinal> inscripcionesFinalesAlumno = 
+            inscripcionesFinales.stream().
+                filter(i -> i.getAlumno().getIdAlumno() == alumno.getIdAlumno()).
+                collect(Collectors.toList());
+        List<InscripcionFinal> inscripcionesFinalesAprobadas = 
+            inscripcionesFinales.stream().
+                filter(i -> i.getNotaFinal() >= Reglamento.notaAprobado).
+                collect(Collectors.toList());
+        NegocioFinal negocioFinal = new NegocioFinal();
+        NegocioMateria negocioMateria = new NegocioMateria();
+        List<Final> finales = new ArrayList<>();
+        List<Materia> materias = new ArrayList<>();
+
+        for (InscripcionFinal inscripcion : inscripcionesFinalesAprobadas) {
+            finales.add((Final)negocioFinal.buscar(inscripcion.getObjFinal()));
+        }
+        for (Final final1 : finales) {
+            materias.add((Materia)negocioMateria.buscar(final1.getMateria()));
+        }
+
+        return materias;
     }
 }

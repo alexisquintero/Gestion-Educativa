@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="java.util.List"%>
+<%@page import="java.sql.Date"%>
 <%@page import="Entidades.Final"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,22 +26,22 @@
                 <th>Aula</th>
                 <th>Inscribir</th>
             </tr>
-            <c:forEach var="final" items="${finales}">  
+            <c:forEach var="final1" items="${finales}">  
                 <tr>
                     <td>
-                        <c:out value="${final.fecha}" />
+                        <c:out value="${final1.fecha}" />
                     </td>       
                     <td>
-                        <c:out value="${final.horarioInicio}" />
+                        <c:out value="${final1.horarioInicio}" />
                     </td>
                     <td>
-                        <c:out value="${final.horarioFin}" /> 
+                        <c:out value="${final1.horarioFin}" /> 
                     </td>
                     <td>
-                        <c:out value="${final.aula}" /> 
+                        <c:out value="${final1.aula}" /> 
                     </td>
                     <td>
-                        <a href="FinalInsc?redirect=Inscribir&id=${final.idFinal}">
+                        <a href="FinalInsc?redirect=Inscribir&id=${final1.idFinal}">
                         Inscribir</a></td>
                     </td>                
                 </tr>

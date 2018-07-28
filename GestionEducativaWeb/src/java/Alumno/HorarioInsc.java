@@ -49,7 +49,7 @@ public class HorarioInsc extends Servlet {
                     dispatcher.forward(request, response); return;
                 }
                 dispatcher = getServletContext().
-                    getRequestDispatcher("/WEB-INF/MateriaInsc.jsp"); break;
+                    getRequestDispatcher("/WEB-INF/MenuAlumno.jsp"); break;
             default:
                 response.sendRedirect("LoginAlumno.jsp"); return;
         }

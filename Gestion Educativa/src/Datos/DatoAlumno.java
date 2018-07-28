@@ -1,17 +1,11 @@
 package Datos;
 
 import Entidades.Alumno;
-import Entidades.Final;
-import Entidades.InscripcionFinal;
-import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.*;
-import Otros.Reglamento;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DatoAlumno extends dato{
     
@@ -198,39 +192,7 @@ public class DatoAlumno extends dato{
         finally{
             Sql.Close(rsl, stm, myConn);      
         }
+        if(alumno == null) throw new LoginException();
         return alumno;
-    }
-    
-    public List<Materia> getMateriasAprobadas(int id) throws ApplicationException{
-        ArrayList<entidad> materiasAprobadas = new ArrayList<>();
-        List<InscripcionFinal> inscripcionesFinales = 
-                (List<InscripcionFinal>)(List<?>) new DatoInscripcionFinal().
-                    getAll();
-        List<InscripcionFinal> inscripcionesFinalesAlumno = 
-            inscripcionesFinales.stream().
-                filter(i -> i.getAlumno().getIdAlumno() == id).
-                collect(Collectors.toList());
-        List<InscripcionFinal> inscripcionesFinalesAprobadas = 
-            inscripcionesFinales.stream().
-                filter(i -> i.getNotaFinal() >= Reglamento.notaAprobado).
-                collect(Collectors.toList());
-        DatoFinal datoFinal = new DatoFinal();
-        DatoMateria datoMateria = new DatoMateria();
-        List<Final> finales = new ArrayList<>();
-        List<Materia> materias = new ArrayList<>();
-        try{
-            for (InscripcionFinal inscripcion : inscripcionesFinalesAprobadas) {
-                finales.add((Final)datoFinal.
-                    getOne(inscripcion.getObjFinal().getIdFinal()));
-            }
-            for (Final final1 : finales) {
-                materias.add((Materia)datoMateria.
-                    getOne(final1.getMateria().getIdMateria()));
-            }
-        }
-        catch(ApplicationException ae){
-            throw ae;
-        }
-        return materias;
     }
 }

@@ -1,6 +1,7 @@
 package Datos;
 
 import Entidades.Alumno;
+import Entidades.Horario;
 import Entidades.InscripcionHorario;
 import Entidades.entidad;
 import Excepciones.*;
@@ -8,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DatoInscripcionHorario extends dato{
     
@@ -39,6 +41,17 @@ public class DatoInscripcionHorario extends dato{
     
     @Override
     public int newObject(entidad inscripcionHorario) throws ApplicationException{
+        //Controlar que no exista, si existe throw new Exception
+        Alumno alumno = ((InscripcionHorario)inscripcionHorario).getAlumno();
+        Horario horario = ((InscripcionHorario)inscripcionHorario).getHorario();
+        List<InscripcionHorario> inscAlumno = this
+            .getHorariosAlumno(alumno);
+        long cant = inscAlumno.stream()
+            .filter(ia -> ia.getAlumno().getIdAlumno() == alumno.getIdAlumno() && 
+                ia.getHorario().getIdHorario() == horario.getIdHorario()).
+                count();
+        if(cant > 0) throw new InscripcionHorarioRepetidaException("Ya está inscripto a esta materia en este horario");
+        
         int id = 0;
         try{
             myConn = Sql.Connect(); 
@@ -158,7 +171,9 @@ public class DatoInscripcionHorario extends dato{
 			 
             rsl = stm.executeQuery(query);
             
-            cant = rsl.getInt(1);
+            if(rsl.next()){
+                cant = rsl.getInt(1);
+            }
         }
         catch( SQLException e){
             throw new CantidadInscriptosComisionException("Error al contar la cantidad de inscriptos al horario", e);
