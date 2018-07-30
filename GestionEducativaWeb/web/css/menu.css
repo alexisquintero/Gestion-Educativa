@@ -1,0 +1,62 @@
+body {
+    background-image: url("../images/fondo.gif");
+    background-repeat: repeat;   
+}
+
+header {
+    text-align: center;
+    padding: 10px 0 40px 0;
+    font-family: Karma, serif;
+    font-size: 15px;
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+
+table {
+    text-align: center;
+    margin: auto;
+    border-spacing: 0;
+    font-family: "Roboto Mono", sans-serif;
+    font-weight: 600;
+    border-radius: 2px;
+    box-shadow: 0 0 0 2px rgba(5,32,176,0.13); 
+}
+
+tr {
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+td {
+    padding: 0;
+}
+
+a, a:visited, a:link, a:active {
+    position: relative;
+    display: block;
+    height: 30px;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #000;
+    background: #3c86fc;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #2b5ef7;
+}
+
+tr:first-of-type a{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+tr:not(:first-of-type) a{
+    border-top:1px solid silver;
+}
+
+tr:last-of-type a{
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}

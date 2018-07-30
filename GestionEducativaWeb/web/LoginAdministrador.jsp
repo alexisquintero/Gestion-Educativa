@@ -3,9 +3,8 @@
     Created on : Jul 18, 2017, 5:23:17 PM
     Author     : Supervisor
 --%>
-<%@ page import="Login.LoginAdministrador" %>
-<%@ page language="java"  contentType="text/html" pageEncoding="UTF-8" %>
-
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,15 +22,12 @@
         <form action="LoginAdministrador" method="post">
             <table class="table">
                 <tr>
-                    <td>Usuario</td>
-                    <td><input type="text" name="usuario"> </td>
+                    <td><input type="text" name="usuario" placeholder="Usuario" required> </td>
                 </tr>
                 <tr>
-                    <td>Contraseña</td>    
-                    <td><input type="password" name="password"> </td>
+                    <td><input type="password" name="password" placeholder="Contraseña" required> </td>
                 </tr>
                 <tr>
-                    <td></td>    
                     <td><input type="submit" value="login" class="button"> </td>
                 </tr>
             </table>

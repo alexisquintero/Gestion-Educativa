@@ -11,6 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/menu.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Karma:300|Roboto+Mono:300" rel="stylesheet">
         <title>Menu Administrador</title>
     </head>
     <body> 
