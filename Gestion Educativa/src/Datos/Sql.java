@@ -40,10 +40,14 @@ public class Sql {
         + "hostNameInCertificate=*.database.windows.net;"
         + "loginTimeout=30;";
 		 
+    String connStringAmazon = "jdbc:sqlserver://aa11lbvtnxvyqf0.cnxoshexkpo4.us-east-2.rds.amazonaws.com:1433;database=GestionEducativa;";
+    String userAmazon = "alexisquintero";
+    String passwordAmazon = "Ram2WU44o5H4JVkq5pTR";
     try 
     {	
         //conn = DriverManager.getConnection(connString); //Azure
-        conn = DriverManager.getConnection(url, user, password);  //Local
+        conn = DriverManager.getConnection(connStringAmazon, userAmazon, passwordAmazon);   //Amazon
+        //conn = DriverManager.getConnection(url, user, password);  //Local
     }
     catch (SQLException e) 
     {
