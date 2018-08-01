@@ -10,13 +10,10 @@ import Entidades.InscripcionHorario;
 import Entidades.Materia;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import Excepciones.CamposLoginVaciosException;
 import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import Otros.Reglamento;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -70,6 +67,7 @@ public class NegocioAlumno extends negocio{
     }
     
     public entidad login(String usuario, String contrasenia) throws ApplicationException{
+        if("".equals(usuario) || "".equals(contrasenia)) throw new CamposLoginVaciosException();
         return ((DatoAlumno)datos).login(usuario, contrasenia);
     }
     

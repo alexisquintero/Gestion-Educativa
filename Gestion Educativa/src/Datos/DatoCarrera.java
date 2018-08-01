@@ -134,7 +134,7 @@ public class DatoCarrera extends dato{
 
     @Override
     public void delete(int id) throws ApplicationException {
-        DatoMateria datoMateria = new DatoMateria();
+        //DatoMateria datoMateria = new DatoMateria();
         try {
             myConn = Sql.Connect();
             String query = "DELETE FROM Carrera WHERE (id_carrera = ? )";
@@ -148,7 +148,7 @@ public class DatoCarrera extends dato{
                 throw new RowsAffectedException(); 
             }
             
-            datoMateria.eliminarMateriasCarrera(id, myConn);
+            //datoMateria.eliminarMateriasCarrera(id, myConn);
         } catch ( SQLException e) {
             throw new EliminarEntidadException("Error al eliminar Carrera", e);
         }

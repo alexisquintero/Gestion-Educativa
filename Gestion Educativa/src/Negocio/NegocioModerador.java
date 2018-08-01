@@ -4,6 +4,7 @@ import Datos.DatoModerador;
 import Entidades.Moderador;
 import Entidades.entidad;
 import Excepciones.ApplicationException;
+import Excepciones.CamposLoginVaciosException;
 import Excepciones.CamposVaciosException;
 import Excepciones.EntidadExistenteException;
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class NegocioModerador extends negocio{
     }
     
     public entidad login(String usuario, String contrasenia) throws ApplicationException{
+        if("".equals(usuario) || "".equals(contrasenia)) throw new CamposLoginVaciosException();
         return ((DatoModerador)datos).login(usuario, contrasenia);
     }
 }

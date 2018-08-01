@@ -41,6 +41,7 @@ public class NegocioAdministrador extends negocio{
     }
     
     public entidad login(String usuario, String contrasenia) throws ApplicationException{
+        if("".equals(usuario) || "".equals(contrasenia)) throw new CamposLoginVaciosException();
         return ((DatoAdministrador)datos).login(usuario, contrasenia);
     }
 }
