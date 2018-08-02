@@ -14,59 +14,64 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Moderadores</title>
     </head>
     <body>
         <%  List<Moderador> moderadores = 
         (List<Moderador>)session.getAttribute("moderadores"); %>
-        <table>    
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Dirección</th>
-                <th>Legajo</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-            <c:forEach var="moderador" items="${moderadores}">  
+        <div>
+            <div>Moderadores</div>
+            <table>    
                 <tr>
-                    <td>
-                        <c:out value="${moderador.nombre}" />
-                    </td>       
-                    <td>
-                        <c:out value="${moderador.apellido}" />
-                    </td>
-                    <td>
-                        <c:out value="${moderador.telefono}" />
-                    </td>
-                    <td>
-                        <c:out value="${moderador.email}" />
-                    </td>
-                    <td>
-                        <c:out value="${moderador.direccion}" />
-                    </td>
-                    <td>
-                        <c:out value="${moderador.legajo}" />
-                    </td>
-                    <td>
-                        <a href="Moderador?redirect=Editar&id=${moderador.idModerador}">
-                        Editar</a>
-                    </td>
-                    <td>
-                        <a href="Moderador?redirect=Eliminar&id=${moderador.idModerador}">
-                        Eliminar</a>
-                    </td>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Dirección</th>
+                    <th>Legajo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
-            </c:forEach>          
-        </table>
-        <table> 
-            <tr>
-                <td><a href="Moderador?redirect=Crear">
-                        Crear nuevo moderador</a></td>
-            </tr>
-        </table> 
+                <c:forEach var="moderador" items="${moderadores}">  
+                    <tr>
+                        <td>
+                            <c:out value="${moderador.nombre}" />
+                        </td>       
+                        <td>
+                            <c:out value="${moderador.apellido}" />
+                        </td>
+                        <td>
+                            <c:out value="${moderador.telefono}" />
+                        </td>
+                        <td>
+                            <c:out value="${moderador.email}" />
+                        </td>
+                        <td>
+                            <c:out value="${moderador.direccion}" />
+                        </td>
+                        <td>
+                            <c:out value="${moderador.legajo}" />
+                        </td>
+                        <td>
+                            <a href="Moderador?redirect=Editar&id=${moderador.idModerador}">
+                            Editar</a>
+                        </td>
+                        <td>
+                            <a href="Moderador?redirect=Eliminar&id=${moderador.idModerador}">
+                            Eliminar</a>
+                        </td>
+                    </tr>
+                </c:forEach>          
+            </table>
+            
+            <table> 
+                <tr>
+                    <td><a href="Moderador?redirect=Crear">
+                            Crear nuevo moderador</a></td>
+                </tr>
+            </table> 
+        </div>
         <footer>
             <a href="LoginAdministrador">Menu</a>
         </footer>

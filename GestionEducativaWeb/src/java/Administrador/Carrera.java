@@ -29,7 +29,7 @@ public class Carrera extends Servlet {
         
         List<Entidades.Carrera> carreras = new ArrayList();
         Entidades.Carrera carrera = new Entidades.Carrera(0, "", "", 
-            ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+            ((Entidades.Administrador)usuario).getIdAdministrador(), new ArrayList());
         if(request.getParameterMap().containsKey("id")){
             int id = Integer.parseInt(request.getParameter("id"));
             carreras = (List<Entidades.Carrera>)session.
@@ -62,7 +62,7 @@ public class Carrera extends Servlet {
                     getRequestDispatcher("/WEB-INF/CarreraAM.jsp"); 
                     carrera = new Entidades.
                         Carrera(0, "", "", 
-                        ((Entidades.Administrador)usuario).getIdAdministrador(), null);
+                        ((Entidades.Administrador)usuario).getIdAdministrador(), new ArrayList());
                     break;
             default:
                 response.sendRedirect("LoginAdministrador.jsp"); return;

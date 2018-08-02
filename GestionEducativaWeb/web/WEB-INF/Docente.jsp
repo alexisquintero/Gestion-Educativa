@@ -14,59 +14,64 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Docentes</title>
     </head>
     <body>
         <%  List<Docente> docentes = 
         (List<Docente>)session.getAttribute("docentes"); %>
-        <table>    
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Dirección</th>
-                <th>Legajo</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-            <c:forEach var="docente" items="${docentes}">  
+        <div>
+            <div>Docentes</div>
+            <table>    
                 <tr>
-                    <td>
-                        <c:out value="${docente.nombre}" />
-                    </td>       
-                    <td>
-                        <c:out value="${docente.apellido}" />
-                    </td>
-                    <td>
-                        <c:out value="${docente.telefono}" />
-                    </td>
-                    <td>
-                        <c:out value="${docente.email}" />
-                    </td>
-                    <td>
-                        <c:out value="${docente.direccion}" />
-                    </td>
-                    <td>
-                        <c:out value="${docente.legajo}" />
-                    </td>                    
-                    <td>
-                        <a href="Docente?redirect=Editar&id=${docente.idDocente}">
-                        Editar</a></td>
-                    </td>
-                                        <td>
-                        <a href="Docente?redirect=Eliminar&id=${docente.idDocente}">
-                        Eliminar</a></td>
-                    </td>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Dirección</th>
+                    <th>Legajo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
-            </c:forEach>          
-        </table>
-        <table> 
-            <tr>
-                <td><a href="Docente?redirect=Crear">
-                        Crear nuevo docente</a></td>
-            </tr>
-        </table>
+                <c:forEach var="docente" items="${docentes}">  
+                    <tr>
+                        <td>
+                            <c:out value="${docente.nombre}" />
+                        </td>       
+                        <td>
+                            <c:out value="${docente.apellido}" />
+                        </td>
+                        <td>
+                            <c:out value="${docente.telefono}" />
+                        </td>
+                        <td>
+                            <c:out value="${docente.email}" />
+                        </td>
+                        <td>
+                            <c:out value="${docente.direccion}" />
+                        </td>
+                        <td>
+                            <c:out value="${docente.legajo}" />
+                        </td>                    
+                        <td>
+                            <a href="Docente?redirect=Editar&id=${docente.idDocente}">
+                            Editar</a></td>
+                        </td>
+                                            <td>
+                            <a href="Docente?redirect=Eliminar&id=${docente.idDocente}">
+                            Eliminar</a></td>
+                        </td>
+                    </tr>
+                </c:forEach>          
+            </table>
+            
+            <table> 
+                <tr>
+                    <td><a href="Docente?redirect=Crear">
+                            Crear nuevo docente</a></td>
+                </tr>
+            </table>
+        </div>
         <footer>
             <a href="LoginModerador">Menu</a>
         </footer>

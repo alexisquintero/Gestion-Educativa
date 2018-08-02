@@ -11,40 +11,44 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Finales</title>
     </head>
     <body>
         <%  List<Final> finales = 
         (List<Final>)session.getAttribute("finales"); %>
-        <table>    
-            <tr>
-                <th>Fecha</th>
-                <th>Horario Inicio</th>
-                <th>Horario Fin</th>
-                <th>Aula</th>
-                <th>Inscribir</th>
-            </tr>
-            <c:forEach var="final1" items="${finales}">  
+        <div>
+            <div>Finales</div>
+            <table>    
                 <tr>
-                    <td>
-                        <c:out value="${final1.fecha}" />
-                    </td>       
-                    <td>
-                        <c:out value="${final1.horarioInicio}" />
-                    </td>
-                    <td>
-                        <c:out value="${final1.horarioFin}" /> 
-                    </td>
-                    <td>
-                        <c:out value="${final1.aula}" /> 
-                    </td>
-                    <td>
-                        <a href="Finales?redirect=NotaPromedio&id=${final.idFinal}">
-                        Nota promedio</a></td>
-                    </td>                
+                    <th>Fecha</th>
+                    <th>Horario Inicio</th>
+                    <th>Horario Fin</th>
+                    <th>Aula</th>
+                    <th>Inscribir</th>
                 </tr>
-            </c:forEach>          
-        </table>
+                <c:forEach var="final1" items="${finales}">  
+                    <tr>
+                        <td>
+                            <c:out value="${final1.fecha}" />
+                        </td>       
+                        <td>
+                            <c:out value="${final1.horarioInicio}" />
+                        </td>
+                        <td>
+                            <c:out value="${final1.horarioFin}" /> 
+                        </td>
+                        <td>
+                            <c:out value="${final1.aula}" /> 
+                        </td>
+                        <td>
+                            <a href="Finales?redirect=NotaPromedio&id=${final.idFinal}">
+                            Nota promedio</a></td>
+                        </td>                
+                    </tr>
+                </c:forEach>          
+            </table>
+        </div>
         <footer>
             <a href="LoginModerador">Menu</a>
         </footer>

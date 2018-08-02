@@ -1,7 +1,4 @@
-body {
-    background-image: url("../images/fondo.gif");
-    background-repeat: repeat;   
-}
+@import url('body.css');
 
 img {
     position: absolute;

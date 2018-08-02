@@ -14,41 +14,48 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Comision</title>
     </head>
     <body>
         <%  List<Comision> comisiones = 
         (List<Comision>)session.getAttribute("comisiones"); %>
-        <table>    
-            <tr>
-                <th>Aula</th>
-                <th>Cupo</th>
-            </tr>
-            <c:forEach var="comision" items="${comisiones}">  
+        <div>
+            <div>Comisiones</div>
+            <table>    
                 <tr>
-                    <td>
-                        <c:out value="${comision.aula}" />
-                    </td>       
-                    <td>
-                        <c:out value="${comision.cupo}" />
-                    </td>                                        
-                    <td>
-                        <a href="Comision?redirect=Editar&id=${comision.idComision}">
-                        Editar</a>
-                    </td>
-                    <td>
-                        <a href="Comision?redirect=Eliminar&id=${comision.idComision}">
-                        Eliminar</a>
-                    </td>
+                    <th>Aula</th>
+                    <th>Cupo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
-            </c:forEach>          
-        </table>
-        <table> 
-            <tr>
-                <td><a href="Comision?redirect=Crear">
-                        Crear nueva comision</a></td>
-            </tr>
-        </table>
+                <c:forEach var="comision" items="${comisiones}">  
+                    <tr>
+                        <td>
+                            <c:out value="${comision.aula}" />
+                        </td>       
+                        <td>
+                            <c:out value="${comision.cupo}" />
+                        </td>                                        
+                        <td>
+                            <a href="Comision?redirect=Editar&id=${comision.idComision}">
+                            Editar</a>
+                        </td>
+                        <td>
+                            <a href="Comision?redirect=Eliminar&id=${comision.idComision}">
+                            Eliminar</a>
+                        </td>
+                    </tr>
+                </c:forEach>          
+            </table>
+            
+            <table> 
+                <tr>
+                    <td><a href="Comision?redirect=Crear">
+                            Crear nueva comision</a></td>
+                </tr>
+            </table>
+        </div>
         <footer>
             <a href="LoginModerador">Menu</a>
         </footer>

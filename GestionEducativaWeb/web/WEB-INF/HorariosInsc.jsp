@@ -12,36 +12,40 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Inscripcion a horarios</title>
     </head>
     <body>
         <%  List<Horario> horarios = 
         (List<Horario>)session.getAttribute("horarios"); %>
-        <table>    
-            <tr>
-                <th>Día</th>
-                <th>Horario inicio</th>
-                <th>Horario fin</th>
-                <th>Inscribir</th>
-            </tr>
-            <c:forEach var="horario" items="${horarios}">  
+        <div>
+            <div>Horarios</div>
+            <table>    
                 <tr>
-                    <td>
-                        <c:out value="${horario.dia}" />
-                    </td>       
-                    <td>
-                        <c:out value="${horario.horarioInicio}" />
-                    </td>
-                    <td>
-                        <c:out value="${horario.horarioFin}" /> 
-                    </td>
-                    <td>
-                        <a href="HorarioInsc?redirect=Inscribir&id=${horario.idHorario}">
-                        Inscribir</a>
-                    </td>                   
+                    <th>Día</th>
+                    <th>Horario inicio</th>
+                    <th>Horario fin</th>
+                    <th>Inscribir</th>
                 </tr>
-            </c:forEach>          
-        </table>
+                <c:forEach var="horario" items="${horarios}">  
+                    <tr>
+                        <td>
+                            <c:out value="${horario.dia}" />
+                        </td>       
+                        <td>
+                            <c:out value="${horario.horarioInicio}" />
+                        </td>
+                        <td>
+                            <c:out value="${horario.horarioFin}" /> 
+                        </td>
+                        <td>
+                            <a href="HorarioInsc?redirect=Inscribir&id=${horario.idHorario}">
+                            Inscribir</a>
+                        </td>                   
+                    </tr>
+                </c:forEach>          
+            </table>
+        </div>
         <footer>
             <a href="LoginAlumno">Menu</a>
         </footer>
