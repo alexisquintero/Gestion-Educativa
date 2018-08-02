@@ -38,12 +38,14 @@ public class NegocioCarrera extends negocio{
         }
         List<Entidades.Materia> materias = 
                 (ArrayList<Entidades.Materia>)(ArrayList<?>)carrera.getMaterias();
-        for (Materia materia : materias) {
-            long count = materias.stream()
-                .filter(m -> m.getIdMateria() == materia.getIdMateria())
-                .count();
-            if(count > 1){
-                throw new MateriaRepetidaException();
+        if(!materias.isEmpty()) {
+            for (Materia materia : materias) {
+                long count = materias.stream()
+                    .filter(m -> m.getIdMateria() == materia.getIdMateria())
+                    .count();
+                if(count > 1){
+                    throw new MateriaRepetidaException();
+                }
             }
         }
         return datos.newObject(e);
