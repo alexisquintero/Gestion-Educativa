@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/formAB.css" type="text/css" rel="stylesheet">
         <title>Crear y modificar bedel</title>
     </head>
     <body>
@@ -17,10 +18,6 @@
         (Bedel)session.getAttribute("bedel");%>       
         <form action="BedelAM" method="post">
             <table>
-                <tr>
-                    <th>Propiedad</th>
-                    <th>Valor</th>
-                </tr>
                 <tr>
                     <td>ID</td>
                     <td><input type=text" name="id" value="${bedel.idBedel}" readonly="readonly"> </td>
@@ -50,7 +47,7 @@
                     <td><input type="text" name="legajo" value="${bedel.legajo}"> </td>
                 </tr>
             </table>           
-            <input type="submit" value="Guardar"> 
+            <input type="submit" value="Guardar" class="button"> 
         </form>  
         <footer>
             <a href="LoginAdministrador">Menu</a>

@@ -1,7 +1,3 @@
-@import url('body.css');
-@import url('header.css');
-@import url('footer.css');
-
 div {
     position: relative;
     margin-bottom: 0;
@@ -30,7 +26,7 @@ div div {
     border-bottom: 1px solid #ddd;
 }
 
-table {
+div table {
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
     width: 100%;
@@ -40,23 +36,23 @@ table {
     border-color: grey;
 }
 
-tr:first-of-type {
+div tr:first-of-type {
     display: table-row;
     vertical-align: middle;
 }
 
-tr:first-of-type th {
+div tr:first-of-type th {
     vertical-align: bottom;
     border-bottom: 2px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-tr:first-of-type th:last-of-type, tr:first-of-type th:nth-last-of-type(2){
+div tr:first-of-type th:last-of-type, div tr:first-of-type th:nth-last-of-type(2){
     text-align: right;
 }
 
-td {
+div td {
     display: table-cell;
     padding: 8px;
     text-align: left;
@@ -64,15 +60,18 @@ td {
     border-top: 1px solid #ddd;
 }
 
-td:last-of-type, td:nth-last-of-type(2){
+div td:last-of-type, td:nth-last-of-type(2){
     text-align: right;
 }
-
-table:nth-of-type(2) td{
+div tr:last-of-type td {
     text-align: center;
 }
 
-a {
+div table:nth-of-type(2) td{
+    text-align: center;
+}
+
+div a {
     text-decoration: none;
     color: black;
 }

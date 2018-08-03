@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/formAB.css" type="text/css" rel="stylesheet">
         <title>Crear y modificar carrera</title>
     </head>
     <body>
@@ -20,10 +21,6 @@
         (Carrera)session.getAttribute("carrera"); %>       
         <form action="CarreraAM" method="post">
             <table>
-                <tr>
-                    <th>Propiedad</th>
-                    <th>Valor</th>
-                </tr>
                 <tr>
                     <td>ID</td>
                     <td><input type=text" name="id" value="${carrera.idCarrera}" readonly="readonly"> </td>
@@ -37,7 +34,10 @@
                     <td><input type="text" name="descripcion" value="${carrera.descripcion}"> </td>
                 </tr>
             </table>
-            <h3>Materias</h3>   
+            <input type="submit" value="Guardar" class="button"> 
+        </form>
+        <div>
+            <div>Materias</div>
             <table>
                 <tr>
                     <th>Nombre</th>
@@ -63,22 +63,13 @@
                     </tr>
                 </c:forEach>  
                 <tr>
-                    <td>
-                        <input type=text" name="nNombre" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="nDescripcion" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="nAnio" readonly="readonly">
-                    </td>
-                    <td>
+                    <td colspan="4">
                         <a href="CarreraMateria?redirect=Agregar">
                             Agregar</a>
                     </td> 
                 </tr>
             </table>
-            <input type="submit" value="Guardar"> 
+        </div>
             <footer>
                 <a href="LoginAdministrador">Menu</a>
             </footer>

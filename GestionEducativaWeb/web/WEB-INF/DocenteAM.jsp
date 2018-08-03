@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/formAB.css" type="text/css" rel="stylesheet">
         <title>Crear y modificar docente</title>
     </head>
     <body>
@@ -17,10 +18,6 @@
         (Docente)session.getAttribute("docente"); %>   
         <form action="DocenteAM" method="post">
             <table>
-                <tr>
-                    <th>Propiedad</th>
-                    <th>Valor</th>
-                </tr>
                 <tr>
                     <td>ID</td>
                     <td><input type=text" name="id" value="${docente.idDocente}" readonly="readonly"> </td>
@@ -50,7 +47,7 @@
                     <td><input type="text" name="legajo" value="${docente.legajo}"> </td>
                 </tr>
             </table>           
-            <input type="submit" value="Guardar"> 
+            <input type="submit" value="Guardar" class="button"> 
         </form>
         <footer>
             <a href="LoginModerador">Menu</a>

@@ -61,8 +61,9 @@
             </table>
             <table> 
                 <tr>
-                    <td><a href="Materia?redirect=Crear">
-                            Crear nueva materia</a></td>
+                    <td>
+                        <a href="Materia?redirect=Crear">Crear nueva materia</a>
+                    </td>
                 </tr>
             </table>
         </div>
