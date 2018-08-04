@@ -1,0 +1,52 @@
+@import url('body.css');
+@import url('header.css');
+
+table {
+    text-align: center;
+    margin: auto;
+    border-spacing: 0;
+    font-family: "Roboto Mono", sans-serif;
+    font-weight: 500;
+    border-radius: 2px;
+    box-shadow: 0 0 0 2px rgba(5,32,176,0.13); 
+}
+
+tr {
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+td {
+    padding: 0;
+}
+
+a, a:visited, a:link, a:active {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px rgba(0,0,0,.125);
+    text-decoration: none;
+    color: #495057;
+}
+
+a:hover {
+    background-color: #f8f9fa;
+}
+
+tr:first-of-type a{
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+tr:not(:first-of-type) a{
+    border-top:1px solid silver;
+}
+
+tr:last-of-type a{
+    margin-bottom: 0;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}

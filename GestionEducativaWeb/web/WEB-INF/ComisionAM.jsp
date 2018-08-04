@@ -11,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/formAB.css" type="text/css" rel="stylesheet">
         <title>Crear y modificar comisión</title>
     </head>
     <body>
@@ -18,10 +19,6 @@
         (Comision)session.getAttribute("comision");%>       
         <form action="ComisionAM" method="post">
             <table>
-                <tr>
-                    <th>Propiedad</th>
-                    <th>Valor</th>
-                </tr>
                 <tr>
                     <td>ID</td>
                     <td><input type=text" name="id" value="${comision.idComision}" readonly="readonly"> </td>
@@ -34,14 +31,18 @@
                     <td>Cupo</td>    
                     <td><input type="text" name="cupo" value="${comision.cupo}"> </td>
                 </tr>
-            </table>           
-            <h3>Horarios</h3>   
+            </table> 
+            <input type="submit" value="Guardar" class="button"> 
+        </form>
+        <div>
+            <div>Horarios</div>
             <table>
                 <tr>
                     <th>Dia</th>
                     <th>Horario Inicio</th>
                     <th>Horario Fin</th>
-                    <th>Materia</th>
+                    <th style="text-align: left">Materia</th>
+                    <th>Eliminar</th>
                 </tr>
                 <c:forEach var="horario" items="${comision.horarios}">   
                     <tr>
@@ -54,7 +55,7 @@
                         <td>
                             <c:out value="${horario.horarioFin}" /> 
                         </td>
-                        <td>
+                        <td style="text-align: left">
                             <c:out value="${horario.materia.nombre}" /> 
                         </td>
                         <td>
@@ -63,8 +64,9 @@
                         </td>  
                     </tr>
                 </c:forEach>  
+                    <tr style="display: none"></tr>
             </table>
-            <input type="submit" value="Guardar"> 
+        </div>
         </form>      
         <footer>
             <a href="LoginModerador">Menu</a>

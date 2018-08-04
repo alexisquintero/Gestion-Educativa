@@ -12,25 +12,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Nota promedio de alumnos</title>
     </head>
     <body>
         <%  Map<Alumno, Integer> promedioAlumnos = 
         (Map<Alumno, Integer>)session.getAttribute("promedioAlumnos"); %>
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Nota</th>
-            </tr>
-            <c:forEach var="promedioAlumno" items="${promedioAlumnos}">
+        <div>
+            <div>Alumnos</div>
+            <table>
                 <tr>
-                    <td><c:out value="${promedioAlumno.key.nombre}" /></td>
-                    <td><c:out value="${promedioAlumno.key.apellido}" /></td>
-                    <td><c:out value="${promedioAlumno.value}" /></td>
+                    <th>Nombre</th>
+                    <th style="text-align: left">Apellido</th>
+                    <th>Nota</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach var="promedioAlumno" items="${promedioAlumnos}">
+                    <tr>
+                        <td><c:out value="${promedioAlumno.key.nombre}" /></td>
+                        <td style="text-align: left"><c:out value="${promedioAlumno.key.apellido}" /></td>
+                        <td><c:out value="${promedioAlumno.value}" /></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
         <footer>
             <a href="LoginModerador">Menu</a>
         </footer>

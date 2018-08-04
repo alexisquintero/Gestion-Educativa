@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/formAB.css" type="text/css" rel="stylesheet">
         <title>Crear y modificar materias</title>
     </head>
     <body>
@@ -19,10 +20,6 @@
         (Materia)session.getAttribute("materia");%>       
         <form action="MateriaAM" method="post">
             <table>
-                <tr>
-                    <th>Propiedad</th>
-                    <th>Valor</th>
-                </tr>
                 <tr>
                     <td>ID</td>
                     <td><input type=text" name="id" value="${materia.idMateria}" readonly="readonly"> </td>
@@ -66,7 +63,10 @@
                     <td><input type="text" name="horasSemana" value="${materia.horasSemana}"> </td>
                 </tr>
             </table>
-            <h3>Correlativas Regulares</h3>   
+            <input type="submit" value="Guardar" class="button"> 
+        </form>
+        <div>
+            <div>Correlativas Regulares</div>
             <table>
                 <tr>
                     <th>Nombre</th>
@@ -100,28 +100,14 @@
                     </tr>
                 </c:forEach>  
                 <tr>
-                    <td>
-                        <input type=text" name="rNombre" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="rDescripcion" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="rAnio" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="rElectiva" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="eHorasSemana" readonly="readonly">
-                    </td>
-                    <td>
-                        <a href="MateriaRegular?redirect=Agregar">
-                            Agregar</a></td>
+                    <td colspan="6">
+                        <a href="MateriaRegular?redirect=Agregar">Agregar</a></td>
                     </td> 
                 </tr>
             </table>
-            <h3>Correlativas Aprobadas</h3>
+        </div>
+        <div>
+            <div>Correlativas Aprobadas</div>
             <table>
                 <tr>
                     <th>Nombre</th>
@@ -155,29 +141,12 @@
                     </tr>
                 </c:forEach>  
                 <tr>
-                    <td>
-                        <input type=text" name="aNombre" readonly="readonly">
+                    <td colspan="6">
+                        <a href="MateriaAprobada?redirect=Agregar">Agregar</a>
                     </td>
-                    <td>
-                        <input type=text" name="aDescripcion" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="aAnio" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="aElectiva" readonly="readonly">
-                    </td>
-                    <td>
-                        <input type=text" name="aHorasSemana" readonly="readonly">
-                    </td>
-                    <td>
-                        <a href="MateriaAprobada?redirect=Agregar">
-                            Agregar</a>
-                    </td> 
                 </tr>
             </table>
-            <input type="submit" value="Guardar"> 
-        </form>
+        </div>
         <footer>
             <a href="LoginAdministrador">Menu</a>
         </footer>

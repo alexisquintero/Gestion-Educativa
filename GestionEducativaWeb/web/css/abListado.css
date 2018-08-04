@@ -1,0 +1,95 @@
+@import url('body.css');
+@import url('header.css');
+@import url('footer.css');
+
+div {
+    position: relative;
+    margin-bottom: 0;
+    border-color: #ddd;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-sizing: border-box;
+    display: block;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+div div {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-radius: 3px;
+    text-align: center;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+table {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    width: 100%;
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-color: grey;
+}
+
+tr:first-of-type {
+    display: table-row;
+    vertical-align: middle;
+}
+
+tr:first-of-type th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+tr:first-of-type th:last-of-type, tr:first-of-type th:nth-last-of-type(2){
+    text-align: right;
+}
+
+td {
+    display: table-cell;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+td:last-of-type, td:nth-last-of-type(2){
+    text-align: right;
+}
+
+table:nth-of-type(2) td{
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.button {
+    display: block;
+    margin: 15px auto 15px auto;
+    height: 50px;
+    width: 300px;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    background: #3c86fc;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background:#2b5ef7;
+}

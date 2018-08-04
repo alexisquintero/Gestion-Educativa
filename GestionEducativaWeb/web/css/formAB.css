@@ -1,0 +1,103 @@
+@import url('body.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('tableAB.css');
+
+form{
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 650px;
+}
+
+form table {
+    position: relative;
+    margin: 1rem -1rem;
+    border: solid #f7f7f9;
+    border-width: .2rem;
+    padding: 1.5rem;
+    display: block;
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #292b2c;
+    background-color: #fff;
+}
+
+form table tr {
+    margin-bottom: 1rem;
+    display: flex;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+form table tr td:first-of-type {
+    padding-top: calc(.5rem - 1px * 2);
+    padding-bottom: calc(.5rem - 1px * 2);
+    margin-bottom: 0;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: inline-block;
+}
+
+form table tr td:nth-of-type(2) {
+    display: block;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+form table tr td:nth-of-type(2) input {
+    display: block;
+    width: 100%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #464a4c;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+
+form table tr td:nth-of-type(3) {
+    display: inline-table;
+    margin-left: 40px;
+    margin-top: 3px;
+}
+
+form table tr td:nth-of-type(3) a{
+    text-decoration: none;
+    color: #464a4c;
+}
+
+form table tr td input:read-only {
+    background-color: gray;
+    color: black;
+}
+
+form table tr td input:disabled {
+    background-color: gray;
+    color: black;
+}
+
+.button {
+    display: block;
+    margin: 15px auto 15px auto;
+    height: 50px;
+    width: 300px;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    background: #3c86fc;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background:#2b5ef7;
+}

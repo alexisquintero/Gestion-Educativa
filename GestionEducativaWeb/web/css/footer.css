@@ -1,0 +1,20 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: #3c86fc;
+    margin-left: -10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+footer a{
+    display: block;
+    margin-top: 5px;
+    color: #292b2c;
+}
+
+footer a:hover {
+    color: #464a4c;
+}

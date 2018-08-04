@@ -14,33 +14,37 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Carreras</title>
     </head>
     <body>     
         <%  List<Carrera> carreras = 
         (List<Carrera>)session.getAttribute("carreras"); %>
         <form action="AlumnoCarrera" method="post">
-            <table>    
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Seleccionar</th>
-                </tr>
-                <c:forEach var="carrera" items="${carreras}">  
+            <div>
+                <div>Carreras</div>
+                <table>    
                     <tr>
-                        <td>
-                            <c:out value="${carrera.nombre}" />
-                        </td>       
-                        <td>
-                            <c:out value="${carrera.descripcion}" />
-                        </td>
-                        <td>
-                            <input type="radio" name="idCarrera" value="${carrera.idCarrera}"> Seleccionar<br>
-                        </td>
+                        <th>Nombre</th>
+                        <th style="text-align: left">Descripción</th>
+                        <th>Seleccionar</th>
                     </tr>
-                </c:forEach>          
-            </table>
-            <input type="submit" value="Seleccionar"> 
+                    <c:forEach var="carrera" items="${carreras}">  
+                        <tr>
+                            <td>
+                                <c:out value="${carrera.nombre}" />
+                            </td>       
+                            <td style="text-align: left">
+                                <c:out value="${carrera.descripcion}" />
+                            </td>
+                            <td>
+                                <input type="radio" name="idCarrera" value="${carrera.idCarrera}"><br>
+                            </td>
+                        </tr>
+                    </c:forEach>          
+                </table>
+            </div>
+            <input type="submit" value="Seleccionar" class="button"> 
         </form>
         <footer>
             <a href="LoginModerador">Menu</a>

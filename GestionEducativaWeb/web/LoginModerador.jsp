@@ -9,27 +9,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Moderador</title>           
+        <link href="css/login.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Adamina|Raleway:500" rel="stylesheet">
+        <title class="title">Login Moderador</title>           
     </head>   
     <body>
-        <header>
-            <h3>Universidad Tecnológica Nacional</h3>
-            <h3>Facultad Regional Rosario</h3>
-            <h1>Módulo de autogestión moderador</h1>
+        <img src="images/utn.gif" alt="">
+        <header class="header">
+            <h3 class="universidad">Universidad Tecnológica Nacional</h3>
+            <h3 class="universidad">Facultad Regional Rosario</h3>
+            <h1 class="modulo">Módulo de autogestión moderador</h1>
         </header>
         <form action="LoginModerador" method="post">
-            <table>
+            <table class="table">
                 <tr>
-                    <td>Usuario</td>
-                    <td><input type="text" name="usuario"> </td>
+                    <td><input type="text" name="usuario" placeholder="Usuario" required> </td>
                 </tr>
                 <tr>
-                    <td>Contraseña</td>    
-                    <td><input type="password" name="password"> </td>
+                    <td><input type="password" name="password" placeholder="Contraseña" required> </td>
                 </tr>
                 <tr>
-                    <td></td>    
-                    <td><input type="submit" value="login"> </td>
+                    <td><input type="submit" value="login" class="button"> </td>
                 </tr>
             </table>
         </form>
