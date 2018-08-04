@@ -76,3 +76,20 @@ a {
     text-decoration: none;
     color: black;
 }
+
+.button {
+    display: block;
+    margin: 15px auto 15px auto;
+    height: 50px;
+    width: 300px;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    background: #3c86fc;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background:#2b5ef7;
+}
