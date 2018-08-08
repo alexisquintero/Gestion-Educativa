@@ -26,7 +26,7 @@
                     <th>Fecha</th>
                     <th>Horario Inicio</th>
                     <th>Horario Fin</th>
-                    <th>Aula</th>
+                    <th style="text-align: left">Aula</th>
                     <th>Inscribir</th>
                 </tr>
                 <c:forEach var="final1" items="${finales}">  
@@ -40,7 +40,7 @@
                         <td>
                             <c:out value="${final1.horarioFin}" /> 
                         </td>
-                        <td>
+                        <td style="text-align: left">
                             <c:out value="${final1.aula}" /> 
                         </td>
                         <td>

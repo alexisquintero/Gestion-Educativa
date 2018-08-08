@@ -12,44 +12,48 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/abListado.css" type="text/css" rel="stylesheet">
         <title>Inscripción a materia</title>
     </head>
     <body>
         <%  List<Materia> materiasInsc = 
         (List<Materia>)session.getAttribute("materiasInsc"); %>
-        <table>    
-            <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Año</th>
-                <th>Electiva</th>
-                <th>Hs Semana</th>
-                <th>Inscribir</th>
-            </tr>
-            <c:forEach var="materia" items="${materiasInsc}">  
+        <div>
+            <div>Materias</div>
+            <table>    
                 <tr>
-                    <td>
-                        <c:out value="${materia.nombre}" />
-                    </td>       
-                    <td>
-                        <c:out value="${materia.descripcion}" />
-                    </td>
-                    <td>
-                        <c:out value="${materia.anio}" /> 
-                    </td>
-                    <td>
-                        <c:out value="${materia.electiva}" /> 
-                    </td>
-                    <td>
-                        <c:out value="${materia.horasSemana}" /> 
-                    </td>
-                    <td>
-                        <a href="MateriaInsc?redirect=Inscribir&id=${materia.idMateria}">
-                        Inscribir</a></td>
-                    </td>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Año</th>
+                    <th>Electiva</th>
+                    <th style="text-align: left">Hs Semana</th>
+                    <th>Inscribir</th>
                 </tr>
-            </c:forEach>          
-        </table>
+                <c:forEach var="materia" items="${materiasInsc}">  
+                    <tr>
+                        <td>
+                            <c:out value="${materia.nombre}" />
+                        </td>       
+                        <td>
+                            <c:out value="${materia.descripcion}" />
+                        </td>
+                        <td>
+                            <c:out value="${materia.anio}" /> 
+                        </td>
+                        <td>
+                            <c:out value="${materia.electiva}" /> 
+                        </td>
+                        <td style="text-align: left">
+                            <c:out value="${materia.horasSemana}" /> 
+                        </td>
+                        <td>
+                            <a href="MateriaInsc?redirect=Inscribir&id=${materia.idMateria}">
+                            Inscribir</a></td>
+                        </td>
+                    </tr>
+                </c:forEach>          
+            </table>
+        </div>
         <footer>
             <a href="LoginAlumno">Menu</a>
         </footer>
