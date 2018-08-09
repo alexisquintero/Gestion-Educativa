@@ -76,14 +76,23 @@ public class NegocioAlumno extends negocio{
         Carrera carrera = (Carrera)new NegocioCarrera().
                         buscar(alumno.getCarrera());
         //Obtengo las materias de la carrera
-        List<Materia> materias = 
+        List<Materia> materiasCarrera = 
             (List<Materia>)(List<?>) carrera.getMaterias();
+        //Obtengo todas las materias
+        List<Materia> todasMaterias = 
+            (List<Materia>)(List<?>)new NegocioMateria().buscar();
+        //Obtengo las materias de la carrera con todos los datos
+        List<Materia> materias = todasMaterias.stream()
+            .filter(tm -> materiasCarrera.stream()
+                .anyMatch(mc -> mc.getIdMateria() == tm.getIdMateria()))
+                .collect(Collectors.toList());
         //Obtengo las materias aprobadas del alumno
         List<Materia> materiasAprobadas = this.getMateriasAprobadas(alumno);
         //Resto las materias aprobadas a las de la carrera
         List<Materia> materiasDisponibles = materias.stream().
-            filter(m -> !materiasAprobadas.contains(m)).
-            collect(Collectors.toList());
+            filter(m -> materiasAprobadas.stream()
+                .noneMatch(ma -> ma.getIdMateria() == m.getIdMateria()))
+                .collect(Collectors.toList());
         //Controlo que estén aprobadas las correlativas
         List<Materia> materiasInscripcion = new ArrayList();
         for (Materia materiaDisponible : materiasDisponibles) {
@@ -93,7 +102,7 @@ public class NegocioAlumno extends negocio{
             int cont = 0;
             for (Materia correlativa : correlativas) {
                 if(materiasAprobadas.stream().
-                    anyMatch(ma -> ma.getIdMateria() == materiaDisponible.getIdMateria())) {
+                    anyMatch(ma -> ma.getIdMateria() == correlativa.getIdMateria())) {
                     cont += 1;
                 }
             }
@@ -162,7 +171,7 @@ public class NegocioAlumno extends negocio{
                 filter(i -> i.getAlumno().getIdAlumno() == alumno.getIdAlumno()).
                 collect(Collectors.toList());
         List<InscripcionFinal> inscripcionesFinalesAprobadas = 
-            inscripcionesFinales.stream().
+            inscripcionesFinalesAlumno.stream().
                 filter(i -> i.getNotaFinal() >= Reglamento.notaAprobado).
                 collect(Collectors.toList());
         NegocioFinal negocioFinal = new NegocioFinal();
