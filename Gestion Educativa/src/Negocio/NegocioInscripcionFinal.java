@@ -72,9 +72,8 @@ public class NegocioInscripcionFinal extends negocio{
                     filter(i -> i.getObjFinal().getIdFinal() == final1.getIdFinal()).
                     collect(Collectors.toList());
             //Calculo el promedio
-            int suma, cont;
-            float promedio = 0;
-            suma = cont = 0;
+            float suma, cont, promedio;
+            suma = cont = promedio = 0;
             for (InscripcionFinal inscripcionFinal : inscripcionesFinal) {
                 suma += inscripcionFinal.getNotaFinal();
                 cont++;
